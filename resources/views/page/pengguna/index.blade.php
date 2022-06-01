@@ -5,8 +5,10 @@
 @endsection
 
 @section('content')
+Index Page
 
+@endsection
 
-
+@section('js')
 
 @endsection

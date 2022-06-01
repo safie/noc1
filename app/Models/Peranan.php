@@ -14,6 +14,7 @@ class Peranan extends Model
     protected $fillable     = [
         'peranan',
         'keterangan',
+
     ];
     public $timestamps      = true;
 }
