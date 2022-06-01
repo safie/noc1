@@ -20,12 +20,12 @@
             </a>
             <!-- Sidenav Heading (Admin)-->
             <div class="sidenav-menu-heading">Admin</div>
-             <!-- Sidenav Link (Dashboard)-->
+            <!-- Sidenav Link (Dashboard)-->
             <a class="nav-link" href="tables.html">
                 <div class="nav-link-icon"><i data-feather="pie-chart"></i></div>
                 Dashboard
             </a>
-             <!-- Sidenav Link (Senarai NOC)-->
+            <!-- Sidenav Link (Senarai NOC)-->
             <a class="nav-link" href="tables.html">
                 <div class="nav-link-icon"><i data-feather="list"></i></div>
                 Senarai NOC
@@ -39,17 +39,17 @@
             </a>
             <div class="collapse" id="collapseData" data-bs-parent="#accordionSidenav">
                 <nav class="sidenav-menu-nested nav">
-                    <a class="nav-link" href="animations.html">Pengguna</a>
-                    <a class="nav-link" href="background.html">Bahagian</a>
+                    <a class="nav-link" href="{{ route('pengguna.index') }}">Pengguna</a>
+                    <a class="  nav-link" href="background.html">Bahagian</a>
                     <a class="nav-link" href="borders.html">Kementerian</a>
                     <a class="nav-link" href="lift.html">Peringkat</a>
                     <a class="nav-link" href="shadows.html">Kategori</a>
-                    <a class="nav-link" href="typography.html">Peranan</a>
+                    <a class="nav-link" href="{{ route('peranan.index') }}">Peranan</a>
                 </nav>
             </div>
             <!-- Sidenav Heading (Admin)-->
             <div class="sidenav-menu-heading">Bahagian</div>
-             <!-- Sidenav Link (Dashboard)-->
+            <!-- Sidenav Link (Dashboard)-->
             <a class="nav-link" href="tables.html">
                 <div class="nav-link-icon"><i data-feather="pie-chart"></i></div>
                 Dashboard
@@ -66,7 +66,7 @@
                     <a class="nav-link" href="animations.html">Permohonan baru</a>
                 </nav>
             </div>
-             <!-- Sidenav Link (Senarai NOC)-->
+            <!-- Sidenav Link (Senarai NOC)-->
             <a class="nav-link" href="tables.html">
                 <div class="nav-link-icon"><i data-feather="list"></i></div>
                 Senarai NOC
@@ -90,7 +90,7 @@
             </a>
             <!-- Sidenav Heading (Admin)-->
             <div class="sidenav-menu-heading">Nilai</div>
-             <!-- Sidenav Link (Dashboard)-->
+            <!-- Sidenav Link (Dashboard)-->
             <a class="nav-link" href="tables.html">
                 <div class="nav-link-icon"><i data-feather="pie-chart"></i></div>
                 Dashboard
@@ -100,7 +100,7 @@
                 <div class="nav-link-icon"><i data-feather="edit"></i></div>
                 Tindakan
             </a>
-             <!-- Sidenav Link (Senarai NOC)-->
+            <!-- Sidenav Link (Senarai NOC)-->
             <a class="nav-link" href="tables.html">
                 <div class="nav-link-icon"><i data-feather="list"></i></div>
                 Senarai NOC
@@ -113,7 +113,7 @@
     <div class="sidenav-footer">
         <div class="sidenav-footer-content">
             <div class="sidenav-footer-subtitle">Logged in as:</div>
-            <div class="sidenav-footer-title">{{ Auth::user()->name }} (admin)</div>
+            <div class="sidenav-footer-title">{{ Auth::user()->name }} ({{ Auth::user()->peranan }})</div>
         </div>
     </div>
 </nav>

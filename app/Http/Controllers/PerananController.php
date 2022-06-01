@@ -53,7 +53,7 @@ class PerananController extends Controller
             'keterangan'    => $request_data['postKeteranganPeranan']
         ]);
 
-        return redirect()->route('peranan.index')->with('success','Peranan berjaya disimpan.');
+        return redirect()->route('peranan.index')->with('success', 'Peranan berjaya disimpan.');
     }
 
     /**
@@ -62,8 +62,9 @@ class PerananController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Peranan $peranan)
     {
+        return view('page.peranan.show', compact('peranan'));
         //
     }
 
@@ -73,9 +74,9 @@ class PerananController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Peranan $peranan)
     {
-        //
+        return view('page.peranan.edit', compact('peranan'));
     }
 
     /**
@@ -87,7 +88,19 @@ class PerananController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //check data
+        $request->validate([
+            'postNamaPeranan'       => 'required',
+            'postKeteranganPeranan' => 'required',
+
+        ]);
+
+        $peranan = Peranan::find($id);
+        $peranan->peranan       = $request->postNamaPeranan;
+        $peranan->keterangan    = $request->postKeteranganPeranan;
+        $peranan->save();
+
+        return redirect()->route('peranan.index')->with('success', 'Peranan berjaya diedit!');
     }
 
     /**
@@ -96,8 +109,9 @@ class PerananController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Peranan $peranan)
     {
-        //
+        $peranan->delete();
+        return redirect()->route('peranan.index')->with('success', 'Peranan berjaya dipadam');
     }
 }

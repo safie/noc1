@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -13,7 +14,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $pengguna = User::all();
+        $view_data['pengguna'] = $pengguna;
+        return view('page.pengguna.index')->with($view_data);
     }
 
     /**

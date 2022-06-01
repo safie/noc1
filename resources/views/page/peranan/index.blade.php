@@ -16,6 +16,11 @@
 @section('content')
     @include('layouts.template.header_compact')
     <div class="container-fluid px-4">
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
         <div class="card">
             <div class="card-body">
                 <table id="datatablesSimple">
@@ -23,6 +28,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Peranan</th>
+                            <th>Keterangan</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -30,33 +36,39 @@
                         <tr>
                             <th>No.</th>
                             <th>Peranan</th>
+                            <th>Keterangan</th>
                             <th>Actions</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Admin</td>
-                            <td>
-                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                    href="user-management-edit-user.html"><i data-feather="edit"></i></a>
-                                <a class="btn btn-datatable btn-icon btn-transparent-dark" href="#!"><i
-                                        data-feather="trash-2"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Bahagian</td>
-                            <td>
-                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                    href="user-management-edit-user.html"><i data-feather="edit"></i></a>
-                                <a class="btn btn-datatable btn-icon btn-transparent-dark" href="#!"><i
-                                        data-feather="trash-2"></i></a>
-                            </td>
-                        </tr>
+                        @if ($peranan->count() > 0)
+                            @foreach ($peranan as $data)
+                                <tr>
+                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ $data->peranan }}</td>
+                                    <td>{{ $data->keterangan }}</td>
+                                    <td>
+                                        <form action="{{ route('peranan.destroy', $data->id) }}" method="POST">
+                                            <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                                                href="{{ route('peranan.edit', $data->id) }}"><i
+                                                    data-feather="edit"></i></a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-datatable btn-icon btn-transparent-dark"><i
+                                                    data-feather="trash-2"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="4">Record not found!</td>
+                            </tr>
+                        @endif
 
                     </tbody>
                 </table>
+                {{-- {!! $peranan->links() !!} --}}
             </div>
         </div>
     </div>
@@ -65,5 +77,5 @@
 
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <script src="{{asset('sb-admin-pro/dist/js/datatables/datatables-simple-demo.js')}}"></script>
+    <script src="{{ asset('sb-admin-pro/dist/js/datatables/datatables-simple-demo.js') }}"></script>
 @endsection
