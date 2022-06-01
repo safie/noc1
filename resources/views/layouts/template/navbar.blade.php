@@ -206,6 +206,8 @@
                     <div class="dropdown-user-details">
                         <div class="dropdown-user-details-name">{{ Auth::user()->name }}</div>
                         <div class="dropdown-user-details-email">{{ Auth::user()->email }}</div>
+                        <div class="dropdown-user-details-role">Admin</div>
+
                     </div>
                 </h6>
                 <div class="dropdown-divider"></div>

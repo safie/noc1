@@ -6,7 +6,7 @@
 @section('content')
     <!-- Main page content-->
     <div class="container-xl px-4 mt-5">
-        @include('layouts.template.header_dashboard')
+        {{-- @include('layouts.template.header_dashboard') --}}
         <div class="row">
             <div class="col-xl-3 col-md-6 mb-4">
                 <!-- Dashboard info widget 1-->
@@ -14,12 +14,8 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <div class="small fw-bold text-primary mb-1">Earnings (monthly)</div>
-                                <div class="h5">$4,390</div>
-                                <div class="text-xs fw-bold text-success d-inline-flex align-items-center">
-                                    <i class="me-1" data-feather="trending-up"></i>
-                                    12%
-                                </div>
+                                <div class="small fw-bold text-primary mb-1">Permohonan NOC</div>
+                                <div class="h1">4,390</div>
                             </div>
                             <div class="ms-2"><i class="fas fa-dollar-sign fa-2x text-gray-200"></i></div>
                         </div>
@@ -32,12 +28,8 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <div class="small fw-bold text-secondary mb-1">Average sale price</div>
-                                <div class="h5">$27.00</div>
-                                <div class="text-xs fw-bold text-danger d-inline-flex align-items-center">
-                                    <i class="me-1" data-feather="trending-down"></i>
-                                    3%
-                                </div>
+                                <div class="small fw-bold text-secondary mb-1">Semakan NOC</div>
+                                <div class="h1">27.00</div>
                             </div>
                             <div class="ms-2"><i class="fas fa-tag fa-2x text-gray-200"></i></div>
                         </div>
@@ -50,12 +42,8 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <div class="small fw-bold text-success mb-1">Clicks</div>
-                                <div class="h5">11,291</div>
-                                <div class="text-xs fw-bold text-success d-inline-flex align-items-center">
-                                    <i class="me-1" data-feather="trending-up"></i>
-                                    12%
-                                </div>
+                                <div class="small fw-bold text-success mb-1">Penyediaan ulasan NOC</div>
+                                <div class="h1">11,291</div>
                             </div>
                             <div class="ms-2"><i class="fas fa-mouse-pointer fa-2x text-gray-200"></i></div>
                         </div>
@@ -68,12 +56,8 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <div class="small fw-bold text-info mb-1">Conversion rate</div>
-                                <div class="h5">1.23%</div>
-                                <div class="text-xs fw-bold text-danger d-inline-flex align-items-center">
-                                    <i class="me-1" data-feather="trending-down"></i>
-                                    1%
-                                </div>
+                                <div class="small fw-bold text-info mb-1">Penyediaan memo kelulusan</div>
+                                <div class="h1">100</div>
                             </div>
                             <div class="ms-2"><i class="fas fa-percentage fa-2x text-gray-200"></i></div>
                         </div>
@@ -212,7 +196,7 @@
 @endsection
 
 @section('js')
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
     <script src="{{asset('sb-admin-pro/dist/assets/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('sb-admin-pro/dist/assets/demo/chart-bar-demo.js')}}"></script>
