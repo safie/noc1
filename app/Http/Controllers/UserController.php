@@ -95,18 +95,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
+        $user = User::find($id);
         $bahagian = Bahagian::get(['id', 'nama_bhgn', 'sgktn_bhgn']);
         $peranan = Peranan::get(['peranan', 'id']);
         $data1['peranan'] = $peranan;
-        // $data2['tajuk_page'] = 'Edit Pengguna';
+        $data2['tajuk_page'] = 'Edit Pengguna';
         $data3['bahagian'] = $bahagian;
-        // dd($view_data);
+        // dd($user);
         return view('page.pengguna.edit',compact('user'))
-        // ->with(user)
+        // ->with($user)
         ->with($data1)
-        // ->with($data2)
+        ->with($data2)
         ->with($data3);
     }
 
@@ -119,7 +120,25 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //check data
+        $request->validate([
+            'inputNama'                     => ['required','string', 'max:255'],
+            'email'                         => ['required', 'string', 'email', 'max:255'],
+            // 'inputKatalaluan'               => ['string', 'min:8', 'confirmed'],
+            // 'inputKatalaluan_confirmation'  => ['string', 'min:8'],
+            'inputPeranan'                  => 'required',
+            'inputBahagian'                 => 'required',
+
+        ]);
+        $user = User::find($id);
+        $user->name       = $request->inputNama;
+        $user->email      = $request->email;
+        $user->peranan    = $request->inputPeranan;
+        $user->bahagian   = $request->inputBahagian;
+        // $user->password   = Hash::make($request['inputKatalaluan']);
+        $user->save();
+
+        return redirect()->route('pengguna.index')->with('success', 'Pengguna berjaya diedit.');
     }
 
     /**

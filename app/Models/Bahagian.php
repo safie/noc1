@@ -17,4 +17,8 @@ class Bahagian extends Model
 
     ];
     public $timestamps      = true;
+
+
+
+
 }

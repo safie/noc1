@@ -76,6 +76,7 @@ class PerananController extends Controller
      */
     public function edit(Peranan $peranan)
     {
+        // dd($peranan);
         return view('page.peranan.edit', compact('peranan'));
     }
 

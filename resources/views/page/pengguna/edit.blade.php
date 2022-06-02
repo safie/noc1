@@ -15,8 +15,9 @@
 @section('content')
     @include('layouts.template.header_compact')
     <div class="container-fluid px-4 mt-4">
-        <form method="POST" action="{{ route('pengguna.store') }}">
+        <form method="POST" action="{{ route('pengguna.update', $user->id) }}">
             @csrf
+            @method('PUT')
             @if ($errors->any())
                 <div class="row">
                     <div class="col-lg-12">
@@ -46,38 +47,33 @@
                                 <div class="mb-3">
                                     <label class="small mb-1" for="inputNama">Nama</label>
                                     <input class="form-control" id="inputNama" name="inputNama" type="text"
-                                        value="{{$user->name}}" placeholder="Masukkan nama..."/>
+                                        value="{{ $user->name }}"
+                                        placeholder="Masukkan nama..." />
                                 </div>
                                 <div class="mb-3">
                                     <label class="small mb-1" for="inputEmel">Emel</label>
                                     <input class="form-control" id="email" name="email" type="email"
-                                        value="{{$user->email}}" placeholder="Masukkan alamat emel..." />
+                                        value="{{ $user->email }}" placeholder="Masukkan alamat emel..." />
                                 </div>
-                                <div class="mb-3">
-                                    <label class="small mb-1" for="inputKatalaluan">Katalaluan</label>
-                                    <input class="form-control" id="inputKatalaluan" name="inputKatalaluan" type="password"
-                                        placeholder="" />
-                                </div>
-                                <div class="mb-3">
-                                    <label class="small mb-1" for="inputKatalaluan">Katalaluan </label>
-                                    <input class="form-control" id="inputKatalaluan_confirmation" name="inputKatalaluan_confirmation" type="password"
-                                        placeholder="" />
-                                </div>
+
                                 <div class="mb-3">
                                     <label class="small mb-1">Peranan</label>
-                                    <select class="form-select" aria-label="Default select example" id="inputPeranan" name="inputPeranan">
+                                    <select class="form-select" aria-label="Default select example" id="inputPeranan"
+                                        name="inputPeranan">
                                         <option selected disabled>Sila pilih:</option>
                                         @foreach ($peranan as $data)
-                                        <option value="{{$data->id}}" >{{ $data->peranan }}</option>
+                                            <option value="{{ $data->id }}" selected>{{ $data->peranan }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="mb-3">
                                     <label class="small mb-1">Bahagian</label>
-                                    <select class="form-select" aria-label="Default select example" id="inputBahagian" name="inputBahagian">
+                                    <select class="form-select" aria-label="Default select example" id="inputBahagian"
+                                        name="inputBahagian">
                                         <option selected disabled>Sila pilih:</option>
                                         @foreach ($bahagian as $data)
-                                        <option value="{{$data->id}}" >{{ $data->nama_bhgn }} ({{ $data->sgktn_bhgn }})</option>
+                                            <option value="{{ $data->id }}" selected>{{ $data->nama_bhgn }}
+                                                ({{ $data->sgktn_bhgn }})</option>
                                         @endforeach
                                     </select>
                                 </div>
