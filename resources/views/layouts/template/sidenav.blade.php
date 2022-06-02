@@ -40,10 +40,10 @@
             <div class="collapse" id="collapseData" data-bs-parent="#accordionSidenav">
                 <nav class="sidenav-menu-nested nav">
                     <a class="nav-link" href="{{ route('pengguna.index') }}">Pengguna</a>
-                    <a class="  nav-link" href="background.html">Bahagian</a>
-                    <a class="nav-link" href="borders.html">Kementerian</a>
-                    <a class="nav-link" href="lift.html">Peringkat</a>
-                    <a class="nav-link" href="shadows.html">Kategori</a>
+                    <a class="nav-link" href="{{ route('bahagian.index') }}">Bahagian</a>
+                    <a class="nav-link" href="{{ route('kementerian.index') }}">Kementerian</a>
+                    <a class="nav-link" href="{{ route('peringkat.index') }}">Peringkat</a>
+                    <a class="nav-link" href="{{ route('kategori.index') }}">Kategori</a>
                     <a class="nav-link" href="{{ route('peranan.index') }}">Peranan</a>
                 </nav>
             </div>

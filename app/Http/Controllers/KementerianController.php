@@ -12,9 +12,17 @@ class KementerianController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $kementerian = Kementerian::all();
+        $view_data['kementerian'] = $kementerian;
+        return view('page.kementerian.index')->with($view_data);
     }
 
     /**
@@ -24,7 +32,9 @@ class KementerianController extends Controller
      */
     public function create()
     {
-        //
+        $view_data['tajuk_page'] = 'Tambah Kementerian';
+        // dd($view_data);
+        return view('page.kementerian.create')->with($view_data);
     }
 
     /**
@@ -35,7 +45,21 @@ class KementerianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //check data
+        $request->validate([
+            'inputNamaKementerian' => 'required',
+            'inputSingkatan' => 'required',
+
+        ]);
+
+        $request_data = $request->all();
+
+        Kementerian::create([
+            'nama_jabatan'       => $request_data['inputNamaKementerian'],
+            'sgktn_jabatan'    => $request_data['inputSingkatan']
+        ]);
+
+        return redirect()->route('kementerian.index')->with('success', 'Kementerian/Jabatan berjaya disimpan.');
     }
 
     /**
@@ -57,7 +81,7 @@ class KementerianController extends Controller
      */
     public function edit(Kementerian $kementerian)
     {
-        //
+        return view('page.kementerian.edit', compact('kementerian'));
     }
 
     /**

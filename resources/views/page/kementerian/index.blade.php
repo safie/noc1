@@ -5,11 +5,11 @@
 @endsection
 
 @section('icon', 'briefcase')
-@section('tajuk', 'Senarai Peranan')
+@section('tajuk', 'Senarai Kementerian')
 @section('button')
-    <a class="btn btn-sm btn-light text-primary" href="{{ route('peranan.create') }}">
+    <a class="btn btn-sm btn-light text-primary" href="{{ route('kementerian.create') }}">
         <i class="me-1" data-feather="user-plus"></i>
-        Tambah Peranan
+        Tambah Kementerian/Jabatan
     </a>
 @endsection
 
@@ -27,30 +27,30 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Peranan</th>
-                            <th>Keterangan</th>
-                            <th>Actions</th>
+                            <th>Nama Kementerian/Jabatan</th>
+                            <th>Singkatan</th>
+                            <th>Tindakan</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>No.</th>
-                            <th>Peranan</th>
-                            <th>Keterangan</th>
-                            <th>Actions</th>
+                            <th>Nama Kementerian/Jabatan</th>
+                            <th>Singkatan</th>
+                            <th>Tindakan</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @if ($peranan->count() > 0)
-                            @foreach ($peranan as $data)
+                        @if ($kementerian->count() > 0)
+                            @foreach ($kementerian as $data)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $data->peranan }}</td>
-                                    <td>{{ $data->keterangan }}</td>
+                                    <td>{{ $data->nama_jabatan }}</td>
+                                    <td>{{ $data->sgktn_jabatan }}</td>
                                     <td>
-                                        <form action="{{ route('peranan.destroy', $data->id) }}" method="POST">
+                                        <form action="{{ route('kementerian.destroy', $data->id) }}" method="POST">
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                                href="{{ route('peranan.edit', $data->id) }}"><i
+                                                href="{{ route('kementerian.edit', $data->id) }}"><i
                                                     data-feather="edit"></i></a>
                                             @csrf
                                             @method('DELETE')

@@ -15,13 +15,18 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $pengguna = User::all();
         $view_data['pengguna'] = $pengguna;
 
         return view('page.pengguna.index')
-        ->with($view_data);
+            ->with($view_data);
     }
 
     /**
@@ -31,7 +36,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $bahagian = Bahagian::get(['id','nama_bhgn','sgktn_bhgn']);
+        $bahagian = Bahagian::get(['id', 'nama_bhgn', 'sgktn_bhgn']);
         $peranan = Peranan::get(['peranan', 'id']);
         $data1['peranan'] = $peranan;
         $data2['tajuk_page'] = 'Tambah Pengguna';
@@ -39,9 +44,9 @@ class UserController extends Controller
         // dd($view_data);
 
         return view('page.pengguna.create')
-        ->with($data1)
-        ->with($data2)
-        ->with($data3);
+            ->with($data1)
+            ->with($data2)
+            ->with($data3);
     }
 
     /**
@@ -54,7 +59,7 @@ class UserController extends Controller
     {
         //check data
         $request->validate([
-            'inputNama'                     => ['required','string', 'max:255'],
+            'inputNama'                     => ['required', 'string', 'max:255'],
             'email'                         => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'inputKatalaluan'               => ['required', 'string', 'min:8', 'confirmed'],
             'inputKatalaluan_confirmation'  => ['required', 'string', 'min:8'],
@@ -104,11 +109,11 @@ class UserController extends Controller
         $data2['tajuk_page'] = 'Edit Pengguna';
         $data3['bahagian'] = $bahagian;
         // dd($user);
-        return view('page.pengguna.edit',compact('user'))
-        // ->with($user)
-        ->with($data1)
-        ->with($data2)
-        ->with($data3);
+        return view('page.pengguna.edit', compact('user'))
+            // ->with($user)
+            ->with($data1)
+            ->with($data2)
+            ->with($data3);
     }
 
     /**
@@ -122,7 +127,7 @@ class UserController extends Controller
     {
         //check data
         $request->validate([
-            'inputNama'                     => ['required','string', 'max:255'],
+            'inputNama'                     => ['required', 'string', 'max:255'],
             'email'                         => ['required', 'string', 'email', 'max:255'],
             // 'inputKatalaluan'               => ['string', 'min:8', 'confirmed'],
             // 'inputKatalaluan_confirmation'  => ['string', 'min:8'],
@@ -147,8 +152,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('pengguna.index')->with('success', 'Pengguna berjaya dipadam');
     }
 }

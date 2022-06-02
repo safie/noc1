@@ -5,11 +5,11 @@
 @endsection
 
 @section('icon', 'briefcase')
-@section('tajuk', 'Senarai Peranan')
+@section('tajuk', 'Senarai Bahagian')
 @section('button')
-    <a class="btn btn-sm btn-light text-primary" href="{{ route('peranan.create') }}">
+    <a class="btn btn-sm btn-light text-primary" href="{{ route('bahagian.create') }}">
         <i class="me-1" data-feather="user-plus"></i>
-        Tambah Peranan
+        Tambah Bahagian
     </a>
 @endsection
 
@@ -27,30 +27,30 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Peranan</th>
-                            <th>Keterangan</th>
+                            <th>Nama Bahagian</th>
+                            <th>Singkatan</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>No.</th>
-                            <th>Peranan</th>
-                            <th>Keterangan</th>
+                            <th>Nama Bahagian</th>
+                            <th>Singkatan</th>
                             <th>Actions</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @if ($peranan->count() > 0)
-                            @foreach ($peranan as $data)
+                        @if ($bahagian->count() > 0)
+                            @foreach ($bahagian as $data)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $data->peranan }}</td>
-                                    <td>{{ $data->keterangan }}</td>
+                                    <td>{{ $data->nama_bhgn }}</td>
+                                    <td>{{ $data->sgktn_bhgn }}</td>
                                     <td>
-                                        <form action="{{ route('peranan.destroy', $data->id) }}" method="POST">
+                                        <form action="{{ route('bahagian.destroy', $data->id) }}" method="POST">
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                                href="{{ route('peranan.edit', $data->id) }}"><i
+                                                href="{{ route('bahagian.edit', $data->id) }}"><i
                                                     data-feather="edit"></i></a>
                                             @csrf
                                             @method('DELETE')

@@ -12,9 +12,16 @@ class BahagianController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $bahagian = Bahagian::all();
+        $view_data['bahagian'] = $bahagian;
+        return view('page.bahagian.index')->with($view_data);
     }
 
     /**
@@ -24,7 +31,9 @@ class BahagianController extends Controller
      */
     public function create()
     {
-        //
+        $view_data['tajuk_page'] = 'Tambah Bahagian';
+        // dd($view_data);
+        return view('page.bahagian.create')->with($view_data);
     }
 
     /**
@@ -35,7 +44,21 @@ class BahagianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //check data
+        $request->validate([
+            'inputNamaBahagian' => 'required',
+            'inputSingkatan' => 'required',
+
+        ]);
+
+        $request_data = $request->all();
+
+        Bahagian::create([
+            'nama_bhgn'       => $request_data['inputNamaBahagian'],
+            'sgktn_bhgn'    => $request_data['inputSingkatan']
+        ]);
+
+        return redirect()->route('bahagian.index')->with('success', 'Bahagian berjaya disimpan.');
     }
 
     /**
@@ -57,7 +80,7 @@ class BahagianController extends Controller
      */
     public function edit(Bahagian $bahagian)
     {
-        //
+        return view('page.bahagian.edit', compact('bahagian'));
     }
 
     /**
@@ -67,9 +90,21 @@ class BahagianController extends Controller
      * @param  \App\Models\Bahagian  $bahagian
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bahagian $bahagian)
+    public function update(Request $request, $id)
     {
-        //
+        //check data
+        $request->validate([
+            'inputNamaBahagian' => 'required',
+            'inputSingkatan' => 'required',
+
+        ]);
+        $bahagian = Bahagian::find($id);
+        $bahagian->nama_bhgn   = $request->inputNamaBahagian;
+        $bahagian->sgktn_bhgn  = $request->inputSingkatan;
+
+        $bahagian->save();
+
+        return redirect()->route('bahagian.index')->with('success', 'Bahagian berjaya diedit.');
     }
 
     /**
@@ -80,6 +115,7 @@ class BahagianController extends Controller
      */
     public function destroy(Bahagian $bahagian)
     {
-        //
+        $bahagian->delete();
+        return redirect()->route('bahagian.index')->with('success', 'Bahagian berjaya dipadam');
     }
 }
