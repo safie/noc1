@@ -7,7 +7,7 @@
 @section('icon', 'briefcase')
 @section('tajuk', 'Senarai Pengguna')
 @section('button')
-    <a class="btn btn-sm btn-light text-primary" href="{{ route('peranan.create') }}">
+    <a class="btn btn-sm btn-light text-primary" href="{{ route('pengguna.create') }}">
         <i class="me-1" data-feather="user-plus"></i>
         Tambah Pengguna
     </a>

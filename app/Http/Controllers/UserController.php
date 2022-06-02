@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Bahagian;
+use App\Models\Peranan;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -16,7 +19,9 @@ class UserController extends Controller
     {
         $pengguna = User::all();
         $view_data['pengguna'] = $pengguna;
-        return view('page.pengguna.index')->with($view_data);
+
+        return view('page.pengguna.index')
+        ->with($view_data);
     }
 
     /**
@@ -26,7 +31,17 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $bahagian = Bahagian::get(['id','nama_bhgn','sgktn_bhgn']);
+        $peranan = Peranan::get(['peranan', 'id']);
+        $data1['peranan'] = $peranan;
+        $data2['tajuk_page'] = 'Tambah Pengguna';
+        $data3['bahagian'] = $bahagian;
+        // dd($view_data);
+
+        return view('page.pengguna.create')
+        ->with($data1)
+        ->with($data2)
+        ->with($data3);
     }
 
     /**
@@ -37,7 +52,30 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //check data
+        $request->validate([
+            'inputNama'                     => ['required','string', 'max:255'],
+            'email'                         => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'inputKatalaluan'               => ['required', 'string', 'min:8', 'confirmed'],
+            'inputKatalaluan_confirmation'  => ['required', 'string', 'min:8'],
+            'inputPeranan'                  => 'required',
+            'inputBahagian'                 => 'required',
+
+        ]);
+
+        $request_data = $request->all();
+
+        // dd($request_data);
+
+        User::create([
+            'name'      => $request_data['inputNama'],
+            'email'     => $request_data['email'],
+            'peranan'   => $request_data['inputPeranan'],
+            'bahagian'  => $request_data['inputBahagian'],
+            'password'  => Hash::make($request_data['inputKatalaluan']),
+        ]);
+
+        return redirect()->route('pengguna.index')->with('success', 'Pengguna berjaya disimpan.');
     }
 
     /**
@@ -57,9 +95,19 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        $bahagian = Bahagian::get(['id', 'nama_bhgn', 'sgktn_bhgn']);
+        $peranan = Peranan::get(['peranan', 'id']);
+        $data1['peranan'] = $peranan;
+        // $data2['tajuk_page'] = 'Edit Pengguna';
+        $data3['bahagian'] = $bahagian;
+        // dd($view_data);
+        return view('page.pengguna.edit',compact('user'))
+        // ->with(user)
+        ->with($data1)
+        // ->with($data2)
+        ->with($data3);
     }
 
     /**

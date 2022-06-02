@@ -5,7 +5,7 @@
 @endsection
 
 @section('icon', 'briefcase')
-@section('tajuk', 'Senarai Peranan')
+@section('tajuk', 'Edit Peranan')
 @section('button')
     <a class="btn btn-sm btn-light text-primary" href="{{ route('peranan.index') }}">
         <i class="me-1" data-feather="arrow-left"></i>
