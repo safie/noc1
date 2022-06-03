@@ -61,8 +61,13 @@
                                     <select class="form-select" aria-label="Default select example" id="inputPeranan"
                                         name="inputPeranan">
                                         <option selected disabled>Sila pilih:</option>
-                                        @foreach ($peranan as $data)
+                                        {{-- @foreach ($peranan as $data)
                                             <option value="{{ $data->id }}" selected>{{ $data->peranan }}</option>
+                                        @endforeach --}}
+                                        @foreach ($peranan as $key => $value )
+                                            <option value="{{$key}}">
+
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -72,7 +77,7 @@
                                         name="inputBahagian">
                                         <option selected disabled>Sila pilih:</option>
                                         @foreach ($bahagian as $data)
-                                            <option value="{{ $data->id }}" selected>{{ $data->nama_bhgn }}
+                                            <option value="{{ $data->id }}" {{ $data == $selectedID) ? 'selected':''}}>{{ $data->nama_bhgn }}
                                                 ({{ $data->sgktn_bhgn }})</option>
                                         @endforeach
                                     </select>

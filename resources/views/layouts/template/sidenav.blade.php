@@ -18,7 +18,8 @@
                 Messages
                 <span class="badge bg-success-soft text-success ms-auto">2 New!</span>
             </a>
-            <!-- Sidenav Heading (Admin)-->
+            @if ((Auth::user()->peranan)  == 1 )
+                <!-- Sidenav Heading (Admin)-->
             <div class="sidenav-menu-heading">Admin</div>
             <!-- Sidenav Link (Dashboard)-->
             <a class="nav-link" href="tables.html">
@@ -47,7 +48,10 @@
                     <a class="nav-link" href="{{ route('peranan.index') }}">Peranan</a>
                 </nav>
             </div>
-            <!-- Sidenav Heading (Admin)-->
+            @endif
+
+            @if ((Auth::user()->peranan)  == 2 )
+            <!-- Sidenav Heading (Bahagian)-->
             <div class="sidenav-menu-heading">Bahagian</div>
             <!-- Sidenav Link (Dashboard)-->
             <a class="nav-link" href="tables.html">
@@ -71,7 +75,10 @@
                 <div class="nav-link-icon"><i data-feather="list"></i></div>
                 Senarai NOC
             </a>
-            <!-- Sidenav Heading (Admin)-->
+            @endif
+
+            @if ((Auth::user()->peranan)  == 3 )
+            <!-- Sidenav Heading (Bajet)-->
             <div class="sidenav-menu-heading">Bajet</div>
             <!-- Sidenav Link (Dashboard)-->
             <a class="nav-link" href="tables.html">
@@ -88,7 +95,10 @@
                 <div class="nav-link-icon"><i data-feather="list"></i></div>
                 Senarai NOC
             </a>
-            <!-- Sidenav Heading (Admin)-->
+            @endif
+
+            @if ((Auth::user()->peranan)  == 4 )
+            <!-- Sidenav Heading (Nilai)-->
             <div class="sidenav-menu-heading">Nilai</div>
             <!-- Sidenav Link (Dashboard)-->
             <a class="nav-link" href="tables.html">
@@ -105,6 +115,7 @@
                 <div class="nav-link-icon"><i data-feather="list"></i></div>
                 Senarai NOC
             </a>
+            @endif
 
 
         </div>
