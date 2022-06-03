@@ -17,10 +17,12 @@ class KategoriController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
-        //
+        $kategori = Kategori::all();
+        $view_data['kategori'] = $kategori;
+        return view('page.kategori.index')->with($view_data);
     }
 
     /**
@@ -30,7 +32,9 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        $view_data['tajuk_page'] = 'Tambah Kategori';
+        // dd($view_data);
+        return view('page.kategori.create')->with($view_data);
     }
 
     /**
@@ -41,7 +45,23 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //check data
+        $request->validate([
+            'inputNamaKategori' => 'required',
+            'inputKod' => 'required',
+            'inputMyProjek' => 'required',
+
+        ]);
+
+        $request_data = $request->all();
+
+        Kategori::create([
+            'nama_kat'      => $request_data['inputNamaKategori'],
+            'kod'           => $request_data['inputKod'],
+            'kod_myprojek'  => $request_data['inputMyProjek'],
+        ]);
+
+        return redirect()->route('kategori.index')->with('success', 'Kategori berjaya disimpan.');
     }
 
     /**
@@ -63,7 +83,7 @@ class KategoriController extends Controller
      */
     public function edit(Kategori $kategori)
     {
-        //
+        return view('page.kategori.edit', compact('kategori'));
     }
 
     /**
@@ -73,9 +93,22 @@ class KategoriController extends Controller
      * @param  \App\Models\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kategori $kategori)
+    public function update(Request $request, $id)
     {
-        //
+        //check data
+        $request->validate([
+            'inputNamaKategori' => 'required',
+            'inputKod' => 'required',
+            'inputMyProjek' => 'required',
+        ]);
+
+        $kategori = Kategori::find($id);
+        $kategori->nama_kat       = $request->inputNamaKategori;
+        $kategori->kod            = $request->inputKod;
+        $kategori->kod_myprojek   = $request->inputMyProjek;
+        $kategori->save();
+
+        return redirect()->route('kategori.index')->with('success', 'Kategori berjaya diedit!');
     }
 
     /**
@@ -86,6 +119,7 @@ class KategoriController extends Controller
      */
     public function destroy(Kategori $kategori)
     {
-        //
+        $kategori->delete();
+        return redirect()->route('kategori.index')->with('success', 'Kategori berjaya dipadam');
     }
 }

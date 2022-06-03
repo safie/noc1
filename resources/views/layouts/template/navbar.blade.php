@@ -207,7 +207,17 @@
                     <div class="dropdown-user-details">
                         <div class="dropdown-user-details-name">{{ Auth::user()->name }}</div>
                         <div class="dropdown-user-details-email">{{ Auth::user()->email }}</div>
-                        <div class="dropdown-user-details-role">{{ Auth::user()->peranan }}</div>
+                        <div class="dropdown-user-details-role">
+                            @if (Auth::user()->peranan == 1)
+                                <span class="badge bg-secondary">admin</span>
+                            @elseif (Auth::user()->peranan == 2)
+                                <span class="badge bg-secondary">bahagian</span>
+                            @elseif (Auth::user()->peranan == 3)
+                                <span class="badge bg-secondary">bajet</span>
+                            @else
+                                <span class="badge bg-secondary">nilai</span>
+                            @endif
+                        </div>
 
                     </div>
                 </h6>

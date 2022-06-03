@@ -16,10 +16,12 @@ class PeringkatController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
-        //
+        $peringkat = Peringkat::all();
+        $view_data['peringkat'] = $peringkat;
+        return view('page.peringkat.index')->with($view_data);
     }
 
     /**
@@ -29,7 +31,9 @@ class PeringkatController extends Controller
      */
     public function create()
     {
-        //
+        $view_data['tajuk_page'] = 'Tambah Peringkat';
+        // dd($view_data);
+        return view('page.peringkat.create')->with($view_data);
     }
 
     /**
@@ -40,7 +44,21 @@ class PeringkatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //check data
+        $request->validate([
+            'inputNamaPeringkat' => 'required',
+            'orderPeringkat' => 'required',
+
+        ]);
+
+        $request_data = $request->all();
+
+        Peringkat::create([
+            'nama_peringkat'    => $request_data['inputNamaPeringkat'],
+            'order'             => $request_data['orderPeringkat']
+        ]);
+
+        return redirect()->route('peringkat.index')->with('success', 'Peringkat berjaya disimpan.');
     }
 
     /**
@@ -62,7 +80,7 @@ class PeringkatController extends Controller
      */
     public function edit(Peringkat $peringkat)
     {
-        //
+        return view('page.peringkat.edit', compact('peringkat'));
     }
 
     /**
@@ -72,9 +90,20 @@ class PeringkatController extends Controller
      * @param  \App\Models\Peringkat  $peringkat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Peringkat $peringkat)
+    public function update(Request $request, $id)
     {
-        //
+        //check data
+        $request->validate([
+            'inputNamaPeringkat' => 'required',
+            'orderPeringkat' => 'required',
+        ]);
+
+        $peranan = Peringkat::find($id);
+        $peranan->nama_peringkat     = $request->inputNamaPeringkat;
+        $peranan->order    = $request->orderPeringkat;
+        $peranan->save();
+
+        return redirect()->route('peringkat.index')->with('success', 'Peringkat berjaya diedit!');
     }
 
     /**
@@ -85,6 +114,7 @@ class PeringkatController extends Controller
      */
     public function destroy(Peringkat $peringkat)
     {
-        //
+        $peringkat->delete();
+        return redirect()->route('peringkat.index')->with('success', 'Peringkat berjaya dipadam');
     }
 }

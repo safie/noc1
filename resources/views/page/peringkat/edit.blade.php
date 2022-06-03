@@ -1,12 +1,13 @@
 @extends('layouts.appDash')
 
 @section('css')
+
 @endsection
 
 @section('icon', 'plus-square')
-@section('tajuk', 'Edit Pengguna')
+@section('tajuk', 'Edit Peringkat')
 @section('button')
-    <a class="btn btn-sm btn-light text-primary" href="{{ route('pengguna.index') }}">
+    <a class="btn btn-sm btn-light text-primary" href="{{ route('peringkat.index') }}">
         <i class="me-1" data-feather="arrow-left"></i>
         Kembali Senarai
     </a>
@@ -15,7 +16,7 @@
 @section('content')
     @include('layouts.template.header_compact')
     <div class="container-fluid px-4 mt-4">
-        <form method="POST" action="{{ route('pengguna.update', $user->id) }}">
+        <form method="POST" action="{{ route('peringkat.update', $peringkat->id) }}">
             @csrf
             @method('PUT')
             @if ($errors->any())
@@ -38,43 +39,23 @@
                     <div class="card mb-4">
                         <div class="card card-header-actions">
                             <div class="card-header">
-                                Pengisian maklumat
+                                Kemasukan data
                                 <i class="text-muted" data-feather="info" data-bs-toggle="tooltip"
                                     data-bs-placement="left" title="input yang perlu diisi"></i>
                             </div>
                             <div class="card-body">
                                 <!-- Form Group (first name)-->
                                 <div class="mb-3">
-                                    <label class="small mb-1" for="inputNama">Nama</label>
-                                    <input class="form-control" id="inputNama" name="inputNama" type="text"
-                                        value="{{ $user->name }}" placeholder="Masukkan nama..." />
+                                    <label class="small mb-1" for="inputNamaPeringkat">Nama Peringkat</label>
+                                    <input class="form-control" id="inputNamaPeringkat" name="inputNamaPeringkat"
+                                        value="{{ $peringkat->nama_peringkat }}" type="text"
+                                        placeholder="Masukkan nama peringkat..." />
                                 </div>
                                 <div class="mb-3">
-                                    <label class="small mb-1" for="inputEmel">Emel</label>
-                                    <input class="form-control" id="email" name="email" type="email"
-                                        value="{{ $user->email }}" placeholder="Masukkan alamat emel..." />
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="small mb-1">Peranan</label>
-                                    <select class="form-select" aria-label="Default select example" id="inputPeranan"
-                                        name="inputPeranan">
-                                        <option selected disabled>Sila pilih:</option>
-                                        @foreach ($peranan as $data)
-                                            <option value="{{ $data->id }}" {{ $data->id == $user->peranan ? 'selected' : '' }}>{{ $data->peranan }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="small mb-1">Bahagian</label>
-                                    <select class="form-select" aria-label="Default select example" id="inputBahagian"
-                                        name="inputBahagian">
-                                        <option selected disabled>Sila pilih:</option>
-                                        @foreach ($bahagian as $data)
-                                            <option value="{{ $data->id }}" {{ $data->id == $user->bahagian ? 'selected' : '' }}>{{ $data->nama_bhgn }}
-                                                ({{ $data->sgktn_bhgn }})</option>
-                                        @endforeach
-                                    </select>
+                                    <label class="small mb-1" for="orderPeringkat">Order</label>
+                                    <input class="form-control" id="orderPeringkat" name="orderPeringkat"
+                                        value="{{ $peringkat->order }}" type="text"
+                                        placeholder="Masukkan nombor..." />
                                 </div>
                             </div>
                         </div>
@@ -100,4 +81,5 @@
 @endsection
 
 @section('js')
+
 @endsection

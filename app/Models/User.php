@@ -47,8 +47,13 @@ class User extends Authenticatable
     ];
 
 
-    public function Bahagian()
+    public function bahagian()
     {
-        return $this->hasMany(Bahagian::class);
+        return $this->hasOne(Bahagian::class);
+    }
+
+    public function peranan()
+    {
+        return $this->hasOne('Peranan::class');
     }
 }

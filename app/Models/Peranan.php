@@ -17,4 +17,9 @@ class Peranan extends Model
 
     ];
     public $timestamps      = true;
+
+    public function user()
+    {
+        return $this->belongsTo('Peranan::class');
+    }
 }

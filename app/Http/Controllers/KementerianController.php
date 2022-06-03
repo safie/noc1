@@ -91,9 +91,21 @@ class KementerianController extends Controller
      * @param  \App\Models\Kementerian  $kementerian
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kementerian $kementerian)
+    public function update(Request $request, $id)
     {
-        //
+        //check data
+        $request->validate([
+            'inputNamaKementerian' => 'required',
+            'inputSingkatan' => 'required',
+
+        ]);
+
+        $peranan = Kementerian::find($id);
+        $peranan->nama_jabatan     = $request->inputNamaKementerian;
+        $peranan->sgktn_jabatan    = $request->inputSingkatan;
+        $peranan->save();
+
+        return redirect()->route('kementerian.index')->with('success', 'Kementerian/Jabatan berjaya diedit!');
     }
 
     /**
@@ -104,6 +116,7 @@ class KementerianController extends Controller
      */
     public function destroy(Kementerian $kementerian)
     {
-        //
+        $kementerian->delete();
+        return redirect()->route('kementerian.index')->with('success', 'Kementerian/Jabatan berjaya dipadam');
     }
 }
