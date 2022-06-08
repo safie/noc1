@@ -27,7 +27,7 @@
                     Dashboard
                 </a>
                 <!-- Sidenav Link (Senarai NOC)-->
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('noc.index') }}">
                     <div class="nav-link-icon"><i data-feather="list"></i></div>
                     Senarai NOC
                 </a>
@@ -54,24 +54,27 @@
                 <!-- Sidenav Heading (Bahagian)-->
                 <div class="sidenav-menu-heading">Bahagian</div>
                 <!-- Sidenav Link (Dashboard)-->
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{route('home')}}">
                     <div class="nav-link-icon"><i data-feather="pie-chart"></i></div>
                     Dashboard
                 </a>
                 <!-- Sidenav Accordion (Tindakan)-->
                 <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
-                    data-bs-target="#collapseTindakan" aria-expanded="false" aria-controls="collapseTindakan">
+                    data-bs-target="#collapseTindakan" aria-expanded="true" aria-controls="collapseTindakan">
                     <div class="nav-link-icon"><i data-feather="edit"></i></div>
                     Tindakan
                     <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapseTindakan" data-bs-parent="#accordionSidenav">
                     <nav class="sidenav-menu-nested nav">
-                        <a class="nav-link" href="animations.html">Permohonan baru</a>
+                        <a class="nav-link" href="{{ route('noc.tindakan') }}">NOC untuk tindakan</a>
+                    </nav>
+                    <nav class="sidenav-menu-nested nav">
+                        <a class="nav-link" href="{{ route('noc.create') }}">Permohonan baru</a>
                     </nav>
                 </div>
                 <!-- Sidenav Link (Senarai NOC)-->
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('noc.index') }}">
                     <div class="nav-link-icon"><i data-feather="list"></i></div>
                     Senarai NOC
                 </a>
@@ -91,7 +94,7 @@
                     Tindakan
                 </a>
                 <!-- Sidenav Link (Senarai NOC)-->
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('noc.index') }}">
                     <div class="nav-link-icon"><i data-feather="list"></i></div>
                     Senarai NOC
                 </a>
@@ -111,7 +114,7 @@
                     Tindakan
                 </a>
                 <!-- Sidenav Link (Senarai NOC)-->
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('noc.index') }}">
                     <div class="nav-link-icon"><i data-feather="list"></i></div>
                     Senarai NOC
                 </a>

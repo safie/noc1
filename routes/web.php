@@ -8,6 +8,7 @@ use App\Http\Controllers\BahagianController;
 use App\Http\Controllers\KementerianController;
 use App\Http\Controllers\PeringkatController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\NocController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,5 @@ Route::resource('/setting/bahagian', BahagianController::class);
 Route::resource('/setting/kementerian', KementerianController::class);
 Route::resource('/setting/peringkat', PeringkatController::class);
 Route::resource('/setting/kategori', KategoriController::class);
+Route::resource('/noc', NocController::class);
+Route::get('noc/tindakan', [\App\Http\Controllers\NocController::class,'tindakan'])->name('noc.tindakan');
