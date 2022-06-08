@@ -18,7 +18,7 @@
 @section('content')
     @include('layouts.template.header_compact')
     <div class="container-fluid px-4 mt-4">
-        <form method="POST" action="{{ route('kementerian.store') }}">
+        <form method="POST" action="{{ route('noc.store') }}">
             @csrf
             @if ($errors->any())
                 <div class="row">
@@ -49,7 +49,7 @@
                                 <div class="mb-3">
                                     <label class="small mb-1" for="inputTajuk">Tajuk Permohonan</label>
                                     <input class="form-control" id="inputTajuk" name="inputTajuk" type="text"
-                                        placeholder="Masukkan nama kementerian/jabatan..." />
+                                        placeholder="Masukkan tajuk permohonan..." />
                                 </div>
                                 <div class="mb-3">
                                     <label class="small mb-1" for="inputTajuk">Kod MyProjek</label>
@@ -83,19 +83,25 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="small mb-1">Bahagian</label>
-                                    <select class="form-select" aria-label="Default select example" id="inputBahagian" name="inputBahagian">
+                                    <select class="form-select" aria-label="Default select example" id="inputBahagian"
+                                        name="inputBahagian">
                                         <option selected disabled>Sila pilih:</option>
                                         @foreach ($bahagian as $data)
-                                        <option value="{{$data->id}}" >{{ $data->nama_bhgn }} ({{ $data->sgktn_bhgn }})</option>
+                                            <option value="{{ $data->id }}">{{ $data->nama_bhgn }}
+                                                ({{ $data->sgktn_bhgn }})
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="mb-3">
                                     <label class="small mb-1">Kementerian/Jabatan</label>
-                                    <select class="form-select" aria-label="Default select example" id="inputJabatan" name="inputJabatan">
+                                    <select class="form-select" aria-label="Default select example" id="inputJabatan"
+                                        name="inputJabatan">
                                         <option selected disabled>Sila pilih:</option>
                                         @foreach ($kementerian as $data)
-                                        <option value="{{$data->id}}" >{{ $data->nama_jabatan }} ({{ $data->sgktn_jabatan }})</option>
+                                            <option value="{{ $data->id }}">{{ $data->nama_jabatan }}
+                                                ({{ $data->sgktn_jabatan }})
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -126,14 +132,14 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript">
-        $ (document).ready(function() {
-            $ ('#tarikhMohonNOC').datepicker({
-                  format: 'dd/mm/yyyy',
+        $(document).ready(function() {
+            $('#tarikhMohonNOC').datepicker({
+                format: 'dd/mm/yyyy',
             });
         });
-        $ (document).ready(function() {
-            $ ('#tarikhSuratMohon').datepicker({
-                  format: 'dd/mm/yyyy',
+        $(document).ready(function() {
+            $('#tarikhSuratMohon').datepicker({
+                format: 'dd/mm/yyyy',
             });
         });
     </script>

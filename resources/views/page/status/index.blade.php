@@ -5,12 +5,12 @@
 @endsection
 
 @section('icon', 'briefcase')
-@section('tajuk', 'Senarai NOC')
+@section('tajuk', 'Senarai Status')
 @section('button')
-    {{-- <a class="btn btn-sm btn-light text-primary" href="{{ route('noc.create') }}">
+    <a class="btn btn-sm btn-light text-primary" href="{{ route('status.create') }}">
         <i class="me-1" data-feather="user-plus"></i>
-        Tambah Kementerian/Jabatan
-    </a> --}}
+        Tambah Status NOC
+    </a>
 @endsection
 
 @section('content')
@@ -27,42 +27,30 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Tajuk Permohonan</th>
-                            <th>Tarikh Permohonan</th>
-                            <th>Tarikh Surat</th>
-                            <th>No Rujukan</th>
-                            <th>Kementerian</th>
-                            <th>Bahagian</th>
+                            <th>ID Status</th>
+                            <th>Nama Status</th>
                             <th>Tindakan</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>No.</th>
-                            <th>Tajuk Permohonan</th>
-                            <th>Tarikh Permohonan</th>
-                            <th>Tarikh Surat</th>
-                            <th>No Rujukan</th>
-                            <th>Kementerian</th>
-                            <th>Bahagian</th>
+                            <th>ID Status</th>
+                            <th>Nama Status</th>
                             <th>Tindakan</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @if ($noc->count() > 0)
-                            @foreach ($noc as $data)
+                        @if ($status->count() > 0)
+                            @foreach ($status as $data)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $data->tajuk_permohonan }}</td>
-                                    <td>{{ $data->tarikh_permohonan }}</td>
-                                    <td>{{ $data->tarikh_surat_kementerian }}</td>
-                                    <td>{{ $data->no_rujukan }}</td>
-                                    <td>{{ $data->kementerian }}</td>
-                                    <td>{{ $data->bahagian }}</td>
+                                    <td>{{ $data->id_status }}</td>
+                                    <td>{{ $data->nama_status }}</td>
                                     <td>
-                                        <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
+                                        <form action="{{ route('status.destroy', $data->id) }}" method="POST">
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                                href="{{ route('noc.edit', $data->id) }}"><i
+                                                href="{{ route('status.edit', $data->id) }}"><i
                                                     data-feather="edit"></i></a>
                                             @csrf
                                             @method('DELETE')
@@ -74,7 +62,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="8">Tiada maklumat!</td>
+                                <td colspan="4">Tiada maklumat!</td>
                             </tr>
                         @endif
 

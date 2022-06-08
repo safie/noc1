@@ -22,7 +22,7 @@
                 <!-- Sidenav Heading (Admin)-->
                 <div class="sidenav-menu-heading">Admin</div>
                 <!-- Sidenav Link (Dashboard)-->
-                <a class="nav-link" href="{{route('home')}}">
+                <a class="nav-link" href="{{ route('home') }}">
                     <div class="nav-link-icon"><i data-feather="pie-chart"></i></div>
                     Dashboard
                 </a>
@@ -46,6 +46,7 @@
                         <a class="nav-link" href="{{ route('peringkat.index') }}">Peringkat</a>
                         <a class="nav-link" href="{{ route('kategori.index') }}">Kategori</a>
                         <a class="nav-link" href="{{ route('peranan.index') }}">Peranan</a>
+                        <a class="nav-link" href="{{ route('status.index') }}">Status NOC</a>
                     </nav>
                 </div>
             @endif
@@ -54,7 +55,7 @@
                 <!-- Sidenav Heading (Bahagian)-->
                 <div class="sidenav-menu-heading">Bahagian</div>
                 <!-- Sidenav Link (Dashboard)-->
-                <a class="nav-link" href="{{route('home')}}">
+                <a class="nav-link" href="{{ route('home') }}">
                     <div class="nav-link-icon"><i data-feather="pie-chart"></i></div>
                     Dashboard
                 </a>

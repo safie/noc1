@@ -62,8 +62,7 @@
                                     <td>
                                         <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                                href="{{ route('noc.edit', $data->id) }}"><i
-                                                    data-feather="edit"></i></a>
+                                                href="{{ route('noc.edit', $data->id) }}"><i data-feather="edit"></i></a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-datatable btn-icon btn-transparent-dark"><i
@@ -74,7 +73,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="7">Tiada maklumat!</td>
+                                <td colspan="8">Tiada maklumat!</td>
                             </tr>
                         @endif
 
