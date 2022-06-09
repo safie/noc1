@@ -82,6 +82,18 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
+                                    <label class="small mb-1">Klasifikasi</label>
+                                    <select class="form-select" aria-label="Default select example" id="inputKlasifikasi"
+                                        name=" inputKlasifikasi">
+                                        <option selected disabled>Sila pilih:</option>
+                                        @foreach ($kategori as $data)
+                                            <option value="{{ $data->kod }}">{{ $data->kod }} -
+                                                {{ $data->nama_kat }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
                                     <label class="small mb-1">Bahagian</label>
                                     <select class="form-select" aria-label="Default select example" id="inputBahagian"
                                         name="inputBahagian">

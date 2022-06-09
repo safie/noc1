@@ -45,7 +45,7 @@
                             <div class="card-body">
                                 <!-- Form Group (first name)-->
                                 <div class="mb-3">
-                                    <label class="small mb-1" for="inputNamaKategori">Nama kategori</label>
+                                    <label class="small mb-1" for="inputNamaKategori">Nama klasifikasi</label>
                                     <input class="form-control" id="inputNamaKategori" name="inputNamaKategori"
                                         type="text" placeholder="Masukkan nama kategori..." />
                                 </div>

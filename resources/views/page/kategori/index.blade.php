@@ -9,7 +9,7 @@
 @section('button')
     <a class="btn btn-sm btn-light text-primary" href="{{ route('kategori.create') }}">
         <i class="me-1" data-feather="user-plus"></i>
-        Tambah Kategori
+        Tambah Klasifikasi
     </a>
 @endsection
 
@@ -27,10 +27,10 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama kategori</th>
-                            <th>Kod Kategori</th>
+                            <th>Nama Klasifikasi</th>
+                            <th>Kod Klasifikasi</th>
                             <th>Kod MyProjek</th>
-                            <th>Tindakan</th>
+                            <th class="text-center">Tindakan</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -39,7 +39,7 @@
                             <th>Nama kategori</th>
                             <th>Kod Kategori</th>
                             <th>Kod MyProjek</th>
-                            <th>Tindakan</th>
+                            <th class="text-center">Tindakan</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -50,11 +50,14 @@
                                     <td>{{ $data->nama_kat }}</td>
                                     <td>{{ $data->kod }}</td>
                                     <td>{{ $data->kod_myprojek }}</td>
-                                    <td>
+                                    <td class="text-center">
                                         <form action="{{ route('kategori.destroy', $data->id) }}" method="POST">
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                                href="{{ route('kategori.edit', $data->id) }}"><i
-                                                    data-feather="edit"></i></a>
+                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                title="input yang perlu diisi"
+                                                href="{{ route('kategori.edit', $data->id) }}">
+                                                <i data-feather="edit"></i>
+                                            </a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-datatable btn-icon btn-transparent-dark"><i

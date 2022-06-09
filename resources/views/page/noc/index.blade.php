@@ -1,6 +1,22 @@
 @extends('layouts.appDash')
 
 @section('css')
+    <style>
+        .feather-16 {
+            width: 16px;
+            height: 16px;
+        }
+
+        .feather-24 {
+            width: 24px;
+            height: 24px;
+        }
+
+        .feather-32 {
+            width: 32px;
+            height: 32px;
+        }
+    </style>
 
 @endsection
 
@@ -32,7 +48,7 @@
                             <th>Kementerian</th>
                             <th>Bahagian</th>
                             <th>Status</th>
-                            <th></th>
+                            <th class="text-center">Tindakan</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -43,7 +59,7 @@
                             <th>Kementerian</th>
                             <th>Bahagian</th>
                             <th>Status</th>
-                            <th class="text-center me-2"><i data-feather="edit"></i></th>
+                            <th class="text-center">Tindakan</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -56,24 +72,29 @@
                                     <td>{{ $data->nama_jabatan }}</td>
                                     <td>{{ $data->sgktn_bhgn }}</td>
                                     <td>
-                                        <h4><span class="badge bg-secondary">{{ $data->nama_status }}</span></h4>
+                                        <h5><span class="badge bg-secondary">{{ $data->nama_status }}</span></h5>
                                     </td>
-                                    <td class="text-center">
-                                        @if($noc->status_noc = 'noc_1')
-                                            <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                                    <td class="d-flex justify-content-center">
+                                        @if ($noc->status_noc = 'noc_1')
+                                            <a class="btn btn-datatable btn-icon btn-transparent-dark mx-1"
                                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
                                                 href="{{ route('noc.edit', $data->id) }}">
-                                                <i data-feather="edit"></i></a>
+                                                <i data-feather="edit"></i>
+                                            </a>
 
                                             <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-datatable btn-icon btn-transparent-dark me-2"><i
-                                                        data-feather="trash-2"></i></button>
+                                                <button type="submit"
+                                                    class="btn btn-datatable btn-icon btn-transparent-dark mx-1">
+                                                    <i data-feather="trash-2">Padam</i>
+                                                </button>
                                             </form>
                                         @endif
-                                            <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                                href="{{ route('noc.detail', $data->id) }}"><i data-feather="eye"></i></a>
+                                        <a class="btn btn-datatable btn-icon btn-transparent-dark mx-1"
+                                            href="{{ route('noc.detail', $data->id) }}">
+                                            <i data-feather="eye">Info</i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -95,4 +116,7 @@
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="{{ asset('sb-admin-pro/dist/js/datatables/datatables-simple-demo.js') }}"></script>
+    <script>
+        feather.replace()
+    </script>
 @endsection

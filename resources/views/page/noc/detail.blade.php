@@ -17,7 +17,7 @@
     @include('layouts.template.header_compact')
     <div class="container-fluid px-4 mt-4">
         <div class="row gx-4">
-            <div class="col-lg-6">
+            <div class="col-lg-5">
                 <div class="card mb-4">
                     <div class="card card-header-actions">
                         <div class="card-header">
@@ -33,20 +33,20 @@
                                         ({{ $noc->sgktn_jabatan }})</label>
                                     <h3 style="text-transform:uppercase;">{{ $noc->tajuk_permohonan }}</h3>
                                     <hr>
-                                    <label>Klasifikasi : {{ $noc->klasifikasi }}</label>
+                                    <label>Klasifikasi : {{ $noc->klasifikasi }} - {{ $noc->nama_kat }}</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
                                         <label class="small mb-1" for="kodMyProjek">Kod MyProjek</label>
-                                        <h4>{{ $noc->kod_myprojek }}</h4>
+                                        <h5>{{ $noc->kod_myprojek }}</h5>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
                                         <label class="small mb-1" for="noRujukan">No. Rujukan Surat</label>
-                                        <h4>{{ $noc->no_rujukan }}</h4>
+                                        <h5>{{ $noc->no_rujukan }}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -54,13 +54,14 @@
                                 <div class="col">
                                     <div class="mb-3">
                                         <label class="small mb-1" for="datePermohonan">Tarikh Permohonan</label>
-                                        <h4>{{ \Carbon\Carbon::parse($noc->tarikh_permohonan)->format('j F, Y') }}</h4>
+                                        <h5>{{ \Carbon\Carbon::parse($noc->tarikh_permohonan)->format('d-m-Y') }}</h5>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
                                         <label class="small mb-1" for="dateSurat">Tarikh Surat Permohonan</label>
-                                        <h4>{{ \Carbon\Carbon::parse($noc->tarikh_surat_kementerian)->format('j F, Y') }}</h4>
+                                        <h5>{{ \Carbon\Carbon::parse($noc->tarikh_surat_kementerian)->format('d-m-Y') }}
+                                        </h5>
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +69,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-5">
                 <div class="card card-header-actions mb-2">
                     <div class="card-header">
                         Status NOC
@@ -76,30 +77,64 @@
                             title="Sejarah Status NOC"></i>
                     </div>
                     <div class="card-body">
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <ol class="list-group list-group-numbered list-group-flush">
                                 <li class="list-group-item d-flex justify-content-between">
-                                    <div class="mx-2 w-100">{{ $noc->nama_status }}</div>
-                                    <div class="flex-shrink-1">{{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('j F, Y') }}</div>
+                                    <div class="ms-2 w-50">
+                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
+                                    <div class="ms-1 flex-grow-1 w-100">NOC Baharu</div>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between">
-                                    <div class="mx-2 w-100">{{ $noc->nama_status }}</div>
-                                    <div class="flex-shrink-1">{{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('j F, Y') }}</div>
+                                    <div class="ms-2 w-50">
+                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
+                                    <div class="ms-1 flex-grow-1 w-100">Semakan Dokumen</div>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between">
-                                    <div class="mx-2 w-100">{{ $noc->nama_status }}</div>
-                                    <div class="flex-shrink-1">{{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('j F, Y') }}</div>
+                                    <div class="ms-2 w-50">
+                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
+                                    <div class="ms-1 flex-grow-1 w-100">Mohon Ulasan</div>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between">
-                                    <div class="mx-2 w-100">{{ $noc->nama_status }}</div>
-                                    <div class="flex-shrink-1">{{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('j F, Y') }}</div>
+                                    <div class="ms-2 w-50">
+                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
+                                    <div class="ms-1 flex-grow-1 w-100">Penyediaan Ulasan</div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <div class="ms-2 w-50">
+                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
+                                    <div class="ms-1 flex-grow-1 w-100">Ulasan dihantar</div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <div class="ms-2 w-50">
+                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
+                                    <div class="ms-1 flex-grow-1 w-100">Penyediaan Memo Kelulusan</div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <div class="ms-2 w-50">
+                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
+                                    <div class="ms-1 flex-grow-1 w-100">Terima Kelulusan</div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <div class="ms-2 w-50">
+                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
+                                    <div class="ms-1 flex-grow-1 w-100">Penyediaan Surat Kelulusan</div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <div class="ms-2 w-50">
+                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
+                                    <div class="ms-1 flex-grow-1 w-100">Terima Surat Kelulusan</div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <div class="ms-2 w-50">
+                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
+                                    <div class="ms-1 flex-grow-1 w-100">Hantar Surat Kelulusan</div>
                                 </li>
                             </ol>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <div class="card card-header-actions">
                     <div class="card-header">
                         Tindakan

@@ -5,12 +5,11 @@
         <div id="layoutAuthentication">
             <div class="row justify-content-center">
                 <div class="d-flex justify-content-center mt-10">
-                    <img src="https://www.epu.gov.my/sites/default/files/inline-images/portal-mea-logo.png"
-                    alt="iNOC">
+                    <img src="https://www.epu.gov.my/sites/default/files/inline-images/portal-mea-logo.png" alt="iNOC">
                 </div>
                 <div class="col-md-8">
                     <div class="card mt-5">
-                        <div class="card-header">Sistem iNOC</div>
+                        <div class="card-header text-center">Sistem iNOC</div>
 
                         <div class="card-body">
                             <form method="POST" action="{{ route('login') }}">
