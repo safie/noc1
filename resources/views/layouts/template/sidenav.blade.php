@@ -85,12 +85,12 @@
                 <!-- Sidenav Heading (Bajet)-->
                 <div class="sidenav-menu-heading">Bajet</div>
                 <!-- Sidenav Link (Dashboard)-->
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('home') }}">
                     <div class="nav-link-icon"><i data-feather="pie-chart"></i></div>
                     Dashboard
                 </a>
                 <!-- Sidenav Link (Tindakan)-->
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('noc.tindakan') }}">
                     <div class="nav-link-icon"><i data-feather="edit"></i></div>
                     Tindakan
                 </a>
@@ -105,12 +105,12 @@
                 <!-- Sidenav Heading (Nilai)-->
                 <div class="sidenav-menu-heading">Nilai</div>
                 <!-- Sidenav Link (Dashboard)-->
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('home') }}">
                     <div class="nav-link-icon"><i data-feather="pie-chart"></i></div>
                     Dashboard
                 </a>
                 <!-- Sidenav Link (Tindakan)-->
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('noc.tindakan') }}">
                     <div class="nav-link-icon"><i data-feather="edit"></i></div>
                     Tindakan
                 </a>

@@ -16,7 +16,7 @@
 @section('content')
     @include('layouts.template.header_compact')
     <div class="container-fluid px-4 mt-4">
-        <form method="POST" action="{{ route('kementerian.update', $kementerian->id) }}">
+        <form method="POST" action="{{ route('noc.update', $noc->id) }}">
             @csrf
             @method('PUT')
             @if ($errors->any())

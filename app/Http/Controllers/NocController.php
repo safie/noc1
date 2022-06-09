@@ -26,18 +26,111 @@ class NocController extends Controller
 
     public function index()
     {
-        $noc = Noc::all();
-        $data1['noc'] = $noc;
+        $peranan = Auth::user()->peranan;
+
+        if(($peranan == 1) OR ($peranan == 3)) {
+            $noc = DB::table('t_noc')
+            ->select(
+                't_noc.*',
+                't_kementerian.nama_jabatan',
+                't_kementerian.sgktn_jabatan',
+                't_bahagian.nama_bhgn',
+                't_bahagian.sgktn_bhgn',
+                't_status.nama_status'
+            )
+            ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+            ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
+            ->get();
+            $data1['noc'] = $noc;
+        } else {
+            $noc = DB::table('t_noc')
+            ->select(
+                't_noc.*',
+                't_kementerian.nama_jabatan',
+                't_kementerian.sgktn_jabatan',
+                't_bahagian.nama_bhgn',
+                't_bahagian.sgktn_bhgn',
+                't_status.nama_status'
+            )
+            ->where('bahagian', '=', Auth::user()->bahagian)
+            ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+            ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
+            ->get();
+            // dd($noc);
+            // $noc = DB::table('t_noc')->where('bahagian', '=', Auth::user()->bahagian)->get();
+            $data1['noc'] = $noc;
+        }
+
+
+
         return view('page.noc.index')
             ->with($data1);
     }
 
     public function tindakan()
     {
-        $noc = DB::table('t_noc')->where('bahagian', '=', Auth::user()->bahagian)->get();
+        $noc = DB::table('t_noc')
+            ->select(
+                    't_noc.*',
+                    't_kementerian.nama_jabatan',
+                    't_kementerian.sgktn_jabatan',
+                    't_bahagian.nama_bhgn',
+                    't_bahagian.sgktn_bhgn',
+                    't_status.nama_status',
+
+                )
+            ->where('bahagian', '=', Auth::user()->bahagian)
+            ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+            ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
+            ->get();
+        // dd($noc);
+        // $noc = DB::table('t_noc')->where('bahagian', '=', Auth::user()->bahagian)->get();
         $data1['noc'] = $noc;
         return view('page.noc.tindakan')
             ->with($data1);
+    }
+
+    public function semakLulus($id)
+    {
+        $noc = Noc::find($id);
+        $noc->status_noc    = "noc_2";
+        $noc->status_semak  = "lulus";
+        $noc->tarikh_semak  = Carbon::now();
+        $noc->save();
+
+        return redirect()->route('noc.index')->with('success', 'NOC telah disemak!');
+
+    }
+    public function semakSemula($id)
+    {
+        $noc = Noc::find($id);
+        $noc->status_noc     = "tolak";
+        $noc->status_semak   = "semak_semula";
+        $noc->tarikh_semak  = Carbon::now();
+        $noc->save();
+
+        return redirect()->route('noc.index')->with('success', 'NOC telah disemak!');
+
+    }
+
+    public function detail($id)
+    {
+        $noc = DB::table('t_noc')
+            ->select(
+                't_noc.*','t_kementerian.nama_jabatan',
+                't_kementerian.sgktn_jabatan', 't_status.nama_status',
+                )
+            ->leftJoin('t_kementerian','t_kementerian.id','=','t_noc.kementerian')
+            ->leftJoin('t_status','t_status.id_status','=','t_noc.status_noc')
+            ->where('t_noc.id','=',$id)
+            ->first();
+        $data1['noc'] = $noc;
+
+        return view('page.noc.detail')
+        ->with($data1);
     }
 
     /**
@@ -90,8 +183,8 @@ class NocController extends Controller
             'tarikh_surat_kementerian'  => Carbon::createFromFormat('d/m/Y', $request_data['tarikhSuratMohon'])->format('Y-m-d'),
             'bahagian'    => $request_data['inputBahagian'],
             'kementerian'    => $request_data['inputJabatan'],
+            'tarikh_submit'    => Carbon::now()->format('Y-m-d'),
             'status_noc'    => "noc_1",
-            'tarikh_submit'    => Carbon::now()->format('Y-m-d')
         ]);
 
 
@@ -139,8 +232,9 @@ class NocController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Noc $noc)
     {
-        //
+        $noc->delete();
+        return redirect()->route('noc.index')->with('success', 'NOC berjaya dipadam');
     }
 }

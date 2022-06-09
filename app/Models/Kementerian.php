@@ -17,4 +17,9 @@ class Kementerian extends Model
 
     ];
     public $timestamps      = true;
+
+    public function noc()
+    {
+        return $this->belongsToMany(Noc::class);
+    }
 }

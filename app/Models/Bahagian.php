@@ -18,7 +18,8 @@ class Bahagian extends Model
     ];
     public $timestamps      = true;
 
-
-
-
+    public function noc()
+    {
+        return $this->belongsTo(Noc::class);
+    }
 }

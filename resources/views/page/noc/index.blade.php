@@ -29,11 +29,10 @@
                             <th>No.</th>
                             <th>Tajuk Permohonan</th>
                             <th>Tarikh Permohonan</th>
-                            <th>Tarikh Surat</th>
-                            <th>No Rujukan</th>
                             <th>Kementerian</th>
                             <th>Bahagian</th>
-                            <th>Tindakan</th>
+                            <th>Status</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -41,11 +40,10 @@
                             <th>No.</th>
                             <th>Tajuk Permohonan</th>
                             <th>Tarikh Permohonan</th>
-                            <th>Tarikh Surat</th>
-                            <th>No Rujukan</th>
                             <th>Kementerian</th>
                             <th>Bahagian</th>
-                            <th>Tindakan</th>
+                            <th>Status</th>
+                            <th class="text-center me-2"><i data-feather="edit"></i></th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -54,27 +52,34 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $data->tajuk_permohonan }}</td>
-                                    <td>{{ $data->tarikh_permohonan }}</td>
-                                    <td>{{ $data->tarikh_surat_kementerian }}</td>
-                                    <td>{{ $data->no_rujukan }}</td>
-                                    <td>{{ $data->kementerian }}</td>
-                                    <td>{{ $data->bahagian }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</td>
+                                    <td>{{ $data->nama_jabatan }}</td>
+                                    <td>{{ $data->sgktn_bhgn }}</td>
                                     <td>
-                                        <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
+                                        <h4><span class="badge bg-secondary">{{ $data->nama_status }}</span></h4>
+                                    </td>
+                                    <td class="text-center">
+                                        @if($noc->status_noc = 'noc_1')
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                                href="{{ route('noc.edit', $data->id) }}"><i
-                                                    data-feather="edit"></i></a>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-datatable btn-icon btn-transparent-dark"><i
-                                                    data-feather="trash-2"></i></button>
-                                        </form>
+                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                                                href="{{ route('noc.edit', $data->id) }}">
+                                                <i data-feather="edit"></i></a>
+
+                                            <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-datatable btn-icon btn-transparent-dark me-2"><i
+                                                        data-feather="trash-2"></i></button>
+                                            </form>
+                                        @endif
+                                            <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                                                href="{{ route('noc.detail', $data->id) }}"><i data-feather="eye"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="8">Tiada maklumat!</td>
+                                <td colspan="7">Tiada maklumat!</td>
                             </tr>
                         @endif
 

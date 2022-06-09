@@ -29,10 +29,9 @@
                             <th>No.</th>
                             <th>Tajuk Permohonan</th>
                             <th>Tarikh Permohonan</th>
-                            <th>Tarikh Surat</th>
-                            <th>No Rujukan</th>
                             <th>Kementerian</th>
                             <th>Bahagian</th>
+                            <th>Status</th>
                             <th>Tindakan</th>
                         </tr>
                     </thead>
@@ -41,10 +40,9 @@
                             <th>No.</th>
                             <th>Tajuk Permohonan</th>
                             <th>Tarikh Permohonan</th>
-                            <th>Tarikh Surat</th>
-                            <th>No Rujukan</th>
                             <th>Kementerian</th>
                             <th>Bahagian</th>
+                            <th>Status</th>
                             <th>Tindakan</th>
                         </tr>
                     </tfoot>
@@ -54,26 +52,39 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $data->tajuk_permohonan }}</td>
-                                    <td>{{ $data->tarikh_permohonan }}</td>
-                                    <td>{{ $data->tarikh_surat_kementerian }}</td>
-                                    <td>{{ $data->no_rujukan }}</td>
-                                    <td>{{ $data->kementerian }}</td>
-                                    <td>{{ $data->bahagian }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</td>
+                                    <td>{{ $data->nama_jabatan }}</td>
+                                    <td>{{ $data->sgktn_bhgn }}</td>
                                     <td>
-                                        <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
+                                        <h4><span class="badge bg-secondary">{{ $data->nama_status }}</span></h4>
+                                    </td>
+                                    <td>
+                                        @if ($data->status_noc == 'noc_1')
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                                href="{{ route('noc.edit', $data->id) }}"><i data-feather="edit"></i></a>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-datatable btn-icon btn-transparent-dark"><i
-                                                    data-feather="trash-2"></i></button>
-                                        </form>
+                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                                                href="{{ route('noc.edit', $data->id) }}">
+                                                <i data-feather="edit"></i></a>
+
+                                            <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="btn btn-datatable btn-icon btn-transparent-dark"><i
+                                                        data-feather="trash-2"></i></button>
+                                            </form>
+                                            <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                                                href="{{ route('noc.detail', $data->id) }}"><i data-feather="eye"></i></a>
+                                        @else
+                                            <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                                                href="{{ route('noc.detail', $data->id) }}"><i
+                                                    data-feather="eye"></i></a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="8">Tiada maklumat!</td>
+                                <td colspan="7">Tiada maklumat!</td>
                             </tr>
                         @endif
 
@@ -89,4 +100,15 @@
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="{{ asset('sb-admin-pro/dist/js/datatables/datatables-simple-demo.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
+    <script>
+        const button = document.querySelector('#button');
+        const tooltip = document.querySelector('#tooltip');
+
+        // Pass the button, the tooltip, and some options, and Popper will do the
+        // magic positioning for you:
+        Popper.createPopper(button, tooltip, {
+            placement: 'right',
+        });
+    </script>
 @endsection

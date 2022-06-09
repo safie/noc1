@@ -105,6 +105,11 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                {{-- <div class="mb-3" hidden>
+                                    <label class="small mb-1" for="statusNOC">Status NOC</label>
+                                    <input class="form-control" id="statusNOC" name="statusNOC" type="text"
+                                        placeholder="Status NOC" value="noc_1" />
+                                </div> --}}
                             </div>
                         </div>
                     </div>

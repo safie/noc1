@@ -15,9 +15,11 @@ class Noc extends Model
         'tarikh_permohonan',
         'tarikh_surat_kementerian',
         'no_rujukan',
+        'status_noc',
         'kod_myprojek',
         'kementerian',
         'bahagian',
+        'klasifikasi',
         'tarikh_submit',
         'status_semak',
         'tarikh_semak',
@@ -31,5 +33,15 @@ class Noc extends Model
         'tarikh_hantar_surat_lulus',
         'tarikh_mohon_modul'
     ];
-    public $timestamps      = true;
+    public $timestamps  = true;
+
+    public function bahagian()
+    {
+        return $this->hasOne(Bahagian::class);
+    }
+
+    public function kementerian()
+    {
+        return $this->hasMany(Kementerian::class);
+    }
 }

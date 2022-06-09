@@ -39,3 +39,6 @@ Route::resource('/setting/status', StatusController::class);
 
 Route::resource('/noc', NocController::class)->except('show');
 Route::get('/noc/tindakan', [\App\Http\Controllers\NocController::class, 'tindakan'])->name('noc.tindakan');
+Route::get('/noc/detail/{id}', [\App\Http\Controllers\NocController::class, 'detail'])->name('noc.detail');
+Route::post('/noc/semaklulus/{id}', [\App\Http\Controllers\NocController::class, 'semakLulus'])->name('noc.semakLulus');
+Route::post('/noc/semaksemula/{id}', [\App\Http\Controllers\NocController::class, 'semakSemula'])->name('noc.semakSemula');
