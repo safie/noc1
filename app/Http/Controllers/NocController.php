@@ -94,25 +94,33 @@ class NocController extends Controller
             ->with($data1);
     }
 
-    public function semakLulus($id)
+    public function semakLulus($request, $id)
     {
+        $request->validate([
+            'tarikhSemak1' => 'required',
+        ]);
+
         $noc = Noc::find($id);
         $noc->status_noc    = "noc_2";
         $noc->status_semak  = "lulus";
-        $noc->tarikh_semak  = Carbon::now();
+        $noc->tarikh_semak  = $request['tarikhSemak1'];
         $noc->save();
 
         return redirect()->route('noc.index')->with('success', 'NOC telah disemak!');
     }
-    public function semakSemula($id)
+    public function semakSemula($request, $id)
     {
+        $request->validate([
+            'tarikhSemak2' => 'required',
+        ]);
+
         $noc = Noc::find($id);
-        $noc->status_noc     = "tolak";
-        $noc->status_semak   = "semak_semula";
-        $noc->tarikh_semak  = Carbon::now();
+        $noc->status_noc    = "noc_10";
+        $noc->status_semak  = "semak_semula";
+        $noc->tarikh_semak  = $request['tarikhSemak2'];
         $noc->save();
 
-        return redirect()->route('noc.index')->with('success', 'NOC telah disemak!');
+        return redirect()->route('noc.index')->with('warning', 'NOC telah disemak!');
     }
 
     public function detail($id)

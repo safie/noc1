@@ -68,7 +68,7 @@
                                             <i data-feather="calendar"></i>
                                         </span>
                                         <input class="form-control ps-0" id="tarikhMohonNOC" name="tarikhMohonNOC"
-                                            placeholder="Pilih tarikh..." />
+                                            placeholder="Pilih tarikh..." autocomplete="off"/>
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -78,7 +78,7 @@
                                             <i data-feather="calendar"></i>
                                         </span>
                                         <input class="form-control ps-0" id="tarikhSuratMohon" name="tarikhSuratMohon"
-                                            placeholder="Pilih tarikh..." />
+                                            placeholder="Pilih tarikh..." autocomplete="off"/>
                                     </div>
                                 </div>
                                 <div class="mb-3">

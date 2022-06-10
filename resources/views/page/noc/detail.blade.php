@@ -1,7 +1,8 @@
 @extends('layouts.appDash')
 
 @section('css')
-
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 @endsection
 
 @section('icon', 'briefcase')
@@ -69,100 +70,33 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5">
-                <div class="card card-header-actions mb-2">
-                    <div class="card-header">
-                        Status NOC
-                        <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
-                            title="Sejarah Status NOC"></i>
-                    </div>
-                    <div class="card-body">
-                        <div class="mb-4">
-                            <ol class="list-group list-group-numbered list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between">
-                                    <div class="ms-2 w-50">
-                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
-                                    <div class="ms-1 flex-grow-1 w-100">NOC Baharu</div>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between">
-                                    <div class="ms-2 w-50">
-                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
-                                    <div class="ms-1 flex-grow-1 w-100">Semakan Dokumen</div>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between">
-                                    <div class="ms-2 w-50">
-                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
-                                    <div class="ms-1 flex-grow-1 w-100">Mohon Ulasan</div>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between">
-                                    <div class="ms-2 w-50">
-                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
-                                    <div class="ms-1 flex-grow-1 w-100">Penyediaan Ulasan</div>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between">
-                                    <div class="ms-2 w-50">
-                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
-                                    <div class="ms-1 flex-grow-1 w-100">Ulasan dihantar</div>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between">
-                                    <div class="ms-2 w-50">
-                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
-                                    <div class="ms-1 flex-grow-1 w-100">Penyediaan Memo Kelulusan</div>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between">
-                                    <div class="ms-2 w-50">
-                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
-                                    <div class="ms-1 flex-grow-1 w-100">Terima Kelulusan</div>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between">
-                                    <div class="ms-2 w-50">
-                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
-                                    <div class="ms-1 flex-grow-1 w-100">Penyediaan Surat Kelulusan</div>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between">
-                                    <div class="ms-2 w-50">
-                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
-                                    <div class="ms-1 flex-grow-1 w-100">Terima Surat Kelulusan</div>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between">
-                                    <div class="ms-2 w-50">
-                                        {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
-                                    <div class="ms-1 flex-grow-1 w-100">Hantar Surat Kelulusan</div>
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-lg-4">
+                @include('page.noc.import.status_noc')
             </div>
-            <div class="col-lg-2">
-                <div class="card card-header-actions">
-                    <div class="card-header">
-                        Tindakan
-                        <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
-                            title="Data akan disimpan"></i>
-                    </div>
-                    <div class="card-body">
-                        <form action="{{ route('noc.semakLulus', $noc->id) }}" method="POST">
-                            @csrf
-                            <a class="d-grid"><button type="submit" class="fw-500 btn btn-primary mb-2">Lulus
-                                    Semakan</button>
-                            </a>
-                        </form>
-                        <form action="{{ route('noc.semakSemula', $noc->id) }}" method="POST">
-                            @csrf
-                            <div class="d-grid"><button type="submit" class="fw-500 btn btn-danger mb-2">Semak
-                                    semula</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+            <div class="col-lg-3">
+                @include('page.noc.import.tindakan_status')
             </div>
+           @include('page.noc.import.modal')
         </div>
     </div>
 
 @endsection
 
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="{{ asset('sb-admin-pro/dist/js/datatables/datatables-simple-demo.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#tarikhSemak1').datepicker({
+                format: 'dd/mm/yyyy',
+            });
+        });
+        $(document).ready(function() {
+            $('#tarikhSemak2').datepicker({
+                format: 'dd/mm/yyyy',
+            });
+        });
+    </script>
 @endsection

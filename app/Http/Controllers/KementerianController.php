@@ -97,7 +97,6 @@ class KementerianController extends Controller
         $request->validate([
             'inputNamaKementerian' => 'required',
             'inputSingkatan' => 'required',
-
         ]);
 
         $peranan = Kementerian::find($id);
