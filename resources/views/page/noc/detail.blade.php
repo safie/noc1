@@ -9,7 +9,7 @@
 @section('tajuk', 'Maklumat NOC')
 @section('button')
     <a class="btn btn-sm btn-light text-primary" href="{{ route('noc.index') }}">
-        <i class="me-1" data-feather="user-plus"></i>
+        <i class="me-1" data-feather="arrow-left"></i>
         Kembali senarai NOC
     </a>
 @endsection
@@ -29,14 +29,19 @@
                         <div class="card-body">
                             <!-- Form Group (first name)-->
                             <div class="row">
-                                <div class="mb-3">
+                                <div>
                                     <label class="small mb-1" for="inputTajuk">{{ $noc->nama_jabatan }}
                                         ({{ $noc->sgktn_jabatan }})</label>
                                     <h3 style="text-transform:uppercase;">{{ $noc->tajuk_permohonan }}</h3>
-                                    <hr>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div>
                                     <label>Klasifikasi : {{ $noc->klasifikasi }} - {{ $noc->nama_kat }}</label>
                                 </div>
                             </div>
+                            <hr>
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
@@ -64,7 +69,13 @@
                                         <h5>{{ \Carbon\Carbon::parse($noc->tarikh_surat_kementerian)->format('d-m-Y') }}
                                         </h5>
                                     </div>
+
                                 </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <label>Status NOC : <span class="badge bg-success">{{ $noc->nama_status }}
+                                    </span></label>
                             </div>
                         </div>
                     </div>
@@ -76,7 +87,7 @@
             <div class="col-lg-3">
                 @include('page.noc.import.tindakan_status')
             </div>
-           @include('page.noc.import.modal')
+            @include('page.noc.import.modal')
         </div>
     </div>
 

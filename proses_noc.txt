@@ -1,0 +1,18 @@
+NOC Baharu
+-- Semakan NOC
+Mohon Ulasan
+-- Penyediaan Ulasan NOC
+Penyediaan Ulasan
+-- Penghantaran Ulasan NOC
+Ulasan dihantar
+-- Penyediaan Memo Kelulusan
+Penyediaan Memo Kelulusan
+-- Terima Memo Kelulusan
+Terima Memo Kelulusan
+-- Penyediaan Surat Kelulusan
+Penyediaan Surat Kelulusan
+-- Penerimaan Kelulusan Rasmi
+Terima Surat Kelulusan Rasmi
+-- Hantar Surat Kelulusan kepada Kementerian
+Permohonan NOC di MyProjek
+--Permohonan Modul NOC MyProjek

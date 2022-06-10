@@ -39,6 +39,14 @@
                         </div>
                     </li>
                 @endif
+                @if ($noc->tarikh_sedia_ulasan != null && $noc->status_noc == 'noc_11')
+                    <li class="list-group-item d-flex justify-content-between">
+                        <div class="ms-3 ">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_semak)->format('d-m-Y') }}</div>
+                        <div class="ms-1 flex-grow-1"><span class="badge bg-secondary">Perlu maklumat tambahan</span>
+                        </div>
+                    </li>
+                @endif
                 @if ($noc->tarikh_hantar_ulasan != null)
                     <li class="list-group-item d-flex justify-content-between">
                         <div class="ms-3">
@@ -60,7 +68,7 @@
                     <li class="list-group-item d-flex justify-content-between">
                         <div class="ms-3">
                             {{ \Carbon\Carbon::parse($noc->tarikh_kelulusan_pt)->format('d-m-Y') }}</div>
-                        <div class="ms-1 flex-grow-1"><span class="badge bg-secondary">Terima Kelulusan</span>
+                        <div class="ms-1 flex-grow-1"><span class="badge bg-secondary">Terima Memo Kelulusan</span>
                         </div>
                     </li>
                 @endif
