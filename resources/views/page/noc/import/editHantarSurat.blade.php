@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('noc.updateSemakUlasan', $noc->id) }}">
+<form method="POST" action="{{ route('noc.updateHantarSurat', $noc->id) }}">
     @csrf
     @method('PUT')
     @if ($errors->any())
@@ -35,7 +35,8 @@
                         <div class="row">
                             <!-- Form Group (first name)-->
                             <div class="mb-3">
-                                <label class="small mb-1" for="inputFirstName">Tarikh Semakan Permohonan</label>
+                                <label class="small mb-1" for="inputFirstName">Tarikh Hantar Surat Permohonan NOC
+                                    Rasmi kepada Kementerian/Jabatan</label>
                                 <div class="input-group input-group-joined">
                                     <span class="input-group-text">
                                         <i data-feather="calendar"></i>
@@ -44,7 +45,7 @@
                                         placeholder="Pilih tarikh..." autocomplete="off" />
                                 </div>
                             </div>
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label class="small mb-1">Status</label>
                                 <select class="form-select" aria-label="Default select example" id="inputStatusSemak"
                                     name=" inputStatusSemak">
@@ -52,7 +53,7 @@
                                     <option value="lulus">Permohonan Lulus</option>
                                     <option value="dokumen_tambahan">Perlu Dokumen Tambahan</option>
                                 </select>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

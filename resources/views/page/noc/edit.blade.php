@@ -24,6 +24,35 @@
         @if ($form == 'noc_2')
             @include('page.noc.import.editSemakUlasan')
         @endif
+
+        @if ($form == 'noc_3')
+            @include('page.noc.import.editSediaUlasan')
+        @endif
+
+        @if ($form == 'noc_4')
+            @include('page.noc.import.editHantarUlasan')
+        @endif
+
+        @if ($form == 'noc_5')
+            @include('page.noc.import.editSediaMemo')
+        @endif
+
+        @if ($form == 'noc_6')
+            @include('page.noc.import.editTerimaMemo')
+        @endif
+
+        @if ($form == 'noc_7')
+            @include('page.noc.import.editSediaSurat')
+        @endif
+
+        @if ($form == 'noc_8')
+            @include('page.noc.import.editHantarSurat')
+        @endif
+
+        @if ($form == 'noc_9')
+            @include('page.noc.import.editMohonModul')
+        @endif
+
     </div>
 
 @endsection

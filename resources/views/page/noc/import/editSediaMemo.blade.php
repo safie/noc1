@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('noc.updateSemakUlasan', $noc->id) }}">
+<form method="POST" action="{{ route('noc.updateSediaMemo', $noc->id) }}">
     @csrf
     @method('PUT')
     @if ($errors->any())
@@ -35,7 +35,8 @@
                         <div class="row">
                             <!-- Form Group (first name)-->
                             <div class="mb-3">
-                                <label class="small mb-1" for="inputFirstName">Tarikh Semakan Permohonan</label>
+                                <label class="small mb-1" for="inputFirstName">Tarikh Penyediaan Memo
+                                    Kelulusan</label>
                                 <div class="input-group input-group-joined">
                                     <span class="input-group-text">
                                         <i data-feather="calendar"></i>
@@ -45,12 +46,13 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label class="small mb-1">Status</label>
-                                <select class="form-select" aria-label="Default select example" id="inputStatusSemak"
-                                    name=" inputStatusSemak">
+                                <label class="small mb-1">Pengurusan Tinggi</label>
+                                <select class="form-select" aria-label="Default select example"
+                                    id="pengurusan_tinggi" name=" pengurusan_tinggi">
                                     <option selected disabled>Sila pilih:</option>
-                                    <option value="lulus">Permohonan Lulus</option>
-                                    <option value="dokumen_tambahan">Perlu Dokumen Tambahan</option>
+                                    <option value="Ketua Pengarah">Ketua Pengarah</option>
+                                    <option value="Timbalan Ketua Pengarah">Timbalan Ketua Pengarah</option>
+                                    <option value="Pengarah">Pengarah</option>
                                 </select>
                             </div>
                         </div>
