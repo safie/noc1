@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $noc = DB::table('t_noc')
+            ->select('id')
+            ->get();
+        $data['noc'] = $noc->count();
+
+        return view('home')
+            ->with($data);
     }
 }
