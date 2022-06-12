@@ -2,7 +2,7 @@
     <div class="card-header">
         Tindakan
         <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
-            title="Data akan disimpan"></i>
+            title="Tindakan NOC yang diperlukan"></i>
     </div>
     <div class="card-body text-center">
         @if ($noc->status_noc == 'noc_1')
