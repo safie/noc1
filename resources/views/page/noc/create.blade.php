@@ -3,7 +3,7 @@
 @section('css')
     {{-- <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" /> --}}
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
 @endsection
 
 @section('icon', 'plus-square')
@@ -68,7 +68,7 @@
                                             <i data-feather="calendar"></i>
                                         </span>
                                         <input class="form-control ps-0" id="tarikhMohonNOC" name="tarikhMohonNOC"
-                                            placeholder="Pilih tarikh..." autocomplete="off"/>
+                                            placeholder="Pilih tarikh..." autocomplete="off" />
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -78,7 +78,7 @@
                                             <i data-feather="calendar"></i>
                                         </span>
                                         <input class="form-control ps-0" id="tarikhSuratMohon" name="tarikhSuratMohon"
-                                            placeholder="Pilih tarikh..." autocomplete="off"/>
+                                            placeholder="Pilih tarikh..." autocomplete="off" />
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -99,8 +99,9 @@
                                         name="inputBahagian">
                                         <option selected disabled>Sila pilih:</option>
                                         @foreach ($bahagian as $data)
-                                            <option value="{{ $data->id }}">{{ $data->nama_bhgn }}
-                                                ({{ $data->sgktn_bhgn }})
+                                            <option value="{{ $data->id }}">{{ $data->sgktn_bhgn }} -
+                                                {{ $data->nama_bhgn }}
+
                                             </option>
                                         @endforeach
                                     </select>

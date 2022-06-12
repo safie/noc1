@@ -1,18 +1,42 @@
-NOC Baharu
--- Semakan NOC
-Mohon Ulasan
--- Penyediaan Ulasan NOC
-Penyediaan Ulasan
--- Penghantaran Ulasan NOC
-Ulasan dihantar
--- Penyediaan Memo Kelulusan
-Penyediaan Memo Kelulusan
--- Terima Memo Kelulusan
-Terima Memo Kelulusan
--- Penyediaan Surat Kelulusan
-Penyediaan Surat Kelulusan
--- Penerimaan Kelulusan Rasmi
-Terima Surat Kelulusan Rasmi
--- Hantar Surat Kelulusan kepada Kementerian
-Permohonan NOC di MyProjek
---Permohonan Modul NOC MyProjek
+PROSES NOC EPU
+================
+
+-- ui -- Form Submit NOC --> submit
+-- medan -- (status_noc, tarikh_submit)
+status: NOC Baharu
+
+-- ui -- Semakan NOC --> Lulus / Semak Semula dan Tarikh
+-- medan -- (status_noc, tarikh_semak, status_semak)
+Status: Mohon Ulasan
+
+-- ui -- Semakan Permohonan Ulasan --> Lulus / Dokumen Tambahan dan Tarikh
+-- medan -- (status_noc, tarikh_mohon_ulasan)
+Status: Permohonan Ulasan Disemak
+
+-- ui -- Penyediaan Ulasan NOC --> Sedia Ulasan dan Tarikh
+-- medan -- (status_noc, tarikh_sedia_ulasan)
+Status: Penyediaan Ulasan
+
+-- ui -- Penghantaran Ulasan NOC --> Hantar Ulasan dan Tarikh
+-- medan -- (status_noc, tarikh_hantar_ulasan)
+Status: Ulasan dihantar
+
+-- ui-- Penyediaan Memo Kelulusan --> Sedia Memo utk Pengarah/TKP/KP dan Tarikh
+-- medan -- (status_noc, tarikh_sedia_memo_kelulusan)
+Status: Penyediaan Memo Kelulusan
+
+-- ui -- Terima Memo Kelulusan --> Terima Memo dan Tarikh
+-- medan -- (status_noc, tarikh_kelulusan_pt)
+Status: Terima Memo Kelulusan
+
+-- ui -- Penyediaan Surat Kelulusan --> Sedia Surat Kelulusan dan Tarikh
+-- medan -- (status_noc, tarikh_sedia_surat)
+Status: Penyediaan Surat Kelulusan
+
+-- ui -- Hantar Surat Kelulusan Rasmi --> Hantar Surat dan Tarikh
+-- medan -- (status_noc, tarikh_hantar_surat_lulus)
+Status: Terima Surat Kelulusan Rasmi
+
+-- ui -- Permohonan NOC di MyProjek --> Mohon Modul dan Tarikh
+-- medan -- (status_noc, tarikh_mohon_modul)
+Status: Permohonan Modul NOC MyProjek

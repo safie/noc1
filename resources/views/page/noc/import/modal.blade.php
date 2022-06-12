@@ -3,7 +3,7 @@
     data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <form method="POST" action="{{ route('noc.semakLulus', $noc->id) }}">
+            <form method="POST" action="#">
                 @csrf
                 @method('PUT')
                 <div class="modal-header">
@@ -38,7 +38,7 @@
     data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <form method="POST" action="{{ route('noc.semakSemula', $noc->id) }}">
+            <form method="POST" action="#">
                 @csrf
                 @method('PUT')
                 <div class="modal-header">

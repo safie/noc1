@@ -70,80 +70,7 @@ class NocController extends Controller
             ->with($data1);
     }
 
-    public function tindakan()
-    {
-        $noc = DB::table('t_noc')
-            ->select(
-                't_noc.*',
-                't_kementerian.nama_jabatan',
-                't_kementerian.sgktn_jabatan',
-                't_bahagian.nama_bhgn',
-                't_bahagian.sgktn_bhgn',
-                't_status.nama_status',
 
-            )
-            ->where('bahagian', '=', Auth::user()->bahagian)
-            ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
-            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
-            ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
-            ->get();
-        // dd($noc);
-        // $noc = DB::table('t_noc')->where('bahagian', '=', Auth::user()->bahagian)->get();
-        $data1['noc'] = $noc;
-        return view('page.noc.tindakan')
-            ->with($data1);
-    }
-
-    public function semakLulus($request, $id)
-    {
-        $request->validate([
-            'tarikhSemak1' => 'required',
-        ]);
-
-        $noc = Noc::find($id);
-        $noc->status_noc    = "noc_2";
-        $noc->status_semak  = "lulus";
-        $noc->tarikh_semak  = $request['tarikhSemak1'];
-        $noc->save();
-
-        return redirect()->route('noc.index')->with('success', 'NOC telah disemak!');
-    }
-    public function semakSemula($request, $id)
-    {
-        $request->validate([
-            'tarikhSemak2' => 'required',
-        ]);
-
-        $noc = Noc::find($id);
-        $noc->status_noc    = "noc_10";
-        $noc->status_semak  = "semak_semula";
-        $noc->tarikh_semak  = $request['tarikhSemak2'];
-        $noc->save();
-
-        return redirect()->route('noc.index')->with('warning', 'NOC telah disemak!');
-    }
-
-    public function detail($id)
-    {
-        $noc = DB::table('t_noc')
-            ->select(
-                't_noc.*',
-                't_kementerian.nama_jabatan',
-                't_kementerian.sgktn_jabatan',
-                't_status.nama_status',
-                't_kategori.kod',
-                't_kategori.nama_kat'
-            )
-            ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
-            ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
-            ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
-            ->where('t_noc.id', '=', $id)
-            ->first();
-        $data1['noc'] = $noc;
-
-        return view('page.noc.detail')
-            ->with($data1);
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -253,5 +180,82 @@ class NocController extends Controller
     {
         $noc->delete();
         return redirect()->route('noc.index')->with('success', 'NOC berjaya dipadam');
+    }
+
+    public function tindakan()
+    {
+        $noc = DB::table('t_noc')
+            ->select(
+                't_noc.*',
+                't_kementerian.nama_jabatan',
+                't_kementerian.sgktn_jabatan',
+                't_bahagian.nama_bhgn',
+                't_bahagian.sgktn_bhgn',
+                't_status.nama_status',
+
+            )
+            ->where('bahagian', '=', Auth::user()->bahagian)
+            ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+            ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
+            ->get();
+        // dd($noc);
+        // $noc = DB::table('t_noc')->where('bahagian', '=', Auth::user()->bahagian)->get();
+        $data1['noc'] = $noc;
+        return view('page.noc.tindakan')
+            ->with($data1);
+    }
+
+    public function detail($id)
+    {
+        $noc = DB::table('t_noc')
+            ->select(
+                't_noc.*',
+                't_kementerian.nama_jabatan',
+                't_kementerian.sgktn_jabatan',
+                't_status.nama_status',
+                't_kategori.kod',
+                't_kategori.nama_kat'
+            )
+            ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+            ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
+            ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+            ->where('t_noc.id', '=', $id)
+            ->first();
+        $data1['noc'] = $noc;
+
+        return view('page.noc.detail')
+            ->with($data1);
+    }
+
+    public function editSemak(Noc $noc)
+    {
+        $form = "noc_1";
+        $tajuk = "Semakan NOC baharu";
+        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
+    }
+
+    public function editSemakUlasan(Noc $noc)
+    {
+        $form = "noc_2";
+        $tajuk = "Semakan Permohonan Ulasan";
+        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
+    }
+
+    public function updateSemak(Request $request, $id)
+    {
+
+        $request->validate([
+            'tarikhSemak' => 'required',
+            'inputStatusSemak' => 'required',
+        ]);
+
+        $semakan = Noc::find($id);
+        $semakan->tarikh_semak     = Carbon::createFromFormat('d/m/Y', $request->tarikhSemak)->format('Y-m-d');
+        $semakan->status_semak    = $request->inputStatusSemak;
+        $semakan->status_noc = "noc_2";
+        $semakan->save();
+
+        return redirect()->route('noc.index')->with('success', 'NOC baharu telah disemak');
     }
 }
