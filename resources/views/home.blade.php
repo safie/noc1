@@ -28,9 +28,9 @@
                 <!-- Dashboard info widget 2-->
                 <div class="card bg-success border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white-50">Semakan NOC Keseluruhan</h6>
+                        <h6 class="text-white-50">NOC dalam semakan</h6>
                         <div class=" mb-2">
-                            <span class="display-4 text-white">{{ $noc }}</span>
+                            <span class="display-4 text-white">{{ $nocSemak }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
                         </div>
                         {{-- <div class="progress bg-white-25 rounded-pill" style="height: 0.5rem">
@@ -46,7 +46,7 @@
                     <div class="card-body text-center">
                         <h6 class="text-white-50">Penyediaan Ulasan</h6>
                         <div class=" mb-2">
-                            <span class="display-4 text-white">{{ $noc }}</span>
+                            <span class="display-4 text-white">{{ $nocSediaUlasan }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
                         </div>
                         {{-- <div class="progress bg-white-25 rounded-pill" style="height: 0.5rem">
@@ -62,7 +62,7 @@
                     <div class="card-body text-center">
                         <h6 class="text-white-50">Maklumat Tambahan</h6>
                         <div class=" mb-2">
-                            <span class="display-4 text-white">{{ $noc }}</span>
+                            <span class="display-4 text-white">{{ $nocTambahan }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
                         </div>
                         {{-- <div class="progress bg-white-25 rounded-pill" style="height: 0.5rem">
@@ -78,7 +78,7 @@
                     <div class="card-body text-center">
                         <h6 class="text-white-50">Penyediaan Memo</h6>
                         <div class=" mb-2">
-                            <span class="display-4 text-white">{{ $noc }}</span>
+                            <span class="display-4 text-white">{{ $nocMemo }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
                         </div>
                         {{-- <div class="progress bg-white-25 rounded-pill" style="height: 0.5rem">
@@ -94,7 +94,7 @@
                     <div class="card-body text-center">
                         <h6 class="text-white-50">Modul NOC MyProjek</h6>
                         <div class=" mb-2">
-                            <span class="display-4 text-white">{{ $noc }}</span>
+                            <span class="display-4 text-white">{{ $nocModul }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
                         </div>
                         {{-- <div class="progress bg-white-25 rounded-pill" style="height: 0.5rem">
