@@ -31,7 +31,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table noc1.users: ~3 rows (approximately)
+REPLACE INTO `users` (`id`, `name`, `email`, `peranan`, `bahagian`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+	(1, 'sadmin', 'sadmin_noc@epu.gov.my', '1', '1', NULL, '$2y$10$demjBL.CFFW3K4DqHOMnte8PqW3hAYugmPqaNnnG0uv/C2Lf.y5Du', NULL, '2022-05-30 18:47:53', '2022-06-02 00:54:02'),
+	(2, 'Syafiq', 'syafiq_noc@epu.gov.my', '2', '2', NULL, '$2y$10$jay1eZM3O15diYWD3avk.u0RQfumgcNqYCyiwfQ.NsIQX.v2lCbf.', NULL, '2022-06-01 23:37:20', '2022-06-02 00:55:55'),
+	(3, 'user_bajet', 'user_bajet@epu.gov.my', '3', '2', NULL, '$2y$10$d6XTvhKAw5dpr4og4HcxZuRI.JCAIgTuvNQbbOIKAwpU3eQ9Rjy1e', NULL, '2022-06-02 17:20:06', '2022-06-02 17:21:26');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

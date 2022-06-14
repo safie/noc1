@@ -15,6 +15,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- Dumping structure for table noc1.t_peranan
+DROP TABLE IF EXISTS `t_peranan`;
 CREATE TABLE IF NOT EXISTS `t_peranan` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `peranan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -24,7 +25,12 @@ CREATE TABLE IF NOT EXISTS `t_peranan` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table noc1.t_peranan: ~4 rows (approximately)
+REPLACE INTO `t_peranan` (`id`, `peranan`, `keterangan`, `created_at`, `updated_at`) VALUES
+	(1, 'Admin', 'Pengguna Administrator', '2022-06-01 00:48:57', '2022-06-01 00:48:57'),
+	(2, 'Bahagian', 'Pengguna Bahagian EPU', '2022-06-01 17:35:01', '2022-06-01 17:35:01'),
+	(3, 'Bajet', 'Penyelaras NOC BBP', '2022-06-01 18:52:28', '2022-06-01 18:52:28'),
+	(4, 'Nilai', 'Penyelaras NOC BPN', '2022-06-01 18:52:51', '2022-06-01 18:52:51');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
