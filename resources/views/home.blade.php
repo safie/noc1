@@ -44,7 +44,7 @@
                 <!-- Dashboard info widget 1-->
                 <div class="card bg-warning border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white-50">Penyediaan Ulasan</h6>
+                        <h6 class="text-white-50">Penyediaan Ulasan NOC</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $nocSediaUlasan }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
@@ -76,7 +76,7 @@
                 <!-- Dashboard info widget 1-->
                 <div class="card bg-black border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white-50">Penyediaan Memo</h6>
+                        <h6 class="text-white-50">Penyediaan Memo NOC</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $nocMemo }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}

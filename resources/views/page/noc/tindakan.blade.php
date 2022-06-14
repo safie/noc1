@@ -32,7 +32,7 @@
                             <th>Kementerian</th>
                             <th>Bahagian</th>
                             <th>Status</th>
-                            <th>Tindakan</th>
+                            <th class="text-center">Tindakan</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -43,7 +43,7 @@
                             <th>Kementerian</th>
                             <th>Bahagian</th>
                             <th>Status</th>
-                            <th>Tindakan</th>
+                            <th class="text-center">Tindakan</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -58,7 +58,7 @@
                                     <td>
                                         <h4><span class="badge bg-secondary">{{ $data->nama_status }}</span></h4>
                                     </td>
-                                    <td>
+                                    <td class="d-flex justify-content-center">
                                         @if ($data->status_noc == 'noc_1')
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
