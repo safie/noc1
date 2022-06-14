@@ -1,0 +1,16 @@
+id;nama_peringkat;order;created_at;updated_at
+1;Kunci masuk maklumat permohonan;1;2022-06-03;2022-06-03
+2;Semakan dokumen permohonan;2;2022-06-03;2022-06-03
+3;Permohonan ulasan Bahagian Pengurusan Nilai;3;2022-06-03;2022-06-03
+4;Permohonan ulasan Bahagian Bajet Pembangunan;4;2022-06-03;2022-06-03
+5;Penyediaan ulasan Bahagian Pengurusan Nilai;5;2022-06-03;2022-06-03
+6;Penyediaan ulasan Bahagian Bajet Pembangunan;6;2022-06-03;2022-06-03
+7;Pengemukaan ulasan Bahagian Pengurusan Nilai;7;2022-06-03;2022-06-03
+8;Pengemukaan ulasan Bahagian Bajet Pembangunan;8;2022-06-03;2022-06-03
+9;Penyediaan Memo Kelulusan Pengurusan Tertinggi;9;2022-06-03;2022-06-03
+10;Pengemukaan Memo Kelulusan - Perakuan TKP;10;2022-06-03;2022-06-03
+11;Pengemukaan Memo Kelulusan - Kelulusan KP;11;2022-06-03;2022-06-03
+12;Kelulusan Pengurusan Tertinggi;12;2022-06-03;2022-06-03
+13;Penyediaan Surat Kelulusan Rasmi EPU, JPM;13;2022-06-03;2022-06-03
+14;Pengemukaan Surat Kelulusan Rasmi EPU, JPM kepada kementerian;14;2022-06-03;2022-06-03
+15;Permohonan Modul NOC MyProjek oleh kementerian;15;2022-06-03;2022-06-03
