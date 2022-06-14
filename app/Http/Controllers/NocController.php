@@ -131,8 +131,6 @@ class NocController extends Controller
             'status_noc'    => "noc_1",
         ]);
 
-
-
         return redirect()->route('noc.index')->with('success', 'Permohonan berjaya disimpan.');
     }
 
@@ -153,9 +151,22 @@ class NocController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Noc $noc)
     {
-        //
+        $kategori = Kategori::get(['id', 'nama_kat', 'kod']);
+        $kementerian = Kementerian::get(['id', 'nama_jabatan', 'sgktn_jabatan']);
+        $bahagian = Bahagian::get(['id', 'nama_bhgn', 'sgktn_bhgn']);
+        $data1['bahagian'] = $bahagian;
+        $data2['kementerian'] = $kementerian;
+        $data3['kategori'] = $kategori;
+        $form = 'noc_edit';
+        $tajuk = 'Edit NOC';
+
+        // dd($data3);
+        return view('page.noc.edit', compact('noc', 'form', 'tajuk'))
+            ->with($data1)
+            ->with($data2)
+            ->with($data3);
     }
 
     /**
@@ -167,7 +178,31 @@ class NocController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //check data
+        $request->validate([
+            'inputTajuk' => 'required',
+            'inputKodMyprojek' => 'required',
+            'inputRujukan' => 'required',
+            'tarikhMohonNOC' => 'required',
+            'tarikhSuratMohon' => 'required',
+            'inputKlasifikasi' => 'required',
+            'inputBahagian' => 'required',
+            'inputJabatan' => 'required',
+        ]);
+
+        $noc = Noc::find($id);
+        $noc->tajuk_permohonan = $request['inputTajuk'];
+        $noc->kod_myprojek   = $request['inputKodMyprojek'];
+        $noc->no_rujukan    = $request['inputRujukan '];
+        $noc->tarikh_permohonan  = Carbon::createFromFormat('d/m/Y', $request['tarikhMohonNOC'])->format('Y-m-d');
+        $noc->tarikh_surat_kementerian  = Carbon::createFromFormat('d/m/Y', $request['tarikhSuratMohon'])->format('Y-m-d ');
+        $noc->bahagian    = $request['inputBahagian'];
+        $noc->klasifikasi    = $request['inputKlasifikasi '];
+        $noc->kementerian    = $request['inputJabatan'];
+        $noc->tarikh_submit    = Carbon::now()->format('Y-m-d');
+        $noc->save();
+
+        return redirect()->route('kementerian.index')->with('success', 'Kementerian/Jabatan berjaya diedit!');
     }
 
     /**

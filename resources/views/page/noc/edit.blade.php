@@ -17,6 +17,9 @@
 @section('content')
     @include('layouts.template.header_compact')
     <div class="container-fluid px-4 mt-4">
+        @if ($form == 'noc_edit')
+            @include('page.noc.import.editNOC')
+        @endif
         @if ($form == 'noc_1')
             @include('page.noc.import.editSemak')
         @endif
@@ -63,6 +66,16 @@
     <script>
         $(document).ready(function() {
             $('#tarikhSemak').datepicker({
+                format: 'dd/mm/yyyy',
+            });
+        });
+        $(document).ready(function() {
+            $('#tarikhMohonNOC').datepicker({
+                format: 'dd/mm/yyyy',
+            });
+        });
+        $(document).ready(function() {
+            $('#tarikhSuratMohon').datepicker({
                 format: 'dd/mm/yyyy',
             });
         });
