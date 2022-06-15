@@ -75,7 +75,7 @@
                                         <h5><span class="badge bg-secondary">{{ $data->nama_status }}</span></h5>
                                     </td>
                                     <td class="d-flex justify-content-center">
-                                        @if ($noc->status_noc = 'noc_1')
+                                        @if((Auth::user()->peranan == 1) OR (Auth::user()->peranan == 3))
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark mx-1"
                                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
                                                 href="{{ route('noc.edit', $data->id) }}">

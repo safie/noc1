@@ -59,12 +59,12 @@
                                         <h4><span class="badge bg-secondary">{{ $data->nama_status }}</span></h4>
                                     </td>
                                     <td class="d-flex justify-content-center">
-                                        @if ($data->status_noc == 'noc_1')
+
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
                                                 href="{{ route('noc.edit', $data->id) }}">
                                                 <i data-feather="edit"></i></a>
-
+                                        @if ($data->status_noc == 'noc_1')
                                             <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
