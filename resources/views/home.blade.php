@@ -154,28 +154,13 @@
             <div class="col-lg-4 mb-4">
                 <div class="card mb-4">
                     <div class="card-header">NOC mengikut 10 Kementerian tertinggi</div>
-                    <div class="list-group list-group-flush small">
-                        <div class="list-group-item list-group-item-action">
-                            <i class="fas fa-dollar-sign fa-fw text-blue me-2"></i>
-                            Earnings Reports
-                        </div>
-                        <div class="list-group-item list-group-item-action" href="#!">
-                            <i class="fas fa-tag fa-fw text-purple me-2"></i>
-                            Average Sale Price
-                        </div>
-                        <div class="list-group-item list-group-item-action" href="#!">
-                            <i class="fas fa-mouse-pointer fa-fw text-green me-2"></i>
-                            Engagement (Clicks &amp; Impressions)
-                        </div>
-                        <div class="list-group-item list-group-item-action" href="#!">
-                            <i class="fas fa-percentage fa-fw text-yellow me-2"></i>
-                            Conversion Rate
-                        </div>
-                        <div class="list-group-item list-group-item-action" href="#!">
-                            <i class="fas fa-chart-pie fa-fw text-pink me-2"></i>
-                            Segments
-                        </div>
-                    </div>
+                    <ol class="list-group list-group-flush list-group-numbered small">
+                         @foreach ($nocJabatan as $data)
+                        <li class="list-group-item list-group-item-action">
+                            {{$data->sgktn_jabatan}}
+                        </li>
+                        @endforeach
+                    </ol>
                     <div class="card-footer position-relative border-top-0">
                         <a class="stretched-link" href="#!">
                             <div class="text-xs d-flex align-items-center justify-content-between">

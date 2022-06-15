@@ -79,6 +79,12 @@ class HomeController extends Controller
 
         $data8['nocStatus'] = $nocStatus;
 
+
+        //Senarai kementerian
+        $nocJabatan = DB::table('t_kementerian')->take(10)->get();
+
+        $data9['nocJabatan'] = $nocJabatan;
+
         return view('home')
             ->with($data1)
             ->with($data2)
@@ -87,6 +93,7 @@ class HomeController extends Controller
             ->with($data5)
             ->with($data6)
             ->with($data7)
-            ->with($data8);
+            ->with($data8)
+            ->with($data9);
     }
 }
