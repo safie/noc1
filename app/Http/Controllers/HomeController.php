@@ -66,10 +66,18 @@ class HomeController extends Controller
             ->get();
         $data6['nocModul'] = $nocModul->count();
 
+        //Senarai klasifikasi
+        $nocKlasifikasi = DB::table('t_kategori')->take(10)->get();
+        // $nocKlasifikasi = DB::table('t_noc')
+        //     ->select('t_kategori.kod','t_kategori.nama_kat')
+        //     ->leftJoin('t_kategori','t_kategori.kod','=','t_noc.klasifikasi')
+        //     ->get();
+        $data7['nocKlasifikasi'] = $nocKlasifikasi;
 
+        //Senarai status
+        $nocStatus = DB::table('t_status')->take(10)->get();
 
-
-
+        $data8['nocStatus'] = $nocStatus;
 
         return view('home')
             ->with($data1)
@@ -77,6 +85,8 @@ class HomeController extends Controller
             ->with($data3)
             ->with($data4)
             ->with($data5)
-            ->with($data6);
+            ->with($data6)
+            ->with($data7)
+            ->with($data8);
     }
 }
