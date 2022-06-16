@@ -1,19 +1,31 @@
 PROSES NOC EPU
 ================
 
--- ui -- Form Submit NOC --> klik:submit
+-- PERANAN [BAHAGIAN]
+-- ui -- Form Submit NOC
+-- key-in: form
+-- klik: submit
 -- medan -- (status_noc, tarikh_submit)
-status: NOC Baharu
+-- status NOC: Baharu
 
--- ui -- Semakan NOC --> Selesai Semakan Awal / Perlu Maklumat Tambahan dan Tarikh -> klik:simpan
+-- PERANAN [BAHAGIAN]
+-- ui -- SEMAKAN NOC (BAHAGIAN)
+-- Tindakan: Semakan NOC
+-- key-in: Selesai Semakan Awal / Perlu Maklumat Tambahan dan Tarikh
+-- klik:simpan
 -- medan -- (status_noc, tarikh_semak, status_semak)
-Status: Mohon Ulasan
+-- status NOC: Selesai semakan awal
 
--- ui -- Semakan Permohonan Ulasan --> Selesai Semakan Awal / Perlu Maklumat Tambahan dan Tarikh
+-- PERANAN [BAHAGIAN]
+-- ui -- Semakan Permohonan Ulasan oleh Bajet/Nilai
+-- Tindakan: Semakan Pemohonan Ulasan
+-- key-in: Selesai Semakan Awal / Perlu Maklumat Tambahan dan Tarikh
+-- klik:simpan
 -- medan -- (status_noc, tarikh_mohon_ulasan)
-Status: Permohonan Ulasan Disemak
+-- status: Permohonan Ulasan Disemak
 
--- ui -- Penyediaan Ulasan NOC --> Sedia Ulasan dan Tarikh
+-- ui -- Penyediaan Ulasan NOC
+-- key-in: Sedia Ulasan dan Tarikh
 -- medan -- (status_noc, tarikh_sedia_ulasan)
 Status: Penyediaan Ulasan
 
