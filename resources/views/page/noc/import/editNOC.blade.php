@@ -78,7 +78,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label class="small mb-1">Bahagian</label>
                             <select class="form-select" aria-label="Default select example" id="inputBahagian"
                                 name="inputBahagian">
@@ -90,7 +90,7 @@
                                     </option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                         <div class="mb-3">
                             <label class="small mb-1">Kementerian/Jabatan</label>
                             <select class="form-select" aria-label="Default select example" id="inputJabatan"

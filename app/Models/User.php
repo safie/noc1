@@ -49,11 +49,11 @@ class User extends Authenticatable
 
     public function bahagian()
     {
-        return $this->hasOne(Bahagian::class);
+        return $this->hasOne(Bahagian::class,'bahagian','id');
     }
 
     public function peranan()
     {
-        return $this->hasOne('Peranan::class');
+        return $this->hasOne(Peranan::class);
     }
 }

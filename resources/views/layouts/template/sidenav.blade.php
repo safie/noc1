@@ -138,6 +138,7 @@
                 @else
                     <span class="badge bg-secondary">nilai</span>
                 @endif
+                <br>
             </div>
         </div>
     </div>
