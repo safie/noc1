@@ -198,6 +198,7 @@ class NocController extends Controller
         $noc->tarikh_permohonan  = Carbon::createFromFormat('d/m/Y', $request['tarikhMohonNOC'])->format('Y-m-d');
         $noc->tarikh_surat_kementerian  = Carbon::createFromFormat('d/m/Y', $request['tarikhSuratMohon'])->format('Y-m-d ');
         // $noc->bahagian    = $request['inputBahagian'];
+        $noc->bahagian    = Auth::user()->bahagian;
         $noc->klasifikasi    = $request['inputKlasifikasi'];
         $noc->kementerian    = $request['inputJabatan'];
         // $noc->tarikh_submit    = Carbon::now()->format('Y-m-d');
@@ -228,7 +229,6 @@ class NocController extends Controller
                 't_bahagian.nama_bhgn',
                 't_bahagian.sgktn_bhgn',
                 't_status.nama_status',
-
             )
             ->where('bahagian', '=', Auth::user()->bahagian)
             ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
