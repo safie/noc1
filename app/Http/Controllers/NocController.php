@@ -110,7 +110,7 @@ class NocController extends Controller
             'tarikhMohonNOC' => 'required',
             'tarikhSuratMohon' => 'required',
             'inputKlasifikasi' => 'required',
-            'inputBahagian' => 'required',
+            // 'inputBahagian' => 'required',
             'inputJabatan' => 'required',
         ]);
 
@@ -124,7 +124,8 @@ class NocController extends Controller
             'no_rujukan'    => $request_data['inputRujukan'],
             'tarikh_permohonan'  => Carbon::createFromFormat('d/m/Y', $request_data['tarikhMohonNOC'])->format('Y-m-d'),
             'tarikh_surat_kementerian'  => Carbon::createFromFormat('d/m/Y', $request_data['tarikhSuratMohon'])->format('Y-m-d'),
-            'bahagian'    => $request_data['inputBahagian'],
+            // 'bahagian'    => $request_data['inputBahagian'],
+            'bahagian'    => Auth::user()->bahagian,
             'klasifikasi'    => $request_data['inputKlasifikasi'],
             'kementerian'    => $request_data['inputJabatan'],
             'tarikh_submit'    => Carbon::now()->format('Y-m-d'),

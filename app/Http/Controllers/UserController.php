@@ -7,6 +7,7 @@ use App\Models\Peranan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -22,11 +23,16 @@ class UserController extends Controller
 
     public function index()
     {
-        $pengguna = User::all();
-        $view_data['pengguna'] = $pengguna;
+        $pengguna = DB::table('users')
+                ->select('users.*','t_bahagian.nama_bhgn','t_bahagian.sgktn_bhgn','t_peranan.peranan as nama_peranan')
+                ->leftJoin('t_bahagian','t_bahagian.id','=','users.bahagian')
+                ->leftJoin('t_peranan','t_peranan.id','=','users.peranan')
+                ->get();
+        // $pengguna = User::all();
+        $data1['pengguna'] = $pengguna;
 
         return view('page.pengguna.index')
-            ->with($view_data);
+            ->with($data1);
     }
 
     /**
@@ -135,6 +141,7 @@ class UserController extends Controller
             'inputBahagian'                 => 'required',
 
         ]);
+
         $user = User::find($id);
         $user->name       = $request->inputNama;
         $user->email      = $request->email;

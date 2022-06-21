@@ -51,8 +51,8 @@
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $data->name }}</td>
                                     <td>{{ $data->email }}</td>
-                                    <td>{{ $data->peranan }}</td>
-                                    <td>{{ $data->bahagian }}</td>
+                                    <td>{{ $data->nama_peranan }}</td>
+                                    <td>{{ $data->nama_bhgn }} ({{ $data->sgktn_bhgn }})</td>
                                     <td>
                                         <form action="{{ route('pengguna.destroy', $data->id) }}" method="POST">
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
