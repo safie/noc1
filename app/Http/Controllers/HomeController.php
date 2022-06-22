@@ -68,10 +68,7 @@ class HomeController extends Controller
 
         //Senarai klasifikasi
         $nocKlasifikasi = DB::table('t_kategori')->take(10)->get();
-        // $nocKlasifikasi = DB::table('t_noc')
-        //     ->select('t_kategori.kod','t_kategori.nama_kat')
-        //     ->leftJoin('t_kategori','t_kategori.kod','=','t_noc.klasifikasi')
-        //     ->get();
+
         $data7['nocKlasifikasi'] = $nocKlasifikasi;
 
         //Senarai status

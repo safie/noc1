@@ -12,7 +12,7 @@
                 <!-- Dashboard info widget 1-->
                 <div class="card bg-primary border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white-50">Bilangan NOC Keseluruhan</h6>
+                        <h6 class="text-white-50">Bilangan NOC</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $noc }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
@@ -28,7 +28,7 @@
                 <!-- Dashboard info widget 2-->
                 <div class="card bg-success border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white-50">NOC dalam semakan</h6>
+                        <h6 class="text-white-50">Semakan Bahagian</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $nocSemak }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
@@ -44,7 +44,7 @@
                 <!-- Dashboard info widget 1-->
                 <div class="card bg-warning border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white-50">Penyediaan Ulasan NOC</h6>
+                        <h6 class="text-white-50">Penyediaan Ulasan</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $nocSediaUlasan }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
@@ -76,7 +76,7 @@
                 <!-- Dashboard info widget 1-->
                 <div class="card bg-black border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white-50">Penyediaan Memo NOC</h6>
+                        <h6 class="text-white-50">Penyediaan Memo</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $nocMemo }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
@@ -113,12 +113,11 @@
                     <div class="card-header">NOC mengikut 10 klasifikasi tertinggi</div>
                     <div class="list-group list-group-flush small">
                          @foreach ($nocKlasifikasi as $data)
-                        <div class="list-group-item list-group-item-action">
-                            <i class="fas fa-mouse-pointer fa-fw text-green me-2"></i>
-                            {{$data->kod}} - {{$data->nama_kat}} [jumlah]
+                        <div class="list-group-item list-group-item-action d-flex justify-content-between">
+                            <p><i class="fas fa-atom text-green me-2"></i>{{$data->nama_kat}}</p>
+                            <p>[jumlah]</p>
                         </div>
                         @endforeach
-
                     </div>
                     <div class="card-footer position-relative border-top-0">
                         <a class="stretched-link" href="#!">
@@ -135,9 +134,9 @@
                     <div class="card-header">NOC mengikut 10 status tertinggi</div>
                     <div class="list-group list-group-flush small">
                         @foreach ($nocStatus as $data)
-                        <div class="list-group-item list-group-item-action">
-                            <i class="fas fa-tag fa-fw text-purple me-2"></i>
-                            {{$data->nama_status}} - [ jumlah ]
+                        <div class="list-group-item list-group-item-action d-flex align-items-center justify-content-between"">
+                            <p><i class="fas fa-tag text-purple me-2"></i>{{$data->nama_status}}</p>
+                            <p>[ jumlah ]</p>
                         </div>
                         @endforeach
                     </div>
@@ -154,13 +153,14 @@
             <div class="col-lg-4 mb-4">
                 <div class="card mb-4">
                     <div class="card-header">NOC mengikut 10 Kementerian tertinggi</div>
-                    <ol class="list-group list-group-flush list-group-numbered small">
+                    <div class="list-group list-group-flush small">
                          @foreach ($nocJabatan as $data)
-                        <li class="list-group-item list-group-item-action">
-                            {{$data->sgktn_jabatan}}
-                        </li>
+                        <div class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+                            <p><i class="fas fa-landmark-dome text-red me-2"></i>{{$data->nama_jabatan}}</p>
+                            <p>[Jumlah]</p>
+                        </div>
                         @endforeach
-                    </ol>
+                    </div>
                     <div class="card-footer position-relative border-top-0">
                         <a class="stretched-link" href="#!">
                             <div class="text-xs d-flex align-items-center justify-content-between">

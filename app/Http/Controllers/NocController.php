@@ -64,8 +64,6 @@ class NocController extends Controller
             $data1['noc'] = $noc;
         }
 
-
-
         return view('page.noc.index')
             ->with($data1);
     }
@@ -130,9 +128,10 @@ class NocController extends Controller
             'kementerian'    => $request_data['inputJabatan'],
             'tarikh_submit'    => Carbon::now()->format('Y-m-d'),
             'status_noc'    => "noc_1",
+            'noc_id'
         ]);
 
-        return redirect()->route('noc.index')->with('success', 'Permohonan berjaya disimpan.');
+        return redirect()->route('noc.tindakan')->with('success', 'Permohonan berjaya disimpan.');
     }
 
     /**
