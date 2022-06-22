@@ -67,20 +67,38 @@ class HomeController extends Controller
         $data6['nocModul'] = $nocModul->count();
 
         //Senarai klasifikasi
-        $nocKlasifikasi = DB::table('t_kategori')->take(10)->get();
+        $nocKlasifikasi = DB::table('t_noc')
+            ->selectRaw('t_noc.klasifikasi, count(*) as jumlah' )
+            ->groupBy('t_noc.klasifikasi')
+            ->orderBy('jumlah', 'DESC')
+            ->take(10)
+            ->get();
 
         $data7['nocKlasifikasi'] = $nocKlasifikasi;
 
         //Senarai status
-        $nocStatus = DB::table('t_status')->take(10)->get();
+        $nocStatus = DB::table('t_noc')
+            ->selectRaw('t_status.nama_status, count(*) as jumlah')
+            ->leftJoin('t_status', 't_status.id_status','=', 't_noc.status_noc')
+            ->groupBy('t_status.nama_status')
+            ->orderBy('t_status.nama_status', 'ASC')
+            ->take(10)
+            ->get();
 
         $data8['nocStatus'] = $nocStatus;
 
 
         //Senarai kementerian
-        $nocJabatan = DB::table('t_kementerian')->take(10)->get();
+        $nocJabatan = DB::table('t_noc')
+            ->selectRaw('t_kementerian.nama_jabatan, count(*) as jumlah')
+            ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+            ->groupBy('t_kementerian.nama_jabatan')
+            ->orderBy('t_kementerian.nama_jabatan', 'ASC')
+            ->take(10)->get();
 
         $data9['nocJabatan'] = $nocJabatan;
+
+        // dd($data8);
 
         return view('home')
             ->with($data1)
