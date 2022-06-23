@@ -72,7 +72,7 @@
             </div>
         </li>
         <!-- Alerts Dropdown-->
-        <li class="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
+        {{-- <li class="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
             <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts"
                 href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false"><i data-feather="bell"></i></a>
@@ -192,7 +192,7 @@
                 <!-- Footer Link-->
                 <a class="dropdown-item dropdown-notifications-footer" href="#!">Read All Messages</a>
             </div>
-        </li>
+        </li> --}}
         <!-- User Dropdown-->
         <li class="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
             <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
@@ -222,7 +222,7 @@
                     </div>
                 </h6>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#!">
+                <a class="dropdown-item" href="{{ route('pengguna.show', Auth::user()->id) }}">
                     <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
                     Account
                 </a>

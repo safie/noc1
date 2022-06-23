@@ -31,6 +31,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/setting/peranan', PerananController::class);
 Route::resource('/setting/pengguna', UserController::class);
+// Route::get('/setting/pengguna/delete/{id}', [\App\Http\Controllers\UserController::class, 'delete'])->name('pengguna.delete');
 Route::resource('/setting/bahagian', BahagianController::class);
 Route::resource('/setting/kementerian', KementerianController::class);
 Route::resource('/setting/peringkat', PeringkatController::class);

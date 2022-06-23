@@ -31,7 +31,7 @@
                             <th>Emel</th>
                             <th>Peranan</th>
                             <th>Bahagian</th>
-                            <th>Tindakan</th>
+                            <th class="text-center">Tindakan</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -41,7 +41,7 @@
                             <th>Emel</th>
                             <th>Peranan</th>
                             <th>Bahagian</th>
-                            <th>Tindakan</th>
+                            <th class="text-center">Tindakan</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -53,16 +53,11 @@
                                     <td>{{ $data->email }}</td>
                                     <td>{{ $data->nama_peranan }}</td>
                                     <td>{{ $data->nama_bhgn }} ({{ $data->sgktn_bhgn }})</td>
-                                    <td>
-                                        <form action="{{ route('pengguna.destroy', $data->id) }}" method="POST">
-                                            <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                                href="{{ route('pengguna.edit', $data->id) }}"><i
-                                                    data-feather="edit"></i></a>
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-datatable btn-icon btn-transparent-dark"><i
-                                                    data-feather="trash-2"></i></button>
-                                        </form>
+                                    <td class="d-flex justify-content-center">
+                                        <a class="btn btn-datatable btn-icon btn-transparent-dark mx-1"
+                                            href="{{ route('pengguna.show', $data->id) }}">
+                                            <i data-feather="eye">Info</i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

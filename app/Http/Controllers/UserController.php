@@ -97,7 +97,18 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = db::table('users')
+            ->select('users.*', 't_bahagian.nama_bhgn', 't_bahagian.sgktn_bhgn', 't_peranan.peranan')
+            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 'users.bahagian')
+            ->leftJoin('t_peranan', 't_peranan.id', '=', 'users.peranan')
+            ->where('users.id', '=', $id)
+            ->first();
+
+        $data1['user'] = $user;
+
+        // dd($data1);
+        return view('page.pengguna.show')
+        ->with($data1);
     }
 
     /**
@@ -159,9 +170,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $user->delete();
+        // dd($id);
+        DB::table('users')->where('users.id','=',$id)->delete();
+        // $user->delete();
         return redirect()->route('pengguna.index')->with('success', 'Pengguna berjaya dipadam');
     }
 }

@@ -39,7 +39,7 @@
                             <hr>
                             <div class="row">
                                 <div>
-                                    <label>Klasifikasi : {{ $noc->klasifikasi }} - {{ $noc->nama_kat }}</label>
+                                    <label class="me-2">Klasifikasi : </label><label class="px-1 bg-primary text-white">{{ $noc->klasifikasi }} - {{ $noc->nama_kat }}</label>
                                 </div>
                             </div>
                             <hr>
