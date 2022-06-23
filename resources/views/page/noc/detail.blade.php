@@ -33,6 +33,7 @@
                                     <label class="small mb-1" for="inputTajuk">{{ $noc->nama_jabatan }}
                                         ({{ $noc->sgktn_jabatan }})</label>
                                     <h3 style="text-transform:uppercase;">{{ $noc->tajuk_permohonan }}</h3>
+                                    <label for="noc_id">ID: {{ $noc->noc_id}}{{$noc->id}}</label>
                                 </div>
                             </div>
                             <hr>

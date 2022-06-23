@@ -115,6 +115,9 @@ class NocController extends Controller
         // dd($request['tarikhMohonNOC']);
 
         $request_data = $request->all();
+        $tahun = Carbon::now()->year;
+        $bulan = Carbon::now()->month;
+
 
         Noc::create([
             'tajuk_permohonan'      => $request_data['inputTajuk'],
@@ -128,7 +131,7 @@ class NocController extends Controller
             'kementerian'    => $request_data['inputJabatan'],
             'tarikh_submit'    => Carbon::now()->format('Y-m-d'),
             'status_noc'    => "noc_1",
-            'noc_id'
+            'noc_id'    => "noc/".$tahun."/".$bulan."/".$request_data['inputKlasifikasi']."/",
         ]);
 
         return redirect()->route('noc.tindakan')->with('success', 'Permohonan berjaya disimpan.');

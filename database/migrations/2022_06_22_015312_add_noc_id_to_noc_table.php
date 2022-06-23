@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
+        Schema::table('t_noc', function (Blueprint $table) {
+            $table->string('noc_id')->nullable()->after('id');
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
+        Schema::table('t_noc', function (Blueprint $table) {
+            $table->dropColumn('noc_id');
         });
     }
 };

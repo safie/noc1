@@ -110,7 +110,7 @@
             <div class="col-lg-4 mb-4">
                 <!-- Report summary card example-->
                 <div class="card mb-4">
-                    <div class="card-header">NOC mengikut 10 klasifikasi tertinggi</div>
+                    <div class="card-header">Top 10 NOC mengikut klasifikasi</div>
                     <div class="list-group list-group-flush small">
                          @foreach ($nocKlasifikasi as $data)
                         <div class="list-group-item list-group-item-action d-flex justify-content-between">
@@ -131,7 +131,7 @@
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card mb-4">
-                    <div class="card-header">NOC mengikut 10 status tertinggi</div>
+                    <div class="card-header">Top 10 NOC mengikut status</div>
                     <div class="list-group list-group-flush small">
                         @foreach ($nocStatus as $data)
                         <div class="list-group-item list-group-item-action d-flex align-items-center justify-content-between"">
@@ -152,7 +152,7 @@
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card mb-4">
-                    <div class="card-header">NOC mengikut 10 Kementerian tertinggi</div>
+                    <div class="card-header">Top 10 NOC mengikut Kementerian</div>
                     <ol class="list-group list-group-flush list-group-numbered small">
                          @foreach ($nocJabatan as $data)
                         <li class="list-group-item list-group-item-action d-flex justify-content-between">

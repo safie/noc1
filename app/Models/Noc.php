@@ -11,6 +11,7 @@ class Noc extends Model
     protected $table        = 't_noc';
     protected $primaryKey   = 'id';
     protected $fillable     = [
+        'noc_id',
         'tajuk_permohonan',
         'tarikh_permohonan',
         'tarikh_surat_kementerian',
