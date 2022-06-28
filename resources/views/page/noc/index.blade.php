@@ -47,7 +47,7 @@
                             <th>Tarikh Permohonan</th>
                             <th>Kementerian</th>
                             <th>Bahagian</th>
-                            <th>Status</th>
+                            <th class="text-center">Status</th>
                             <th class="text-center">Tindakan</th>
                         </tr>
                     </thead>
@@ -58,7 +58,7 @@
                             <th>Tarikh Permohonan</th>
                             <th>Kementerian</th>
                             <th>Bahagian</th>
-                            <th>Status</th>
+                            <th class="text-center">Status</th>
                             <th class="text-center">Tindakan</th>
                         </tr>
                     </tfoot>
@@ -68,14 +68,15 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $data->tajuk_permohonan }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('d M, Y') }}</td>
                                     <td>{{ $data->nama_jabatan }}</td>
                                     <td>{{ $data->sgktn_bhgn }}</td>
-                                    <td>
-                                        <h5><span class="badge bg-secondary">{{ $data->nama_status }}</span></h5>
+                                    <td class="text-center">
+                                        <h5><span class="badge bg-secondary text-wrap "
+                                                style="width: 10em">{{ $data->nama_status }}</span></h5>
                                     </td>
                                     <td class="d-flex justify-content-center">
-                                        @if((Auth::user()->peranan == 1) OR (Auth::user()->peranan == 3))
+                                        @if (Auth::user()->peranan == 1 or Auth::user()->peranan == 3)
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark mx-1"
                                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
                                                 href="{{ route('noc.edit', $data->id) }}">
