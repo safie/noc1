@@ -68,8 +68,9 @@ class HomeController extends Controller
 
         //Senarai klasifikasi
         $nocKlasifikasi = DB::table('t_noc')
-            ->selectRaw('t_noc.klasifikasi, count(*) as jumlah' )
-            ->groupBy('t_noc.klasifikasi')
+            ->selectRaw('t_noc.klasifikasi, t_kategori.nama_kat, count(*) as jumlah' )
+            ->leftJoin('t_kategori','t_kategori.kod','=','t_noc.klasifikasi')
+            ->groupBy('t_noc.klasifikasi', 't_kategori.nama_kat')
             ->orderBy('jumlah', 'DESC')
             ->take(10)
             ->get();
