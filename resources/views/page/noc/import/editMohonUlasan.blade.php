@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('noc.updateSediaMemo', $noc->id) }}">
+<form method="POST" action="{{ route('noc.updateSemakUlasan', $noc->id) }}">
     @csrf
     @method('PUT')
     @if ($errors->any())
@@ -35,8 +35,7 @@
                         <div class="row">
                             <!-- Form Group (first name)-->
                             <div class="mb-3">
-                                <label class="small mb-1" for="inputFirstName">Tarikh Penyediaan Memo
-                                    Kelulusan</label>
+                                <label class="small mb-1" for="inputFirstName">Tarikh Permohonan</label>
                                 <div class="input-group input-group-joined">
                                     <span class="input-group-text">
                                         <i data-feather="calendar"></i>
@@ -44,16 +43,6 @@
                                     <input class="form-control ps-0" id="tarikh" name="tarikh"
                                         placeholder="Pilih tarikh..." autocomplete="off" />
                                 </div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="small mb-1">Pengurusan Tinggi</label>
-                                <select class="form-select" aria-label="Default select example"
-                                    id="pengurusan_tinggi" name=" pengurusan_tinggi">
-                                    <option selected disabled>Sila pilih:</option>
-                                    <option value="Ketua Pengarah">Ketua Pengarah</option>
-                                    <option value="Timbalan Ketua Pengarah">Timbalan Ketua Pengarah</option>
-                                    <option value="Pengarah">Pengarah</option>
-                                </select>
                             </div>
                         </div>
                     </div>
@@ -68,7 +57,7 @@
                         title="Data akan disimpan"></i>
                 </div>
                 <div class="card-body">
-                    <div class="d-grid"><button type="submit" class="fw-500 btn btn-primary">submit</button>
+                    <div class="d-grid"><button type="submit" class="fw-500 btn btn-primary">Simpan</button>
                     </div>
                 </div>
             </div>

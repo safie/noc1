@@ -41,7 +41,7 @@
                                     <span class="input-group-text">
                                         <i data-feather="calendar"></i>
                                     </span>
-                                    <input class="form-control ps-0" id="tarikhSemak" name="tarikhSemak"
+                                    <input class="form-control ps-0" id="tarikh" name="tarikh"
                                         placeholder="Pilih tarikh..." autocomplete="off" />
                                 </div>
                             </div>

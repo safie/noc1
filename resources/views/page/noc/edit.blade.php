@@ -27,34 +27,42 @@
         @endif
 
         @if ($form == 'noc_2')
-            @include('page.noc.import.editSemakUlasan')
+            @include('page.noc.import.editMohonUlasan')
         @endif
 
         @if ($form == 'noc_3')
-            @include('page.noc.import.editSediaUlasan')
+            @include('page.noc.import.editSemakUlasan')
         @endif
 
         @if ($form == 'noc_4')
-            @include('page.noc.import.editHantarUlasan')
+            @include('page.noc.import.editSediaUlasan')
         @endif
 
         @if ($form == 'noc_5')
-            @include('page.noc.import.editSediaMemo')
+            @include('page.noc.import.editHantarUlasan')
         @endif
 
         @if ($form == 'noc_6')
-            @include('page.noc.import.editTerimaMemo')
+            @include('page.noc.import.editSediaMemo')
         @endif
 
         @if ($form == 'noc_7')
-            @include('page.noc.import.editSediaSurat')
+            @include('page.noc.import.editHantarMemo')
         @endif
 
         @if ($form == 'noc_8')
-            @include('page.noc.import.editHantarSurat')
+            @include('page.noc.import.editTerimaMemo')
         @endif
 
         @if ($form == 'noc_9')
+            @include('page.noc.import.editSediaSurat')
+        @endif
+
+        @if ($form == 'noc_10')
+            @include('page.noc.import.editHantarSurat')
+        @endif
+
+        @if ($form == 'noc_11')
             @include('page.noc.import.editMohonModul')
         @endif
 
@@ -67,7 +75,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#tarikhSemak').datepicker({
+            $('#tarikh').datepicker({
                 format: 'dd/mm/yyyy',
             });
         });

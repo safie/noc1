@@ -131,7 +131,7 @@ class NocController extends Controller
             'kementerian'    => $request_data['inputJabatan'],
             'tarikh_submit'    => Carbon::now()->format('Y-m-d'),
             'status_noc'    => "noc_1",
-            'noc_id'    => "noc/".$tahun."/".$bulan."/".$request_data['inputKlasifikasi']."/",
+            'noc_id'    => "noc/" . $tahun . "/" . $bulan . "/" . $request_data['inputKlasifikasi'] . "/",
         ]);
 
         return redirect()->route('noc.tindakan')->with('success', 'Permohonan berjaya disimpan.');
@@ -266,204 +266,267 @@ class NocController extends Controller
             ->with($data1);
     }
 
+    //proses: noc_1
     public function editSemak(Noc $noc)
     {
-        $form = "noc_1";
-        $tajuk = "Semakan NOC baharu";
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
+        $form     = "noc_1";
+        $tajuk     = "Semakan awal NOC";
 
-    public function editSemakUlasan(Noc $noc)
-    {
-        $form = "noc_2";
-        $tajuk = "Semakan Permohonan Ulasan";
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-    public function editSediaUlasan(Noc $noc)
-    {
-        $form = "noc_3";
-        $tajuk = "Penyediaan Ulasan NOC";
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-    public function editHantarUlasan(Noc $noc)
-    {
-        $form = "noc_4";
-        $tajuk = "Semakan Permohonan Ulasan";
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
-    public function editSediaMemo(Noc $noc)
-    {
-        $form = "noc_5";
-        $tajuk = "Penyediaan Memo Kelulusan NOC";
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
-    public function editTerimaMemo(Noc $noc)
-    {
-        $form = "noc_6";
-        $tajuk = "Penyediaan Memo Kelulusan NOC";
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
-    public function editSediaSurat(Noc $noc)
-    {
-        $form = "noc_7";
-        $tajuk = "Penyediaan Surat Kelulusan Rasmi";
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
-    public function editHantarSurat(Noc $noc)
-    {
-        $form = "noc_8";
-        $tajuk = "Penhantaran Surat Kelulusan Rasmi Kepada Kementerian/Jabatan";
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
-    public function editMohonModul(Noc $noc)
-    {
-        $form = "noc_9";
-        $tajuk = "Permohonan Rasmi NOC di MyProjek";
         return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
     }
 
     public function updateSemak(Request $request, $id)
     {
+
         $request->validate([
-            'tarikhSemak' => 'required',
-            'inputStatusSemak' => 'required',
+            'tarikh'         => 'required',
+            'inputStatusSemak'     => 'required',
         ]);
 
         $semakan = Noc::find($id);
-        $semakan->tarikh_semak     = Carbon::createFromFormat('d/m/Y', $request->tarikhSemak)->format('Y-m-d');
-        $semakan->status_semak    = $request->inputStatusSemak;
-        $semakan->status_noc = "noc_2";
+        $semakan->tarikh_semak         = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_semak        = $request->inputStatusSemak;
+        $semakan->status_noc         = "noc_2";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'NOC baharu telah disemak');
+        return redirect()->route('noc.index')->with('success', 'NOC telah disemak');
+    }
+
+    //proses: noc_2 (update)
+    public function editMohonUlasan(Noc $noc)
+    {
+        $form   = "noc_2";
+        $tajuk  = "Permohonan Ulasan Bajet/Teknikal";
+
+        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
+    }
+
+    public function updateMohonUlasan(Request $request, $id)
+    {
+        $request->validate([
+            'tarikh'         => 'required',
+        ]);
+
+        $semakan = Noc::find($id);
+        $semakan->tarikh_mohon_ulasan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc             = "noc_3";
+        $semakan->save();
+
+        return redirect()->route('noc.index')->with('success', 'Ulasan telah dipohon');
+    }
+
+
+    //proses: noc_3
+    public function editSemakUlasan(Noc $noc)
+    {
+        $form     = "noc_3";
+        $tajuk     = "Semakan Permohonan Ulasan"; //Bajet@Teknikal
+
+        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
     }
 
     public function updateSemakUlasan(Request $request, $id)
     {
-
         $request->validate([
-            'tarikhSemak' => 'required',
-            'inputStatusSemak' => 'required',
+            'tarikh'         => 'required',
+            'inputStatusSemak'     => 'required',
         ]);
 
-        $semakan = Noc::find($id);
-        $semakan->tarikh_mohon_ulasan    = Carbon::createFromFormat('d/m/Y', $request->tarikhSemak)->format('Y-m-d');
+        $semakan                         = Noc::find($id);
+        $semakan->tarikh_mohon_ulasan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
         $semakan->status_semak_ulasan    = $request->inputStatusSemak;
-        $semakan->status_noc = "noc_3";
+        $semakan->status_noc             = "noc_4";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'NOC baharu telah disemak');
+        return redirect()->route('noc.index')->with('success', 'Permohonan Ulasan telah disemak');
+    }
+
+
+    //Proses: noc_4
+    public function editSediaUlasan(Noc $noc)
+    {
+        $form    = "noc_3";
+        $tajuk    = "Penyediaan Ulasan"; //Bajet@Teknikal
+
+        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
     }
 
     public function updateSediaUlasan(Request $request, $id)
     {
-
         $request->validate([
-            'tarikhSemak' => 'required',
+            'tarikh' => 'required',
         ]);
 
-        $semakan = Noc::find($id);
-        $semakan->tarikh_sedia_ulasan    = Carbon::createFromFormat('d/m/Y', $request->tarikhSemak)->format('Y-m-d');
-        $semakan->status_noc = "noc_4";
+        $semakan                         = Noc::find($id);
+        $semakan->tarikh_sedia_ulasan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc             = "noc_5";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'NOC baharu telah disemak');
+        return redirect()->route('noc.index')->with('success', 'Ulasan sedang disediakan');
+    }
+
+    //proses: noc_5
+    public function editHantarUlasan(Noc $noc)
+    {
+        $form     = "noc_5";
+        $tajuk     = "Penghantaran Ulasan"; //Bajet@Teknikal
+
+        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
     }
 
     public function updateHantarUlasan(Request $request, $id)
     {
-
         $request->validate([
-            'tarikhSemak' => 'required',
+            'tarikh' => 'required',
         ]);
 
-        $semakan = Noc::find($id);
-        $semakan->tarikh_hantar_ulasan    = Carbon::createFromFormat('d/m/Y', $request->tarikhSemak)->format('Y-m-d');
-        $semakan->status_noc = "noc_5";
+        $semakan                         = Noc::find($id);
+        $semakan->tarikh_hantar_ulasan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc            = "noc_6";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'NOC baharu telah disemak');
+        return redirect()->route('noc.index')->with('success', 'Ulasan telah dihantar');
+    }
+
+    //proses: noc_6
+    public function editSediaMemo(Noc $noc)
+    {
+        $form    = "noc_6";
+        $tajuk    = "Penyediaan Memo Kelulusan";
+
+        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
     }
 
     public function updateSediaMemo(Request $request, $id)
     {
-
         $request->validate([
-            'tarikhSemak' => 'required',
-            'pengurusan_tinggi' => 'required',
+            'tarikh'             => 'required',
+            'pengurusan_tinggi'    => 'required',
         ]);
 
-        $semakan = Noc::find($id);
-        $semakan->tarikh_sedia_memo_kelulusan = Carbon::createFromFormat('d/m/Y', $request->tarikhSemak)->format('Y-m-d');
-        $semakan->pengurusan_tinggi    = $request->pengurusan_tinggi;
-        $semakan->status_noc = "noc_6";
+        $semakan                                = Noc::find($id);
+        $semakan->tarikh_sedia_memo_kelulusan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->pengurusan_tinggi                = $request->pengurusan_tinggi;
+        $semakan->status_noc                    = "noc_7";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'NOC baharu telah disemak');
+        return redirect()->route('noc.index')->with('success', 'Memo kelulusan sedang disediakan');
+    }
+
+    //proses: noc_7 (update)
+    public function editHantarMemo(Noc $noc)
+    {
+        $form    = "noc_7";
+        $tajuk    = "Penghantaran Memo Kelulusan Kepada Pejabat KP/TKP";
+
+        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
+    }
+
+    public function updateHantarMemo(Request $request, $id)
+    {
+        $request->validate([
+            'tarikh' => 'required',
+        ]);
+
+        $semakan                                = Noc::find($id);
+        $semakan->tarikh_hantar_memo_kelulusan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc                    = "noc_8";
+        $semakan->save();
+
+        return redirect()->route('noc.index')->with('success', 'Memo kelulusan telah dihantar');
+    }
+
+    //proses: noc_8
+    public function editTerimaMemo(Noc $noc)
+    {
+        $form    = "noc_8";
+        $tajuk    = "Penerimaan Memo Kelulusan Daripada Pejabat KP/TKP";
+
+        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
     }
 
     public function updateTerimaMemo(Request $request, $id)
     {
-
         $request->validate([
-            'tarikhSemak' => 'required',
+            'tarikh' => 'required',
         ]);
 
-        $semakan = Noc::find($id);
-        $semakan->tarikh_kelulusan_pt = Carbon::createFromFormat('d/m/Y', $request->tarikhSemak)->format('Y-m-d');
-        $semakan->status_noc = "noc_7";
+        $semakan                        = Noc::find($id);
+        $semakan->tarikh_kelulusan_pt    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc            = "noc_9";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'NOC baharu telah disemak');
+        return redirect()->route('noc.index')->with('success', 'Memo kelulusan telah diterima');
+    }
+
+    //proses: noc_9
+    public function editSediaSurat(Noc $noc)
+    {
+        $form    = "noc_9";
+        $tajuk    = "Penyediaan Surat Kelulusan";
+
+        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
     }
 
     public function updateSediaSurat(Request $request, $id)
     {
-
         $request->validate([
-            'tarikhSemak' => 'required',
+            'tarikh' => 'required',
         ]);
 
-        $semakan = Noc::find($id);
-        $semakan->tarikh_sedia_surat = Carbon::createFromFormat('d/m/Y', $request->tarikhSemak)->format('Y-m-d');
-        $semakan->status_noc = "noc_8";
+        $semakan                         = Noc::find($id);
+        $semakan->tarikh_sedia_surat    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc            = "noc_10";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'NOC baharu telah disemak');
+        return redirect()->route('noc.index')->with('success', 'Surat kelulusan sedang disediakan');
+    }
+
+    //proses: noc_10
+    public function editHantarSurat(Noc $noc)
+    {
+        $form    = "noc_10";
+        $tajuk    = "Penhantaran Surat Kelulusan Kepada Kementerian";
+
+        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
     }
 
     public function updateHantarSurat(Request $request, $id)
     {
-
         $request->validate([
-            'tarikhSemak' => 'required',
+            'tarikh' => 'required',
         ]);
 
-        $semakan = Noc::find($id);
-        $semakan->tarikh_hantar_surat_lulus = Carbon::createFromFormat('d/m/Y', $request->tarikhSemak)->format('Y-m-d');
-        $semakan->status_noc = "noc_9";
+        $semakan                             = Noc::find($id);
+        $semakan->tarikh_hantar_surat_lulus    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc                = "noc_11";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'NOC baharu telah disemak');
+        return redirect()->route('noc.index')->with('success', 'Surat kelulusan rasmi telah dihantar');
+    }
+
+
+    //proses: noc_11
+    public function editMohonModul(Noc $noc)
+    {
+        $form    = "noc_11";
+        $tajuk    = "Permohonan Modul NOC MyProjek oleh Kementerian";
+
+        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
     }
 
     public function updateMohonModul(Request $request, $id)
     {
 
         $request->validate([
-            'tarikhSemak' => 'required',
+            'tarikh' => 'required',
         ]);
 
-        $semakan = Noc::find($id);
-        $semakan->tarikh_mohon_modul = Carbon::createFromFormat('d/m/Y', $request->tarikhSemak)->format('Y-m-d');
-        $semakan->status_noc = "noc_10";
+        $semakan                         = Noc::find($id);
+        $semakan->tarikh_mohon_modul    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc            = "noc_12";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'NOC baharu telah disemak');
+        return redirect()->route('noc.index')->with('success', 'Modul NOC MyProjek telah dipohon');
     }
 }
