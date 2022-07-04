@@ -21,7 +21,7 @@
             <div class="card mb-4">
                 <div class="card card-header-actions">
                     <div class="card-header">
-                        Kemasukan Maklumat
+                        Sila isi maklumat dibawah:
                         <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
                             title="input yang perlu diisi"></i>
                     </div>
@@ -29,6 +29,7 @@
                         <div class="row">
                             <div>
                                 <h3 style="text-transform:uppercase;">{{ $noc->tajuk_permohonan }}</h3>
+
                             </div>
                         </div>
                         <hr>
@@ -50,7 +51,7 @@
                                     name=" inputStatusSemak">
                                     <option selected disabled>Sila pilih:</option>
                                     <option value="lulus">Lulus Semakan</option>
-                                    <option value="semaksemula">Semakan Semula</option>
+                                    <option value="dokumen-tambahan">Perlu Maklumat Tambahan</option>
                                 </select>
                             </div>
                         </div>

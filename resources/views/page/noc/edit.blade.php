@@ -8,10 +8,12 @@
 @section('icon', 'plus-square')
 @section('tajuk', $tajuk)
 @section('button')
-    <a class="btn btn-sm btn-light text-primary" href="{{ route('noc.index') }}">
-        <i class="me-1" data-feather="arrow-left"></i>
-        Kembali Senarai
-    </a>
+    @if ($form == 'noc_edit')
+        <a class="btn btn-sm btn-light text-primary" href="{{ route('noc.index') }}">
+            <i class="me-1" data-feather="arrow-left"></i>
+            Kembali Senarai
+        </a>
+    @endif
 @endsection
 
 @section('content')
