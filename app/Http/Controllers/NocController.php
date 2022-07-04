@@ -289,7 +289,7 @@ class NocController extends Controller
         $semakan->status_noc         = "noc_2";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'NOC telah disemak');
+        return redirect()->route('noc.detail', $id)->with('success', 'NOC telah disemak');
     }
 
     //proses: noc_2 (update)
@@ -312,7 +312,7 @@ class NocController extends Controller
         $semakan->status_noc             = "noc_3";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'Ulasan telah dipohon');
+        return redirect()->route('noc.detail', $id)->with('success', 'Ulasan telah dipohon');
     }
 
 
@@ -338,7 +338,7 @@ class NocController extends Controller
         $semakan->status_noc             = "noc_4";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'Permohonan Ulasan telah disemak');
+        return redirect()->route('noc.detail', $id)->with('success', 'Permohonan Ulasan telah disemak');
     }
 
 
@@ -362,7 +362,7 @@ class NocController extends Controller
         $semakan->status_noc             = "noc_5";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'Ulasan sedang disediakan');
+        return redirect()->route('noc.detail', $id)->with('success', 'Ulasan sedang disediakan');
     }
 
     //proses: noc_5
@@ -385,7 +385,7 @@ class NocController extends Controller
         $semakan->status_noc            = "noc_6";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'Ulasan telah dihantar');
+        return redirect()->route('noc.detail', $id)->with('success', 'Ulasan telah dihantar');
     }
 
     //proses: noc_6
@@ -410,7 +410,7 @@ class NocController extends Controller
         $semakan->status_noc                    = "noc_7";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'Memo kelulusan sedang disediakan');
+        return redirect()->route('noc.detail', $id)->with('success', 'Memo kelulusan sedang disediakan');
     }
 
     //proses: noc_7 (update)
@@ -433,7 +433,7 @@ class NocController extends Controller
         $semakan->status_noc                    = "noc_8";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'Memo kelulusan telah dihantar');
+        return redirect()->route('noc.detail', $id)->with('success', 'Memo kelulusan telah dihantar');
     }
 
     //proses: noc_8
@@ -456,7 +456,7 @@ class NocController extends Controller
         $semakan->status_noc            = "noc_9";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'Memo kelulusan telah diterima');
+        return redirect()->route('noc.detail', $id)->with('success', 'Memo kelulusan telah diterima');
     }
 
     //proses: noc_9
@@ -479,7 +479,7 @@ class NocController extends Controller
         $semakan->status_noc            = "noc_10";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'Surat kelulusan sedang disediakan');
+        return redirect()->route('noc.detail', $id)->with('success', 'Surat kelulusan sedang disediakan');
     }
 
     //proses: noc_10
@@ -502,7 +502,7 @@ class NocController extends Controller
         $semakan->status_noc                = "noc_11";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'Surat kelulusan rasmi telah dihantar');
+        return redirect()->route('noc.detail', $id)->with('success', 'Surat kelulusan rasmi telah dihantar');
     }
 
 
@@ -527,6 +527,6 @@ class NocController extends Controller
         $semakan->status_noc            = "noc_12";
         $semakan->save();
 
-        return redirect()->route('noc.index')->with('success', 'Modul NOC MyProjek telah dipohon');
+        return redirect()->route('noc.detail', $id)->with('success', 'Modul NOC MyProjek telah dipohon');
     }
 }

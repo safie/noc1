@@ -17,6 +17,21 @@
 @section('content')
     @include('layouts.template.header_compact')
     <div class="container-fluid px-4 mt-4">
+        @if ($errors->any())
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Maaf, ada ralat data!</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="row gx-4">
             <div class="col-lg-5">
                 <div class="card mb-4">
@@ -33,13 +48,15 @@
                                     <label class="small mb-1" for="inputTajuk">{{ $noc->nama_jabatan }}
                                         ({{ $noc->sgktn_jabatan }})</label>
                                     <h3 style="text-transform:uppercase;">{{ $noc->tajuk_permohonan }}</h3>
-                                    <label for="noc_id">ID: {{ $noc->noc_id}}{{$noc->id}}</label>
+                                    <label for="noc_id">ID: {{ $noc->noc_id }}{{ $noc->id }}</label>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div>
-                                    <label class="me-2">Klasifikasi : </label><label class="px-1 bg-primary text-white">{{ $noc->klasifikasi }} - {{ $noc->nama_kat }}</label>
+                                    <label class="me-2">Klasifikasi : </label><label
+                                        class="px-1 bg-primary text-white">{{ $noc->klasifikasi }} -
+                                        {{ $noc->nama_kat }}</label>
                                 </div>
                             </div>
                             <hr>
@@ -86,7 +103,7 @@
                 @include('page.noc.import.status_noc')
             </div>
             <div class="col-lg-3">
-                @include('page.noc.import.tindakan_status')
+                @include('page.noc.import.tindakanModal_status')
             </div>
             @include('page.noc.import.modal')
         </div>
@@ -100,6 +117,11 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="{{ asset('sb-admin-pro/dist/js/datatables/datatables-simple-demo.js') }}"></script>
     <script>
+        $(document).ready(function() {
+            $('#tarikh').datepicker({
+                format: 'dd/mm/yyyy',
+            });
+        });
         $(document).ready(function() {
             $('#tarikhSemak1').datepicker({
                 format: 'dd/mm/yyyy',
