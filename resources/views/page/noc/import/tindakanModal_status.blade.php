@@ -48,42 +48,76 @@
         @endif
         @if ($noc->status_noc == 'noc_5')
             <div class="d-grid">
-                <a type="button" class="fw-500 btn btn-primary mb-2"
-                    href="{{ route('noc.editHantarUlasan', $noc->id) }}">Hantar Ulasan</a>
+                <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
+                    data-bs-target="#modalLulus">
+                    Hantar Ulasan
+                </button>
+                {{-- <a type="button" class="fw-500 btn btn-primary mb-2"
+                    href="{{ route('noc.editHantarUlasan', $noc->id) }}">Hantar Ulasan</a> --}}
             </div>
         @endif
         @if ($noc->status_noc == 'noc_6')
             <div class="d-grid">
-                <a type="button" class="fw-500 btn btn-primary mb-2"
-                    href="{{ route('noc.editSediaMemo', $noc->id) }}">Sedia Memo Kelulusan</a>
+                 <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
+                    data-bs-target="#modalLulus">
+                    Sedia Memo Kelulusan
+                </button>
+                {{-- <a type="button" class="fw-500 btn btn-primary mb-2"
+                    href="{{ route('noc.editSediaMemo', $noc->id) }}">Sedia Memo Kelulusan</a> --}}
             </div>
         @endif
         @if ($noc->status_noc == 'noc_7')
             <div class="d-grid">
-                <a type="button" class="fw-500 btn btn-primary mb-2"
-                    href="{{ route('noc.editTerimaMemo', $noc->id) }}">Terima Memo Kelulusan</a>
+                <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
+                    data-bs-target="#modalLulus">
+                    Hantar Memo Kelulusan
+                </button>
+                {{-- <a type="button" class="fw-500 btn btn-primary mb-2"
+                    href="{{ route('noc.editTerimaMemo', $noc->id) }}">Terima Memo Kelulusan</a> --}}
             </div>
         @endif
         @if ($noc->status_noc == 'noc_8')
             <div class="d-grid">
-                <a type="button" class="fw-500 btn btn-primary mb-2"
-                    href="{{ route('noc.editSediaSurat', $noc->id) }}">Sedia Surat Kelulusan</a>
+                <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
+                    data-bs-target="#modalLulus">
+                    Terima Memo Kelulusan
+                </button>
+                {{-- <a type="button" class="fw-500 btn btn-primary mb-2"
+                    href="{{ route('noc.editTerimaMemo', $noc->id) }}">Terima Memo Kelulusan</a> --}}
             </div>
         @endif
         @if ($noc->status_noc == 'noc_9')
             <div class="d-grid">
-                <a type="button" class="fw-500 btn btn-primary mb-2"
-                    href="{{ route('noc.editHantarSurat', $noc->id) }}">Hantar Surat Kelulusan</a>
+                <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
+                    data-bs-target="#modalLulus">
+                    Sedia Surat Kelulusan
+                </button>
+                {{-- <a type="button" class="fw-500 btn btn-primary mb-2"
+                    href="{{ route('noc.editHantarSurat', $noc->id) }}">Hantar Surat Kelulusan</a> --}}
             </div>
         @endif
         @if ($noc->status_noc == 'noc_10')
             <div class="d-grid">
-                <a type="button" class="fw-500 btn btn-primary mb-2"
-                    href="{{ route('noc.editMohonModul', $noc->id) }}">Mohon Modul NOC MyProjek</a>
+                 <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
+                    data-bs-target="#modalLulus">
+                    Hantar Surat Kelulusan
+                </button>
+                {{-- <a type="button" class="fw-500 btn btn-primary mb-2"
+                    href="{{ route('noc.editHantarSurat', $noc->id) }}">Hantar Surat Kelulusan</a> --}}
+            </div>
+        @endif
+        @if ($noc->status_noc == 'noc_11')
+            <div class="d-grid">
+                 <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
+                    data-bs-target="#modalLulus">
+                    Mohon Modul NOC
+                </button>
+                {{-- <a type="button" class="fw-500 btn btn-primary mb-2"
+                    href="{{ route('noc.editMohonModul', $noc->id) }}">Mohon Modul NOC MyProjek</a> --}}
             </div>
         @endif
 
-        @if ($noc->status_noc == 'noc_11')
+        @if ($noc->status_noc == 'noc_12')
             <div class="d-grid">
                 <h5>Selesai NOC</h5>
             </div>
