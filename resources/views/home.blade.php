@@ -111,37 +111,22 @@
                 <!-- Report summary card example-->
                 <div class="card mb-4">
                     <div class="card-header">Top 10 NOC mengikut klasifikasi</div>
-                    <ul class="list-group list-group-flush small">
-                        @foreach ($nocKlasifikasi as $data)
-                           <li class="list-group-item list-group-item-action d-flex justify-content-between py-1 px-1">
-                                <p class="p-1">{{ $data->nama_kat }} <span class="badge bg-dark">{{ $data->klasifikasi }}</span></p>
-                                <p class="bg-success text-white py-1 px-2 rounded-1">{{ $data->jumlah }}</p>
-                           </li>
-                        @endforeach
-                    </ul>
-                    <div class="card-footer position-relative border-top-0">
-                        <a class="stretched-link" href="#!">
-                            <div class="text-xs d-flex align-items-center justify-content-between">
-                                Senarai NOC
-                                <i class="fas fa-long-arrow-alt-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-                <div class="card mb-4">
-                    <div class="card-header">Top 10 NOC mengikut status</div>
-                    <div class="list-group list-group-flush small">
-                        @foreach ($nocStatus as $data)
-                            <div
-                                class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
-                                <p class="ms-1 w-100"><i class="fas fa-tag text-purple me-2"></i>{{ $data->nama_status }}
-                                </p>
-                                <p class="flex-shrink-1 bg-success text-white px-2 py-1 rounded-2 align-self-center">
-                                    {{ $data->jumlah }}</p>
-                            </div>
-                        @endforeach
+                    <div class="card-body small">
+                        <table class="table table-sm table-striped table-borderless table-hover mx-0 my-0">
+                            @foreach ($nocKlasifikasi as $data)
+                                <tr>
+                                    <td style="width: 20rem" class="text-wrap">
+                                        {{ $data->nama_kat }} <span
+                                            class="badge bg-dark">{{ $data->klasifikasi }}</span>
+                                    </td>
+                                    <td style="width: 5rem;--bs-bg-opacity: .75;"
+                                        class="align-middle bg-primary text-center text-white">
+                                        <strong>{{ $data->jumlah }}</strong>
+                                    </td>
+
+                                </tr>
+                            @endforeach
+                        </table>
                     </div>
                     <div class="card-footer position-relative border-top-0">
                         <a class="stretched-link" href="#!">
@@ -155,16 +140,54 @@
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card mb-4">
-                    <div class="card-header">Top 10 NOC mengikut Kementerian</div>
-                    <ol class="list-group list-group-flush list-group-numbered small">
-                        @foreach ($nocJabatan as $data)
-                            <li class="list-group-item list-group-item-action d-flex justify-content-between">
-                                <p class="ms-1 w-100">{{ $data->nama_jabatan }}</p>
-                                <p class="flex-shrink-1 bg-success text-white px-2 py-1 rounded-2 align-self-center">
-                                    {{ $data->jumlah }}</p>
-                            </li>
-                        @endforeach
-                    </ol>
+                    <div class="card-header text-warning">Top 10 NOC mengikut status</div>
+                    <div class="card-body small">
+                        <table class="table table-sm table-striped table-borderless table-hover mx-0 my-0">
+                            @foreach ($nocStatus as $data)
+                                <tr>
+                                    <td style="width: 20rem" class="text-wrap">
+                                        {{ $data->nama_status }}
+                                    </td>
+                                    <td style="width: 5rem;--bs-bg-opacity: .75;"
+                                        class="align-middle bg-warning text-center text-white">
+                                        <strong>{{ $data->jumlah }}</strong>
+                                    </td>
+
+                                </tr>
+                            @endforeach
+                        </table>
+                    </div>
+
+                    <div class="card-footer position-relative border-top-0">
+                        <a class="stretched-link" href="#!">
+                            <div class="text-xs d-flex align-items-center justify-content-between">
+                                Senarai NOC
+                                <i class="fas fa-long-arrow-alt-right"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card mb-4">
+                    <div class="card-header text-success">Top 10 NOC mengikut Kementerian</div>
+                    <div class="card-body small">
+                        <table class="table table-sm table-striped table-borderless table-hover mx-0 my-0">
+                            @foreach ($nocJabatan as $data)
+                                <tr>
+                                    <td style="width: 20rem" class="text-wrap">
+                                        {{ $data->nama_jabatan }}
+                                    </td>
+                                    <td style="width: 5rem;--bs-bg-opacity: .75;"
+                                        class="align-middle bg-success text-center text-white">
+                                        <strong>{{ $data->jumlah }}</strong>
+                                    </td>
+
+                                </tr>
+                            @endforeach
+                        </table>
+
+                    </div>
                     <div class="card-footer position-relative border-top-0">
                         <a class="stretched-link" href="#!">
                             <div class="text-xs d-flex align-items-center justify-content-between">

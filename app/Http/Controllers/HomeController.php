@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -25,79 +26,166 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //bilangan noc keseluruhan
-        $noc = DB::table('t_noc')
-            ->select('id')
-            ->get();
-        $data1['noc'] = $noc->count();
+        if ((Auth::user()->peranan == 2)) {
+            //bilangan noc keseluruhan
+            $noc = DB::table('t_noc')
+                ->select('id')
+                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->get();
+            $data1['noc'] = $noc->count();
 
-        //bilangan semakan noc
-        $nocSemak = DB::table('t_noc')
-            ->select('id', 'status_noc')
-            ->where('status_noc', '=', "noc_1")
-            ->get();
-        $data2['nocSemak'] = $nocSemak->count();
+            //bilangan semakan noc
+            $nocSemak = DB::table('t_noc')
+                ->select('id', 'status_noc')
+                ->where('status_noc', '=', "noc_1")
+                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->get();
+            $data2['nocSemak'] = $nocSemak->count();
 
-        //bilangan sedia ulasan
-        $nocSediaUlasan = DB::table('t_noc')
-            ->select('id', 'status_noc')
-            ->where('status_noc', '=', "noc_4")
-            ->get();
-        $data3['nocSediaUlasan'] = $nocSediaUlasan->count();
+            //bilangan sedia ulasan
+            $nocSediaUlasan = DB::table('t_noc')
+                ->select('id', 'status_noc')
+                ->where('status_noc', '=', "noc_4")
+                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->get();
+            $data3['nocSediaUlasan'] = $nocSediaUlasan->count();
 
-        //bilangan maklumat tambahan
-        $nocTambahan = DB::table('t_noc')
-            ->select('id', 'status_noc')
-            ->where('status_noc', '=', "noc_12")
-            ->get();
-        $data4['nocTambahan'] = $nocTambahan->count();
+            //bilangan maklumat tambahan
+            $nocTambahan = DB::table('t_noc')
+                ->select('id', 'status_noc')
+                ->where('status_noc', '=', "noc_12")
+                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->get();
+            $data4['nocTambahan'] = $nocTambahan->count();
 
-        //bilangan noc penyediaan memo
-        $nocMemo = DB::table('t_noc')
-            ->select('id', 'status_noc')
-            ->where('status_noc', '=', "noc_6")
-            ->get();
-        $data5['nocMemo'] = $nocMemo->count();
+            //bilangan noc penyediaan memo
+            $nocMemo = DB::table('t_noc')
+                ->select('id', 'status_noc')
+                ->where('status_noc', '=', "noc_6")
+                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->get();
+            $data5['nocMemo'] = $nocMemo->count();
 
-        //bilangan modul NOC myProjek
-        $nocModul = DB::table('t_noc')
-            ->select('id', 'status_noc')
-            ->where('status_noc', '=', "noc_10")
-            ->get();
-        $data6['nocModul'] = $nocModul->count();
+            //bilangan modul NOC myProjek
+            $nocModul = DB::table('t_noc')
+                ->select('id', 'status_noc')
+                ->where('status_noc', '=', "noc_10")
+                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->get();
+            $data6['nocModul'] = $nocModul->count();
 
-        //Senarai klasifikasi
-        $nocKlasifikasi = DB::table('t_noc')
-            ->selectRaw('t_noc.klasifikasi, t_kategori.nama_kat, count(*) as jumlah' )
-            ->leftJoin('t_kategori','t_kategori.kod','=','t_noc.klasifikasi')
-            ->groupBy('t_noc.klasifikasi', 't_kategori.nama_kat')
-            ->orderBy('jumlah', 'DESC')
-            ->take(10)
-            ->get();
+            //Senarai klasifikasi
+            $nocKlasifikasi = DB::table('t_noc')
+                ->selectRaw('t_noc.klasifikasi, t_kategori.nama_kat, count(*) as jumlah')
+                ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->groupBy('t_noc.klasifikasi', 't_kategori.nama_kat')
+                ->orderBy('jumlah', 'DESC')
+                ->take(10)
+                ->get();
 
-        $data7['nocKlasifikasi'] = $nocKlasifikasi;
+            $data7['nocKlasifikasi'] = $nocKlasifikasi;
 
-        //Senarai status
-        $nocStatus = DB::table('t_noc')
-            ->selectRaw('t_status.nama_status, count(*) as jumlah')
-            ->leftJoin('t_status', 't_status.id_status','=', 't_noc.status_noc')
-            ->groupBy('t_status.nama_status')
-            ->orderBy('t_status.nama_status', 'ASC')
-            ->take(10)
-            ->get();
+            //Senarai status
+            $nocStatus = DB::table('t_noc')
+                ->selectRaw('t_status.nama_status, count(*) as jumlah')
+                ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
+                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->groupBy('t_status.nama_status')
+                ->orderBy('t_status.nama_status', 'ASC')
+                ->take(10)
+                ->get();
 
-        $data8['nocStatus'] = $nocStatus;
+            $data8['nocStatus'] = $nocStatus;
 
 
-        //Senarai kementerian
-        $nocJabatan = DB::table('t_noc')
-            ->selectRaw('t_kementerian.nama_jabatan, count(*) as jumlah')
-            ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
-            ->groupBy('t_kementerian.nama_jabatan')
-            ->orderBy('t_kementerian.nama_jabatan', 'ASC')
-            ->take(10)->get();
+            //Senarai kementerian
+            $nocJabatan = DB::table('t_noc')
+                ->selectRaw('t_kementerian.nama_jabatan, count(*) as jumlah')
+                ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->groupBy('t_kementerian.nama_jabatan')
+                ->orderBy('t_kementerian.nama_jabatan', 'ASC')
+                ->take(10)->get();
 
-        $data9['nocJabatan'] = $nocJabatan;
+            $data9['nocJabatan'] = $nocJabatan;
+        } else {
+            //bilangan noc keseluruhan
+            $noc = DB::table('t_noc')
+                ->select('id')
+                ->get();
+            $data1['noc'] = $noc->count();
+
+            //bilangan semakan noc
+            $nocSemak = DB::table('t_noc')
+                ->select('id', 'status_noc')
+                ->where('status_noc', '=', "noc_1")
+                ->get();
+            $data2['nocSemak'] = $nocSemak->count();
+
+            //bilangan sedia ulasan
+            $nocSediaUlasan = DB::table('t_noc')
+                ->select('id', 'status_noc')
+                ->where('status_noc', '=', "noc_4")
+                ->get();
+            $data3['nocSediaUlasan'] = $nocSediaUlasan->count();
+
+            //bilangan maklumat tambahan
+            $nocTambahan = DB::table('t_noc')
+                ->select('id', 'status_noc')
+                ->where('status_noc', '=', "noc_12")
+                ->get();
+            $data4['nocTambahan'] = $nocTambahan->count();
+
+            //bilangan noc penyediaan memo
+            $nocMemo = DB::table('t_noc')
+                ->select('id', 'status_noc')
+                ->where('status_noc', '=', "noc_6")
+                ->get();
+            $data5['nocMemo'] = $nocMemo->count();
+
+            //bilangan modul NOC myProjek
+            $nocModul = DB::table('t_noc')
+                ->select('id', 'status_noc')
+                ->where('status_noc', '=', "noc_10")
+                ->get();
+            $data6['nocModul'] = $nocModul->count();
+
+            //Senarai klasifikasi
+            $nocKlasifikasi = DB::table('t_noc')
+                ->selectRaw('t_noc.klasifikasi, t_kategori.nama_kat, count(*) as jumlah')
+                ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+                ->groupBy('t_noc.klasifikasi', 't_kategori.nama_kat')
+                ->orderBy('jumlah', 'DESC')
+                ->take(10)
+                ->get();
+
+            $data7['nocKlasifikasi'] = $nocKlasifikasi;
+
+            //Senarai status
+            $nocStatus = DB::table('t_noc')
+                ->selectRaw('t_status.nama_status, count(*) as jumlah')
+                ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
+                ->groupBy('t_status.nama_status')
+                ->orderBy('t_status.nama_status', 'ASC')
+                ->take(10)
+                ->get();
+
+            $data8['nocStatus'] = $nocStatus;
+
+
+            //Senarai kementerian
+            $nocJabatan = DB::table('t_noc')
+                ->selectRaw('t_kementerian.nama_jabatan, count(*) as jumlah')
+                ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+                ->groupBy('t_kementerian.nama_jabatan')
+                ->orderBy('t_kementerian.nama_jabatan', 'ASC')
+                ->take(10)->get();
+
+            $data9['nocJabatan'] = $nocJabatan;
+        }
+
+
 
         // dd($data8);
 

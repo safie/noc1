@@ -37,11 +37,13 @@ class NocController extends Controller
                     't_kementerian.sgktn_jabatan',
                     't_bahagian.nama_bhgn',
                     't_bahagian.sgktn_bhgn',
-                    't_status.nama_status'
+                    't_status.nama_status',
+                    't_kategori.nama_kat',
                 )
                 ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
                 ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
                 ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
+                ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
                 ->get();
             $data1['noc'] = $noc;
         } else {
@@ -52,12 +54,14 @@ class NocController extends Controller
                     't_kementerian.sgktn_jabatan',
                     't_bahagian.nama_bhgn',
                     't_bahagian.sgktn_bhgn',
-                    't_status.nama_status'
+                    't_status.nama_status',
+                    't_kategori.nama_kat',
                 )
                 ->where('bahagian', '=', Auth::user()->bahagian)
                 ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
                 ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
                 ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
+                ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
                 ->get();
             // dd($noc);
             // $noc = DB::table('t_noc')->where('bahagian', '=', Auth::user()->bahagian)->get();
@@ -231,11 +235,13 @@ class NocController extends Controller
                 't_bahagian.nama_bhgn',
                 't_bahagian.sgktn_bhgn',
                 't_status.nama_status',
+                't_kategori.nama_kat',
             )
             ->where('bahagian', '=', Auth::user()->bahagian)
             ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
             ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
             ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
+            ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
             ->get();
         // dd($noc);
         // $noc = DB::table('t_noc')->where('bahagian', '=', Auth::user()->bahagian)->get();

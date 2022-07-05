@@ -27,12 +27,13 @@
                         <div class="card-body">
                             <!-- Form Group (first name)-->
                             <div class="mb-3">
-                                <h3 >{{ $user->name }}</h3>
+                                <h3>{{ $user->name }}</h3>
                                 <label class="small mb-1" for="inputEmel">{{ $user->email }}</label>
                                 <hr>
                                 <p class="mb-1">{{ $user->nama_bhgn }} ({{ $user->sgktn_bhgn }})</p>
                                 <div class="d-flex">
-                                    <p class="me-2 px-1 bg-primary text-white">Peranan: </p> <p> {{ $user->peranan }}</p>
+                                    <p class="me-2 px-1 bg-primary text-white">Peranan: </p>
+                                    <p> {{ $user->peranan }}</p>
                                 </div>
 
                             </div>
@@ -52,13 +53,14 @@
                             @csrf
                             @method('DELETE')
                             <div class="d-grid gap-2">
-                                <a class="fw-500 btn btn-primary mx-1" href="{{ route('pengguna.edit', $user->id) }}">
-                                    <i data-feather="edit"></i> Edit
-                                </a>
                                 @if (Auth::user()->peranan == 1)
+                                    <a class="fw-500 btn btn-primary mx-1" href="{{ route('pengguna.edit', $user->id) }}">
+                                        <i data-feather="edit"></i> Edit
+                                    </a>
+
                                     <button type="submit" class="fw-500 btn btn-danger mx-1">
-                                    <i data-feather="trash-2"></i> Padam
-                                </button>
+                                        <i data-feather="trash-2"></i> Padam
+                                    </button>
                                 @endif
                             </div>
                         </form>

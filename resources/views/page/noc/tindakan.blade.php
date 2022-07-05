@@ -49,7 +49,9 @@
                             @foreach ($noc as $data)
                                 <tr>
                                     <td class="text-center">{{ $loop->index + 1 }}</td>
-                                    <td style="width:25em">{{ $data->tajuk_permohonan }} <br>
+                                    <td class="text-uppercase" style="width:40em">
+                                        <strong>({{ $data->klasifikasi }}) {{ $data->nama_kat }}</strong><br>
+                                        {{ $data->tajuk_permohonan }} <br>
                                         <strong>{{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</strong>
                                     </td>
                                     <td>{{ $data->nama_jabatan }}</td>
