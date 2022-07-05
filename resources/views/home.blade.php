@@ -12,7 +12,7 @@
                 <!-- Dashboard info widget 1-->
                 <div class="card bg-primary border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white">Bilangan NOC</h6>
+                        <h6 class="text-white">Keseluruhan NOC</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $noc }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
