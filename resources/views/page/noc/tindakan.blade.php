@@ -26,23 +26,21 @@
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>No.</th>
+                            <th class="text-center">No.</th>
                             <th>Tajuk Permohonan</th>
-                            <th>Tarikh Permohonan</th>
                             <th>Kementerian</th>
                             <th>Bahagian</th>
-                            <th>Status</th>
+                            <th class="text-center">Status</th>
                             <th class="text-center">Tindakan</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>No.</th>
+                            <th class="text-center">No.</th>
                             <th>Tajuk Permohonan</th>
-                            <th>Tarikh Permohonan</th>
                             <th>Kementerian</th>
                             <th>Bahagian</th>
-                            <th>Status</th>
+                            <th class="text-center">Status</th>
                             <th class="text-center">Tindakan</th>
                         </tr>
                     </tfoot>
@@ -50,35 +48,39 @@
                         @if ($noc->count() > 0)
                             @foreach ($noc as $data)
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $data->tajuk_permohonan }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</td>
+                                    <td class="text-center">{{ $loop->index + 1 }}</td>
+                                    <td style="width:25em">{{ $data->tajuk_permohonan }} <br>
+                                        <strong>{{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</strong>
+                                    </td>
                                     <td>{{ $data->nama_jabatan }}</td>
                                     <td>{{ $data->sgktn_bhgn }}</td>
-                                    <td>
-                                        <h4><span class="badge bg-secondary">{{ $data->nama_status }}</span></h4>
+                                    <td class="text-center">
+                                        <h4><span class="badge bg-secondary text-wrap">{{ $data->nama_status }}</span>
+                                        </h4>
                                     </td>
-                                    <td class="d-flex justify-content-center">
-
+                                    <td>
+                                        <div class="d-flex justify-content-center">
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
                                                 href="{{ route('noc.edit', $data->id) }}">
                                                 <i data-feather="edit"></i></a>
-                                        @if ($data->status_noc == 'noc_1')
-                                            <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit"
-                                                    class="btn btn-datatable btn-icon btn-transparent-dark"><i
-                                                        data-feather="trash-2"></i></button>
-                                            </form>
-                                            <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                                href="{{ route('noc.detail', $data->id) }}"><i data-feather="eye"></i></a>
-                                        @else
-                                            <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                                href="{{ route('noc.detail', $data->id) }}"><i
-                                                    data-feather="eye"></i></a>
-                                        @endif
+                                            @if ($data->status_noc == 'noc_1')
+                                                <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="btn btn-datatable btn-icon btn-transparent-dark"><i
+                                                            data-feather="trash-2"></i></button>
+                                                </form>
+                                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                                                    href="{{ route('noc.detail', $data->id) }}"><i
+                                                        data-feather="eye"></i></a>
+                                            @else
+                                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                                                    href="{{ route('noc.detail', $data->id) }}"><i
+                                                        data-feather="eye"></i></a>
+                                            @endif
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
