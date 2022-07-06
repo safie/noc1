@@ -6,7 +6,141 @@
     </div>
     <div class="card-body">
         <div class="mb-4">
-            <ol class="list-group list-group-flush">
+            <table class="table table-sm table-striped table-borderless table-hover mx-0 my-0 small">
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-M-Y') }}</td>
+                        <td class="bg-primary text-white" style="--bs-bg-opacity: .75;">NOC Baharu</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">{{ \Carbon\Carbon::parse($noc->tarikh_semak)->format('d-M-Y') }}</td>
+                        <td class="bg-primary text-white" style="--bs-bg-opacity: .75;">Lulus Semakan Bahagian</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-danger text-white" style="--bs-bg-opacity: .75;">Dokumen Tambahan 1</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-warning text-white" style="--bs-bg-opacity: .75;">Permohonan Ulasan Bajet</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-info text-white" style="--bs-bg-opacity: .75;">Permohonan Ulasan Teknikal</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-danger text-white" style="--bs-bg-opacity: .75;">Dokumen Tambahan Bajet</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-danger text-white" style="--bs-bg-opacity: .75;">Dokumen Tambahan Teknikal</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-warning text-white" style="--bs-bg-opacity: .75;">Semakan BBP</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-info text-white" style="--bs-bg-opacity: .75;">Semakan BPN</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-warning text-white" style="--bs-bg-opacity: .75;">Penyediaan Ulasan Bajet</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-info text-white" style="--bs-bg-opacity: .75;">Penyediaan Ulasan Teknikal</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-warning text-white" style="--bs-bg-opacity: .75;">Pengemukaan Ulasan Bajet</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-info text-white" style="--bs-bg-opacity: .75;">Pengemukaan Ulasan Teknikal</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-primary text-white" style="--bs-bg-opacity: .75;">Penyediaan Memo</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-primary text-white" style="--bs-bg-opacity: .75;">Penghantaran Memo</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-primary text-white" style="--bs-bg-opacity: .75;">Terima Memo</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-primary text-white" style="--bs-bg-opacity: .75;">Penyediaan Surat</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-primary text-white" style="--bs-bg-opacity: .75;">Penghantaran Surat</td>
+                    </tr>
+                @endif
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-M-Y') }}</td>
+                        <td class="bg-primary text-white" style="--bs-bg-opacity: .75;">Mohon Modul NOC</td>
+                    </tr>
+                @endif
+            </table>
+            {{-- <ol class="list-group list-group-flush">
 
                 @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
                     <li class="list-group-item d-flex justify-content-start">
@@ -129,7 +263,7 @@
                         </div>
                     </li>
                 @endif
-            </ol>
+            </ol> --}}
         </div>
     </div>
 </div>
