@@ -23,6 +23,10 @@
                                     <input class="form-control ps-0" id="tarikh" name="tarikh"
                                         placeholder="Pilih tarikh..." autocomplete="off" />
                                 </div>
+                                <div>
+                                    <input class="form-control" id="klasifikasi" name="klasifikasi" type="text"
+                                        placeholder="{{$noc->klasifikasi}}" value="{{$noc->klasifikasi}}" hidden/>
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label class="small mb-1">Status</label>

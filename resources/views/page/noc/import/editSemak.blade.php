@@ -44,6 +44,7 @@
                                     <input class="form-control ps-0" id="tarikh" name="tarikh"
                                         placeholder="Pilih tarikh..." autocomplete="off" />
                                 </div>
+
                             </div>
                             <div class="mb-3">
                                 <label class="small mb-1">Status</label>

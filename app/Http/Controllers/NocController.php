@@ -324,15 +324,29 @@ class NocController extends Controller
     public function updateSemak(Request $request, $id)
     {
 
+        $flow = DB::table('t_noc')
+            ->select('t_kategori.flow')
+            ->leftJoin('t_kategori','t_kategori.kod','=','t_noc.klasifikasi')
+            ->where('t_noc.id','=',$id)
+            ->first();
+
+        if ($flow->flow == 'flow1') {
+            $dataFlow = "noc_7";
+        } else {
+            $dataFlow = "noc_2";
+        }
+
         $request->validate([
             'tarikh'         => 'required',
             'inputStatusSemak'     => 'required',
         ]);
 
+        // dd($dataFlow);
+
         $semakan = Noc::find($id);
         $semakan->tarikh_semak         = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
         $semakan->status_semak        = $request->inputStatusSemak;
-        $semakan->status_noc         = "noc_2";
+        $semakan->status_noc         = $dataFlow;
         $semakan->save();
 
         return redirect()->route('noc.detail', $id)->with('success', 'NOC telah disemak');
