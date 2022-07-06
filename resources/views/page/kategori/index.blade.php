@@ -30,6 +30,7 @@
                             <th>Nama Klasifikasi</th>
                             <th>Kod Klasifikasi</th>
                             <th>Kod MyProjek</th>
+                            <th>Flow</th>
                             <th class="text-center">Tindakan</th>
                         </tr>
                     </thead>
@@ -39,6 +40,7 @@
                             <th>Nama kategori</th>
                             <th>Kod Kategori</th>
                             <th>Kod MyProjek</th>
+                            <th>Flow</th>
                             <th class="text-center">Tindakan</th>
                         </tr>
                     </tfoot>
@@ -50,6 +52,7 @@
                                     <td>{{ $data->nama_kat }}</td>
                                     <td>{{ $data->kod }}</td>
                                     <td>{{ $data->kod_myprojek }}</td>
+                                    <td>{{ $data->flow }}</td>
                                     <td class="text-center">
                                         <form action="{{ route('kategori.destroy', $data->id) }}" method="POST">
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
@@ -60,7 +63,8 @@
                                             </a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-datatable btn-icon btn-transparent-dark"><i
+                                            <button type="submit"
+                                                class="btn btn-datatable btn-icon btn-transparent-dark"><i
                                                     data-feather="trash-2"></i></button>
                                         </form>
                                     </td>

@@ -8,7 +8,7 @@
         <div class="mb-4">
             <ol class="list-group list-group-flush">
 
-                @if ($noc->tarikh_submit != null)
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
                     <li class="list-group-item d-flex justify-content-start">
                         <div class="small ms-3">
                             {{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</div>
@@ -18,7 +18,7 @@
                     </li>
                 @endif
 
-                @if ($noc->tarikh_semak != null)
+                @if ($noc->status_noc == 'noc_2')
                     <li class="list-group-item d-flex justify-content-start">
                         <div class="small ms-3">
                             {{ \Carbon\Carbon::parse($noc->tarikh_semak)->format('d-m-Y') }}</div>
@@ -38,7 +38,7 @@
                     </li>
                 @endif
 
-                @if ($noc->tarikh_mohon_ulasan != null)
+                @if ($noc->status_noc == 'noc_3')
                     <li class="list-group-item d-flex justify-content-start">
                         <div class="small ms-3">
                             {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan)->format('d-m-Y') }}</div>
@@ -48,7 +48,7 @@
                     </li>
                 @endif
 
-                @if ($noc->tarikh_sedia_ulasan != null && $noc->status_noc == 'noc_14')
+                @if ($noc->status_noc == 'noc_14')
                     <li class="list-group-item d-flex justify-content-start">
                         <div class="small ms-3 ">
                             {{ \Carbon\Carbon::parse($noc->tarikh_semak)->format('d-m-Y') }}</div>
@@ -58,7 +58,7 @@
                     </li>
                 @endif
 
-                @if ($noc->tarikh_sedia_ulasan != null)
+                @if ($noc->status_noc == 'noc_4')
                     <li class="list-group-item d-flex justify-content-start">
                         <div class="small ms-3">
                             {{ \Carbon\Carbon::parse($noc->tarikh_sedia_ulasan)->format('d-m-Y') }}</div>
@@ -68,7 +68,7 @@
                     </li>
                 @endif
 
-                @if ($noc->tarikh_hantar_ulasan != null)
+                @if ($noc->status_noc == 'noc_5')
                     <li class="list-group-item d-flex justify-content-start">
                         <div class="small ms-3">
                             {{ \Carbon\Carbon::parse($noc->tarikh_hantar_ulasan)->format('d-m-Y') }}</div>
@@ -78,7 +78,7 @@
                     </li>
                 @endif
 
-                @if ($noc->tarikh_sedia_memo_kelulusan != null)
+                @if ($noc->status_noc == 'noc_6')
                     <li class="list-group-item d-flex justify-content-start">
                         <div class="small ms-3">
                             {{ \Carbon\Carbon::parse($noc->tarikh_sedia_memo_kelulusan)->format('d-m-Y') }}
@@ -88,7 +88,7 @@
                     </li>
                 @endif
 
-                @if ($noc->tarikh_kelulusan_pt != null)
+                @if ($noc->status_noc == 'noc_7')
                     <li class="list-group-item d-flex justify-content-start">
                         <div class="small ms-3 ">
                             {{ \Carbon\Carbon::parse($noc->tarikh_kelulusan_pt)->format('d-m-Y') }}
@@ -100,7 +100,7 @@
                     </li>
                 @endif
 
-                @if ($noc->tarikh_sedia_surat != null)
+                @if ($noc->status_noc == 'noc_8')
                     <li class="list-group-item d-flex justify-content-start">
                         <div class="small ms-3">
                             {{ \Carbon\Carbon::parse($noc->tarikh_sedia_surat)->format('d-m-Y') }}</div>
@@ -110,7 +110,7 @@
                     </li>
                 @endif
 
-                @if ($noc->tarikh_hantar_surat_lulus != null)
+                @if ($noc->status_noc == 'noc_9')
                     <li class="list-group-item d-flex justify-content-start">
                         <div class="small ms-3">
                             {{ \Carbon\Carbon::parse($noc->tarikh_hantar_surat_lulus)->format('d-m-Y') }}

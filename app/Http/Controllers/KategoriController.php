@@ -50,6 +50,7 @@ class KategoriController extends Controller
             'inputNamaKategori' => 'required',
             'inputKod' => 'required',
             'inputMyProjek' => 'required',
+            'inputFlow' => 'required',
 
         ]);
 
@@ -59,6 +60,7 @@ class KategoriController extends Controller
             'nama_kat'      => $request_data['inputNamaKategori'],
             'kod'           => $request_data['inputKod'],
             'kod_myprojek'  => $request_data['inputMyProjek'],
+            'flow'          => $request_data['inputFlow'],
         ]);
 
         return redirect()->route('kategori.index')->with('success', 'Kategori berjaya disimpan.');
@@ -100,12 +102,14 @@ class KategoriController extends Controller
             'inputNamaKategori' => 'required',
             'inputKod' => 'required',
             'inputMyProjek' => 'required',
+            'inputFlow' => 'required',
         ]);
 
         $kategori = Kategori::find($id);
         $kategori->nama_kat       = $request->inputNamaKategori;
         $kategori->kod            = $request->inputKod;
         $kategori->kod_myprojek   = $request->inputMyProjek;
+        $kategori->flow   = $request->inputFlow;
         $kategori->save();
 
         return redirect()->route('kategori.index')->with('success', 'Kategori berjaya diedit!');

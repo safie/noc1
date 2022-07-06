@@ -40,15 +40,16 @@
                         <div class="card card-header-actions">
                             <div class="card-header">
                                 Kemasukan data
-                                <i class="text-muted" data-feather="info" data-bs-toggle="tooltip"
-                                    data-bs-placement="left" title="input yang perlu diisi"></i>
+                                <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
+                                    title="input yang perlu diisi"></i>
                             </div>
                             <div class="card-body">
                                 <!-- Form Group (first name)-->
                                 <div class="mb-3">
                                     <label class="small mb-1" for="inputNamaKategori">Nama kategori</label>
                                     <input class="form-control" id="inputNamaKategori" name="inputNamaKategori"
-                                       value="{{ $kategori->nama_kat }}" type="text" placeholder="Masukkan nama kategori..." />
+                                        value="{{ $kategori->nama_kat }}" type="text"
+                                        placeholder="Masukkan nama kategori..." />
                                 </div>
                                 <div class="mb-3">
                                     <label class="small mb-1" for="inputKod">Kod</label>
@@ -59,6 +60,11 @@
                                     <label class="small mb-1" for="inputMyProjek">Kod MyProjek</label>
                                     <input class="form-control" id="inputMyProjek" name="inputMyProjek" type="text"
                                         value="{{ $kategori->kod_myprojek }}" placeholder="Masukkan Kod MyProjek..." />
+                                </div>
+                                <div class="mb-3">
+                                    <label class="small mb-1" for="inputMyProjek">Flow</label>
+                                    <input class="form-control" id="inputFlow" name="inputFlow" type="text"
+                                        value="{{ $kategori->flow }}" placeholder="Masukkan Flow Proses" />
                                 </div>
                             </div>
                         </div>
