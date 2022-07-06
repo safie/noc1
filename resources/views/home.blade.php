@@ -111,13 +111,15 @@
                 <!-- Report summary card example-->
                 <div class="card mb-4">
                     <div class="card-header">Top 10 NOC mengikut klasifikasi</div>
-                    <div class="card-body small">
+                    <div class="card-body">
                         <table class="table table-sm table-striped table-borderless table-hover mx-0 my-0">
                             @foreach ($nocKlasifikasi as $data)
                                 <tr>
-                                    <td style="width: 20rem" class="text-wrap">
-                                        {{ $data->nama_kat }} <span
-                                            class="badge bg-dark">{{ $data->klasifikasi }}</span>
+                                    <td class="align-middle text-center">
+                                        <span class="badge bg-dark">{{ $data->klasifikasi }}</span>
+                                    </td>
+                                    <td style="width: 20rem" class="text-wrap small">
+                                        {{ $data->nama_kat }}
                                     </td>
                                     <td style="width: 5rem;--bs-bg-opacity: .75;"
                                         class="align-middle bg-primary text-center text-white">
