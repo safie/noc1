@@ -5,7 +5,7 @@
             title="Tindakan NOC yang diperlukan"></i>
     </div>
     <div class="card-body text-center">
-        @if ($noc->status_noc == 'noc_1')
+        @if (($noc->status_noc == 'noc_1') AND (Auth::user()->peranan == 2))
             <div class="d-grid">
                 <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">
@@ -16,7 +16,7 @@
                     href="{{ route('noc.editSemak', $noc->id) }}">Semak NOC</button> --}}
             </div>
         @endif
-        @if ($noc->status_noc == 'noc_2')
+        @if (($noc->status_noc == 'noc_2') AND (Auth::user()->peranan == 2))
             <div class="d-grid">
                 <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">
@@ -26,7 +26,7 @@
                     href="{{ route('noc.editMohonUlasan', $noc->id) }}">Mohon Ulasan</a> --}}
             </div>
         @endif
-        @if ($noc->status_noc == 'noc_3')
+        @if (($noc->status_noc == 'noc_3') AND (Auth::user()->peranan == 3))
             <div class="d-grid">
                 <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">
@@ -36,7 +36,7 @@
                     href="{{ route('noc.editSemakUlasan', $noc->id) }}">Semak Permohonan</a> --}}
             </div>
         @endif
-        @if ($noc->status_noc == 'noc_4')
+        @if (($noc->status_noc == 'noc_4') AND (Auth::user()->peranan == 3))
             <div class="d-grid">
                 <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">
@@ -46,7 +46,7 @@
                     href="{{ route('noc.editSediaUlasan', $noc->id) }}">Sedia Ulasan</a> --}}
             </div>
         @endif
-        @if ($noc->status_noc == 'noc_5')
+        @if (($noc->status_noc == 'noc_5') AND (Auth::user()->peranan == 3))
             <div class="d-grid">
                 <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">
@@ -56,7 +56,7 @@
                     href="{{ route('noc.editHantarUlasan', $noc->id) }}">Hantar Ulasan</a> --}}
             </div>
         @endif
-        @if ($noc->status_noc == 'noc_6')
+        @if (($noc->status_noc == 'noc_6') AND (Auth::user()->peranan == 2))
             <div class="d-grid">
                  <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">
@@ -66,7 +66,7 @@
                     href="{{ route('noc.editSediaMemo', $noc->id) }}">Sedia Memo Kelulusan</a> --}}
             </div>
         @endif
-        @if ($noc->status_noc == 'noc_7')
+        @if (($noc->status_noc == 'noc_7') AND (Auth::user()->peranan == 2))
             <div class="d-grid">
                 <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">
@@ -76,7 +76,7 @@
                     href="{{ route('noc.editTerimaMemo', $noc->id) }}">Terima Memo Kelulusan</a> --}}
             </div>
         @endif
-        @if ($noc->status_noc == 'noc_8')
+        @if (($noc->status_noc == 'noc_8') AND (Auth::user()->peranan == 2))
             <div class="d-grid">
                 <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">
@@ -86,7 +86,7 @@
                     href="{{ route('noc.editTerimaMemo', $noc->id) }}">Terima Memo Kelulusan</a> --}}
             </div>
         @endif
-        @if ($noc->status_noc == 'noc_9')
+        @if (($noc->status_noc == 'noc_9') AND (Auth::user()->peranan == 2))
             <div class="d-grid">
                 <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">
@@ -96,7 +96,7 @@
                     href="{{ route('noc.editHantarSurat', $noc->id) }}">Hantar Surat Kelulusan</a> --}}
             </div>
         @endif
-        @if ($noc->status_noc == 'noc_10')
+        @if (($noc->status_noc == 'noc_10') AND (Auth::user()->peranan == 2))
             <div class="d-grid">
                  <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">
@@ -106,7 +106,7 @@
                     href="{{ route('noc.editHantarSurat', $noc->id) }}">Hantar Surat Kelulusan</a> --}}
             </div>
         @endif
-        @if ($noc->status_noc == 'noc_11')
+        @if (($noc->status_noc == 'noc_11') AND (Auth::user()->peranan == 2))
             <div class="d-grid">
                  <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">

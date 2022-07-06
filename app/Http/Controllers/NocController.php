@@ -227,24 +227,64 @@ class NocController extends Controller
 
     public function tindakan()
     {
-        $noc = DB::table('t_noc')
-            ->select(
-                't_noc.*',
-                't_kementerian.nama_jabatan',
-                't_kementerian.sgktn_jabatan',
-                't_bahagian.nama_bhgn',
-                't_bahagian.sgktn_bhgn',
-                't_status.nama_status',
-                't_kategori.nama_kat',
-            )
-            ->where('bahagian', '=', Auth::user()->bahagian)
-            ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
-            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
-            ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
-            ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
-            ->get();
+        if (Auth::user()->peranan == 2) {
+            $noc = DB::table('t_noc')
+                ->select(
+                    't_noc.*',
+                    't_kementerian.nama_jabatan',
+                    't_kementerian.sgktn_jabatan',
+                    't_bahagian.nama_bhgn',
+                    't_bahagian.sgktn_bhgn',
+                    't_status.nama_status',
+                    't_kategori.nama_kat',
+                )
+                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->whereIn('status_noc', ['noc_1', 'noc_2', 'noc_7', 'noc_8', 'noc_9', 'noc_10', 'noc_11', 'noc_12', 'noc_13', 'noc_14'])
+                ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+                ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+                ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
+                ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+                ->get();
+
+        } else if ((Auth::user()->peranan == 3) OR (Auth::user()->peranan == 4)) {
+            $noc = DB::table('t_noc')
+                ->select(
+                    't_noc.*',
+                    't_kementerian.nama_jabatan',
+                    't_kementerian.sgktn_jabatan',
+                    't_bahagian.nama_bhgn',
+                    't_bahagian.sgktn_bhgn',
+                    't_status.nama_status',
+                    't_kategori.nama_kat',
+                )
+                ->whereIn('status_noc', ['noc_3', 'noc_4', 'noc_5'])
+                ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+                ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+                ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
+                ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+                ->get();
+
+        } else {
+            $noc = DB::table('t_noc')
+                ->select(
+                    't_noc.*',
+                    't_kementerian.nama_jabatan',
+                    't_kementerian.sgktn_jabatan',
+                    't_bahagian.nama_bhgn',
+                    't_bahagian.sgktn_bhgn',
+                    't_status.nama_status',
+                    't_kategori.nama_kat',
+                )
+
+                ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+                ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+                ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
+                ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+                ->get();
+        }
         // dd($noc);
         // $noc = DB::table('t_noc')->where('bahagian', '=', Auth::user()->bahagian)->get();
+
         $data1['noc'] = $noc;
         return view('page.noc.tindakan')
             ->with($data1);

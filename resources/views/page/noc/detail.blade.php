@@ -103,7 +103,9 @@
                 @include('page.noc.import.status_noc')
             </div>
             <div class="col-lg-3">
-                @include('page.noc.import.tindakanModal_status')
+
+                    @include('page.noc.import.tindakanModal_status')
+
             </div>
             @include('page.noc.import.modal')
         </div>
