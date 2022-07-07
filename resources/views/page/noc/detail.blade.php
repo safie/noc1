@@ -20,9 +20,9 @@
         @if ($errors->any())
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" aria-label="Close">
                         <strong>Maaf, ada ralat data!</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" a></button>
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -92,8 +92,7 @@
                             </div>
                             <hr>
                             <div class="row">
-                                <label>Status NOC : <span class="badge bg-success">{{ $noc->nama_status }}
-                                    </span></label>
+                                <label>Status NOC : <span class="badge bg-success">{{ $noc->nama_status }}</span></label>
                             </div>
                         </div>
                     </div>
@@ -104,7 +103,7 @@
             </div>
             <div class="col-lg-3">
 
-                    @include('page.noc.import.tindakanModal_status')
+                @include('page.noc.import.tindakanModal_status')
 
             </div>
             @include('page.noc.import.modal')
@@ -122,19 +121,19 @@
         $(document).ready(function() {
             $('#tarikh').datepicker({
                 format: 'dd/mm/yyyy',
-                 autoclose:true
+                autoclose: true
             });
         });
         $(document).ready(function() {
             $('#tarikhSemak1').datepicker({
                 format: 'dd/mm/yyyy',
-                 autoclose:true
+                autoclose: true
             });
         });
         $(document).ready(function() {
             $('#tarikhSemak2').datepicker({
                 format: 'dd/mm/yyyy',
-                 autoclose:true
+                autoclose: true
             });
         });
     </script>

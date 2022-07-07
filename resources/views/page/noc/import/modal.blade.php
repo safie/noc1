@@ -3,16 +3,20 @@
     data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            @if (($noc->status_noc == 'noc_1') OR ($noc->status_noc == 'noc_17'))
+            @if ($noc->status_noc == 'noc_1' or $noc->status_noc == 'noc_17')
                 @include('page.noc.import.modal.01Semak')
             @endif
             @if ($noc->status_noc == 'noc_2')
                 @include('page.noc.import.modal.02MohonUlasan')
             @endif
             @if ($noc->status_noc == 'noc_3')
-                @include('page.noc.import.modal.03SemakUlasan')
+                @include('page.noc.import.modal.03SemakUlasanBajet')
             @endif
+
             @if ($noc->status_noc == 'noc_4')
+                @include('page.noc.import.modal.03SemakUlasanBajetTeknikal')
+            @endif
+            @if ($noc->status_noc == 'noc_114')
                 @include('page.noc.import.modal.04SediaUlasan')
             @endif
             @if ($noc->status_noc == 'noc_5')

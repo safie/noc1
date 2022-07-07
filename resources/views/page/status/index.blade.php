@@ -17,7 +17,7 @@
     @include('layouts.template.header_compact')
     <div class="container-fluid px-4">
         @if ($message = Session::get('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" aria-label="Close">
                 <p>{{ $message }}</p>
             </div>
         @endif
@@ -54,7 +54,8 @@
                                                     data-feather="edit"></i></a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-datatable btn-icon btn-transparent-dark"><i
+                                            <button type="submit"
+                                                class="btn btn-datatable btn-icon btn-transparent-dark"><i
                                                     data-feather="trash-2"></i></button>
                                         </form>
                                     </td>

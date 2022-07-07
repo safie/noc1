@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('noc.updateSediaUlasan', $noc->id) }}">
+<form method="POST" action="{{ route('noc.updateSemakUlasanBajetTeknikal', $noc->id) }}">
     @csrf
     @method('PUT')
     <div class="modal-header">
@@ -16,14 +16,21 @@
                     autocomplete="off" />
             </div>
         </div>
+        <div class="mb-3">
+            <label class="small mb-1">Status</label>
+            <select class="form-select" aria-label="Default select example" id="inputStatusSemak"
+                name=" inputStatusSemak">
+                <option selected disabled>Sila pilih:</option>
+                <option value="lulus">Lulus Semakan</option>
+                <option value="dokumen-tambahan">Perlu Maklumat Tambahan</option>
+            </select>
+        </div>
         <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Tutup</button>
             <button class="btn btn-primary" type="submit">simpan</button>
         </div>
 </form>
-
-
-<form method="POST" action="{{ route('noc.updateSediaUlasan', $noc->id) }}">
+<form method="POST" action="{{ route('noc.updateSemakUlasan', $noc->id) }}">
     @csrf
     @method('PUT')
 
@@ -40,7 +47,7 @@
                         <div class="row">
                             <!-- Form Group (first name)-->
                             <div class="mb-3">
-                                <label class="small mb-1" for="inputFirstName">Tarikh Penyediaan Ulasan</label>
+                                <label class="small mb-1" for="inputFirstName">Tarikh Semakan Permohonan</label>
                                 <div class="input-group input-group-joined">
                                     <span class="input-group-text">
                                         <i data-feather="calendar"></i>
@@ -49,7 +56,15 @@
                                         placeholder="Pilih tarikh..." autocomplete="off" />
                                 </div>
                             </div>
-
+                            <div class="mb-3">
+                                <label class="small mb-1">Status</label>
+                                <select class="form-select" aria-label="Default select example" id="inputStatusSemak"
+                                    name=" inputStatusSemak">
+                                    <option selected disabled>Sila pilih:</option>
+                                    <option value="lulus">Lulus Permohonan</option>
+                                    <option value="dokumen_tambahan">Perlu Dokumen Tambahan</option>
+                                </select>
+                            </div>
                             <div class="d-grid gap-2">
                                 <button type="submit" class="fw-500 btn btn-primary">Simpan</button>
                                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>

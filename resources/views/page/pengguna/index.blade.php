@@ -17,7 +17,7 @@
     @include('layouts.template.header_compact')
     <div class="container-fluid px-4">
         @if ($message = Session::get('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show" role="alert" aria-label="Close">
                 <p>{{ $message }}</p>
             </div>
         @endif

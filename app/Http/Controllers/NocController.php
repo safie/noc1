@@ -245,8 +245,7 @@ class NocController extends Controller
                 ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
                 ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
                 ->get();
-
-        } else if ((Auth::user()->peranan == 3) OR (Auth::user()->peranan == 4)) {
+        } else if ((Auth::user()->peranan == 3) or (Auth::user()->peranan == 4)) {
             $noc = DB::table('t_noc')
                 ->select(
                     't_noc.*',
@@ -263,7 +262,6 @@ class NocController extends Controller
                 ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
                 ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
                 ->get();
-
         } else {
             $noc = DB::table('t_noc')
                 ->select(
@@ -326,12 +324,12 @@ class NocController extends Controller
 
         $flow = DB::table('t_noc')
             ->select('t_kategori.flow')
-            ->leftJoin('t_kategori','t_kategori.kod','=','t_noc.klasifikasi')
-            ->where('t_noc.id','=',$id)
+            ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+            ->where('t_noc.id', '=', $id)
             ->first();
 
         if ($flow->flow == 'flow1') {
-            $dataFlow = "noc_7";
+            $dataFlow = "noc_11";
         } else {
             $dataFlow = "noc_2";
         }
@@ -345,11 +343,11 @@ class NocController extends Controller
 
         $semakan = Noc::find($id);
 
-        if($request->inputStatusSemak == "dokumen-tambahan"){
+        if ($request->inputStatusSemak == "dokumen-tambahan") {
             $semakan->tarikh_dokumen_tambahan = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
             $semakan->status_noc         = "noc_17";
             $semakan->status_semak        = $request->inputStatusSemak;
-        } else if($request->inputStatusSemak == "lulus"){
+        } else if ($request->inputStatusSemak == "lulus") {
             $semakan->tarikh_semak = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
             $semakan->status_noc         = $dataFlow;
             $semakan->status_semak        = $request->inputStatusSemak;
@@ -371,14 +369,29 @@ class NocController extends Controller
 
     public function updateMohonUlasanBajet(Request $request, $id)
     {
+        $flow = DB::table('t_noc')
+            ->select('t_kategori.flow')
+            ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+            ->where('t_noc.id', '=', $id)
+            ->first();
+
         $request->validate([
             'tarikh'         => 'required',
         ]);
 
+        // dd($flow);
+
         $semakan = Noc::find($id);
-        $semakan->tarikh_mohon_ulasan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-        $semakan->status_noc             = "noc_3";
-        $semakan->save();
+        if ($flow->flow == "flow2") {
+            $semakan->tarikh_mohon_ulasan = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+            $semakan->status_noc = "noc_3";
+            $semakan->save();
+        } else if ($flow->flow == "flow3") {
+            $semakan->tarikh_mohon_ulasan = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+            $semakan->tarikh_mohon_ulasan_tek  = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+            $semakan->status_noc = "noc_4";
+            $semakan->save();
+        }
 
         return redirect()->route('noc.detail', $id)->with('success', 'Ulasan telah dipohon');
     }

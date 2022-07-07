@@ -45,15 +45,6 @@
                                         placeholder="Pilih tarikh..." autocomplete="off" />
                                 </div>
                             </div>
-                            {{-- <div class="mb-3">
-                                <label class="small mb-1">Status</label>
-                                <select class="form-select" aria-label="Default select example" id="inputStatusSemak"
-                                    name=" inputStatusSemak">
-                                    <option selected disabled>Sila pilih:</option>
-                                    <option value="lulus">Permohonan Lulus</option>
-                                    <option value="dokumen_tambahan">Perlu Dokumen Tambahan</option>
-                                </select>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
