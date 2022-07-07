@@ -112,16 +112,16 @@
                 <div class="card mb-4">
                     <div class="card-header">Top 10 NOC mengikut klasifikasi</div>
                     <div class="card-body">
-                        <table class="table table-sm table-striped table-borderless table-hover mx-0 my-0">
+                        <table class="table table-sm table-striped table-hover mx-0 my-0">
                             @foreach ($nocKlasifikasi as $data)
-                                <tr>
-                                    <td class="align-middle text-center">
+                                <tr style="height: 50px">
+                                    <td class="align-middle" style="height: 100%">
                                         <span class="badge bg-dark">{{ $data->klasifikasi }}</span>
                                     </td>
-                                    <td style="width: 20rem" class="text-wrap small">
+                                    <td style="width: 20rem; height: 100%" class="text-wrap small align-middle">
                                         {{ $data->nama_kat }}
                                     </td>
-                                    <td style="width: 5rem;--bs-bg-opacity: .75;"
+                                    <td style="width: 5rem;--bs-bg-opacity: .75;height: 100%"
                                         class="align-middle bg-primary text-center text-white">
                                         <strong>{{ $data->jumlah }}</strong>
                                     </td>
@@ -144,10 +144,10 @@
                 <div class="card mb-4">
                     <div class="card-header text-warning">Top 10 NOC mengikut status</div>
                     <div class="card-body small">
-                        <table class="table table-sm table-striped table-borderless table-hover mx-0 my-0">
+                        <table class="table table-sm table-striped table-hover mx-0 my-0">
                             @foreach ($nocStatus as $data)
-                                <tr>
-                                    <td style="width: 20rem" class="text-wrap">
+                                <tr style="height: 40px">
+                                    <td style="width: 20rem" class="text-wrap align-middle">
                                         {{ $data->nama_status }}
                                     </td>
                                     <td style="width: 5rem;--bs-bg-opacity: .75;"
@@ -174,10 +174,10 @@
                 <div class="card mb-4">
                     <div class="card-header text-success">Top 10 NOC mengikut Kementerian</div>
                     <div class="card-body small">
-                        <table class="table table-sm table-striped table-borderless table-hover mx-0 my-0">
+                        <table class="table table-sm table-striped table-hover mx-0 my-0">
                             @foreach ($nocJabatan as $data)
-                                <tr>
-                                    <td style="width: 20rem" class="text-wrap">
+                                <tr style="height: 50px">
+                                    <td style="width: 40rem" class="text-wrap align-middle">
                                         {{ $data->nama_jabatan }}
                                     </td>
                                     <td style="width: 5rem;--bs-bg-opacity: .75;"
