@@ -5,7 +5,7 @@
             title="Tindakan NOC yang diperlukan"></i>
     </div>
     <div class="card-body text-center">
-        @if (($noc->status_noc == 'noc_1') AND (Auth::user()->peranan == 2))
+        @if (($noc->status_noc == 'noc_1') OR ($noc->status_noc == 'noc_17') AND (Auth::user()->peranan == 2))
             <div class="d-grid">
                 <button type="button" class="fw-500 btn btn-primary mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">

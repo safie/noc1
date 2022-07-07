@@ -79,16 +79,19 @@
         $(document).ready(function() {
             $('#tarikh').datepicker({
                 format: 'dd/mm/yyyy',
+                autoclose:true
             });
         });
         $(document).ready(function() {
             $('#tarikhMohonNOC').datepicker({
                 format: 'dd/mm/yyyy',
+                autoclose:true
             });
         });
         $(document).ready(function() {
             $('#tarikhSuratMohon').datepicker({
                 format: 'dd/mm/yyyy',
+                autoclose:true
             });
         });
     </script>

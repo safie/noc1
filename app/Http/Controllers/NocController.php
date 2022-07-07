@@ -344,24 +344,32 @@ class NocController extends Controller
         // dd($dataFlow);
 
         $semakan = Noc::find($id);
-        $semakan->tarikh_semak         = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-        $semakan->status_semak        = $request->inputStatusSemak;
-        $semakan->status_noc         = $dataFlow;
+
+        if($request->inputStatusSemak == "dokumen-tambahan"){
+            $semakan->tarikh_dokumen_tambahan = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+            $semakan->status_noc         = "noc_17";
+            $semakan->status_semak        = $request->inputStatusSemak;
+        } else if($request->inputStatusSemak == "lulus"){
+            $semakan->tarikh_semak = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+            $semakan->status_noc         = $dataFlow;
+            $semakan->status_semak        = $request->inputStatusSemak;
+        }
+
         $semakan->save();
 
         return redirect()->route('noc.detail', $id)->with('success', 'NOC telah disemak');
     }
 
     //proses: noc_2 (update)
-    public function editMohonUlasan(Noc $noc)
+    public function editMohonUlasanBajet(Noc $noc)
     {
         $form   = "noc_2";
-        $tajuk  = "Permohonan Ulasan Bajet";
+        $tajuk  = "Permohonan Ulasan Bajet / Teknikal";
 
         return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
     }
 
-    public function updateMohonUlasan(Request $request, $id)
+    public function updateMohonUlasanBajet(Request $request, $id)
     {
         $request->validate([
             'tarikh'         => 'required',
@@ -370,6 +378,29 @@ class NocController extends Controller
         $semakan = Noc::find($id);
         $semakan->tarikh_mohon_ulasan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
         $semakan->status_noc             = "noc_3";
+        $semakan->save();
+
+        return redirect()->route('noc.detail', $id)->with('success', 'Ulasan telah dipohon');
+    }
+
+    //proses: noc_3 (update)
+    public function editMohonUlasanTek(Noc $noc)
+    {
+        $form   = "noc_3";
+        $tajuk  = "Permohonan Ulasan Teknikal";
+
+        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
+    }
+
+    public function updateMohonUlasanTek(Request $request, $id)
+    {
+        $request->validate([
+            'tarikh'         => 'required',
+        ]);
+
+        $semakan = Noc::find($id);
+        $semakan->tarikh_mohon_ulasan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc             = "noc_4";
         $semakan->save();
 
         return redirect()->route('noc.detail', $id)->with('success', 'Ulasan telah dipohon');

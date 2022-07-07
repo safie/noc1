@@ -3,7 +3,7 @@
     data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            @if ($noc->status_noc == 'noc_1')
+            @if (($noc->status_noc == 'noc_1') OR ($noc->status_noc == 'noc_17'))
                 @include('page.noc.import.modal.01Semak')
             @endif
             @if ($noc->status_noc == 'noc_2')

@@ -122,16 +122,19 @@
         $(document).ready(function() {
             $('#tarikh').datepicker({
                 format: 'dd/mm/yyyy',
+                 autoclose:true
             });
         });
         $(document).ready(function() {
             $('#tarikhSemak1').datepicker({
                 format: 'dd/mm/yyyy',
+                 autoclose:true
             });
         });
         $(document).ready(function() {
             $('#tarikhSemak2').datepicker({
                 format: 'dd/mm/yyyy',
+                 autoclose:true
             });
         });
     </script>

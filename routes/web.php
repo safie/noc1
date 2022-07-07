@@ -42,11 +42,15 @@ Route::resource('/noc', NocController::class)->except('show');
 Route::get('/noc/tindakan', [\App\Http\Controllers\NocController::class, 'tindakan'])->name('noc.tindakan');
 Route::get('/noc/detail/{id}', [\App\Http\Controllers\NocController::class, 'detail'])->name('noc.detail');
 //proses-noc-1
-Route::put('/noc/semak/{id}', [\App\Http\Controllers\NocController::class, 'updateSemak'])->name('noc.updateSemak');
 Route::get('/noc/semak/{noc}/edit', [\App\Http\Controllers\NocController::class, 'editSemak'])->name('noc.editSemak');
+Route::put('/noc/semak/{id}', [\App\Http\Controllers\NocController::class, 'updateSemak'])->name('noc.updateSemak');
+
 //proses-noc-2
-Route::get('/noc/mohon-ulasan/{noc}/edit', [\App\Http\Controllers\NocController::class, 'editMohonUlasan'])->name('noc.editMohonUlasan');
-Route::put('/noc/mohon-ulasan/{id}', [\App\Http\Controllers\NocController::class, 'updateMohonUlasan'])->name('noc.updateMohonUlasan');
+Route::get('/noc/mohon-ulasan-bajet/{noc}/edit', [\App\Http\Controllers\NocController::class, 'editMohonUlasanBajet'])->name('noc.editMohonUlasanBajet');
+Route::put('/noc/mohon-ulasan-bajet/{id}', [\App\Http\Controllers\NocController::class, 'updateMohonUlasanBajet'])->name('noc.updateMohonUlasanBajet');
+//proses-noc-3
+Route::get('/noc/mohon-ulasan-tek/{noc}/edit', [\App\Http\Controllers\NocController::class, 'editMohonUlasanTek'])->name('noc.editMohonUlasanTek');
+Route::put('/noc/mohon-ulasan-tek/{id}', [\App\Http\Controllers\NocController::class, 'updateMohonUlasanTek'])->name('noc.updateMohonUlasanTek');
 //proses-noc-3
 Route::get('/noc/semak-ulasan/{noc}/edit', [\App\Http\Controllers\NocController::class, 'editSemakUlasan'])->name('noc.editSemakUlasan');
 Route::put('/noc/semak-ulasan/{id}', [\App\Http\Controllers\NocController::class, 'updateSemakUlasan'])->name('noc.updateSemakUlasan');
