@@ -316,7 +316,7 @@ class NocController extends Controller
     public function editSemak(Noc $noc)
     {
         $form     = "noc_1";
-        $tajuk     = "Semakan awal NOC";
+        $tajuk     = "Semakan NOC";
 
         return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
     }
@@ -356,7 +356,7 @@ class NocController extends Controller
     public function editMohonUlasan(Noc $noc)
     {
         $form   = "noc_2";
-        $tajuk  = "Permohonan Ulasan Bajet/Teknikal";
+        $tajuk  = "Permohonan Ulasan Bajet";
 
         return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
     }

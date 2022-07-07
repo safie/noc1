@@ -3,7 +3,7 @@
         <div class="nav accordion" id="accordionSidenav">
             <!-- Sidenav Menu Heading (Account)-->
             <!-- * * Note: * * Visible only on and above the sm breakpoint-->
-            <div class="sidenav-menu-heading d-sm-none">Account</div>
+            {{-- <div class="sidenav-menu-heading d-sm-none">Account</div>
             <!-- Sidenav Link (Alerts)-->
             <!-- * * Note: * * Visible only on and above the sm breakpoint-->
             <a class="nav-link d-sm-none" href="#!">
@@ -17,7 +17,7 @@
                 <div class="nav-link-icon"><i data-feather="mail"></i></div>
                 Messages
                 <span class="badge bg-success-soft text-success ms-auto">2 New!</span>
-            </a>
+            </a> --}}
             @if (Auth::user()->peranan == 1)
                 <!-- Sidenav Heading (Admin)-->
                 <div class="sidenav-menu-heading">Admin</div>
