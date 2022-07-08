@@ -29,7 +29,7 @@ class NocController extends Controller
     {
         $peranan = Auth::user()->peranan;
 
-        if (($peranan == 1) or ($peranan == 3)) {
+        if (($peranan == 1) or ($peranan == 3) or ($peranan == 4)) {
             $noc = DB::table('t_noc')
                 ->select(
                     't_noc.*',
@@ -245,7 +245,8 @@ class NocController extends Controller
                 ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
                 ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
                 ->get();
-        } else if ((Auth::user()->peranan == 3) or (Auth::user()->peranan == 4)) {
+
+        } else if (Auth::user()->peranan == 3){
             $noc = DB::table('t_noc')
                 ->select(
                     't_noc.*',
@@ -256,7 +257,25 @@ class NocController extends Controller
                     't_status.nama_status',
                     't_kategori.nama_kat',
                 )
-                ->whereIn('status_noc', ['noc_3', 'noc_4', 'noc_5'])
+                ->whereIn('status_noc', ['noc_3','noc_4', 'noc_5','noc_6','noc_7', 'noc_8','noc_9', 'noc_10'])
+                ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+                ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+                ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
+                ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+                ->get();
+
+        } else if (Auth::user()->peranan == 4) {
+            $noc = DB::table('t_noc')
+                ->select(
+                    't_noc.*',
+                    't_kementerian.nama_jabatan',
+                    't_kementerian.sgktn_jabatan',
+                    't_bahagian.nama_bhgn',
+                    't_bahagian.sgktn_bhgn',
+                    't_status.nama_status',
+                    't_kategori.nama_kat',
+                )
+                ->whereIn('status_noc', ['noc_4', 'noc_6','noc_8','noc_10'])
                 ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
                 ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
                 ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
