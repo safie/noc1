@@ -76,11 +76,11 @@ class HomeController extends Controller
 
             //Senarai klasifikasi
             $nocKlasifikasi = DB::table('t_noc')
-                ->selectRaw('t_noc.klasifikasi, t_kategori.nama_kat, count(*) as jumlah')
+                ->selectRaw('t_noc.klasifikasi, t_kategori.nama_kat, t_kategori.id as id, count(*) as jumlah')
                 ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
                 ->where('bahagian', '=', Auth::user()->bahagian)
-                ->groupBy('t_noc.klasifikasi', 't_kategori.nama_kat')
-                ->orderBy('jumlah', 'DESC')
+                ->groupBy('t_noc.klasifikasi', 't_kategori.id', 't_kategori.nama_kat')
+                ->orderBy('id', 'ASC')
                 ->take(10)
                 ->get();
 
@@ -88,11 +88,11 @@ class HomeController extends Controller
 
             //Senarai status
             $nocStatus = DB::table('t_noc')
-                ->selectRaw('t_status.nama_status, count(*) as jumlah')
+                ->selectRaw('t_status.nama_status, t_status.id as id, count(*) as jumlah')
                 ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
                 ->where('bahagian', '=', Auth::user()->bahagian)
-                ->groupBy('t_status.nama_status')
-                ->orderBy('t_status.nama_status', 'ASC')
+                ->groupBy('t_status.nama_status','t_status.id')
+                ->orderBy('id', 'ASC')
                 ->take(10)
                 ->get();
 
@@ -153,10 +153,10 @@ class HomeController extends Controller
 
             //Senarai klasifikasi
             $nocKlasifikasi = DB::table('t_noc')
-                ->selectRaw('t_noc.klasifikasi, t_kategori.nama_kat, count(*) as jumlah')
+                ->selectRaw('t_noc.klasifikasi, t_kategori.nama_kat, t_kategori.id as id, count(*) as jumlah')
                 ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
-                ->groupBy('t_noc.klasifikasi', 't_kategori.nama_kat')
-                ->orderBy('jumlah', 'DESC')
+                ->groupBy('t_noc.klasifikasi', 't_kategori.id','t_kategori.nama_kat')
+                ->orderBy('id', 'ASC')
                 ->take(10)
                 ->get();
 
@@ -164,10 +164,10 @@ class HomeController extends Controller
 
             //Senarai status
             $nocStatus = DB::table('t_noc')
-                ->selectRaw('t_status.nama_status, count(*) as jumlah')
+                ->selectRaw('t_status.nama_status, t_status.id as id, count(*) as jumlah')
                 ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
-                ->groupBy('t_status.nama_status')
-                ->orderBy('t_status.nama_status', 'ASC')
+                ->groupBy('t_status.nama_status', 't_status.id')
+                ->orderBy('id', 'ASC')
                 ->take(10)
                 ->get();
 
@@ -185,10 +185,7 @@ class HomeController extends Controller
             $data9['nocJabatan'] = $nocJabatan;
         }
 
-
-
         // dd($data8);
-
         return view('home')
             ->with($data1)
             ->with($data2)

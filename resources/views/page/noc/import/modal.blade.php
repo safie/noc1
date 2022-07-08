@@ -12,7 +12,6 @@
             @if ($noc->status_noc == 'noc_3')
                 @include('page.noc.import.modal.03SemakUlasanBajet')
             @endif
-
             @if ($noc->status_noc == 'noc_4')
                 @include('page.noc.import.modal.03SemakUlasanBajetTeknikal')
             @endif

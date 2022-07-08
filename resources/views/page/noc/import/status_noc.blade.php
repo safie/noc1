@@ -49,7 +49,7 @@
                             Bajet</td>
                     </tr>
                 @endif
-                @if ($noc->status_noc == 'noc_4' or $noc->tarikh_mohon_ulasan_tek != null)
+                @if (($noc->status_noc == 'noc_4') or ($noc->tarikh_hantar_ulasan_tek != null))
                     <tr>
                         <td class="text-center">
                             {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan_tek)->format('d-M-Y') }}</td>

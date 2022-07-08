@@ -44,17 +44,19 @@ Route::get('/noc/detail/{id}', [\App\Http\Controllers\NocController::class, 'det
 //proses-noc-1
 Route::get('/noc/semak/{noc}/edit', [\App\Http\Controllers\NocController::class, 'editSemak'])->name('noc.editSemak');
 Route::put('/noc/semak/{id}', [\App\Http\Controllers\NocController::class, 'updateSemak'])->name('noc.updateSemak');
-
 //proses-noc-2
 Route::get('/noc/mohon-ulasan-bajet/{noc}/edit', [\App\Http\Controllers\NocController::class, 'editMohonUlasanBajet'])->name('noc.editMohonUlasanBajet');
 Route::put('/noc/mohon-ulasan-bajet/{id}', [\App\Http\Controllers\NocController::class, 'updateMohonUlasanBajet'])->name('noc.updateMohonUlasanBajet');
 //proses-noc-3
-Route::get('/noc/mohon-ulasan-tek/{noc}/edit', [\App\Http\Controllers\NocController::class, 'editMohonUlasanTek'])->name('noc.editMohonUlasanTek');
-Route::put('/noc/mohon-ulasan-tek/{id}', [\App\Http\Controllers\NocController::class, 'updateMohonUlasanTek'])->name('noc.updateMohonUlasanTek');
-//proses-noc-3
-Route::get('/noc/semak-ulasan/{noc}/edit', [\App\Http\Controllers\NocController::class, 'editSemakUlasan'])->name('noc.editSemakUlasan');
-Route::put('/noc/semak-ulasan/{id}', [\App\Http\Controllers\NocController::class, 'updateSemakUlasan'])->name('noc.updateSemakUlasan');
+Route::get('/noc/mohon-ulasan-bajettek/{noc}/edit', [\App\Http\Controllers\NocController::class, 'editMohonUlasanBajetTeknikal'])->name('noc.editMohonUlasanBajetTeknikal');
+Route::put('/noc/mohon-ulasan-bajettek/{id}', [\App\Http\Controllers\NocController::class, 'updateMohonUlasanBajetTeknikal'])->name('noc.updateMohonUlasanBajetTeknikal');
 //proses-noc-4
+Route::get('/noc/semak-ulasan-bajet/{noc}/edit', [\App\Http\Controllers\NocController::class, 'editSemakUlasanBajet'])->name('noc.editSemakUlasanBajet');
+Route::put('/noc/semak-ulasan-bajet/{id}', [\App\Http\Controllers\NocController::class, 'updateSemakUlasanBajet'])->name('noc.updateSemakUlasanBajet');
+//proses-noc-5
+Route::get('/noc/semak-ulasan-bajettek/{noc}/edit', [\App\Http\Controllers\NocController::class, 'editSemakUlasanBajetTeknikal'])->name('noc.editSemakUlasanBajetTeknikal');
+Route::put('/noc/semak-ulasan-bajettek/{id}', [\App\Http\Controllers\NocController::class, 'updateSemakUlasanBajetTeknikal'])->name('noc.updateSemakUlasanBajetTeknikal');
+//proses-noc-5
 Route::get('/noc/sedia-ulasan/{noc}/edit', [\App\Http\Controllers\NocController::class, 'editSediaUlasan'])->name('noc.editSediaUlasan');
 Route::put('/noc/sedia-ulasan/{id}', [\App\Http\Controllers\NocController::class, 'updateSediaUlasan'])->name('noc.updateSediaUlasan');
 //proses-noc-5
