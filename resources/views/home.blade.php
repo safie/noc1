@@ -8,7 +8,7 @@
     <div class="container-xl px-4 mt-5">
         {{-- @include('layouts.template.header_dashboard') --}}
         <div class="row">
-            <div class="col-xl-2 col-md-4 mb-2">
+            <div class="col-xl-2 col-md-4 col-sm-6 mb-2">
                 <!-- Dashboard info widget 1-->
                 <div class="card bg-primary border-0">
                     <div class="card-body text-center">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-2 col-md-4 mb-2">
+            <div class="col-xl-2 col-md-4 col-sm-6 mb-2">
                 <!-- Dashboard info widget 2-->
                 <div class="card bg-success border-0">
                     <div class="card-body text-center">
@@ -40,7 +40,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-2 col-md-4 mb-2">
+            <div class="col-xl-2 col-md-4 col-sm-6 mb-2">
                 <!-- Dashboard info widget 1-->
                 <div class="card bg-warning border-0">
                     <div class="card-body text-center">
@@ -56,7 +56,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-2 col-md-4 mb-2">
+            <div class="col-xl-2 col-md-4 col-sm-6 mb-2">
                 <!-- Dashboard info widget 2-->
                 <div class="card bg-danger border-0">
                     <div class="card-body text-center">
@@ -72,7 +72,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-2 col-md-4 mb-2">
+            <div class="col-xl-2 col-md-4 col-sm-6 mb-2">
                 <!-- Dashboard info widget 1-->
                 <div class="card bg-black border-0">
                     <div class="card-body text-center">
@@ -88,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xl-2 col-md-4 mb-2">
+            <div class="col-xl-2 col-md-4 col-sm-6 mb-2">
                 <!-- Dashboard info widget 2-->
                 <div class="card bg-info border-0">
                     <div class="card-body text-center">

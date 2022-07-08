@@ -381,7 +381,7 @@ class NocController extends Controller
     public function editMohonUlasanBajet(Noc $noc)
     {
         $form   = "noc_2";
-        $tajuk  = "Permohonan Ulasan Bajet / Teknikal";
+        $tajuk  = "Permohonan Ulasan Bajet";
 
         return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
     }
@@ -416,15 +416,15 @@ class NocController extends Controller
     }
 
     //proses: noc_3 (update)
-    public function editMohonUlasanTek(Noc $noc)
+    public function editMohonUlasanTeknikal(Noc $noc)
     {
-        $form   = "noc_3";
+        $form   = "noc_2";
         $tajuk  = "Permohonan Ulasan Teknikal";
 
         return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
     }
 
-    public function updateMohonUlasanTek(Request $request, $id)
+    public function updateSemakUlasanTeknikal(Request $request, $id)
     {
         $request->validate([
             'tarikh'         => 'required',

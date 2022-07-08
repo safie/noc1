@@ -1,13 +1,13 @@
-<form method="POST" action="{{ route('noc.updateMohonUlasanBajet', $noc->id) }}">
+<form method="POST" action="{{ route('noc.updateSemakUlasanTeknikal', $noc->id) }}">
     @csrf
     @method('PUT')
     <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Proses: Semakan Permohonan Ulasan Bajet</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Proses: Mohon Ulasan Teknikal</h5>
         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
         <div class="mb-3">
-            <label class="small mb-1" for="inputFirstName">Tarikh Semakan</label>
+            <label class="small mb-1" for="inputFirstName">Tarikh Mohon Ulasan</label>
             <div class="input-group input-group-joined">
                 <span class="input-group-text">
                     <i data-feather="calendar"></i>
@@ -21,8 +21,8 @@
             <select class="form-select" aria-label="Default select example" id="inputStatusSemak"
                 name=" inputStatusSemak">
                 <option selected disabled>Sila pilih:</option>
-                <option value="lulus">Lulus Permohonan</option>
-                <option value="dokumen_tambahan">Perlu Dokumen Tambahan</option>
+                <option value="lulus">Lulus Semakan</option>
+                <option value="dokumen-tambahan">Perlu Maklumat Tambahan</option>
             </select>
         </div>
         <div class="modal-footer">

@@ -6,17 +6,7 @@
     </div>
     <div class="card-body">
         <div class="mb-4">
-            {{-- <table class="table table-sm table-striped table-hover mx-0 my-0 small">
-                <tr class="text-center">
-                    <td style="width: 150px" class="bg-primary"></td>
-                    <td style="width: 150px;--bs-bg-opacity: 0.2;" class="bg-primary">Bahagian</td>
-                    <td style="width: 150px" class="bg-warning"></td>
-                    <td style="width: 150px;--bs-bg-opacity: 0.2;" class="bg-warning">BBP</td>
-                    <td style="width: 150px" class="bg-info"></td>
-                    <td style="width: 150px;--bs-bg-opacity: 0.2;" class="bg-info">BPN</td>
-                </tr>
-            </table>
-            <br> --}}
+
             <table class="table table-sm table-striped table-hover mx-0 my-0 small">
                 @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
                     <tr>

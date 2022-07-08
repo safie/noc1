@@ -9,11 +9,11 @@
             @if ($noc->status_noc == 'noc_2')
                 @include('page.noc.import.modal.02MohonUlasan')
             @endif
-            @if ($noc->status_noc == 'noc_3')
+            @if ((($noc->status_noc == 'noc_3') OR ($noc->status_noc == 'noc_4')) AND (Auth::user()->peranan == 3))
                 @include('page.noc.import.modal.03SemakUlasanBajet')
             @endif
-            @if ($noc->status_noc == 'noc_4')
-                @include('page.noc.import.modal.03SemakUlasanBajetTeknikal')
+            @if (($noc->status_noc == 'noc_4') AND (Auth::user()->peranan == 4))
+                @include('page.noc.import.modal.03SemakUlasanTeknikal')
             @endif
             @if ($noc->status_noc == 'noc_114')
                 @include('page.noc.import.modal.04SediaUlasan')
