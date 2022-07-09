@@ -80,8 +80,8 @@ class HomeController extends Controller
                 ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
                 ->where('bahagian', '=', Auth::user()->bahagian)
                 ->groupBy('t_noc.klasifikasi', 't_kategori.id', 't_kategori.nama_kat')
-                ->orderBy('id', 'ASC')
-                ->take(10)
+                ->orderBy('jumlah', 'DESC')
+                ->take(5)
                 ->get();
 
             $data7['nocKlasifikasi'] = $nocKlasifikasi;
@@ -92,8 +92,8 @@ class HomeController extends Controller
                 ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
                 ->where('bahagian', '=', Auth::user()->bahagian)
                 ->groupBy('t_status.nama_status','t_status.id')
-                ->orderBy('id', 'ASC')
-                ->take(10)
+                ->orderBy('jumlah', 'DESC')
+                ->take(5)
                 ->get();
 
             $data8['nocStatus'] = $nocStatus;
@@ -105,8 +105,8 @@ class HomeController extends Controller
                 ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
                 ->where('bahagian', '=', Auth::user()->bahagian)
                 ->groupBy('t_kementerian.nama_jabatan')
-                ->orderBy('t_kementerian.nama_jabatan', 'ASC')
-                ->take(10)->get();
+                ->orderBy('jumlah', 'DESC')
+                ->take(5)->get();
 
             $data9['nocJabatan'] = $nocJabatan;
         } else {

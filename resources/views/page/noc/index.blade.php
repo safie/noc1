@@ -33,7 +33,8 @@
     @include('layouts.template.header_compact')
     <div class="container-fluid px-4">
         @if ($message = Session::get('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert" aria-label="Close">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 <p>{{ $message }}</p>
             </div>
         @endif
@@ -67,13 +68,14 @@
                             @foreach ($noc as $data)
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
-                                   <td style="width:40em">
+                                    <td style="width:40em">
                                         <div class="text-uppercase">
-                                             <strong>({{ $data->klasifikasi }}) {{ $data->nama_kat }}</strong><br>
-                                        {{ $data->tajuk_permohonan }}
+                                            <strong>({{ $data->klasifikasi }}) {{ $data->nama_kat }}</strong><br>
+                                            {{ $data->tajuk_permohonan }}
                                         </div>
 
-                                        <strong> Tarikh submit: {{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</strong>
+                                        <strong> Tarikh submit:
+                                            {{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</strong>
                                     </td>
 
                                     <td>{{ $data->nama_jabatan }}</td>
@@ -126,6 +128,8 @@
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="{{ asset('sb-admin-pro/dist/js/datatables/datatables-simple-demo.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
+
     <script>
         feather.replace()
     </script>

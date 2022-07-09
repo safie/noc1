@@ -110,24 +110,31 @@
             <div class="col-lg-4 mb-4">
                 <!-- Report summary card example-->
                 <div class="card mb-4">
-                    <div class="card-header">Top 10 NOC mengikut klasifikasi</div>
-                    <div class="card-body">
+                    <div class="card-header">Top 5 NOC mengikut klasifikasi</div>
+                    <div class="card-body small">
                         <table class="table table-sm table-striped table-hover mx-0 my-0">
-                            @foreach ($nocKlasifikasi as $data)
-                                <tr style="height: 50px">
-                                    <td class="align-middle" style="height: 100%">
-                                        <span class="badge bg-dark">{{ $data->klasifikasi }}</span>
-                                    </td>
-                                    <td style="width: 20rem; height: 100%" class="text-wrap small align-middle">
-                                        {{ $data->nama_kat }}
-                                    </td>
-                                    <td style="width: 5rem;--bs-bg-opacity: .75;height: 100%"
-                                        class="align-middle bg-primary text-center text-white">
-                                        <strong>{{ $data->jumlah }}</strong>
-                                    </td>
+                            @if ($nocKlasifikasi->count() > 0)
+                                @foreach ($nocKlasifikasi as $data)
+                                    <tr style="height: 50px">
+                                        <td class="align-middle" style="height: 100%">
+                                            <span class="badge bg-dark">{{ $data->klasifikasi }}</span>
+                                        </td>
+                                        <td style="width: 20rem; height: 100%" class="text-wrap small align-middle">
+                                            {{ $data->nama_kat }}
+                                        </td>
+                                        <td style="width: 5rem;--bs-bg-opacity: .75;height: 100%"
+                                            class="align-middle bg-primary text-center text-white">
+                                            <strong>{{ $data->jumlah }}</strong>
+                                        </td>
 
-                                </tr>
-                            @endforeach
+                                    </tr>
+                                @endforeach
+                            @else
+                                <div class="text-center">
+                                    <p class="align-middle" style="height: 100%">Tiada NOC</p>
+                                </div>
+                            @endif
+
                         </table>
                     </div>
                     <div class="card-footer position-relative border-top-0">
@@ -142,21 +149,27 @@
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card mb-4">
-                    <div class="card-header text-warning">Top 10 NOC mengikut status</div>
+                    <div class="card-header text-warning">Top 5 NOC mengikut status</div>
                     <div class="card-body small">
                         <table class="table table-sm table-striped table-hover mx-0 my-0">
-                            @foreach ($nocStatus as $data)
-                                <tr style="height: 40px">
-                                    <td style="width: 20rem" class="text-wrap align-middle">
-                                        {{ $data->nama_status }}
-                                    </td>
-                                    <td style="width: 5rem;--bs-bg-opacity: .75;"
-                                        class="align-middle bg-warning text-center text-white">
-                                        <strong>{{ $data->jumlah }}</strong>
-                                    </td>
+                            @if ($nocStatus->count() > 0)
+                                @foreach ($nocStatus as $data)
+                                    <tr style="height: 50px">
+                                        <td style="width: 20rem" class="text-wrap small align-middle">
+                                            {{ $data->nama_status }}
+                                        </td>
+                                        <td style="width: 5rem;--bs-bg-opacity: .75;"
+                                            class="align-middle bg-warning text-center text-white">
+                                            <strong>{{ $data->jumlah }}</strong>
+                                        </td>
 
-                                </tr>
-                            @endforeach
+                                    </tr>
+                                @endforeach
+                            @else
+                                <div class="text-center">
+                                    <p class="align-middle" style="height: 100%">Tiada NOC</p>
+                                </div>
+                            @endif
                         </table>
                     </div>
 
@@ -172,21 +185,26 @@
             </div>
             <div class="col-lg-4 mb-4">
                 <div class="card mb-4">
-                    <div class="card-header text-success">Top 10 NOC mengikut Kementerian</div>
+                    <div class="card-header text-success">Top 5 NOC mengikut Kementerian</div>
                     <div class="card-body small">
                         <table class="table table-sm table-striped table-hover mx-0 my-0">
-                            @foreach ($nocJabatan as $data)
-                                <tr style="height: 50px">
-                                    <td style="width: 40rem" class="text-wrap align-middle">
-                                        {{ $data->nama_jabatan }}
-                                    </td>
-                                    <td style="width: 5rem;--bs-bg-opacity: .75;"
-                                        class="align-middle bg-success text-center text-white">
-                                        <strong>{{ $data->jumlah }}</strong>
-                                    </td>
-
-                                </tr>
-                            @endforeach
+                            @if ($nocJabatan->count() > 0)
+                                @foreach ($nocJabatan as $data)
+                                    <tr style="height: 50px">
+                                        <td style="width: 40rem" class="text-wrap small align-middle">
+                                            {{ $data->nama_jabatan }}
+                                        </td>
+                                        <td style="width: 5rem;--bs-bg-opacity: .75;"
+                                            class="align-middle bg-success text-center text-white">
+                                            <strong>{{ $data->jumlah }}</strong>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <div class="text-center">
+                                    <p class="align-middle" style="height: 100%">Tiada NOC</p>
+                                </div>
+                            @endif
                         </table>
 
                     </div>

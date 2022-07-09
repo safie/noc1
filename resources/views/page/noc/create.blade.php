@@ -136,7 +136,7 @@
                                 title="Data akan disimpan"></i>
                         </div>
                         <div class="card-body">
-                            <div class="d-grid"><button type="submit" class="fw-500 btn btn-primary">Simpan</button>
+                            <div class="d-grid"><button type="submit" class="fw-500 btn btn-black">Simpan</button>
                             </div>
                         </div>
                     </div>
@@ -154,13 +154,13 @@
         $(document).ready(function() {
             $('#tarikhMohonNOC').datepicker({
                 format: 'dd/mm/yyyy',
-                autoclose:true
+                autoclose: true
             });
         });
         $(document).ready(function() {
             $('#tarikhSuratMohon').datepicker({
                 format: 'dd/mm/yyyy',
-                autoclose:true
+                autoclose: true
             });
         });
     </script>
