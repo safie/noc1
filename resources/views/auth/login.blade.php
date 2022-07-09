@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card mt-5">
-                        <div class="card-header text-center">Sistem iNOC</div>
+                        <div class="card-header text-center">Sistem i-NOC</div>
 
                         <div class="card-body">
                             <form method="POST" action="{{ route('login') }}">

@@ -138,7 +138,8 @@
                         </table>
                     </div>
                     <div class="card-footer position-relative border-top-0">
-                        <a class="stretched-link" href="#!">
+                        <!-- Button trigger modal -->
+                        <a class="stretched-link" data-bs-toggle="modal" data-bs-target="#senaraiKlasifikasiNoc" href="#">
                             <div class="text-xs d-flex align-items-center justify-content-between">
                                 Senarai NOC
                                 <i class="fas fa-long-arrow-alt-right"></i>
@@ -174,7 +175,8 @@
                     </div>
 
                     <div class="card-footer position-relative border-top-0">
-                        <a class="stretched-link" href="#!">
+                        <!-- Button trigger modal -->
+                        <a class="stretched-link" data-bs-toggle="modal" data-bs-target="#senaraiStatusNoc" href="#">
                             <div class="text-xs d-flex align-items-center justify-content-between">
                                 Senarai NOC
                                 <i class="fas fa-long-arrow-alt-right"></i>
@@ -209,7 +211,8 @@
 
                     </div>
                     <div class="card-footer position-relative border-top-0">
-                        <a class="stretched-link" href="#!">
+                        <!-- Button trigger modal -->
+                        <a class="stretched-link" data-bs-toggle="modal" data-bs-target="#senaraiKementerian" href="#">
                             <div class="text-xs d-flex align-items-center justify-content-between">
                                 Senarai NOC
                                 <i class="fas fa-long-arrow-alt-right"></i>
@@ -219,10 +222,14 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            @include('home_modal')
+        </div>
     </div>
 @endsection
 
 @section('js')
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
     <script src="{{ asset('sb-admin-pro/dist/assets/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('sb-admin-pro/dist/assets/demo/chart-bar-demo.js') }}"></script>
