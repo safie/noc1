@@ -16,7 +16,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous">
     </script>
-    <title>iNOC - v1</title>
+    <title>i-NOC</title>
 </head>
 
 <body class="bg-primary">

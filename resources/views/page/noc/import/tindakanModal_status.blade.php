@@ -5,11 +5,14 @@
             title="Tindakan NOC yang diperlukan"></i>
     </div>
     <div class="card-body text-center">
-        @if (($noc->status_noc == 'noc_3' or $noc->status_noc == 'noc_4' or $noc->status_noc == 'noc_5' or $noc->status_noc == 'noc_6' or $noc->status_noc == 'noc_7' or $noc->status_noc == 'noc_8' or $noc->status_noc == 'noc_9' or $noc->status_noc == 'noc_10') and Auth::user()->peranan == 2 or Auth::user()->peranan == 1)
-            <strong>Sedang dalam proses</strong>
+        @if (($noc->status_noc == 'noc_3' or $noc->status_noc == 'noc_4' or $noc->status_noc == 'noc_5' or $noc->status_noc == 'noc_6' or $noc->status_noc == 'noc_7' or $noc->status_noc == 'noc_8' or $noc->status_noc == 'noc_9' or $noc->status_noc == 'noc_10') and Auth::user()->peranan == 2)
+            <strong>Sedang diproses</strong>
         @endif
-        @if (($noc->status_noc == 'noc_1' or $noc->status_noc == 'noc_2' or $noc->status_noc == 'noc_11' or $noc->status_noc == 'noc_12' or $noc->status_noc == 'noc_13' or $noc->status_noc == 'noc_14' or $noc->status_noc == 'noc_15' or $noc->status_noc == 'noc_16' or $noc->status_noc == 'noc_18' or $noc->status_noc == 'noc_19') and (Auth::user()->peranan == 1 or Auth::user()->peranan == 3 or Auth::user()->peranan == 4))
-            <strong>Sedang dalam proses</strong>
+        @if (($noc->status_noc == 'noc_1' or $noc->status_noc == 'noc_2' or $noc->status_noc == 'noc_11' or $noc->status_noc == 'noc_12' or $noc->status_noc == 'noc_13' or $noc->status_noc == 'noc_14' or $noc->status_noc == 'noc_15' or $noc->status_noc == 'noc_16' or $noc->status_noc == 'noc_18' or $noc->status_noc == 'noc_19') and (Auth::user()->peranan == 3 or Auth::user()->peranan == 4))
+            <strong>Sedang diproses</strong>
+        @endif
+        @if (Auth::user()->peranan == 1)
+            <strong>Sedang diproses</strong>
         @endif
         @if (($noc->status_noc == 'noc_1' or $noc->status_noc == 'noc_17') and Auth::user()->peranan == 2)
             <div class="d-grid">
@@ -22,7 +25,7 @@
                     href="{{ route('noc.editSemak', $noc->id) }}">Semak NOC</button> --}}
             </div>
         @endif
-        @if (($noc->status_noc == 'noc_2' or $noc->status_noc == 'noc_18' or $noc->status_noc == 'noc_19') and $noc->flow != 'flow1' and Auth::user()->peranan == 2 )
+        @if (($noc->status_noc == 'noc_2' or $noc->status_noc == 'noc_18' or $noc->status_noc == 'noc_19') and $noc->flow != 'flow1' and Auth::user()->peranan == 2)
             <div class="d-grid">
                 <button type="button" class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">

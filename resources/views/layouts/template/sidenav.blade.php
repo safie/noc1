@@ -35,7 +35,7 @@
                 <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
                     data-bs-target="#collapseData" aria-expanded="false" aria-controls="collapseData">
                     <div class="nav-link-icon"><i data-feather="database"></i></div>
-                    Data
+                    Tetapan
                     <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapseData" data-bs-parent="#accordionSidenav">
