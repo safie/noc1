@@ -88,7 +88,7 @@
 @section('css')
     <style>
         .bg-image {
-            background: url({{ asset('pic/menara_prisma.jpg') }}) no-repeat center center fixed;
+            background: url({{ asset('pic/menara_prisma3.jpg') }}) no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
