@@ -6,7 +6,10 @@
             @if ($noc->status_noc == 'noc_1' or $noc->status_noc == 'noc_17')
                 @include('page.noc.import.modal.01Semak')
             @endif
-            @if (Auth::user()->peranan == 2 and (($noc->status_noc == 'noc_2' AND $noc->noc_flow != 'flow1') or $noc->status_noc == 'noc_18' or $noc->status_noc == 'noc_19'))
+            @if (Auth::user()->peranan == 2 and
+                ($noc->status_noc == 'noc_2' and $noc->noc_flow != 'flow1' or
+                    $noc->status_noc == 'noc_18' or
+                    $noc->status_noc == 'noc_19'))
                 @include('page.noc.import.modal.02MohonUlasan')
             @endif
             @if (Auth::user()->peranan == 3 and ($noc->status_noc == 'noc_3' or $noc->status_noc == 'noc_4') or
@@ -24,13 +27,14 @@
             @if (Auth::user()->peranan == 2 and ($noc->status_noc == 'noc_9' or $noc->status_noc == 'noc_10'))
                 @include('page.noc.import.modal.06SediaMemo')
             @endif
-            @if ($noc->status_noc == 'noc_71')
+            @if (Auth::user()->peranan == 2 and $noc->status_noc == 'noc_11')
                 @include('page.noc.import.modal.07HantarMemo')
             @endif
-            @if ($noc->status_noc == 'noc_81')
+            @if (Auth::user()->peranan == 2 and $noc->status_noc == 'noc_12')
                 @include('page.noc.import.modal.08TerimaMemo')
             @endif
-            @if (Auth::user()->peranan == 2 and (($noc->status_noc == 'noc_2' AND $noc->noc_flow =='flow1') OR $noc->status_noc == 'noc_10'))
+            @if (Auth::user()->peranan == 2 and
+                ($noc->status_noc == 'noc_2' and $noc->noc_flow == 'flow1' or $noc->status_noc == 'noc_13'))
                 @include('page.noc.import.modal.09SediaSurat')
             @endif
             @if (Auth::user()->peranan == 2 and $noc->status_noc == 'noc_14')

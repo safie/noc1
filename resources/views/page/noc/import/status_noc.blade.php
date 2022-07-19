@@ -112,7 +112,7 @@
                             Teknikal</td>
                     </tr>
                 @endif
-                @if ($noc->status_noc == 'noc_11' and $noc->tarikh_sedia_memo_kelulusan != null)
+                @if ($noc->status_noc == 'noc_11' or $noc->tarikh_sedia_memo_kelulusan != null)
                     <tr>
                         <td class="text-center">
                             {{ \Carbon\Carbon::parse($noc->tarikh_sedia_memo_kelulusan)->format('d-m-Y') }}</td>

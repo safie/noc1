@@ -118,9 +118,9 @@ class NocController extends Controller
         ]);
 
         $queryFlow = DB::table('t_kategori')
-        ->select('t_kategori.flow')
-        ->where('t_kategori.kod', '=', $request['inputKlasifikasi'])
-        ->first();
+            ->select('t_kategori.flow')
+            ->where('t_kategori.kod', '=', $request['inputKlasifikasi'])
+            ->first();
 
         $flow = $queryFlow->flow;
 
@@ -251,7 +251,7 @@ class NocController extends Controller
                     't_kategori.nama_kat',
                 )
                 ->where('bahagian', '=', Auth::user()->bahagian)
-                ->whereIn('status_noc', ['noc_1', 'noc_2', 'noc_7', 'noc_8', 'noc_9', 'noc_10', 'noc_11', 'noc_12', 'noc_13', 'noc_14'])
+                ->whereIn('status_noc', ['noc_1', 'noc_17', 'noc_2', 'noc_18', 'noc_19', 'noc_9', 'noc_10', 'noc_11', 'noc_12', 'noc_13', 'noc_14', 'noc_15'])
                 ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
                 ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
                 ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
@@ -268,7 +268,7 @@ class NocController extends Controller
                     't_status.nama_status',
                     't_kategori.nama_kat',
                 )
-                ->whereIn('status_noc', ['noc_3', 'noc_4', 'noc_5', 'noc_6', 'noc_7', 'noc_8', 'noc_9', 'noc_10'])
+                ->whereIn('status_noc', ['noc_3', 'noc_4', 'noc_5', 'noc_6', 'noc_7', 'noc_8'])
                 ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
                 ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
                 ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
@@ -285,7 +285,7 @@ class NocController extends Controller
                     't_status.nama_status',
                     't_kategori.nama_kat',
                 )
-                ->whereIn('status_noc', ['noc_4', 'noc_6', 'noc_8', 'noc_10'])
+                ->whereIn('status_noc', ['noc_4', 'noc_6', 'noc_8'])
                 ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
                 ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
                 ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
@@ -327,11 +327,14 @@ class NocController extends Controller
                 't_status.nama_status',
                 't_kategori.kod',
                 't_kategori.nama_kat',
-                't_kategori.flow'
+                't_kategori.flow',
+                't_bahagian.nama_bhgn',
+                't_bahagian.sgktn_bhgn'
             )
             ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
             ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
             ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
             ->where('t_noc.id', '=', $id)
             ->first();
         $data1['noc'] = $noc;
@@ -528,7 +531,7 @@ class NocController extends Controller
         $semakan                                = Noc::find($id);
         $semakan->tarikh_sedia_memo_kelulusan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
         $semakan->pengurusan_tinggi                = $request->pengurusan_tinggi;
-        $semakan->status_noc                    = "noc_7";
+        $semakan->status_noc                    = "noc_11";
         $semakan->save();
 
         return redirect()->route('noc.detail', $id)->with('success', 'Memo kelulusan sedang disediakan');
@@ -543,7 +546,7 @@ class NocController extends Controller
 
         $semakan                                = Noc::find($id);
         $semakan->tarikh_hantar_memo_kelulusan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-        $semakan->status_noc                    = "noc_8";
+        $semakan->status_noc                    = "noc_12";
         $semakan->save();
 
         return redirect()->route('noc.detail', $id)->with('success', 'Memo kelulusan telah dihantar');
@@ -558,7 +561,7 @@ class NocController extends Controller
 
         $semakan                        = Noc::find($id);
         $semakan->tarikh_kelulusan_pt    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-        $semakan->status_noc            = "noc_9";
+        $semakan->status_noc            = "noc_13";
         $semakan->save();
 
         return redirect()->route('noc.detail', $id)->with('success', 'Memo kelulusan telah diterima');
@@ -611,4 +614,6 @@ class NocController extends Controller
     }
 
     public function carianNoc(Request $request, $id)
+    {
+    }
 }

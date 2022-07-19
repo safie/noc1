@@ -18,8 +18,8 @@
         </div>
         <div class="mb-3">
             <label class="small mb-1">Status</label>
-            <select class="form-select" aria-label="Default select example" id="inputStatusSemak"
-                name=" inputStatusSemak">
+            <select class="form-select" aria-label="Default select example" id="pengurusan_tinggi"
+                name=" pengurusan_tinggi">
                 <option selected disabled>Sila pilih:</option>
                 <option value="kp">Ketua Pengarah</option>
                 <option value="tkp">Timbalan Ketua Pengarah</option>

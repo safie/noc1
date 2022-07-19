@@ -54,12 +54,20 @@
                             <hr>
                             <div class="row">
                                 <div>
-                                    <label class="me-2">Klasifikasi : </label><label
-                                        class="px-1 bg-primary text-white">{{ $noc->klasifikasi }} -
-                                        {{ $noc->nama_kat }}</label>
+                                    <label class="me-2">Bahagian : </label><label
+                                        class="px-1 bg-secondary text-white rounded">{{ $noc->nama_bhgn }}
+                                        ({{ $noc->sgktn_bhgn }})</label>
                                 </div>
                             </div>
                             <hr>
+                            <div class="row">
+                                <div class="mb-3">
+                                    <label class="me-2">Klasifikasi : </label>
+                                    <label class="px-1 bg-primary text-white rounded">{{ $noc->klasifikasi }} -
+                                        {{ $noc->nama_kat }}
+                                    </label>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
