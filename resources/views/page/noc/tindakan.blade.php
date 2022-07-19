@@ -62,7 +62,9 @@
                                     <td>{{ $data->nama_jabatan }}</td>
                                     <td>{{ $data->sgktn_bhgn }}</td>
                                     <td class="text-center">
-                                        <h4><span class="badge bg-secondary text-wrap">{{ $data->nama_status }}</span>
+                                        <h4><span class="badge bg-secondary text-wrap">{{ $data->nama_status1 }}</span>
+                                        </h4>
+                                        <h4><span class="badge bg-secondary text-wrap">{{ $data->nama_status2 }}</span>
                                         </h4>
                                     </td>
                                     <td>

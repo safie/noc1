@@ -139,9 +139,9 @@
                 @endif
             </div>
             <div class="sidenav-footer-title">
-                <div class="sidenav-footer-subtitle text-dark" >
+                <div class="sidenav-footer-subtitle text-dark">
                     {{ Auth::user()->name }}
-                     @include('layouts.template.bhgn')
+                    @include('layouts.template.bhgn')
                 </div>
             </div>
         </div>

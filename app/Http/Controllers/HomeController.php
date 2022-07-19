@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\NocController;
+
 
 class HomeController extends Controller
 {
@@ -38,9 +40,9 @@ class HomeController extends Controller
             $nocSemak = DB::table('t_noc')
                 ->select('id', 'status_noc')
                 ->Where('bahagian', '=', Auth::user()->bahagian)
-                ->Where(function($query){
+                ->Where(function ($query) {
                     $query->orWhere('status_noc', '=', "noc_1")
-                          ->orWhere('status_noc', '=', "noc_2");
+                        ->orWhere('status_noc', '=', "noc_2");
                 })
                 ->get();
             $data2['nocSemak'] = $nocSemak->count();
@@ -51,7 +53,7 @@ class HomeController extends Controller
                 ->Where('bahagian', '=', Auth::user()->bahagian)
                 ->Where(function ($query) {
                     $query->orWhere('status_noc', '=', "noc_7")
-                          ->orWhere('status_noc', '=', "noc_8");
+                        ->orWhere('status_noc', '=', "noc_8");
                 })
                 ->get();
             $data3['nocSediaUlasan'] = $nocSediaUlasan->count();
@@ -62,8 +64,8 @@ class HomeController extends Controller
                 ->Where('bahagian', '=', Auth::user()->bahagian)
                 ->Where(function ($query) {
                     $query->orWhere('status_noc', '=', "noc_17")
-                          ->orWhere('status_noc', '=', "noc_18")
-                          ->orWhere('status_noc', '=', "noc_19");
+                        ->orWhere('status_noc', '=', "noc_18")
+                        ->orWhere('status_noc', '=', "noc_19");
                 })
                 ->get();
             $data4['nocTambahan'] = $nocTambahan->count();
@@ -101,7 +103,7 @@ class HomeController extends Controller
                 ->selectRaw('t_status.nama_status, t_status.id as id, count(*) as jumlah')
                 ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
                 ->where('bahagian', '=', Auth::user()->bahagian)
-                ->groupBy('t_status.nama_status','t_status.id')
+                ->groupBy('t_status.nama_status', 't_status.id')
                 ->orderBy('jumlah', 'DESC')
                 ->take(5)
                 ->get();
@@ -197,7 +199,7 @@ class HomeController extends Controller
             $nocKlasifikasi = DB::table('t_noc')
                 ->selectRaw('t_noc.klasifikasi, t_kategori.nama_kat, t_kategori.id as id, count(*) as jumlah')
                 ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
-                ->groupBy('t_noc.klasifikasi', 't_kategori.id','t_kategori.nama_kat')
+                ->groupBy('t_noc.klasifikasi', 't_kategori.id', 't_kategori.nama_kat')
                 ->orderBy('jumlah', 'DESC')
                 ->take(5)
                 ->get();

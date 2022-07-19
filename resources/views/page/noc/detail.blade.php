@@ -100,7 +100,18 @@
                             </div>
                             <hr>
                             <div class="row">
-                                <label>Status NOC : <span class="badge bg-success">{{ $noc->nama_status }}</span></label>
+                                <table style="text-align: left">
+                                    <tr>
+                                        <td style="width: 7rem">Status NOC :</td>
+                                        <td><span class="badge bg-success">{{ $noc->nama_status1 }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 7rem"></td>
+                                        <td><span @if ($noc->tarikh_sedia_memo_kelulusan != null) hidden @endif
+                                                class="badge bg-success">{{ $noc->nama_status2 }}</td>
+                                    </tr>
+                                </table>
+
                             </div>
                         </div>
                     </div>

@@ -13,15 +13,15 @@
                 @include('page.noc.import.modal.02MohonUlasan')
             @endif
             @if (Auth::user()->peranan == 3 and ($noc->status_noc == 'noc_3' or $noc->status_noc == 'noc_4') or
-                Auth::user()->peranan == 4 and $noc->status_noc == 'noc_4')
+                Auth::user()->peranan == 4 and $noc->status_noc2 == 'noc_4')
                 @include('page.noc.import.modal.03SemakUlasan')
             @endif
             @if (Auth::user()->peranan == 3 and ($noc->status_noc == 'noc_5' or $noc->status_noc == 'noc_6') or
-                Auth::user()->peranan == 4 and $noc->status_noc == 'noc_6')
+                Auth::user()->peranan == 4 and $noc->status_noc2 == 'noc_6')
                 @include('page.noc.import.modal.04SediaUlasan')
             @endif
             @if (Auth::user()->peranan == 3 and ($noc->status_noc == 'noc_7' or $noc->status_noc == 'noc_8') or
-                Auth::user()->peranan == 4 and $noc->status_noc == 'noc_8')
+                Auth::user()->peranan == 4 and $noc->status_noc2 == 'noc_8')
                 @include('page.noc.import.modal.05HantarUlasan')
             @endif
             @if (Auth::user()->peranan == 2 and ($noc->status_noc == 'noc_9' or $noc->status_noc == 'noc_10'))
