@@ -14,7 +14,7 @@
                 </button>
             </div>
 
-        @elseif (Auth::user()->peranan == 2 AND ($noc->status_noc == 'noc_2' OR $noc->status_noc == 'noc_18' OR $noc->status_noc == 'noc_19'))
+        @elseif (Auth::user()->peranan == 2 AND (($noc->status_noc == 'noc_2' AND $noc->flow != 'flow1') OR $noc->status_noc == 'noc_18' OR $noc->status_noc == 'noc_19'))
             <div class="d-grid">
                 <button type="button" class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">
@@ -47,7 +47,7 @@
                 </button>
             </div>
 
-        @elseif (Auth::user()->peranan == 2 AND ($noc->status_noc == 'noc_9' OR $noc->status_noc == 'noc_10' OR ($noc->status_noc == 'noc_2' AND $noc->flow == 'flow1')))
+        @elseif (Auth::user()->peranan == 2 AND ($noc->status_noc == 'noc_9' OR $noc->status_noc == 'noc_10'))
             <div class="d-grid">
                 <button type="button" class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">
@@ -71,7 +71,7 @@
                 </button>
             </div>
 
-        @elseif (Auth::user()->peranan == 2 AND $noc->status_noc == 'noc_13')
+        @elseif (Auth::user()->peranan == 2 AND ($noc->status_noc == 'noc_13' OR ($noc->status_noc == 'noc_2' AND $noc->noc_flow == 'flow1')))
             <div class="d-grid">
                 <button type="button" class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">
@@ -105,4 +105,3 @@
         @endif
     </div>
 </div>
-

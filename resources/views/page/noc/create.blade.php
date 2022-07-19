@@ -120,9 +120,9 @@
                                     </select>
                                 </div>
                                 {{-- <div class="mb-3" hidden>
-                                    <label class="small mb-1" for="statusNOC">Status NOC</label>
-                                    <input class="form-control" id="statusNOC" name="statusNOC" type="text"
-                                        placeholder="Status NOC" value="noc_1" />
+                                    <label class="small mb-1" for="statusNOC">noc_flow</label>
+                                    <input class="form-control" id="noc_flow" name="noc_flow" type="text"
+                                        placeholder="NOC Flow" value="{{ $data-> }}" />
                                 </div> --}}
                             </div>
                         </div>

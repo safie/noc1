@@ -104,6 +104,7 @@ class NocController extends Controller
      */
     public function store(Request $request)
     {
+
         //check data
         $request->validate([
             'inputTajuk' => 'required',
@@ -116,12 +117,22 @@ class NocController extends Controller
             'inputJabatan' => 'required',
         ]);
 
+        $queryFlow = DB::table('t_kategori')
+        ->select('t_kategori.flow')
+        ->where('t_kategori.kod', '=', $request['inputKlasifikasi'])
+        ->first();
+
+        $flow = $queryFlow->flow;
+
+
         // dd($request['tarikhMohonNOC']);
 
         $request_data = $request->all();
+
         $tahun = Carbon::now()->year;
         $bulan = Carbon::now()->month;
 
+        // dd($flow);
 
         Noc::create([
             'tajuk_permohonan'      => $request_data['inputTajuk'],
@@ -136,6 +147,7 @@ class NocController extends Controller
             'tarikh_submit'    => Carbon::now()->format('Y-m-d'),
             'status_noc'    => "noc_1",
             'noc_id'    => "noc/" . $tahun . "/" . $bulan . "/" . $request_data['inputKlasifikasi'] . "/",
+            'noc_flow' => $flow,
         ]);
 
         return redirect()->route('noc.tindakan')->with('success', 'Permohonan berjaya disimpan.');
@@ -329,28 +341,20 @@ class NocController extends Controller
     }
 
     //proses: noc_1
-    public function editSemak(Noc $noc)
-    {
-        $form     = "noc_1";
-        $tajuk     = "Semakan NOC";
-
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
     public function updateSemak(Request $request, $id)
     {
 
-        $flow = DB::table('t_noc')
-            ->select('t_kategori.flow')
-            ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
-            ->where('t_noc.id', '=', $id)
-            ->first();
+        // $flow = DB::table('t_noc')
+        //     ->select('t_kategori.flow')
+        //     ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+        //     ->where('t_noc.id', '=', $id)
+        //     ->first();
 
-        // if ($flow->flow == 'flow1') {
-        //     $dataFlow = "noc_11";
-        // } else {
-        //     $dataFlow = "noc_2";
-        // }
+        // // if ($flow->flow == 'flow1') {
+        // //     $dataFlow = "noc_11";
+        // // } else {
+        // //     $dataFlow = "noc_2";
+        // // }
 
         $dataFlow = "noc_2";
 
@@ -379,14 +383,6 @@ class NocController extends Controller
     }
 
     //proses: noc_2 (update)
-    public function editMohonUlasanBajet(Noc $noc)
-    {
-        $form   = "noc_2";
-        $tajuk  = "Permohonan Ulasan Bajet";
-
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
     public function updateMohonUlasan(Request $request, $id)
     {
         $flow = DB::table('t_noc')
@@ -396,7 +392,7 @@ class NocController extends Controller
             ->first();
 
         $request->validate([
-            'tarikh'         => 'required',
+            'tarikh' => 'required',
         ]);
 
         // dd($flow);
@@ -417,14 +413,6 @@ class NocController extends Controller
     }
 
     //proses: noc_3 (update)
-    public function editSemakUlasanBajet(Noc $noc)
-    {
-        $form     = "noc_3";
-        $tajuk     = "Semakan Permohonan Ulasan"; //Bajet@Teknikal
-
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
     public function updateSemakUlasanBajet(Request $request, $id)
     {
         $request->validate([
@@ -448,14 +436,6 @@ class NocController extends Controller
     }
 
     //proses: noc_3 (update)
-    public function editSemakUlasanTeknikal(Noc $noc)
-    {
-        $form     = "noc_3";
-        $tajuk     = "Semakan Permohonan Ulasan"; //Bajet@Teknikal
-
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
     public function updateSemakUlasanTeknikal(Request $request, $id)
     {
         $request->validate([
@@ -479,14 +459,6 @@ class NocController extends Controller
     }
 
     //Proses: noc_4
-    public function editSediaUlasanBajet(Noc $noc)
-    {
-        $form    = "noc_5";
-        $tajuk    = "Penyediaan Ulasan"; //Bajet@Teknikal
-
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
     public function updateSediaUlasanBajet(Request $request, $id)
     {
         $request->validate([
@@ -502,14 +474,6 @@ class NocController extends Controller
     }
 
     //Proses: noc_4
-    public function editSediaUlasanTeknikal(Noc $noc)
-    {
-        $form    = "noc_5";
-        $tajuk    = "Penyediaan Ulasan"; //Bajet@Teknikal
-
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
     public function updateSediaUlasanTeknikal(Request $request, $id)
     {
         $request->validate([
@@ -525,14 +489,6 @@ class NocController extends Controller
     }
 
     //proses: noc_5
-    public function editHantarUlasanBajet(Noc $noc)
-    {
-        $form     = "noc_7";
-        $tajuk     = "Penghantaran Ulasan"; //Bajet@Teknikal
-
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
     public function updateHantarUlasanBajet(Request $request, $id)
     {
         $request->validate([
@@ -548,14 +504,6 @@ class NocController extends Controller
     }
 
     //proses: noc_5
-    public function editHantarUlasanTeknikal(Noc $noc)
-    {
-        $form     = "noc_7";
-        $tajuk     = "Penghantaran Ulasan"; //Bajet@Teknikal
-
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
     public function updateHantarUlasanTeknikal(Request $request, $id)
     {
         $request->validate([
@@ -570,14 +518,6 @@ class NocController extends Controller
     }
 
     //proses: noc_6
-    public function editSediaMemo(Noc $noc)
-    {
-        $form    = "noc_6";
-        $tajuk    = "Penyediaan Memo Kelulusan";
-
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
     public function updateSediaMemo(Request $request, $id)
     {
         $request->validate([
@@ -595,14 +535,6 @@ class NocController extends Controller
     }
 
     //proses: noc_7 (update)
-    public function editHantarMemo(Noc $noc)
-    {
-        $form    = "noc_7";
-        $tajuk    = "Penghantaran Memo Kelulusan Kepada Pejabat KP/TKP";
-
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
     public function updateHantarMemo(Request $request, $id)
     {
         $request->validate([
@@ -618,14 +550,6 @@ class NocController extends Controller
     }
 
     //proses: noc_8
-    public function editTerimaMemo(Noc $noc)
-    {
-        $form    = "noc_8";
-        $tajuk    = "Penerimaan Memo Kelulusan Daripada Pejabat KP/TKP";
-
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
     public function updateTerimaMemo(Request $request, $id)
     {
         $request->validate([
@@ -641,14 +565,6 @@ class NocController extends Controller
     }
 
     //proses: noc_9
-    public function editSediaSurat(Noc $noc)
-    {
-        $form    = "noc_9";
-        $tajuk    = "Penyediaan Surat Kelulusan";
-
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
     public function updateSediaSurat(Request $request, $id)
     {
         $request->validate([
@@ -657,21 +573,13 @@ class NocController extends Controller
 
         $semakan                         = Noc::find($id);
         $semakan->tarikh_sedia_surat    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-        $semakan->status_noc            = "noc_10";
+        $semakan->status_noc            = "noc_14";
         $semakan->save();
 
         return redirect()->route('noc.detail', $id)->with('success', 'Surat kelulusan sedang disediakan');
     }
 
     //proses: noc_10
-    public function editHantarSurat(Noc $noc)
-    {
-        $form    = "noc_10";
-        $tajuk    = "Penhantaran Surat Kelulusan Kepada Kementerian";
-
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
     public function updateHantarSurat(Request $request, $id)
     {
         $request->validate([
@@ -680,22 +588,13 @@ class NocController extends Controller
 
         $semakan                             = Noc::find($id);
         $semakan->tarikh_hantar_surat_lulus    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-        $semakan->status_noc                = "noc_11";
+        $semakan->status_noc                = "noc_15";
         $semakan->save();
 
         return redirect()->route('noc.detail', $id)->with('success', 'Surat kelulusan rasmi telah dihantar');
     }
 
-
     //proses: noc_11
-    public function editMohonModul(Noc $noc)
-    {
-        $form    = "noc_11";
-        $tajuk    = "Permohonan Modul NOC MyProjek oleh Kementerian";
-
-        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
-    }
-
     public function updateMohonModul(Request $request, $id)
     {
 
@@ -705,9 +604,11 @@ class NocController extends Controller
 
         $semakan                         = Noc::find($id);
         $semakan->tarikh_mohon_modul    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-        $semakan->status_noc            = "noc_12";
+        $semakan->status_noc            = "noc_16";
         $semakan->save();
 
         return redirect()->route('noc.detail', $id)->with('success', 'Modul NOC MyProjek telah dipohon');
     }
+
+    public function carianNoc(Request $request, $id)
 }

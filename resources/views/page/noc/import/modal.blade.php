@@ -6,7 +6,7 @@
             @if ($noc->status_noc == 'noc_1' or $noc->status_noc == 'noc_17')
                 @include('page.noc.import.modal.01Semak')
             @endif
-            @if ($noc->status_noc == 'noc_2' or $noc->status_noc == 'noc_18' or $noc->status_noc == 'noc_19')
+            @if (Auth::user()->peranan == 2 and (($noc->status_noc == 'noc_2' AND $noc->noc_flow != 'flow1') or $noc->status_noc == 'noc_18' or $noc->status_noc == 'noc_19'))
                 @include('page.noc.import.modal.02MohonUlasan')
             @endif
             @if (Auth::user()->peranan == 3 and ($noc->status_noc == 'noc_3' or $noc->status_noc == 'noc_4') or
@@ -21,7 +21,7 @@
                 Auth::user()->peranan == 4 and $noc->status_noc == 'noc_8')
                 @include('page.noc.import.modal.05HantarUlasan')
             @endif
-            @if ($noc->status_noc == 'noc_69')
+            @if (Auth::user()->peranan == 2 and ($noc->status_noc == 'noc_9' or $noc->status_noc == 'noc_10'))
                 @include('page.noc.import.modal.06SediaMemo')
             @endif
             @if ($noc->status_noc == 'noc_71')
@@ -30,17 +30,14 @@
             @if ($noc->status_noc == 'noc_81')
                 @include('page.noc.import.modal.08TerimaMemo')
             @endif
-            @if ($noc->status_noc == 'noc_91')
+            @if (Auth::user()->peranan == 2 and (($noc->status_noc == 'noc_2' AND $noc->noc_flow =='flow1') OR $noc->status_noc == 'noc_10'))
                 @include('page.noc.import.modal.09SediaSurat')
             @endif
-            @if ($noc->status_noc == 'noc_101')
+            @if (Auth::user()->peranan == 2 and $noc->status_noc == 'noc_14')
                 @include('page.noc.import.modal.10HantarSurat')
             @endif
-            @if ($noc->status_noc == 'noc_111')
-                @include('page.noc.import.modal.11TerimaSurat')
-            @endif
-            @if ($noc->status_noc == 'noc_121')
-                @include('page.noc.import.modal.12MohonModul')
+            @if (Auth::user()->peranan == 2 and $noc->status_noc == 'noc_15')
+                @include('page.noc.import.modal.11MohonModul')
             @endif
         </div>
     </div>

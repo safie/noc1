@@ -37,40 +37,50 @@ class HomeController extends Controller
             //bilangan semakan noc
             $nocSemak = DB::table('t_noc')
                 ->select('id', 'status_noc')
-                ->where('status_noc', '=', "noc_1")
-                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->Where('bahagian', '=', Auth::user()->bahagian)
+                ->Where(function($query){
+                    $query->orWhere('status_noc', '=', "noc_1")
+                          ->orWhere('status_noc', '=', "noc_2");
+                })
                 ->get();
             $data2['nocSemak'] = $nocSemak->count();
 
             //bilangan sedia ulasan
             $nocSediaUlasan = DB::table('t_noc')
                 ->select('id', 'status_noc')
-                ->where('status_noc', '=', "noc_4")
-                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->Where('bahagian', '=', Auth::user()->bahagian)
+                ->Where(function ($query) {
+                    $query->orWhere('status_noc', '=', "noc_7")
+                          ->orWhere('status_noc', '=', "noc_8");
+                })
                 ->get();
             $data3['nocSediaUlasan'] = $nocSediaUlasan->count();
 
             //bilangan maklumat tambahan
             $nocTambahan = DB::table('t_noc')
                 ->select('id', 'status_noc')
-                ->where('status_noc', '=', "noc_12")
-                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->Where('bahagian', '=', Auth::user()->bahagian)
+                ->Where(function ($query) {
+                    $query->orWhere('status_noc', '=', "noc_17")
+                          ->orWhere('status_noc', '=', "noc_18")
+                          ->orWhere('status_noc', '=', "noc_19");
+                })
                 ->get();
             $data4['nocTambahan'] = $nocTambahan->count();
 
             //bilangan noc penyediaan memo
             $nocMemo = DB::table('t_noc')
                 ->select('id', 'status_noc')
-                ->where('status_noc', '=', "noc_6")
-                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->where('status_noc', '=', "noc_11")
+                ->Where('bahagian', '=', Auth::user()->bahagian)
                 ->get();
             $data5['nocMemo'] = $nocMemo->count();
 
             //bilangan modul NOC myProjek
             $nocModul = DB::table('t_noc')
                 ->select('id', 'status_noc')
-                ->where('status_noc', '=', "noc_10")
-                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->where('status_noc', '=', "noc_16")
+                ->Where('bahagian', '=', Auth::user()->bahagian)
                 ->get();
             $data6['nocModul'] = $nocModul->count();
 
