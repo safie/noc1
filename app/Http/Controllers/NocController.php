@@ -495,7 +495,7 @@ class NocController extends Controller
 
         $semakan                         = Noc::find($id);
         $semakan->tarikh_sedia_ulasan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-        $semakan->status_noc             = "noc_5";
+        $semakan->status_noc             = "noc_7";
         $semakan->save();
 
         return redirect()->route('noc.detail', $id)->with('success', 'Ulasan sedang disediakan');
@@ -517,15 +517,15 @@ class NocController extends Controller
         ]);
 
         $semakan                         = Noc::find($id);
-        $semakan->tarikh_sedia_ulasan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-        $semakan->status_noc             = "noc_5";
+        $semakan->tarikh_sedia_ulasan_tek    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc             = "noc_8";
         $semakan->save();
 
         return redirect()->route('noc.detail', $id)->with('success', 'Ulasan sedang disediakan');
     }
 
     //proses: noc_5
-    public function editHantarUlasan(Noc $noc)
+    public function editHantarUlasanBajet(Noc $noc)
     {
         $form     = "noc_7";
         $tajuk     = "Penghantaran Ulasan"; //Bajet@Teknikal
@@ -533,7 +533,7 @@ class NocController extends Controller
         return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
     }
 
-    public function updateHantarUlasan(Request $request, $id)
+    public function updateHantarUlasanBajet(Request $request, $id)
     {
         $request->validate([
             'tarikh' => 'required',
@@ -541,9 +541,31 @@ class NocController extends Controller
 
         $semakan                         = Noc::find($id);
         $semakan->tarikh_hantar_ulasan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-        $semakan->status_noc            = "noc_6";
+        $semakan->status_noc            = "noc_9";
         $semakan->save();
 
+        return redirect()->route('noc.detail', $id)->with('success', 'Ulasan telah dihantar');
+    }
+
+    //proses: noc_5
+    public function editHantarUlasanTeknikal(Noc $noc)
+    {
+        $form     = "noc_7";
+        $tajuk     = "Penghantaran Ulasan"; //Bajet@Teknikal
+
+        return view('page.noc.edit', compact('noc', 'form', 'tajuk'));
+    }
+
+    public function updateHantarUlasanTeknikal(Request $request, $id)
+    {
+        $request->validate([
+            'tarikh' => 'required',
+        ]);
+
+        $semakan                         = Noc::find($id);
+        $semakan->tarikh_hantar_ulasan_tek    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc            = "noc_10";
+        $semakan->save();
         return redirect()->route('noc.detail', $id)->with('success', 'Ulasan telah dihantar');
     }
 

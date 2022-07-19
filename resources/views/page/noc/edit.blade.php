@@ -21,7 +21,7 @@
     <div class="container-fluid px-4 mt-4">
 
         @if ($form == 'noc_edit')
-            @include('page.noc.import.editNOC')
+            @include('page.noc.import.edit.editNOC')
         @endif
 
         @if ($form == 'noc_1')
