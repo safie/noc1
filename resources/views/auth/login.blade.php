@@ -5,7 +5,7 @@
         <div id="layoutAuthentication">
             <div class="row justify-content-center">
                 <div class="d-flex justify-content-center mt-10">
-                    <img src="{{asset('pic/jata_negara.png')}}" alt="iNOC" style="width: 250px; height: 200px">
+                    <img src="{{ asset('pic/jata_negara.png') }}" alt="iNOC" style="width: 250px; height: 200px">
                 </div>
                 <div class="col-md-8">
                     <div class="card mt-5">
@@ -82,4 +82,16 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('css')
+    <style>
+        .bg-image {
+            background: url({{asset('pic/menara_prisma.jpg')}}) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
 @endsection
