@@ -46,6 +46,7 @@ class NocController extends Controller
                 ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
                 ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
                 ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+                ->orderBy('t_noc.tarikh_submit', 'DESC')
                 ->get();
         } else {
             $noc = DB::table('t_noc')
@@ -65,6 +66,7 @@ class NocController extends Controller
                 ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
                 ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
                 ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+                ->orderBy('t_noc.tarikh_submit', 'DESC')
                 ->get();
 
             // $noc = DB::table('t_noc')->where('bahagian', '=', Auth::user()->bahagian)->get();
@@ -269,6 +271,7 @@ class NocController extends Controller
                 ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
                 ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
                 ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+                ->orderBy('t_noc.tarikh_submit','DESC')
                 ->get();
         } else if (Auth::user()->peranan == 3) {
             $noc = DB::table('t_noc')
@@ -288,6 +291,7 @@ class NocController extends Controller
                 ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
                 ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
                 ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+                ->orderBy('t_noc.tarikh_submit', 'DESC')
                 ->get();
         } else if (Auth::user()->peranan == 4) {
             $noc = DB::table('t_noc')
@@ -307,6 +311,7 @@ class NocController extends Controller
                 ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
                 ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
                 ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+                ->orderBy('t_noc.tarikh_submit', 'DESC')
                 ->get();
         } else {
             $noc = DB::table('t_noc')
@@ -326,6 +331,7 @@ class NocController extends Controller
                 ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
                 ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
                 ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+                ->orderBy('t_noc.tarikh_submit', 'DESC')
                 ->get();
         }
 

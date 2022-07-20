@@ -52,7 +52,10 @@ class HomeController extends Controller
                 ->select('id', 'status_noc')
                 ->Where('bahagian', '=', Auth::user()->bahagian)
                 ->Where(function ($query) {
-                    $query->orWhere('status_noc', '=', "noc_7")
+                    $query
+                        ->orWhere('status_noc', '=', "noc_3")
+                        ->orWhere('status_noc', '=', "noc_4")
+                        ->orWhere('status_noc', '=', "noc_7")
                         ->orWhere('status_noc', '=', "noc_8");
                 })
                 ->get();

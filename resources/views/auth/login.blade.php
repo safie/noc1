@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card mt-5">
-                        <div class="card-header text-center"><strong>Sistem i-NOC</strong></div>
+                        <div class="card-header text-center fs-1"><strong>Sistem i-NOC</strong></div>
 
                         <div class="card-body">
                             <form method="POST" action="{{ route('login') }}">
