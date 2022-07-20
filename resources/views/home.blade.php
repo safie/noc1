@@ -111,7 +111,7 @@
                 <!-- Report summary card example-->
                 <div class="card mb-4">
                     <div class="card-header">Top 5 NOC mengikut klasifikasi</div>
-                    <div class="card-body small">
+                    <div class="card-body">
                         <table class="table table-sm table-striped table-hover mx-0 my-0">
                             @if ($nocKlasifikasi->count() > 0)
                                 @foreach ($nocKlasifikasi as $data)
@@ -151,7 +151,7 @@
             <div class="col-lg-4 mb-4">
                 <div class="card mb-4">
                     <div class="card-header text-warning">Top 5 NOC mengikut status</div>
-                    <div class="card-body small">
+                    <div class="card-body">
                         <table class="table table-sm table-striped table-hover mx-0 my-0">
                             @if ($nocStatus->count() > 0)
                                 @foreach ($nocStatus as $data)
@@ -188,7 +188,7 @@
             <div class="col-lg-4 mb-4">
                 <div class="card mb-4">
                     <div class="card-header text-success">Top 5 NOC mengikut Kementerian</div>
-                    <div class="card-body small">
+                    <div class="card-body">
                         <table class="table table-sm table-striped table-hover mx-0 my-0">
                             @if ($nocJabatan->count() > 0)
                                 @foreach ($nocJabatan as $data)
