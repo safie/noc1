@@ -5,8 +5,8 @@
         <div id="layoutAuthentication">
             <div class="row justify-content-center">
                 <div class="d-flex justify-content-center mt-10">
-                    <img src="{{ asset('pic/jata_negara.png') }}" id="mask" alt="iNOC"
-                        style="width: 200px; height: 150px">
+                    <img src="{{ asset('pic/jata_epu_bm_hitam.png') }}" id="mask" alt="iNOC"
+                        style="width: 250px; height: 175px">
                 </div>
                 <div class="col-md-8">
                     <div class="card mt-5">
@@ -96,7 +96,7 @@
         }
 
         #mask {
-            filter: drop-shadow(0 0 0.5rem rgb(243, 243, 240));
+            filter: drop-shadow(0 0 0.75rem rgb(243, 243, 240));
         }
     </style>
 @endsection
