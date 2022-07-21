@@ -6,10 +6,13 @@
 @section('icon', 'plus-square')
 @section('tajuk', 'Info Pengguna')
 @section('button')
+@if (Auth::user()->peranan == 1)
     <a class="btn btn-sm btn-light text-primary" href="{{ route('pengguna.index') }}">
         <i class="me-1" data-feather="arrow-left"></i>
         Kembali Senarai
     </a>
+@endif
+
 @endsection
 
 @section('content')
@@ -42,18 +45,19 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="card card-header-actions">
-                    <div class="card-header">
-                        Tindakan
-                        <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
-                            title="Data akan disimpan"></i>
-                    </div>
-                    <div class="card-body">
-                        <form action="{{ route('pengguna.destroy', $user->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <div class="d-grid gap-2">
-                                @if (Auth::user()->peranan == 1)
+                @if (Auth::user()->peranan == 1)
+                    <div class="card card-header-actions">
+                        <div class="card-header">
+                            Tindakan
+                            <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
+                                title="Data akan disimpan"></i>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('pengguna.destroy', $user->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <div class="d-grid gap-2">
+
                                     <a class="fw-500 btn btn-primary mx-1" href="{{ route('pengguna.edit', $user->id) }}">
                                         <i data-feather="edit"></i> Edit
                                     </a>
@@ -61,12 +65,13 @@
                                     <button type="submit" class="fw-500 btn btn-danger mx-1">
                                         <i data-feather="trash-2"></i> Padam
                                     </button>
-                                @endif
-                            </div>
-                        </form>
 
+                                </div>
+                            </form>
+
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
 

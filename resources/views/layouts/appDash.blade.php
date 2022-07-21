@@ -16,6 +16,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous">
     </script>
+    <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
 </head>
 {{-- <style>
         body {

@@ -41,6 +41,7 @@ Route::resource('/setting/status', StatusController::class);
 Route::resource('/noc', NocController::class)->except('show');
 Route::get('/noc/tindakan', [\App\Http\Controllers\NocController::class, 'tindakan'])->name('noc.tindakan');
 Route::get('/noc/detail/{id}', [\App\Http\Controllers\NocController::class, 'detail'])->name('noc.detail');
+Route::get('/noc/delete/{id}', [\App\Http\Controllers\NocController::class, 'destroy'])->name('noc.delete');
 
 //proses-noc-1
 Route::put('/noc/semak/{id}', [\App\Http\Controllers\NocController::class, 'updateSemak'])->name('noc.updateSemak');

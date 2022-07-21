@@ -10,12 +10,12 @@
     <a class="navbar-brand pe-3 ps-4 ps-lg-2" href="{{ route('home') }}">{{ config('app.name') }}</a>
     <!-- Navbar Search Input-->
     <!-- * * Note: * * Visible only on and above the lg breakpoint-->
-    <form class="form-inline me-auto d-none d-lg-block me-3">
+    {{-- <form class="form-inline me-auto d-none d-lg-block me-3">
         <div class="input-group input-group-joined input-group-solid">
             <input class="form-control pe-0" type="search" placeholder="Search" aria-label="Search" />
             <div class="input-group-text"><i data-feather="search"></i></div>
         </div>
-    </form>
+    </form> --}}
     <!-- Navbar Items-->
     <ul class="navbar-nav align-items-center ms-auto">
         {{-- <!-- Documentation Dropdown-->
@@ -207,18 +207,6 @@
                     <div class="dropdown-user-details">
                         <div class="dropdown-user-details-name">{{ Auth::user()->name }}</div>
                         <div class="dropdown-user-details-email">{{ Auth::user()->email }}</div>
-                        <div class="dropdown-user-details-role">
-                            @if (Auth::user()->peranan == 1)
-                                <span class="badge bg-secondary">admin</span>
-                            @elseif (Auth::user()->peranan == 2)
-                                <span class="badge bg-secondary">bahagian</span>
-                            @elseif (Auth::user()->peranan == 3)
-                                <span class="badge bg-secondary">bajet</span>
-                            @else
-                                <span class="badge bg-secondary">nilai</span>
-                            @endif
-                        </div>
-
                     </div>
                 </h6>
                 <div class="dropdown-divider"></div>

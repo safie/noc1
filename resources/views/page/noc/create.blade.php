@@ -136,7 +136,7 @@
                                 title="Data akan disimpan"></i>
                         </div>
                         <div class="card-body">
-                            <div class="d-grid"><button type="submit" class="fw-500 btn btn-black">Simpan</button>
+                            <div class="d-grid spinner-hide"><button type="submit" class="fw-500 btn btn-black">Simpan</button>
                             </div>
                         </div>
                     </div>
@@ -164,9 +164,21 @@
             });
         });
 
-        if (window.history.replaceState) {
-            window.history.replaceState(null, null, window.location.href);
-        }
+        $('.spinner-hide').hide();
+
+        $(function() {
+            $('.button-disabled').on('click', function() {
+                $('.button-disabled,input[type=submit],button[type=submit]').attr('disabled', 'true')
+                    .addClass("disabled");
+                $('.spinner-hide').show();
+            });
+
+            $("form").on('submit', function() {
+                $('.button-disabled,input[type=submit],button[type=submit]').attr('disabled', 'true')
+                    .addClass("disabled");
+                $('.spinner-hide').show();
+            });
+        })
     </script>
 
     {{-- <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js" crossorigin="anonymous"></script>

@@ -1,6 +1,7 @@
 @extends('layouts.appDash')
 
 @section('css')
+
     <style>
         .feather-16 {
             width: 16px;
@@ -96,12 +97,24 @@
                                                     <i data-feather="edit"></i>
                                                 </a>
 
+                                                {{-- <a href="/noc/delete/{{ $data->id }}" id="delete-confirm"
+                                                    class="btn btn-datatable btn-icon btn-transparent-dark mx-1 delete-confirm">
+                                                    <i data-feather="trash-2"></i>
+                                                </a> --}}
+
+                                                {{-- <button
+                                                    class="btn btn-datatable btn-icon btn-transparent-dark mx-1 remove-data"
+                                                    data-id="{{ $data->id }}" type="button" data-bs-toggle="modal" data-bs-target="#modalDelete">
+                                                    <i data-feather="trash-2"></i>
+                                                </button> --}}
+
                                                 <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
-                                                    @csrf
                                                     @method('DELETE')
-                                                    <button type="submit"
-                                                        class="btn btn-datatable btn-icon btn-transparent-dark mx-1">
-                                                        <i data-feather="trash-2">Padam</i>
+                                                    @csrf
+                                                    <button
+                                                        class="btn btn-datatable btn-icon btn-transparent-dark mx-1 remove-data"
+                                                        data-id="{{ $data->id }}">
+                                                        <i data-feather="trash-2"></i>
                                                     </button>
                                                 </form>
                                             @endif
@@ -124,6 +137,9 @@
                 {{-- {!! $peranan->links() !!} --}}
             </div>
         </div>
+        {{-- <div>
+            @include('page.noc.import.modalDelete')
+        </div> --}}
     </div>
 
 @endsection
@@ -132,9 +148,24 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="{{ asset('sb-admin-pro/dist/js/datatables/datatables-simple-demo.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script>
         feather.replace()
-    </script>
 
+        // $('.delete-confirm').on('click', function(event) {
+        //     event.preventDefault();
+        //     const url = $(this).attr('href');
+        //     swal({
+        //         title: 'Anda pasti untuk padam?',
+        //         text: 'Rekod NOC akan dipadam dan tidak dapat dikembalikan',
+        //         icon: 'warning',
+        //         buttons: ["Batal", "Ya!"],
+        //     }).then(function(value) {
+        //         if (value) {
+        //             window.location.href = url;
+        //         }
+        //     });
+        // });
+    </script>
 @endsection

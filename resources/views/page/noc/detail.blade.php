@@ -54,9 +54,10 @@
                             <hr>
                             <div class="row">
                                 <div>
-                                    <label class="me-2">Bahagian : </label><label
-                                        class="px-1 bg-secondary text-white rounded">{{ $noc->nama_bhgn }}
-                                        ({{ $noc->sgktn_bhgn }})</label>
+                                    <label class="me-2">Bahagian : </label>
+                                    <label class="px-1 bg-secondary text-white rounded">
+                                        {{ $noc->nama_bhgn }} ({{ $noc->sgktn_bhgn }})
+                                    </label>
                                 </div>
                             </div>
                             <hr>

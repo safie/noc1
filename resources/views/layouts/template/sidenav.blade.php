@@ -127,20 +127,23 @@
     <!-- Sidenav Footer-->
     <div class="sidenav-footer">
         <div class="sidenav-footer-content">
-            <div class="sidenav-footer-subtitle">Logged in as:
-                @if (Auth::user()->peranan == 1)
-                    <span class="badge bg-secondary">admin</span>
-                @elseif (Auth::user()->peranan == 2)
-                    <span class="badge bg-secondary">bahagian</span>
-                @elseif (Auth::user()->peranan == 3)
-                    <span class="badge bg-secondary">bajet</span>
-                @else
-                    <span class="badge bg-secondary">nilai</span>
-                @endif
+            <div class="sidenav-footer-subtitle">
+                <label>Peranan:</label>
+                <label class="px-1 bg-secondary text-white rounded">
+                    @if (Auth::user()->peranan == 1)
+                        admin
+                    @elseif (Auth::user()->peranan == 2)
+                        bahagian
+                    @elseif (Auth::user()->peranan == 3)
+                       bajet
+                    @else
+                       nilai
+                    @endif
+                </label>
             </div>
             <div class="sidenav-footer-title">
                 <div class="sidenav-footer-subtitle text-dark">
-                    {{ Auth::user()->name }}
+                    <strong>{{ Auth::user()->name }}</strong>
                     @include('layouts.template.bhgn')
                 </div>
             </div>

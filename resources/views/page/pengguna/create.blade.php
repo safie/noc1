@@ -38,8 +38,8 @@
                         <div class="card card-header-actions">
                             <div class="card-header">
                                 Pengisian maklumat
-                                <i class="text-muted" data-feather="info" data-bs-toggle="tooltip"
-                                    data-bs-placement="left" title="input yang perlu diisi"></i>
+                                <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
+                                    title="input yang perlu diisi"></i>
                             </div>
                             <div class="card-body">
                                 <!-- Form Group (first name)-->
@@ -60,24 +60,28 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="small mb-1" for="inputKatalaluan">Katalaluan </label>
-                                    <input class="form-control" id="inputKatalaluan_confirmation" name="inputKatalaluan_confirmation" type="password"
+                                    <input class="form-control" id="inputKatalaluan_confirmation"
+                                        name="inputKatalaluan_confirmation" type="password"
                                         placeholder="Masukkan katalaluan..." />
                                 </div>
                                 <div class="mb-3">
                                     <label class="small mb-1">Peranan</label>
-                                    <select class="form-select" aria-label="Default select example" id="inputPeranan" name="inputPeranan">
+                                    <select class="form-select" aria-label="Default select example" id="inputPeranan"
+                                        name="inputPeranan">
                                         <option selected disabled>Sila pilih:</option>
                                         @foreach ($peranan as $data)
-                                        <option value="{{$data->id}}" >{{ $data->peranan }}</option>
+                                            <option value="{{ $data->id }}">{{ $data->peranan }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="mb-3">
                                     <label class="small mb-1">Bahagian</label>
-                                    <select class="form-select" aria-label="Default select example" id="inputBahagian" name="inputBahagian">
+                                    <select class="form-select" aria-label="Default select example" id="inputBahagian"
+                                        name="inputBahagian">
                                         <option selected disabled>Sila pilih:</option>
                                         @foreach ($bahagian as $data)
-                                        <option value="{{$data->id}}" >{{ $data->nama_bhgn }} ({{ $data->sgktn_bhgn }})</option>
+                                            <option value="{{ $data->id }}">{{ $data->nama_bhgn }}
+                                                ({{ $data->sgktn_bhgn }})</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -93,7 +97,7 @@
                                 title="Data akan disimpan"></i>
                         </div>
                         <div class="card-body">
-                            <div class="d-grid"><button type="submit" class="fw-500 btn btn-primary">Simpan</button>
+                            <div class="d-grid spinner-hide"><button type="submit" class="fw-500 btn btn-primary">Simpan</button>
                             </div>
                         </div>
                     </div>
@@ -105,4 +109,21 @@
 @endsection
 
 @section('js')
+    <script>
+        $('.spinner-hide').hide();
+
+        $(function() {
+            $('.button-disabled').on('click', function() {
+                $('.button-disabled,input[type=submit],button[type=submit]').attr('disabled', 'true')
+                    .addClass("disabled");
+                $('.spinner-hide').show();
+            });
+
+            $("form").on('submit', function() {
+                $('.button-disabled,input[type=submit],button[type=submit]').attr('disabled', 'true')
+                    .addClass("disabled");
+                $('.spinner-hide').show();
+            });
+        })
+    </script>
 @endsection
