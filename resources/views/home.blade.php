@@ -92,7 +92,7 @@
                 <!-- Dashboard info widget 2-->
                 <div class="card bg-info border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white">Modul NOC MyProjek</h6>
+                        <h6 class="text-white">Selesai</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $nocModul }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}

@@ -83,11 +83,11 @@
                                                 </form>
                                                 <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                                     href="{{ route('noc.detail', $data->id) }}"><i
-                                                        data-feather="eye"></i></a>
+                                                        data-feather="arrow-right-circle"></i></a>
                                             @else
                                                 <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                                     href="{{ route('noc.detail', $data->id) }}"><i
-                                                        data-feather="eye"></i></a>
+                                                        data-feather="arrow-right-circle"></i></a>
                                             @endif
                                         </div>
                                     </td>
