@@ -151,7 +151,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script>
-        feather.replace()
+        // feather.replace()
 
         // $('.delete-confirm').on('click', function(event) {
         //     event.preventDefault();

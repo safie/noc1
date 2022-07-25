@@ -8,14 +8,19 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>i-NOC</title>
+    {{-- <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
     <link href="{{ asset('sb-admin-pro/dist/css/styles.css') }}" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" />
+    <link href="{{ asset('litepicker/dist/css/litepicker.css') }}" rel="stylesheet" />
+    {{-- <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" /> --}}
     <link rel="icon" type="image/x-icon" href="{{ asset('sb-admin-pro/dist/assets/img/favicon.png') }}" />
     @yield('css')
-    <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous">
+    <script data-search-pseudo-elements defer src="{{ asset('fontawesome/js/all.min.js') }}"></script>
+    {{-- <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
+        crossorigin="anonymous"></script> --}}
+    <script src="{{ asset('feather-icons/dist/feather.min.js') }}">
     </script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" crossorigin="anonymous">
+    </script> --}}
     <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
 </head>
 {{-- <style>
@@ -46,8 +51,9 @@
             @include('layouts.template.footer')
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
-    </script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script> --}}
+    <script src="{{ asset('bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('sb-admin-pro/dist/js/scripts.js') }}"></script>
     @yield('js')
 </body>

@@ -231,9 +231,9 @@
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('sb-admin-pro/dist/assets/demo/chart-area-demo.js') }}"></script>
+    {{-- <script src="{{ asset('sb-admin-pro/dist/assets/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('sb-admin-pro/dist/assets/demo/chart-bar-demo.js') }}"></script>
-    <script src="{{ asset('sb-admin-pro/dist/assets/demo/chart-pie-demo.js') }}"></script>
+    <script src="{{ asset('sb-admin-pro/dist/assets/demo/chart-pie-demo.js') }}"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js" crossorigin="anonymous"></script>
     <script src="{{ asset('sb-admin-pro/dist/js/litepicker.js') }}"></script>
 @endsection

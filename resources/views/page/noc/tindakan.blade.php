@@ -78,9 +78,10 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"
-                                                        class="btn btn-datatable btn-icon btn-transparent-dark"><i
+                                                        class="btn btn-datatable btn-icon btn-transparent-dark show_confirm"><i
                                                             data-feather="trash-2"></i></button>
                                                 </form>
+
                                                 <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                                     href="{{ route('noc.detail', $data->id) }}"><i
                                                         data-feather="arrow-right-circle"></i></a>
@@ -120,6 +121,27 @@
         // magic positioning for you:
         Popper.createPopper(button, tooltip, {
             placement: 'right',
+        });
+
+    </script>
+    <script type="text/javascript">
+        $('.show_confirm').click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            swal({
+                    title: 'Anda pasti?',
+                    text: "If you delete this, it will be gone forever.",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+
+                .then((willDelete) => {
+                    if (willDelete) {
+                        form.submit();
+                    }
+                });
         });
     </script>
 @endsection
