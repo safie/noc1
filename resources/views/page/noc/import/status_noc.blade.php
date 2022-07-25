@@ -15,6 +15,7 @@
                         <td class="bg-primary text-white align-middle" style="--bs-bg-opacity: .90;">NOC Submit</td>
                     </tr>
                 @endif
+
                 @if ($noc->status_noc == 'noc_17' or $noc->tarikh_dokumen_tambahan != null)
                     <tr>
                         <td class="text-center">
@@ -23,28 +24,12 @@
                         </td>
                     </tr>
                 @endif
+
                 @if ($noc->status_noc == 'noc_2' or $noc->tarikh_semak != null)
                     <tr>
                         <td class="text-center">{{ \Carbon\Carbon::parse($noc->tarikh_semak)->format('d-m-Y') }}</td>
                         <td class="bg-primary text-white align-middle" style="--bs-bg-opacity: .90;">Semakan Bahagian
                             (LULUS)</td>
-                    </tr>
-                @endif
-
-                @if ($noc->status_noc == 'noc_18' or $noc->tarikh_dokumen_tambahan_bajet != null)
-                    <tr>
-                        <td class="text-center">
-                            {{ \Carbon\Carbon::parse($noc->tarikh_dokumen_tambahan_bajet)->format('d-m-Y') }}</td>
-                        <td class="bg-danger text-white align-middle" style="--bs-bg-opacity: .90;">Dokumen Tambahan
-                            Bajet</td>
-                    </tr>
-                @endif
-                @if ($noc->status_noc2 == 'noc_19' or $noc->tarikh_dokumen_tambahan_tek != null)
-                    <tr>
-                        <td class="text-center">
-                            {{ \Carbon\Carbon::parse($noc->tarikh_dokumen_tambahan_tek)->format('d-m-Y') }}</td>
-                        <td class="bg-danger text-white align-middle" style="--bs-bg-opacity: .90;">Dokumen Tambahan
-                            Teknikal</td>
                     </tr>
                 @endif
 
@@ -56,11 +41,30 @@
                             Bajet</td>
                     </tr>
                 @endif
+
+                @if ($noc->status_noc == 'noc_18' or $noc->tarikh_dokumen_tambahan_bajet != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_dokumen_tambahan_bajet)->format('d-m-Y') }}</td>
+                        <td class="bg-danger text-white align-middle" style="--bs-bg-opacity: .90;">Dokumen Tambahan
+                            Bajet</td>
+                    </tr>
+                @endif
+
                 @if ($noc->status_noc2 == 'noc_4' or $noc->tarikh_mohon_ulasan_tek != null)
                     <tr>
                         <td class="text-center">
                             {{ \Carbon\Carbon::parse($noc->tarikh_mohon_ulasan_tek)->format('d-m-Y') }}</td>
                         <td class="bg-info text-white align-middle" style="--bs-bg-opacity: .90;">Permohonan Ulasan
+                            Teknikal</td>
+                    </tr>
+                @endif
+
+                @if ($noc->status_noc2 == 'noc_19' or $noc->tarikh_dokumen_tambahan_tek != null)
+                    <tr>
+                        <td class="text-center">
+                            {{ \Carbon\Carbon::parse($noc->tarikh_dokumen_tambahan_tek)->format('d-m-Y') }}</td>
+                        <td class="bg-danger text-white align-middle" style="--bs-bg-opacity: .90;">Dokumen Tambahan
                             Teknikal</td>
                     </tr>
                 @endif
