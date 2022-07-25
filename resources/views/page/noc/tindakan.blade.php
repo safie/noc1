@@ -64,16 +64,18 @@
                                     <td class="text-center">
                                         <h4><span class="badge bg-secondary text-wrap">{{ $data->nama_status1 }}</span>
                                         </h4>
-                                        <h4><span class="badge bg-secondary text-wrap">{{ $data->nama_status2 }}</span>
+
+                                        <h4><span  @if ($data->tarikh_sedia_memo_kelulusan != null) hidden @endif class="badge bg-secondary text-wrap">{{ $data->nama_status2 }}</span>
                                         </h4>
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-center">
-                                            <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
-                                                href="{{ route('noc.edit', $data->id) }}">
-                                                <i data-feather="edit"></i></a>
+
                                             @if ($data->status_noc == 'noc_1')
+                                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                                                    href="{{ route('noc.edit', $data->id) }}">
+                                                    <i data-feather="edit"></i></a>
                                                 <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -86,6 +88,11 @@
                                                     href="{{ route('noc.detail', $data->id) }}"><i
                                                         data-feather="arrow-right-circle"></i></a>
                                             @else
+                                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                                                    href="{{ route('noc.edit', $data->id) }}">
+                                                    <i data-feather="edit"></i></a>
+
                                                 <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
                                                     href="{{ route('noc.detail', $data->id) }}"><i
                                                         data-feather="arrow-right-circle"></i></a>
@@ -122,7 +129,6 @@
         Popper.createPopper(button, tooltip, {
             placement: 'right',
         });
-
     </script>
     <script type="text/javascript">
         $('.show_confirm').click(function(event) {

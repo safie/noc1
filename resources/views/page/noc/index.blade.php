@@ -120,7 +120,7 @@
                                             @endif
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark mx-1"
                                                 href="{{ route('noc.detail', $data->id) }}">
-                                                <i data-feather="eye">Info</i>
+                                                <i data-feather="monitor">Info</i>
                                             </a>
                                         </div>
                                     </td>

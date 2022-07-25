@@ -266,6 +266,7 @@ class NocController extends Controller
                 )
                 ->where('bahagian', '=', Auth::user()->bahagian)
                 ->whereIn('status_noc', ['noc_1', 'noc_17', 'noc_2', 'noc_18', 'noc_19', 'noc_9', 'noc_10', 'noc_11', 'noc_12', 'noc_13', 'noc_14', 'noc_15'])
+
                 ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
                 ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
                 ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
