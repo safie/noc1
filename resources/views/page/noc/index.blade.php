@@ -2,23 +2,6 @@
 
 @section('css')
 
-    <style>
-        .feather-16 {
-            width: 16px;
-            height: 16px;
-        }
-
-        .feather-24 {
-            width: 24px;
-            height: 24px;
-        }
-
-        .feather-32 {
-            width: 32px;
-            height: 32px;
-        }
-    </style>
-
 @endsection
 
 @section('icon', 'briefcase')
