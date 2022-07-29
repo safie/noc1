@@ -13,15 +13,27 @@
                     Semak NOC
                 </button>
             </div>
-        @elseif (Auth::user()->peranan == 2 and
-            ($noc->status_noc == 'noc_2' and $noc->flow != 'flow1' or
-                $noc->status_noc == 'noc_18' or
-                $noc->status_noc == 'noc_19'))
+        @elseif (Auth::user()->peranan == 2 and ($noc->status_noc == 'noc_2' and $noc->flow != 'flow1'))
             <div class="d-grid">
                 <button type="button" class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal"
                     data-bs-target="#modalLulus">
                     Mohon Ulasan
                 </button>
+            </div>
+        @elseif (Auth::user()->peranan == 2 and ($noc->status_noc == 'noc_18' or $noc->status_noc2 == 'noc_19'))
+            <div class="d-grid">
+                @if ($noc->status_noc == 'noc_18')
+                    <button type="button" class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal"
+                        data-bs-target="#modalUlasanBajet">
+                        Mohon Ulasan Bajet
+                    </button>
+                @endif
+                @if ($noc->status_noc2 == 'noc_19')
+                    <button type="button" class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal"
+                        data-bs-target="#modalUlasanTeknikal">
+                        Mohon Ulasan Teknikal
+                    </button>
+                @endif
             </div>
         @elseif (Auth::user()->peranan == 3 and $noc->status_noc == 'noc_3' or
             Auth::user()->peranan == 4 and $noc->status_noc2 == 'noc_4')

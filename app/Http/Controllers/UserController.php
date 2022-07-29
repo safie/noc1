@@ -158,7 +158,7 @@ class UserController extends Controller
         $user->email      = $request->email;
         $user->peranan    = $request->inputPeranan;
         $user->bahagian   = $request->inputBahagian;
-        // $user->password   = Hash::make($request['inputKatalaluan']);
+        $user->password   = Hash::make($request['inputKatalaluan']);
         $user->save();
 
         return redirect()->route('pengguna.index')->with('success', 'Pengguna berjaya diedit.');

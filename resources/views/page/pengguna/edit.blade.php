@@ -39,8 +39,8 @@
                         <div class="card card-header-actions">
                             <div class="card-header">
                                 Pengisian maklumat
-                                <i class="text-muted" data-feather="info" data-bs-toggle="tooltip"
-                                    data-bs-placement="left" title="input yang perlu diisi"></i>
+                                <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
+                                    title="input yang perlu diisi"></i>
                             </div>
                             <div class="card-body">
                                 <!-- Form Group (first name)-->
@@ -61,7 +61,9 @@
                                         name="inputPeranan">
                                         <option selected disabled>Sila pilih:</option>
                                         @foreach ($peranan as $data)
-                                            <option value="{{ $data->id }}" {{ $data->id == $user->peranan ? 'selected' : '' }}>{{ $data->peranan }}</option>
+                                            <option value="{{ $data->id }}"
+                                                {{ $data->id == $user->peranan ? 'selected' : '' }}>{{ $data->peranan }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -71,11 +73,46 @@
                                         name="inputBahagian">
                                         <option selected disabled>Sila pilih:</option>
                                         @foreach ($bahagian as $data)
-                                            <option value="{{ $data->id }}" {{ $data->id == $user->bahagian ? 'selected' : '' }}>{{ $data->nama_bhgn }}
-                                                ({{ $data->sgktn_bhgn }})</option>
+                                            <option value="{{ $data->id }}"
+                                                {{ $data->id == $user->bahagian ? 'selected' : '' }}>{{ $data->nama_bhgn }}
+                                                ({{ $data->sgktn_bhgn }})
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
+                                <hr>
+                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                                aria-expanded="false" aria-controls="flush-collapseOne">
+                                                Tukar katalaluan
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                            aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <div class="alert alert-info text-center" role="alert">
+                                                    Biarkan kosong sekiranya tiada tukar katalaluan!
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="small mb-1" for="inputKatalaluan">Katalaluan</label>
+                                                    <input class="form-control" id="inputKatalaluan" name="inputKatalaluan"
+                                                        type="password" placeholder="Masukkan katalaluan..." />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="small mb-1" for="inputKatalaluan">Sahkan Katalaluan
+                                                    </label>
+                                                    <input class="form-control" id="inputKatalaluan_confirmation"
+                                                        name="inputKatalaluan_confirmation" type="password"
+                                                        placeholder="Masukkan katalaluan..." />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

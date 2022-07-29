@@ -141,10 +141,11 @@ class HomeController extends Controller
 
             //Senarai status
             $nocStatusAll = DB::table('t_noc')
-                ->selectRaw('t_status.nama_status, t_status.id as id, count(*) as jumlah')
-                ->leftJoin('t_status', 't_status.id_status', '=', 't_noc.status_noc')
+                ->selectRaw('t_status1.nama_status, t_status1.id as id, count(*) as jumlah')
+                ->leftJoin('t_status as t_status1', 't_status1.id_status', '=', 't_noc.status_noc')
+                ->leftJoin('t_status as t_status2', 't_status2.id_status', '=', 't_noc.status_noc2')
                 ->where('bahagian', '=', Auth::user()->bahagian)
-                ->groupBy('t_status.id')
+                ->groupBy('t_status1.id')
                 ->orderBy('jumlah', 'DESC')
                 ->get();
 

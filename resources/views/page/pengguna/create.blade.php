@@ -59,7 +59,7 @@
                                         placeholder="Masukkan katalaluan..." />
                                 </div>
                                 <div class="mb-3">
-                                    <label class="small mb-1" for="inputKatalaluan">Katalaluan </label>
+                                    <label class="small mb-1" for="inputKatalaluan">Sahkan Katalaluan </label>
                                     <input class="form-control" id="inputKatalaluan_confirmation"
                                         name="inputKatalaluan_confirmation" type="password"
                                         placeholder="Masukkan katalaluan..." />

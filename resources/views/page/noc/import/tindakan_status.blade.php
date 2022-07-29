@@ -17,7 +17,7 @@
                     href="{{ route('noc.editMohonUlasan', $noc->id) }}">Mohon Ulasan</a>
             </div>
         @endif
-         @if ($noc->status_noc == 'noc_3')
+         @if (($noc->status_noc == 'noc_3') OR ($noc->status_noc2 == 'noc_19'))
             <div class="d-grid">
                 <a type="button" class="fw-500 btn btn-primary mb-2"
                     href="{{ route('noc.editSemakUlasan', $noc->id) }}">Semak Permohonan</a>

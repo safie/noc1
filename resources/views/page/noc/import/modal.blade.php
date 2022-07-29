@@ -1,17 +1,15 @@
 <!-- Modal -->
-<div class="modal fade" id="modalLulus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+<div class="modal hide fade" id="modalLulus" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
     data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             @if ($noc->status_noc == 'noc_1' or $noc->status_noc == 'noc_17')
                 @include('page.noc.import.modal.01Semak')
             @endif
-            @if (Auth::user()->peranan == 2 and
-                ($noc->status_noc == 'noc_2' and $noc->noc_flow != 'flow1' or
-                    $noc->status_noc == 'noc_18' or
-                    $noc->status_noc == 'noc_19'))
+            @if (Auth::user()->peranan == 2 and ($noc->status_noc == 'noc_2' and $noc->noc_flow != 'flow1'))
                 @include('page.noc.import.modal.02MohonUlasan')
             @endif
+
             @if (Auth::user()->peranan == 3 and ($noc->status_noc == 'noc_3' or $noc->status_noc == 'noc_4') or
                 Auth::user()->peranan == 4 and $noc->status_noc2 == 'noc_4')
                 @include('page.noc.import.modal.03SemakUlasan')
@@ -46,3 +44,24 @@
         </div>
     </div>
 </div>
+{{-- @if (Auth::user()->peranan == 2 and $noc->status_noc == 'noc_18') --}}
+    <div class="modal hide fade" id="modalUlasanBajet" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                @include('page.noc.import.modal.02MohonUlasanBajet')
+            </div>
+        </div>
+    </div>
+{{-- @endif --}}
+
+{{-- @if (Auth::user()->peranan == 2 and $noc->status_noc2 == 'noc_19') --}}
+    <div class="modal hide fade" id="modalUlasanTeknikal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                @include('page.noc.import.modal.02MohonUlasanTeknikal')
+            </div>
+        </div>
+    </div>
+{{-- @endif --}}
