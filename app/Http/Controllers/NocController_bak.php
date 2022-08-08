@@ -7,7 +7,6 @@ use App\Models\Noc;
 use App\Models\Bahagian;
 use App\Models\Kategori;
 use App\Models\Kementerian;
-use App\Models\NocLog;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -160,7 +159,7 @@ class NocController extends Controller
             'kementerian'    => $request_data['inputJabatan'],
             'tarikh_submit'    => Carbon::now()->format('Y-m-d'),
             'status_noc'    => "noc_1",
-            'noc_id'    => "NOC/" . $tahun . "/" . $bulan . "/" . $request_data['inputKlasifikasi'] . "/",
+            'noc_id'    => "noc/" . $tahun . "/" . $bulan . "/" . $request_data['inputKlasifikasi'] . "/",
             'noc_flow' => $flow,
         ]);
 
@@ -248,12 +247,6 @@ class NocController extends Controller
     public function destroy(Noc $noc)
     {
         $noc->delete();
-
-        $NocLog = NocLog::find($noc);
-        $NocLog->noc_id = $noc;
-        $NocLog->status_noc = "delete";
-        $NocLog->tarikh = Carbon::now()->format('Y-m-d');
-
         return redirect()->route('noc.index')->with('success', 'NOC berjaya dipadam');
     }
 
@@ -418,22 +411,10 @@ class NocController extends Controller
             $semakan->tarikh_dokumen_tambahan = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
             $semakan->status_noc  = "noc_17";
             $semakan->status_semak = $request->inputStatusSemak;
-            NocLog::create([
-                'noc_id' => $semakan->id,
-                'status_noc'    => "noc_17",
-                'keterangan' => "Dokumen Tambahan",
-                'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
-            ]);
         } else if ($request->inputStatusSemak == "lulus") {
             $semakan->tarikh_semak = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
             $semakan->status_noc = $dataFlow;
             $semakan->status_semak = $request->inputStatusSemak;
-            NocLog::create([
-                'noc_id' => $semakan->id,
-                'status_noc'    => $dataFlow,
-                'keterangan' => "Semakan Bahagian (LULUS)",
-                'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
-            ]);
         }
 
         $semakan->save();

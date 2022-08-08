@@ -29,7 +29,6 @@
                         <tr>
                             <th>No.</th>
                             <th>Tajuk Permohonan</th>
-
                             <th>Kementerian</th>
                             <th>Bahagian</th>
                             <th class="text-center">Status</th>
