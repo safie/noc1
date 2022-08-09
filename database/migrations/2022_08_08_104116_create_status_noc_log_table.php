@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('tarikh')->nullable();
             $table->string('status_noc')->nullable();
             $table->string('keterangan')->nullable();
+            $table->string('css_class')->nullable();
             $table->timestamps();
         });
     }

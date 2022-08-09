@@ -15,6 +15,7 @@ class NocLog extends Model
         'tarikh',
         'status_noc',
         'keterangan',
+        'css_class',
     ];
     public $timestamps  = true;
 }

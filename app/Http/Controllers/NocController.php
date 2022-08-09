@@ -361,6 +361,7 @@ class NocController extends Controller
 
     public function detail($id)
     {
+
         $noc = DB::table('t_noc')
             ->select(
                 't_noc.*',
@@ -381,10 +382,24 @@ class NocController extends Controller
             ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
             ->where('t_noc.id', '=', $id)
             ->first();
+
+        $noc_status_log = DB::table('t_status_noc_log')
+            ->select(
+                'noc_id',
+                'tarikh',
+                'keterangan',
+                'css_class'
+            )
+            ->where('t_status_noc_log.noc_id', $id)
+            ->orderBy('tarikh', 'asc')
+            ->get();
+
         $data1['noc'] = $noc;
+        $data2['noc_log'] = $noc_status_log;
 
         return view('page.noc.detail')
-            ->with($data1);
+            ->with($data1)
+            ->with($data2);
     }
 
     //proses: noc_1
@@ -423,6 +438,7 @@ class NocController extends Controller
                 'status_noc'    => "noc_17",
                 'keterangan' => "Dokumen Tambahan",
                 'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+                'css_class' => "bg-danger",
             ]);
         } else if ($request->inputStatusSemak == "lulus") {
             $semakan->tarikh_semak = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
@@ -433,6 +449,7 @@ class NocController extends Controller
                 'status_noc'    => $dataFlow,
                 'keterangan' => "Semakan Bahagian (LULUS)",
                 'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+                'css_class' => "bg-primary",
             ]);
         }
 
@@ -461,22 +478,57 @@ class NocController extends Controller
             $semakan->tarikh_mohon_ulasan = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
             $semakan->status_noc = "noc_3";
             $semakan->save();
+            NocLog::create([
+                'noc_id' => $semakan->id,
+                'status_noc'    => "noc_3",
+                'keterangan' => "Permohonan Ulasan Bajet",
+                'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+                'css_class' => "bg-warning",
+            ]);
         } else if ($flow->flow == "flow3") {
 
             if ($semakan->tarikh_dokumen_tambahan_bajet != NULL) {
                 $semakan->tarikh_mohon_ulasan = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
                 $semakan->status_noc = "noc_3";
                 $semakan->save();
+                NocLog::create([
+                    'noc_id' => $semakan->id,
+                    'status_noc'    => "noc_3",
+                    'keterangan' => "Permohonan Ulasan Bajet",
+                    'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+                    'css_class' => "bg-warning",
+                ]);
             } else if ($semakan->tarikh_dokumen_tambahan_tek != NULL) {
                 $semakan->tarikh_mohon_ulasan_tek  = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
                 $semakan->status_noc2 = "noc_4";
                 $semakan->save();
+                NocLog::create([
+                    'noc_id' => $semakan->id,
+                    'status_noc'    => "noc_4",
+                    'keterangan' => "Permohonan Ulasan Teknikal",
+                    'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+                    'css_class' => "bg-info",
+                ]);
             } else {
                 $semakan->tarikh_mohon_ulasan = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
                 $semakan->tarikh_mohon_ulasan_tek  = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
                 $semakan->status_noc = "noc_3";
                 $semakan->status_noc2 = "noc_4";
                 $semakan->save();
+                NocLog::create([
+                    'noc_id' => $semakan->id,
+                    'status_noc'    => "noc_3",
+                    'keterangan' => "Permohonan Ulasan Bajet",
+                    'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+                    'css_class' => "bg-warning",
+                ]);
+                NocLog::create([
+                    'noc_id' => $semakan->id,
+                    'status_noc'    => "noc_4",
+                    'keterangan' => "Permohonan Ulasan Teknikal",
+                    'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+                    'css_class' => "bg-info",
+                ]);
             }
         }
 
@@ -497,10 +549,24 @@ class NocController extends Controller
             $semakan->tarikh_dokumen_tambahan_bajet = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
             $semakan->status_noc = "noc_18";
             $semakan->save();
+            NocLog::create([
+                'noc_id' => $semakan->id,
+                'status_noc'    => "noc_18",
+                'keterangan' => "Dokumen Tambahan Bajet",
+                'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+                'css_class' => "bg-danger",
+            ]);
         } else if ($request->inputStatusSemak == "lulus-mohon") {
             $semakan->tarikh_semak_bajet = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
             $semakan->status_noc = "noc_5";
             $semakan->save();
+            NocLog::create([
+                'noc_id' => $semakan->id,
+                'status_noc'    => "noc_5",
+                'keterangan' => "Semakan BBP",
+                'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+                'css_class' => "bg-warning",
+            ]);
         }
 
         return redirect()->route('noc.detail', $id)->with('success', 'Permohonan Ulasan telah disemak');
@@ -520,10 +586,24 @@ class NocController extends Controller
             $semakan->tarikh_dokumen_tambahan_tek = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
             $semakan->status_noc2 = "noc_19";
             $semakan->save();
+            NocLog::create([
+                'noc_id' => $semakan->id,
+                'status_noc'    => "noc_19",
+                'keterangan' => "Dokumen Tambahan Teknikal",
+                'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+                'css_class' => "bg-danger",
+            ]);
         } else if ($request->inputStatusSemak == "lulus-mohon") {
             $semakan->tarikh_semak_tek = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
             $semakan->status_noc2 = "noc_6";
             $semakan->save();
+            NocLog::create([
+                'noc_id' => $semakan->id,
+                'status_noc'    => "noc_5",
+                'keterangan' => "Semakan BBP",
+                'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+                'css_class' => "bg-warning",
+            ]);
         }
 
         return redirect()->route('noc.detail', $id)->with('success', 'Permohonan Ulasan telah disemak');
@@ -540,6 +620,13 @@ class NocController extends Controller
         $semakan->tarikh_sedia_ulasan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
         $semakan->status_noc             = "noc_7";
         $semakan->save();
+        NocLog::create([
+            'noc_id' => $semakan->id,
+            'status_noc'    => "noc_7",
+            'keterangan' => "Penyediaan Ulasan Bajet",
+            'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+            'css_class' => "bg-warning",
+        ]);
 
         return redirect()->route('noc.detail', $id)->with('success', 'Ulasan sedang disediakan');
     }
@@ -555,6 +642,13 @@ class NocController extends Controller
         $semakan->tarikh_sedia_ulasan_tek    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
         $semakan->status_noc2             = "noc_8";
         $semakan->save();
+        NocLog::create([
+            'noc_id' => $semakan->id,
+            'status_noc'    => "noc_8",
+            'keterangan' => "Penyediaan Ulasan Teknikal",
+            'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+            'css_class' => "bg-info",
+        ]);
 
         return redirect()->route('noc.detail', $id)->with('success', 'Ulasan sedang disediakan');
     }
@@ -570,6 +664,13 @@ class NocController extends Controller
         $semakan->tarikh_hantar_ulasan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
         $semakan->status_noc            = "noc_9";
         $semakan->save();
+        NocLog::create([
+            'noc_id' => $semakan->id,
+            'status_noc'    => "noc_9",
+            'keterangan' => "Pengemukaan Ulasan Bajet",
+            'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+            'css_class' => "bg-warning",
+        ]);
 
         return redirect()->route('noc.detail', $id)->with('success', 'Ulasan telah dihantar');
     }
@@ -585,6 +686,13 @@ class NocController extends Controller
         $semakan->tarikh_hantar_ulasan_tek    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
         $semakan->status_noc2            = "noc_10";
         $semakan->save();
+        NocLog::create([
+            'noc_id' => $semakan->id,
+            'status_noc'    => "noc_10",
+            'keterangan' => "Pengemukaan Ulasan Teknikal",
+            'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+            'css_class' => "bg-info",
+        ]);
         return redirect()->route('noc.detail', $id)->with('success', 'Ulasan telah dihantar');
     }
 
@@ -601,6 +709,13 @@ class NocController extends Controller
         $semakan->pengurusan_tinggi                = $request->pengurusan_tinggi;
         $semakan->status_noc                    = "noc_11";
         $semakan->save();
+        NocLog::create([
+            'noc_id' => $semakan->id,
+            'status_noc'    => "noc_11",
+            'keterangan' => "Penyediaan Memo",
+            'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+            'css_class' => "bg-primary",
+        ]);
 
         return redirect()->route('noc.detail', $id)->with('success', 'Memo kelulusan sedang disediakan');
     }
@@ -616,6 +731,13 @@ class NocController extends Controller
         $semakan->tarikh_hantar_memo_kelulusan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
         $semakan->status_noc                    = "noc_12";
         $semakan->save();
+        NocLog::create([
+            'noc_id' => $semakan->id,
+            'status_noc'    => "noc_12",
+            'keterangan' => "Penghantaran Memo",
+            'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+            'css_class' => "bg-primary",
+        ]);
 
         return redirect()->route('noc.detail', $id)->with('success', 'Memo kelulusan telah dihantar');
     }
@@ -631,6 +753,13 @@ class NocController extends Controller
         $semakan->tarikh_kelulusan_pt    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
         $semakan->status_noc            = "noc_13";
         $semakan->save();
+        NocLog::create([
+            'noc_id' => $semakan->id,
+            'status_noc'    => "noc_13",
+            'keterangan' => "Terima Memo",
+            'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+            'css_class' => "bg-primary",
+        ]);
 
         return redirect()->route('noc.detail', $id)->with('success', 'Memo kelulusan telah diterima');
     }
@@ -642,10 +771,17 @@ class NocController extends Controller
             'tarikh' => 'required',
         ]);
 
-        $semakan                         = Noc::find($id);
-        $semakan->tarikh_sedia_surat    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-        $semakan->status_noc            = "noc_14";
+        $semakan = Noc::find($id);
+        $semakan->tarikh_sedia_surat = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc = "noc_14";
         $semakan->save();
+        NocLog::create([
+            'noc_id' => $semakan->id,
+            'status_noc'    => "noc_14",
+            'keterangan' => "Penyediaan Surat",
+            'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+            'css_class' => "bg-primary",
+        ]);
 
         return redirect()->route('noc.detail', $id)->with('success', 'Surat kelulusan sedang disediakan');
     }
@@ -657,10 +793,17 @@ class NocController extends Controller
             'tarikh' => 'required',
         ]);
 
-        $semakan                             = Noc::find($id);
-        $semakan->tarikh_hantar_surat_lulus    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-        $semakan->status_noc                = "noc_15";
+        $semakan = Noc::find($id);
+        $semakan->tarikh_hantar_surat_lulus = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc = "noc_15";
         $semakan->save();
+        NocLog::create([
+            'noc_id' => $semakan->id,
+            'status_noc'    => "noc_15",
+            'keterangan' => "Penghantaran Surat",
+            'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+            'css_class' => "bg-primary",
+        ]);
 
         return redirect()->route('noc.detail', $id)->with('success', 'Surat kelulusan rasmi telah dihantar');
     }
@@ -677,6 +820,13 @@ class NocController extends Controller
         $semakan->tarikh_mohon_modul    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
         $semakan->status_noc            = "noc_16";
         $semakan->save();
+        NocLog::create([
+            'noc_id' => $semakan->id,
+            'status_noc'    => "noc_16",
+            'keterangan' => "Mohon Modul NOC MyProjek (Selesai)",
+            'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+            'css_class' => "bg-primary",
+        ]);
 
         return redirect()->route('noc.detail', $id)->with('success', 'Modul NOC MyProjek telah dipohon');
     }

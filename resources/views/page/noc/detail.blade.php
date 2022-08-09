@@ -119,7 +119,8 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                @include('page.noc.import.status_noc')
+                {{-- @include('page.noc.import.status_noc') --}}
+                @include('page.noc.import.status_noc_log')
             </div>
             <div class="col-lg-3">
 
