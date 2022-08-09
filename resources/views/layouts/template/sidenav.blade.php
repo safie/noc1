@@ -63,12 +63,13 @@
                 <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
                     data-bs-target="#collapseTindakan" aria-expanded="true" aria-controls="collapseTindakan">
                     <div class="nav-link-icon"><i data-feather="edit"></i></div>
-                    Tindakan
+                    Tindakan <span class="mx-2 badge rounded-pill bg-danger">{{ count_tindakan() }}</span>
                     <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapseTindakan" data-bs-parent="#accordionSidenav">
                     <nav class="sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route('noc.tindakan') }}">NOC untuk tindakan</a>
+                        <a class="nav-link" href="{{ route('noc.tindakan') }}">NOC untuk tindakan <span
+                                class="mx-2 badge rounded-pill bg-danger">{{ count_tindakan() }}</span></a>
                     </nav>
                     <nav class="sidenav-menu-nested nav">
                         <a class="nav-link" href="{{ route('noc.create') }}">Permohonan baru</a>
@@ -92,7 +93,7 @@
                 <!-- Sidenav Link (Tindakan)-->
                 <a class="nav-link" href="{{ route('noc.tindakan') }}">
                     <div class="nav-link-icon"><i data-feather="edit"></i></div>
-                    Tindakan
+                    Tindakan <span class="mx-2 badge rounded-pill bg-danger">{{ count_tindakan() }}</span>
                 </a>
                 <!-- Sidenav Link (Senarai NOC)-->
                 <a class="nav-link" href="{{ route('noc.index') }}">
@@ -112,7 +113,7 @@
                 <!-- Sidenav Link (Tindakan)-->
                 <a class="nav-link" href="{{ route('noc.tindakan') }}">
                     <div class="nav-link-icon"><i data-feather="edit"></i></div>
-                    Tindakan
+                    Tindakan <span class="mx-2 badge rounded-pill bg-danger">{{ count_tindakan() }}</span>
                 </a>
                 <!-- Sidenav Link (Senarai NOC)-->
                 <a class="nav-link" href="{{ route('noc.index') }}">
@@ -135,9 +136,9 @@
                     @elseif (Auth::user()->peranan == 2)
                         bahagian
                     @elseif (Auth::user()->peranan == 3)
-                       bajet
+                        bajet
                     @else
-                       nilai
+                        nilai
                     @endif
                 </label>
             </div>

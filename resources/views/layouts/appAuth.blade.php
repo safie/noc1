@@ -11,7 +11,7 @@
     <!-- Styles -->
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <link href="{{ asset('sb-admin-pro/dist/css/styles.css') }}" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="{{ asset('sb-admin-pro/dist/assets/img/favicon.png') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('/pic/favicon.ico') }}" />
     @yield('css')
     <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
         crossorigin="anonymous"></script>
@@ -20,13 +20,14 @@
     <title>i-NOC</title>
 </head>
 
-<body class="bg-image" >
+<body class="bg-image">
     <main>
         @yield('content')
     </main>
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('sb-admin-pro/dist/js/scripts.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+    </script>
+    <script src="{{ asset('sb-admin-pro/dist/js/scripts.js') }}"></script>
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
 </body>
