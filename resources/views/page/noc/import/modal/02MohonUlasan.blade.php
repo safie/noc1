@@ -19,8 +19,10 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Tutup</button>
-            <button class="btn btn-primary" type="submit">simpan</button>
+            <div class="d-flex gap-2 spinner-hide">
+                <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Tutup</button>
+                <button class="btn btn-primary" type="submit">simpan</button>
+            </div>
         </div>
     </form>
 @endif

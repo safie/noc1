@@ -163,5 +163,21 @@
                 autoclose: true
             });
         });
+
+        $('.spinner-hide').hide();
+
+        $(function() {
+            $('.button-disabled').on('click', function() {
+                $('.button-disabled,input[type=submit],button[type=submit]').attr('disabled', 'true')
+                    .addClass("disabled");
+                $('.spinner-hide').show();
+            });
+
+            $("form").on('submit', function() {
+                $('.button-disabled,input[type=submit],button[type=submit]').attr('disabled', 'true')
+                    .addClass("disabled");
+                $('.spinner-hide').show();
+            });
+        })
     </script>
 @endsection

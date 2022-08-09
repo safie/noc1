@@ -136,7 +136,8 @@
                                 title="Data akan disimpan"></i>
                         </div>
                         <div class="card-body">
-                            <div class="d-grid spinner-hide"><button type="submit" class="fw-500 btn btn-black">Simpan</button>
+                            <div class="d-grid spinner-hide">
+                                <button type="submit" class="fw-500 btn btn-black">Simpan</button>
                             </div>
                         </div>
                     </div>

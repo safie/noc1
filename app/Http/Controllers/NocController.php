@@ -124,8 +124,8 @@ class NocController extends Controller
             'inputTajuk' => 'required',
             'inputKodMyprojek' => 'required',
             'inputRujukan' => 'required',
-            'tarikhMohonNOC' => 'required',
-            'tarikhSuratMohon' => 'required',
+            // 'tarikhMohonNOC' => 'required',
+            // 'tarikhSuratMohon' => 'required',
             'inputKlasifikasi' => 'required',
             // 'inputBahagian' => 'required',
             'inputJabatan' => 'required',
@@ -639,10 +639,10 @@ class NocController extends Controller
             $semakan->save();
             NocLog::create([
                 'noc_id' => $semakan->id,
-                'status_noc'    => "noc_5",
-                'keterangan' => "Semakan BBP",
+                'status_noc'    => "noc_6",
+                'keterangan' => "Semakan BPN",
                 'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
-                'css_class' => "bg-warning",
+                'css_class' => "bg-info",
             ]);
         }
 
