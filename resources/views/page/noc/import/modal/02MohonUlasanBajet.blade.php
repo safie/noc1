@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('noc.updateMohonUlasan', $noc->id) }}">
+<form method="POST" action="{{ route('noc.updateMohonUlasanBajet', $noc->id) }}">
     @csrf
     @method('PUT')
     <div class="modal-header">

@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('noc.updateMohonUlasan', $noc->id) }}">
+<form method="POST" action="{{ route('noc.updateMohonUlasanTeknikal', $noc->id) }}">
     @csrf
     @method('PUT')
     <div class="modal-header">
@@ -12,7 +12,7 @@
                 <span class="input-group-text">
                     <i data-feather="calendar"></i>
                 </span>
-                <input class="form-control ps-0" id="tarikh" name="tarikh" placeholder="Pilih tarikh..."
+                <input class="form-control ps-0" id="tarikhMohon" name="tarikh" placeholder="Pilih tarikh..."
                     autocomplete="off" />
             </div>
         </div>

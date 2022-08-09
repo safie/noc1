@@ -47,6 +47,8 @@ Route::get('/noc/delete/{id}', [\App\Http\Controllers\NocController::class, 'des
 Route::put('/noc/semak/{id}', [\App\Http\Controllers\NocController::class, 'updateSemak'])->name('noc.updateSemak');
 //proses-noc-2
 Route::put('/noc/mohon-ulasan/{id}', [\App\Http\Controllers\NocController::class, 'updateMohonUlasan'])->name('noc.updateMohonUlasan');
+Route::put('/noc/mohon-ulasan-bajet/{id}', [\App\Http\Controllers\NocController::class, 'updateMohonUlasanBajet'])->name('noc.updateMohonUlasanBajet');
+Route::put('/noc/mohon-ulasan-teknikal/{id}', [\App\Http\Controllers\NocController::class, 'updateMohonUlasanTeknikal'])->name('noc.updateMohonUlasanTeknikal');
 //proses-noc-4
 Route::put('/noc/semak-ulasan-bajet/{id}', [\App\Http\Controllers\NocController::class, 'updateSemakUlasanBajet'])->name('noc.updateSemakUlasanBajet');
 //proses-noc-5

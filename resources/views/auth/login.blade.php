@@ -5,8 +5,8 @@
         <div id="layoutAuthentication">
             <div class="row justify-content-center">
                 <div class="d-flex justify-content-center mt-10">
-                    <img src="{{ asset('pic/jata_epu_bm_hitam.png') }}" id="mask" alt="iNOC"
-                        style="width: 275px; height: 175px">
+                    <img src="{{ asset('pic/jata_negara_small.png') }}" id="mask" alt="iNOC"
+                        style="">
                 </div>
                 <div class="col-md-8">
                     <div class="card mt-5">

@@ -146,6 +146,12 @@
             });
         });
         $(document).ready(function() {
+            $('#tarikhMohon').datepicker({
+                format: 'dd/mm/yyyy',
+                autoclose: true
+            });
+        });
+        $(document).ready(function() {
             $('#tarikhSemak1').datepicker({
                 format: 'dd/mm/yyyy',
                 autoclose: true
