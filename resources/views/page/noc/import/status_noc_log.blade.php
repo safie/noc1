@@ -9,14 +9,15 @@
             <table class="table table-sm table-striped table-hover mx-0 my-0 small">
                 @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
                     <tr>
-                        <td class="text-center">{{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d-m-Y') }}</td>
+                        <td class="text-center">{{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d.m.Y') }}</td>
                         <td class="bg-primary text-white align-middle" style="--bs-bg-opacity: .90;">NOC Submit</td>
                     </tr>
                 @endif
                 @foreach ($noc_log as $noc)
                     <tr>
-                        <td class="text-center"> {{ \Carbon\Carbon::parse($noc->tarikh)->format('d-m-Y') }}</td>
-                        <td class="text-white align-middle {{$noc->css_class}}"  style="--bs-bg-opacity: .90;"> {{ $noc->keterangan }}</td>
+                        <td class="text-center"> {{ \Carbon\Carbon::parse($noc->tarikh)->format('d.m.Y') }}</td>
+                        <td class="text-white align-middle {{ $noc->css_class }}" style="--bs-bg-opacity: .90;">
+                            {{ $noc->keterangan }}</td>
                     </tr>
                 @endforeach
             </table>
