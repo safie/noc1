@@ -98,7 +98,7 @@
 
         <div class="d-flex align-items-center justify-content-center mt-5">
             <p class="lead">
-                <a href="/login" class="btn btn-lg btn-secondary fw-bold border-white bg-secondary">Log Masuk</a>
+                <a href="/login" class="btn btn-lg btn-secondary fw-bold border-white bg-primary">Log Masuk</a>
             </p>
         </div>
 
