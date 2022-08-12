@@ -98,3 +98,80 @@ if (!function_exists('count_tindakan')) {
         return $countNocTindakan;
     }
 }
+
+if (!function_exists('count_all_noc')) {
+    function count_all_noc()
+    {
+        $noc = DB::table('t_noc')
+                ->select('t_noc.*')
+                ->get();
+        $countAllNoc = $noc->count();
+
+        return $countAllNoc;
+    }
+}
+
+if (!function_exists('count_all_semakan')) {
+    function count_all_semakan()
+    {
+        $noc = DB::table('t_noc')
+                ->select('t_noc.*')
+                ->whereIn('status_noc', ['noc_2', 'noc_5', 'noc_6'])
+                ->get();
+        $countAllSemakan = $noc->count();
+
+        return $countAllSemakan;
+    }
+}
+
+if (!function_exists('count_all_ulasan')) {
+    function count_all_ulasan()
+    {
+        $noc = DB::table('t_noc')
+                ->select('t_noc.*')
+                ->whereIn('status_noc', ['noc_3', 'noc_4', 'noc_7', 'noc_8', 'noc_9', 'noc_10'])
+                ->get();
+        $countAllUlasan = $noc->count();
+
+        return $countAllUlasan;
+    }
+}
+
+if (!function_exists('count_all_tambahan')) {
+    function count_all_tambahan()
+    {
+        $noc = DB::table('t_noc')
+                ->select('t_noc.*')
+                ->whereIn('status_noc', ['noc_17', 'noc_18', 'noc_19'])
+                ->get();
+        $countAllTambahan = $noc->count();
+
+        return $countAllTambahan;
+    }
+}
+
+if (!function_exists('count_all_memo')) {
+    function count_all_memo()
+    {
+        $noc = DB::table('t_noc')
+                ->select('t_noc.*')
+                ->whereIn('status_noc', ['noc_11', 'noc_12', 'noc_13'])
+                ->get();
+        $countAllMemo = $noc->count();
+
+        return $countAllMemo;
+    }
+}
+
+if (!function_exists('count_all_selesai')) {
+    function count_all_selesai()
+    {
+        $noc = DB::table('t_noc')
+                ->select('t_noc.*')
+                ->whereIn('status_noc', ['noc_16'])
+                ->get();
+        $countAllSelesai = $noc->count();
+
+        return $countAllSelesai;
+    }
+}
