@@ -7,10 +7,11 @@
 @section('content')
     <section class="container d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <div class="d-flex flex-column align-items-center ">
-            <div class="d-flex justify-content-center display-1 h1 text-white">i-NOC</div>
+            <div class="d-flex justify-content-center display-1 h1 text-white"><strong>i-NOC</strong></div>
             <br>
-            <div class="d-flex justify-content-center h1 text-white">Sistem NOC (<i>Notice Of Change</i>)</div>
-            <div class="d-flex justify-content-center h6 text-white">Bahagian Bajet Pembangunan (BBP)</div>
+            <div class="d-flex justify-content-center h1 text-white">Sistem NOC (<i>Notice Of Change</i>)
+            </div>
+            <div class="d-flex justify-content-center h6 text-white lead">Bahagian Bajet Pembangunan (BBP)</div>
         </div>
 
         <div class="row mx-auto mt-5">
