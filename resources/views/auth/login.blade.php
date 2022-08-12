@@ -9,7 +9,7 @@
                         style="">
                 </div>
                 <div class="col-md-8">
-                    <div class="card mt-5">
+                    <div class="card mt-5 mb-5">
                         <div class="card-header text-center fs-1"><strong>Sistem i-NOC</strong></div>
 
                         <div class="card-body">
@@ -96,7 +96,7 @@
         }
 
         #mask {
-            filter: drop-shadow(0 0 0.25rem rgb(243, 243, 240));
+            filter: drop-shadow(0 0 0.5rem rgb(243, 243, 240));
         }
     </style>
 @endsection
