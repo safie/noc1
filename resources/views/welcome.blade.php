@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <section class="container vh-100">
+    <section class="container d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <div class="d-flex flex-column align-items-center ">
             <div class="d-flex justify-content-center display-1 h1 text-white">i-NOC</div>
             <br>
