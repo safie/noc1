@@ -20,7 +20,7 @@
     <title>iNOC</title>
 </head>
 
-<body class="bg-primary">
+<body class="bg-image">
     <main>
         @yield('content')
     </main>

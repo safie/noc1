@@ -7,8 +7,9 @@
 @section('content')
     <section class="container d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <div class="d-flex flex-column align-items-center ">
-            <div class="d-flex justify-content-center display-1 h1 text-white"><strong>i-NOC</strong></div>
+            <img src="{{ asset('pic/jata_negara_small.png') }}" id="mask" alt="i-NOC" style="width:50%; height:50%">
             <br>
+            <div class="d-flex justify-content-center display-1 h1 text-white"><strong>i-NOC</strong></div>
             <div class="d-flex justify-content-center h1 text-white">Sistem NOC (<i>Notice Of Change</i>)
             </div>
             <div class="d-flex justify-content-center h6 text-white lead">Bahagian Bajet Pembangunan (BBP)</div>
@@ -104,5 +105,18 @@
     </section>
 @endsection
 
-@section('js')
+@section('css')
+    <style>
+        .bg-image {
+            background: url({{ asset('pic/abstract_bg2.jpg') }}) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        #mask {
+            filter: drop-shadow(0 0 0.5rem rgb(243, 243, 240));
+        }
+    </style>
 @endsection
