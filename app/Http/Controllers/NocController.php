@@ -11,6 +11,8 @@ use App\Models\NocLog;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EmailNOC;
 
 class NocController extends Controller
 {
@@ -873,5 +875,23 @@ class NocController extends Controller
 
     public function carianNoc(Request $request, $id)
     {
+    }
+
+    public function sendNocMessage($id)
+    {
+        $dataNoc = Noc::find($id);
+
+        $mailData = [
+            'tajuk' => $tajuk,
+            'klasifikasi' => $klasifikasi,
+            'bahagian' => $bahagian,
+            'urusan' => $urusan,
+            'tarikh' => $tarikh
+        ];
+
+        Mail::to($sender)->send(new EmailNOC($mailData));
+
+        dd("Email berjaya!");
+
     }
 }

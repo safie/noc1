@@ -77,3 +77,5 @@ Route::put('/noc/sedia-surat/{id}', [\App\Http\Controllers\NocController::class,
 Route::put('/noc/hantar-surat/{id}', [\App\Http\Controllers\NocController::class, 'updateHantarSurat'])->name('noc.updateHantarSurat');
 //proses-noc-11
 Route::put('/noc/mohon-modul/{id}', [\App\Http\Controllers\NocController::class, 'updateMohonModul'])->name('noc.updateMohonModul');
+
+Route::get('send-mail', [NocController::class, 'sendNocMessage']);
