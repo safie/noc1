@@ -877,21 +877,39 @@ class NocController extends Controller
     {
     }
 
-    public function sendNocMessage($id)
+    public function sendNocMessage()
     {
-        $dataNoc = Noc::find($id);
+        // $dataNoc = DB::table('t_noc')
+        //     ->select(
+        //         't_noc.id as id',
+        //         't_noc.tajuk_permohonan as tajuk',
+        //         't_noc.status as urusan1',
+        //         't_noc.status2 as urusan2',
+        //         't_bahagian.nama_bhgn as bahagian',
+        //     )
+        //     ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+        //     ->where('t_noc.id', '=', $id)
+        //     ->get();
+
+        // $sender = DB::table('users')
+        //     ->select('*')
+        //     ->get();
 
         $mailData = [
-            'tajuk' => $tajuk,
-            'klasifikasi' => $klasifikasi,
-            'bahagian' => $bahagian,
-            'urusan' => $urusan,
-            'tarikh' => $tarikh
+            'tajuk' => 'PEMBINAAN EMPAT (4) BENGKEL BARU PROJEK KENDERAAN BAS MARA DI BAWAH RMKe-12',
+            'klasifikasi' => 'D7.2 - Wujud semula butiran dengan kenaikan kos',
+            'bahagian' => 'Bahagian Perkhidmatan Sosial',
+            'urusan' => 'Memohon ulasan Bajet'
         ];
+        // $mailData = [
+        //     'tajuk' => $dataNoc['tajuk'],
+        //     'klasifikasi' => $dataNoc['tajuk'],
+        //     'bahagian' => $dataNoc['tajuk'],
+        //     'urusan' => $dataNoc['tajuk']
+        // ];
 
-        Mail::to($sender)->send(new EmailNOC($mailData));
+        Mail::to('safie.misri@epu.gov.my')->send(new EmailNOC($mailData));
 
         dd("Email berjaya!");
-
     }
 }

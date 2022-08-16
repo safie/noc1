@@ -43,10 +43,7 @@
             <th>Urusan</th>
             <td>{{ $mailData['urusan'] }}</td>
         </tr>
-        <tr>
-            <th>Tarikh</th>
-            <td>{{ $mailData['tarikh'] }}</td>
-        </tr>
+
     </table>
 
 </body>
