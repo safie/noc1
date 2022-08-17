@@ -53,7 +53,7 @@
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td style="width:40em">
                                         <div class="text-uppercase">
-                                            <strong>({{ $data->klasifikasi }}) {{ $data->nama_kat }}</strong><br>
+                                            <strong>({{ $data->kod }}) {{ $data->nama_kat }}</strong><br>
                                             {{ $data->tajuk_permohonan }}
                                         </div>
 

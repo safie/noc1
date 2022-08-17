@@ -64,7 +64,7 @@
                             <div class="row">
                                 <div class="mb-3">
                                     <label class="me-2">Klasifikasi : </label>
-                                    <label class="px-1 bg-primary text-white rounded">{{ $noc->klasifikasi }} -
+                                    <label class="px-1 bg-primary text-white rounded">{{ $noc->kod }} -
                                         {{ $noc->nama_kat }}
                                     </label>
                                 </div>

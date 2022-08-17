@@ -66,6 +66,6 @@ class Noc extends Model
 
     public function getKategori()
     {
-        return $this->hasMany(Kategori::class,'kod','klasifikasi');
+        return $this->hasMany(Kategori::class,'id','klasifikasi');
     }
 }

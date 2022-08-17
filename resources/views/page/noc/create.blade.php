@@ -52,7 +52,7 @@
                                         name=" inputKlasifikasi">
                                         <option selected disabled>Sila pilih:</option>
                                         @foreach ($kategori as $data)
-                                            <option value="{{ $data->kod }}">{{ $data->kod }} -
+                                            <option value="{{ $data->id }}">{{ $data->kod }} -
                                                 {{ $data->nama_kat }}
                                             </option>
                                         @endforeach

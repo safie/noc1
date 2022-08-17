@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class EmailNOCSemakan extends Mailable
+class EmailNOCMohonUlasan extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -33,8 +33,8 @@ class EmailNOCSemakan extends Mailable
     public function build()
     {
 
-        return $this->subject('i-NOC Notifikasi : Semakan')
-                    ->view('email.email_noc')
-                    ->with('semakan',$this->semakan);
+        return $this->subject('i-NOC Notifikasi : Permohonan Ulasan')
+            ->view('email.email_noc')
+            ->with('semakan', $this->semakan);
     }
 }

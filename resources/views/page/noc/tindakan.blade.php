@@ -52,7 +52,7 @@
                                     <td class="text-center">{{ $loop->index + 1 }}</td>
                                     <td style="width:40em">
                                         <div class="text-uppercase">
-                                            <strong>({{ $data->klasifikasi }}) {{ $data->nama_kat }}</strong><br>
+                                            <strong>({{ $data->kod }}) {{ $data->nama_kat }}</strong><br>
                                             {{ $data->tajuk_permohonan }}
                                         </div>
 
@@ -65,7 +65,8 @@
                                         <h4><span class="badge bg-secondary text-wrap">{{ $data->nama_status1 }}</span>
                                         </h4>
 
-                                        <h4><span  @if ($data->tarikh_sedia_memo_kelulusan != null) hidden @endif class="badge bg-secondary text-wrap">{{ $data->nama_status2 }}</span>
+                                        <h4><span @if ($data->tarikh_sedia_memo_kelulusan != null) hidden @endif
+                                                class="badge bg-secondary text-wrap">{{ $data->nama_status2 }}</span>
                                         </h4>
                                     </td>
                                     <td>
