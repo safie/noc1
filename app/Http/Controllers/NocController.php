@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\EmailNOC;
+use App\Mail\EmailNOCSemakan;
 
 class NocController extends Controller
 {
@@ -456,6 +456,14 @@ class NocController extends Controller
         }
 
         $semakan->save();
+
+        // return $semakan;
+
+        // $data = DB::table('t_noc')
+
+
+        Mail::to('safie.misri@epu.gov.my')->send(new EmailNOCSemakan($semakan));
+        // Mail::to('email')->bcc(['email'])->send(new EmailNOC($semakan));
 
         return redirect()->route('noc.detail', $id)->with('success', 'NOC telah disemak');
     }
@@ -908,7 +916,7 @@ class NocController extends Controller
         //     'urusan' => $dataNoc['tajuk']
         // ];
 
-        Mail::to('safie.misri@epu.gov.my')->send(new EmailNOC($mailData));
+        // Mail::to('safie.misri@epu.gov.my')->send(new EmailNOC($mailData));
 
         dd("Email berjaya!");
     }

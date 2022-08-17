@@ -8,6 +8,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeUser;
+
 
 class UserController extends Controller
 {
@@ -85,6 +88,17 @@ class UserController extends Controller
             'bahagian'  => $request_data['inputBahagian'],
             'password'  => Hash::make($request_data['inputKatalaluan']),
         ]);
+
+        $sendTo = $request_data['email'];
+
+        $mailData = ([
+            'name'      => $request_data['inputNama'],
+            'email'     => $request_data['email'],
+            'peranan'   => $request_data['inputPeranan'],
+            'bahagian'  => $request_data['inputBahagian'],
+        ]);
+
+        Mail::to($sendTo)->send(New WelcomeUser($mailData));
 
         return redirect()->route('pengguna.index')->with('success', 'Pengguna berjaya disimpan.');
     }

@@ -49,13 +49,23 @@ class Noc extends Model
     ];
     public $timestamps  = true;
 
-    public function bahagian()
+    public function getBahagian()
     {
-        return $this->hasOne(Bahagian::class);
+        return $this->hasMany(Bahagian::class,'id','bahagian');
     }
 
-    public function kementerian()
+    public function getKementerian()
     {
-        return $this->hasMany(Kementerian::class);
+        return $this->hasMany(Kementerian::class,'id','kementerian');
+    }
+
+    public function getStatus()
+    {
+        return $this->hasMany(Status::class,'id','status_noc');
+    }
+
+    public function getKategori()
+    {
+        return $this->hasMany(Kategori::class,'kod','klasifikasi');
     }
 }

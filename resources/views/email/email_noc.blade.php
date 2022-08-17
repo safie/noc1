@@ -29,19 +29,23 @@
     <table>
         <tr>
             <th>Klasifikasi</th>
-            <td>{{ $mailData['klasifikasi'] }}</td>
+            <td>{{ $semakan->klasifikasi }}</td>
         </tr>
         <tr>
             <th>Tajuk</th>
-            <td>{{ $mailData['tajuk'] }}</td>
+            <td>{{ $semakan->tajuk_permohonan }}</td>
         </tr>
         <tr>
             <th>Bahagian</th>
-            <td>{{ $mailData['bahagian'] }}</td>
+            <td>{{ $semakan->getBahagian->nama_bhgn }}</td>
         </tr>
         <tr>
             <th>Urusan</th>
-            <td>{{ $mailData['urusan'] }}</td>
+            <td>{{ $semakan->getStatus->nama_status }}</td>
+        </tr>
+        <tr>
+            <th>Tarikh Semakan</th>
+            <td>{{Carbon::createFromFormat('d/m/Y', $semakan->tarikh_semak)->format('Y-m-d') }}</td>
         </tr>
 
     </table>
