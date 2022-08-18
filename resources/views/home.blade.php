@@ -12,7 +12,7 @@
                 <!-- Dashboard info widget 1-->
                 <div class="card bg-primary border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white">Keseluruhan NOC</h6>
+                        <h6 class="text-white">Jumlah Keseluruhan NOC</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $noc }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
@@ -28,7 +28,7 @@
                 <!-- Dashboard info widget 2-->
                 <div class="card bg-success border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white">Semakan Bahagian</h6>
+                        <h6 class="text-white">Semakan Dokumen oleh Bahagian</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $nocSemak }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
@@ -44,7 +44,7 @@
                 <!-- Dashboard info widget 1-->
                 <div class="card bg-warning border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white">Penyediaan Ulasan</h6>
+                        <h6 class="text-white">Penyediaan Ulasan Bajet/Teknikal</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $nocSediaUlasan }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
@@ -76,7 +76,7 @@
                 <!-- Dashboard info widget 1-->
                 <div class="card bg-black border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white">Penyediaan Memo</h6>
+                        <h6 class="text-white">Penyediaan Memo & Surat</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $nocMemo }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
@@ -92,7 +92,7 @@
                 <!-- Dashboard info widget 2-->
                 <div class="card bg-info border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white">Selesai</h6>
+                        <h6 class="text-white">Modul NOC (Selesai)</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $nocModul }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}

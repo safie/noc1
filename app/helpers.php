@@ -155,7 +155,7 @@ if (!function_exists('count_all_memo')) {
     {
         $noc = DB::table('t_noc')
             ->select('t_noc.*')
-            ->whereIn('status_noc', ['noc_11', 'noc_12', 'noc_13'])
+            ->whereIn('status_noc', ['noc_11', 'noc_12', 'noc_13', 'noc_14', 'noc_15'])
             ->get();
         $countAllMemo = $noc->count();
 

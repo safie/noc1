@@ -41,8 +41,11 @@ class HomeController extends Controller
                 ->select('id', 'status_noc')
                 ->Where('bahagian', '=', Auth::user()->bahagian)
                 ->Where(function ($query) {
-                    $query->orWhere('status_noc', '=', "noc_1")
-                        ->orWhere('status_noc', '=', "noc_2");
+                    $query
+                        ->orWhere('status_noc', '=', "noc_1")
+                        ->orWhere('status_noc', '=', "noc_2")
+                        ->orWhere('status_noc', '=', "noc_5")
+                        ->orWhere('status_noc', '=', "noc_6");
                 })
                 ->get();
             $data2['nocSemak'] = $nocSemak->count();
@@ -80,7 +83,9 @@ class HomeController extends Controller
                 ->Where(function ($query) {
                     $query->orWhere('status_noc', '=', "noc_11")
                         ->orWhere('status_noc', '=', "noc_12")
-                        ->orWhere('status_noc', '=', "noc_13");
+                        ->orWhere('status_noc', '=', "noc_13")
+                        ->orWhere('status_noc', '=', "noc_14")
+                        ->orWhere('status_noc', '=', "noc_15");
                 })
                 ->get();
             $data5['nocMemo'] = $nocMemo->count();
@@ -130,7 +135,7 @@ class HomeController extends Controller
 
             //Senarai klasifikasi
             $nocKlasifikasiAll = DB::table('t_noc')
-                ->selectRaw('t_noc.klasifikasi, t_kategori.nama_kat, t_kategori.id as id, count(*) as jumlah')
+                ->selectRaw('t_noc.klasifikasi, t_kategori.nama_kat, t_kategori.kod, t_kategori.id as id, count(*) as jumlah')
                 ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
                 ->where('bahagian', '=', Auth::user()->bahagian)
                 ->groupBy('t_noc.klasifikasi', 't_kategori.id', 't_kategori.nama_kat')
@@ -173,6 +178,8 @@ class HomeController extends Controller
                 ->select('id', 'status_noc')
                 ->where('status_noc', '=', "noc_1")
                 ->orWhere('status_noc', '=', "noc_2")
+                ->orWhere('status_noc', '=', "noc_5")
+                ->orWhere('status_noc', '=', "noc_6")
                 ->get();
             $data2['nocSemak'] = $nocSemak->count();
 
@@ -201,6 +208,8 @@ class HomeController extends Controller
                 ->Where('status_noc', '=', "noc_11")
                 ->orWhere('status_noc', '=', "noc_12")
                 ->orWhere('status_noc', '=', "noc_13")
+                ->orWhere('status_noc', '=', "noc_14")
+                ->orWhere('status_noc', '=', "noc_15")
                 ->get();
             $data5['nocMemo'] = $nocMemo->count();
 
@@ -213,8 +222,8 @@ class HomeController extends Controller
 
             //Senarai klasifikasi
             $nocKlasifikasi = DB::table('t_noc')
-                ->selectRaw('t_noc.klasifikasi, t_kategori.nama_kat, t_kategori.id as id, count(*) as jumlah')
-                ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+                ->selectRaw('t_noc.klasifikasi, t_kategori.nama_kat, t_kategori.kod,  t_kategori.id as id, count(*) as jumlah')
+                ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
                 ->groupBy('t_noc.klasifikasi', 't_kategori.id', 't_kategori.nama_kat')
                 ->orderBy('jumlah', 'DESC')
                 ->take(5)
@@ -246,8 +255,8 @@ class HomeController extends Controller
 
             //Senarai klasifikasi
             $nocKlasifikasiAll = DB::table('t_noc')
-                ->selectRaw('t_noc.klasifikasi, t_kategori.nama_kat, t_kategori.id as id, count(*) as jumlah')
-                ->leftJoin('t_kategori', 't_kategori.kod', '=', 't_noc.klasifikasi')
+                ->selectRaw('t_noc.klasifikasi, t_kategori.nama_kat, t_kategori.kod, t_kategori.id as id, count(*) as jumlah')
+                ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
                 ->groupBy('t_noc.klasifikasi', 't_kategori.id', 't_kategori.nama_kat')
                 ->orderBy('jumlah', 'DESC')
                 ->get();

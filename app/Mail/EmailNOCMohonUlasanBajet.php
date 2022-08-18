@@ -34,7 +34,7 @@ class EmailNOCMohonUlasanBajet extends Mailable
     {
 
         return $this->subject('i-NOC Notifikasi : Permohonan Ulasan Bajet')
-            ->view('email.email_noc')
+            ->view('email.emailMohonUlasanNoc')
             ->with('data', $this->dataMail);
     }
 }

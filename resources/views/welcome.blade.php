@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="me-3">
-                                <div class="text-white-v small">Keseluruhan NOC</div>
+                                <div class="text-white-v small">Jumlah Keseluruhan NOC</div>
                                 <div class="display-6 fw-bold">{{ count_all_noc() }}</div>
                             </div>
                             <i class="feather-xl text-white-50" data-feather="award"></i>
@@ -34,7 +34,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="me-3">
-                                <div class="text-white-80 small">Semakan Bahagian</div>
+                                <div class="text-white-80 small">Semakan Dokumen</div>
                                 <div class="display-6 fw-bold">{{ count_all_semakan() }}</div>
                             </div>
                             <i class="feather-xl text-white-50" data-feather="check-circle"></i>
@@ -47,7 +47,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="me-3">
-                                <div class="text-white-80 small">Penyediaan Ulasan</div>
+                                <div class="text-white-80 small">Penyediaan Ulasan Bajet/Teknikal</div>
                                 <div class="display-6 fw-bold">{{ count_all_ulasan() }}</div>
                             </div>
                             <i class="feather-xl text-white-50" data-feather="clipboard"></i>
@@ -73,7 +73,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="me-3">
-                                <div class="text-white-80 small">Penyediaan Memo</div>
+                                <div class="text-white-80 small">Penyediaan Memo/Surat</div>
                                 <div class="display-6 fw-bold">{{ count_all_memo() }}</div>
                             </div>
                             <i class="feather-xl text-white-50" data-feather="message-square"></i>
@@ -86,7 +86,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="me-3">
-                                <div class="text-white-80 small">Selesai</div>
+                                <div class="text-white-80 small">Modul NOC (Selesai)</div>
                                 <div class="display-6 fw-bold">{{ count_all_selesai() }}</div>
                             </div>
                             <i class="feather-xl text-white-50" data-feather="coffee"></i>
