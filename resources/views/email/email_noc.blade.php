@@ -7,47 +7,66 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>i-NOC Mesej</title>
     <style>
+		p {
+			font-family: arial, sans-serif;
+			text-align: center;
+		}
         table {
             font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
         }
 
-        td,
         th {
             border: 1px solid #dddddd;
             text-align: left;
             padding: 8px;
         }
 
+		td {
+			border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+		}
+
         tr:nth-child(even) {
             background-color: #dddddd;
         }
+
+		.center{
+			text-align: center;
+			color: #F8F8FF;
+			background-color: #000000;
+		}
     </style>
 </head>
 
 <body>
+<p><strong>Sistem i-NOC</strong></p>
     <table>
-        {{-- <tr>
+		<tr>
+			<td colspan="2" class="center">Notifikasi</td>
+		</tr>
+        <tr>
             <th>Klasifikasi</th>
-            <td>{{ $semakan->getKlasifikasi->kod }}</td>
-        </tr> --}}
+            <td>({{ $data->kod }}) {{ $data->nama_kat }}</td>
+        </tr>
         <tr>
             <th>Tajuk</th>
-            <td>{{ $semakan->tajuk_permohonan }}</td>
-        </tr>
-        {{-- <tr>
-            <th>Bahagian</th>
-            <td>{{ $semakan->getBahagian->nama_bhgn }}</td>
+            <td>{{ $data->tajuk_permohonan }}</td>
         </tr>
         <tr>
-            <th>Urusan</th>
-            <td>{{ $semakan->getStatus->nama_status }}</td>
-        </tr> --}}
-        {{-- <tr>
-            <th>Tarikh Semakan</th>
-            <td>{{ Carbon::createFromFormat('d/m/Y', $semakan->tarikh_semak)->format('Y-m-d') }}</td>
-        </tr> --}}
+            <th>Bahagian</th>
+            <td>{{ $data->nama_bhgn}}</td>
+        </tr>
+        <tr>
+            <th rowspan="2">Urusan</th>
+            <td>{{ \Carbon\Carbon::parse($data->tarikh_mohon_ulasan)->format('d-m-Y') }} | {{ $data->status_noc1 }}</td>
+        </tr>
+        <tr>
+
+            <td>{{ \Carbon\Carbon::parse($data->tarikh_mohon_ulasan_tek)->format('d-m-Y') }} | {{ $data->status_noc2 }}</td>
+        </tr>
 
     </table>
 

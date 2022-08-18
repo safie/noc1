@@ -117,7 +117,7 @@
                                 @foreach ($nocKlasifikasi as $data)
                                     <tr style="height: 50px">
                                         <td class="align-middle" style="height: 100%">
-                                            <span class="badge bg-dark">{{ $data->klasifikasi }}</span>
+                                            <span class="badge bg-dark">{{ $data->kod }}</span>
                                         </td>
                                         <td style="width: 20rem; height: 100%" class="text-wrap small align-middle">
                                             {{ $data->nama_kat }}

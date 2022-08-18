@@ -7,22 +7,22 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class EmailNOCMohonUlasan extends Mailable
+class EmailNOCMohonUlasanTeknikal extends Mailable
 {
     use Queueable, SerializesModels;
 
     // protected $to;
-    protected $semakan;
+    protected $dataMail;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($semakan)
+    public function __construct($dataMail)
     {
         // $this->toEmail       =   $to;
-        $this->semakan  =   $semakan;
+        $this->dataMail  =  $dataMail;
     }
 
     /**
@@ -33,8 +33,8 @@ class EmailNOCMohonUlasan extends Mailable
     public function build()
     {
 
-        return $this->subject('i-NOC Notifikasi : Permohonan Ulasan')
+        return $this->subject('i-NOC Notifikasi : Permohonan Ulasan Teknikal')
             ->view('email.email_noc')
-            ->with('semakan', $this->semakan);
+            ->with('data', $this->dataMail);
     }
 }

@@ -61,7 +61,12 @@ class Noc extends Model
 
     public function getStatus()
     {
-        return $this->hasMany(Status::class,'id','status_noc');
+        return $this->hasMany(Status::class,'id_status','status_noc');
+    }
+
+    public function getStatus2()
+    {
+        return $this->hasMany(Status::class,'id_status','status_noc2');
     }
 
     public function getKategori()
