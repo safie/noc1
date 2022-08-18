@@ -92,10 +92,11 @@ class UserController extends Controller
         $sendTo = $request_data['email'];
 
         $mailData = ([
-            'name'      => $request_data['inputNama'],
-            'email'     => $request_data['email'],
-            'peranan'   => $request_data['inputPeranan'],
-            'bahagian'  => $request_data['inputBahagian'],
+            'name'       => $request_data['inputNama'],
+            'email'      => $request_data['email'],
+            'peranan'    => $request_data['inputPeranan'],
+            'bahagian'   => $request_data['inputBahagian'],
+            'katalaluan' => $request_data['inputKatalaluan']
         ]);
 
         Mail::to($sendTo)->send(New WelcomeUser($mailData));

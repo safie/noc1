@@ -30,7 +30,7 @@ class WelcomeUser extends Mailable
      */
     public function build()
     {
-        return $this->subject('i-NOC Notifikasi')
+        return $this->subject('i-NOC Notifikasi: Pendaftaran Pengguna Baharu')
             ->view('email.email_welcome');
     }
 }
