@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class EmailNOCSemakUlasanBajet extends Mailable
+class EmailNOCHantarUlasanBajet extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -34,7 +34,7 @@ class EmailNOCSemakUlasanBajet extends Mailable
     {
 
         return $this->subject('i-NOC Notifikasi : Semakan Ulasan Bajet')
-            ->view('email.emailSemakUlasanNoc')
+            ->view('email.emailHantarUlasanNoc')
             ->with('data', $this->dataMail);
     }
 }

@@ -34,10 +34,15 @@
             background-color: #dddddd;
         }
 
-        .center {
+        .head {
             text-align: center;
             color: #F8F8FF;
             background-color: #000000;
+        }
+
+        .urusan {
+            color: #F8F8FF;
+            background-color: #EAE7E6;
         }
     </style>
 </head>
@@ -46,7 +51,7 @@
     <p><strong>Sistem i-NOC</strong></p>
     <table>
         <tr>
-            <th colspan="2" class="center">Notifikasi</th>
+            <th colspan="2" class="head">Notifikasi</th>
         </tr>
         <tr>
             <th>Klasifikasi</th>
@@ -61,14 +66,21 @@
             <td>{{ $data->nama_bhgn }}</td>
         </tr>
         <tr>
-            <th rowspan="2">Urusan</th>
-            <td>{{ \Carbon\Carbon::parse($data->tarikh_semak_bajet)->format('d-m-Y') }} | {{ $data->status_noc1 }}</td>
-            @if ($data->tarikh_semak_tek != null)
-        </tr>
-        <tr>
-            <td>{{ \Carbon\Carbon::parse($data->tarikh_semak_tek)->format('d-m-Y') }} | {{ $data->status_noc2 }}
+            <td colspan="2" class="">
+                Urusan:<br>
+                <ol>
+                    @if ($data->status_noc1 = 'noc_18')
+                        <li>{{ \Carbon\Carbon::parse($data->tarikh_semak_bajet)->format('d-m-Y') }} |
+                            {{ $data->status_noc1 }}</li>
+                    @endif
+                    @if ($data->tarikh_semak_tek != null)
+                        <li>{{ \Carbon\Carbon::parse($data->tarikh_semak_tek)->format('d-m-Y') }} |
+                            {{ $data->status_noc2 }}</li>
+                    @endif
+
+                </ol>
+
             </td>
-            @endif
         </tr>
 
     </table>
