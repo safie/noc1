@@ -33,7 +33,7 @@ class EmailNOCMohonModulNoc extends Mailable
     public function build()
     {
 
-        return $this->subject('i-NOC Notifikasi : Penghantaran Ulasan Bajet')
+        return $this->subject('i-NOC Notifikasi : Permohonan Modul NOC')
             ->view('email.emailMohonModulNoc')
             ->with('data', $this->dataMail);
     }
