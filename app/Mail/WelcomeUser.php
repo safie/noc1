@@ -11,16 +11,17 @@ class WelcomeUser extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $mailData;
+    protected $mailData, $password;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($mailData)
+    public function __construct($mailData, $password)
     {
         $this->mailData = $mailData;
+        $this->password = $password;
     }
 
     /**
@@ -31,6 +32,8 @@ class WelcomeUser extends Mailable
     public function build()
     {
         return $this->subject('i-NOC Notifikasi: Pendaftaran Pengguna Baharu')
-            ->view('email.email_welcome');
+            ->view('email.email_welcome')
+            ->with('data', $this->mailData)
+            ->with('password', $this->password);
     }
 }

@@ -65,23 +65,23 @@
 			</tr>
 			<tr>
 				<th>Nama</th>
-				<td>{{ $mailData['name'] }}</td>
+				<td>{{ $data->name }}</td>
 			</tr>
 			<tr>
 				<th>Emel</th>
-				<td>{{ $mailData['email'] }}</td>
+				<td>{{ $data->email }}</td>
 			</tr>
 			<tr>
 				<th>Bahagian</th>
-				<td>{{ $mailData['bahagian'] }}</td>
+				<td>{{ $data->getbahagian->nama_bhgn }}</td>
 			</tr>
 			<tr>
 				<th>Peranan</th>
-				<td>{{ $mailData['peranan'] }}</td>
+				<td>{{ $data->getperanan->peranan }}</td>
 			</tr>
 			<tr>
 				<th>Kata laluan</th>
-				<td>{{ $mailData['katalaluan'] }}</td>
+				<td>{{ $password }}</td>
 			</tr>
 
 		</table>

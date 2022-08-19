@@ -46,13 +46,13 @@
                     </tfoot>
                     <tbody>
                         @if ($pengguna->count() > 0)
-                            @foreach ($pengguna as $data)
+                            @foreach ($pengguna as $key => $data)
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ $key + 1 }}</td>
                                     <td>{{ $data->name }}</td>
                                     <td>{{ $data->email }}</td>
-                                    <td>{{ $data->nama_peranan }}</td>
-                                    <td>{{ $data->nama_bhgn }} ({{ $data->sgktn_bhgn }})</td>
+                                    <td>{{ $data->getperanan->peranan ?? '' }}</td>
+                                    <td>{{ $data->getbahagian->nama_bhgn ?? '' }}</td>
                                     <td class="d-flex justify-content-center">
                                         <a class="btn btn-datatable btn-icon btn-transparent-dark mx-1"
                                             href="{{ route('pengguna.show', $data->id) }}">

@@ -26,16 +26,17 @@ class UserController extends Controller
 
     public function index()
     {
-        $pengguna = DB::table('users')
-                ->select('users.*','t_bahagian.nama_bhgn','t_bahagian.sgktn_bhgn','t_peranan.peranan as nama_peranan')
-                ->leftJoin('t_bahagian','t_bahagian.id','=','users.bahagian')
-                ->leftJoin('t_peranan','t_peranan.id','=','users.peranan')
-                ->get();
-        // $pengguna = User::all();
-        $data1['pengguna'] = $pengguna;
+        // $pengguna = DB::table('users')
+        //         ->select('users.*','t_bahagian.nama_bhgn','t_bahagian.sgktn_bhgn','t_peranan.peranan as nama_peranan')
+        //         ->leftJoin('t_bahagian','t_bahagian.id','=','users.bahagian')
+        //         ->leftJoin('t_peranan','t_peranan.id','=','users.peranan')
+        //         ->get();
+        // // $pengguna = User::all();
+        // $data1['pengguna'] = $pengguna;
 
-        return view('page.pengguna.index')
-            ->with($data1);
+        $pengguna = User::all();
+
+        return view('page.pengguna.index')->with('pengguna',$pengguna);
     }
 
     /**
@@ -77,29 +78,32 @@ class UserController extends Controller
 
         ]);
 
-        $request_data = $request->all();
+        // $request_data = $request->all();
 
         // dd($request_data);
 
-        User::create([
-            'name'      => $request_data['inputNama'],
-            'email'     => $request_data['email'],
-            'peranan'   => $request_data['inputPeranan'],
-            'bahagian'  => $request_data['inputBahagian'],
-            'password'  => Hash::make($request_data['inputKatalaluan']),
-        ]);
+        // $dataUser = User::create([
+        //     'name'      => $request_data['inputNama'],
+        //     'email'     => $request_data['email'],
+        //     'peranan'   => $request_data['inputPeranan'],
+        //     'bahagian'  => $request_data['inputBahagian'],
+        //     'password'  => Hash::make($request_data['inputKatalaluan']),
+        // ]);
 
-        $sendTo = $request_data['email'];
+        $dataStore = New User();
 
-        $mailData = ([
-            'name'       => $request_data['inputNama'],
-            'email'      => $request_data['email'],
-            'peranan'    => $request_data['inputPeranan'],
-            'bahagian'   => $request_data['inputBahagian'],
-            'katalaluan' => $request_data['inputKatalaluan']
-        ]);
+        $dataStore->name = $request->inputNama;
+        $dataStore->email = $request->email;
+        $dataStore->peranan = $request->inputPeranan;
+        $dataStore->bahagian = $request->inputBahagian;
+        $dataStore->password = Hash::make($request->inputKatalaluan);
+        $dataStore->save();
 
-        Mail::to($sendTo)->send(New WelcomeUser($mailData));
+        // return $dataStore->getbahagian;
+
+        // dd($mailData);
+
+        Mail::to($dataStore->email)->send(New WelcomeUser($dataStore,$request->inputKatalaluan));
 
         return redirect()->route('pengguna.index')->with('success', 'Pengguna berjaya disimpan.');
     }

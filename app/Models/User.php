@@ -47,13 +47,13 @@ class User extends Authenticatable
     ];
 
 
-    public function bahagian()
+    public function getbahagian()
     {
-        return $this->hasOne(Bahagian::class,'bahagian','id');
+        return $this->hasOne(Bahagian::class,'id','bahagian');
     }
 
-    public function peranan()
+    public function getperanan()
     {
-        return $this->hasOne(Peranan::class);
+        return $this->hasOne(Peranan::class,'id','peranan');
     }
 }
