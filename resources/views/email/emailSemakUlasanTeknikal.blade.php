@@ -7,14 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>i-NOC Mesej</title>
     <style>
-        p {
-            font-family: arial, sans-serif;
+        .tajuk {
+            font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
             text-align: center;
+            font-size: 1rem;
+			font-weight: 400;
         }
 
         table {
-            font-family: arial, sans-serif;
+            font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
             border: 1px solid #dddddd;
+            font-size: 1rem;
+			font-weight: 400;
             width: 100%;
         }
 
@@ -39,11 +43,19 @@
             color: #F8F8FF;
             background-color: #000000;
         }
+
+        p {
+            font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+            text-align: left;
+            font-size: 1rem;
+			font-weight: 400;
+        }
     </style>
 </head>
 
 <body>
     <p><strong>Sistem i-NOC</strong></p>
+    <p>Tuan/Puan,</p>
     <table>
         <tr>
             <th colspan="2" class="center">Notifikasi</th>
@@ -61,18 +73,17 @@
             <td>{{ $data->nama_bhgn }}</td>
         </tr>
         <tr>
-            <th rowspan="2">Urusan</th>
-            <td>{{ \Carbon\Carbon::parse($data->tarikh_mohon_ulasan)->format('d-m-Y') }} | {{ $data->status_noc1 }}</td>
-            @if ($data->tarikh_mohon_ulasan_tek != null)
-        </tr>
-        <tr>
-            <td>{{ \Carbon\Carbon::parse($data->tarikh_mohon_ulasan_tek)->format('d-m-Y') }} | {{ $data->status_noc2 }}
+            <th>Urusan</th>
+            <td>
+                @if($data->tarikh_dokumen_tambahan_tek != NULL)
+                {{ \Carbon\Carbon::parse($data->tarikh_dokumen_tambahan_tek)->format('d-m-Y') }} | NOC perlu dokumen tambahan
+                @endif
             </td>
-            @endif
         </tr>
-
     </table>
-
+    <p>Sekian, terima kasih.</p>
+	<p>"BERKHIDMAT UNTUK NEGARA"</p>
+	<p><small><i>Nota: E-mel ini dijana secara automatik oleh komputer dan tidak memerlukan tanda tangan.</i></small></p>
 </body>
 
 </html>

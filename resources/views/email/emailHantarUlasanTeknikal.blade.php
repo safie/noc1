@@ -54,44 +54,38 @@
 </head>
 
 <body>
-	<p class="tajuk"><strong>Sistem i-NOC</strong></p>
-	<p>Tuan/Puan,</p>
-	<p>Anda telah didaftarkan sebagai pengguna sistem i-NOC</p>
+    <p class="tajuk"><strong>Sistem i-NOC</strong></p>
+    <p>Tuan/Puan,</p>
+    <table>
+        <tr>
+            <th colspan="2" class="head">Notifikasi</th>
+        </tr>
+        <tr>
+            <th>Klasifikasi</th>
+            <td>({{ $data->kod }}) {{ $data->nama_kat }}</td>
+        </tr>
+        <tr>
+            <th>Tajuk</th>
+            <td>{{ $data->tajuk_permohonan }}</td>
+        </tr>
+        <tr>
+            <th>Bahagian</th>
+            <td>{{ $data->nama_bhgn }}</td>
+        </tr>
+        <tr>
+            <th>Urusan</th>
+            <td>
+                @if ($data->tarikh_hantar_ulasan_tek != null)
+                    {{ \Carbon\Carbon::parse($data->tarikh_hantar_ulasan_tek)->format('d-m-Y') }} | Ulasan Teknikal telah dihantar
+                @endif
+            </td>
+        </tr>
 
-	<main>
-		<table>
-			<tr>
-				<th colspan="2" class="center">Maklumat</th>
-			</tr>
-			<tr>
-				<th>Nama</th>
-				<td>{{ $mailData['name'] }}</td>
-			</tr>
-			<tr>
-				<th>Emel</th>
-				<td>{{ $mailData['email'] }}</td>
-			</tr>
-			<tr>
-				<th>Bahagian</th>
-				<td>{{ $mailData['bahagian'] }}</td>
-			</tr>
-			<tr>
-				<th>Peranan</th>
-				<td>{{ $mailData['peranan'] }}</td>
-			</tr>
-			<tr>
-				<th>Kata laluan</th>
-				<td>{{ $mailData['katalaluan'] }}</td>
-			</tr>
-
-		</table>
-
-        <p>Untuk mengakses masuk sistem, sila layari laman web http://i-noc.epu.gov.my</p>
-	</main>
-
-	<p>Sekian, terima kasih.</p>
+    </table>
+    <p>Sekian, terima kasih.</p>
 	<p>"BERKHIDMAT UNTUK NEGARA"</p>
 	<p><small><i>Nota: E-mel ini dijana secara automatik oleh komputer dan tidak memerlukan tanda tangan.</i></small></p>
+
 </body>
 
 </html>

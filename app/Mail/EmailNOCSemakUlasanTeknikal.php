@@ -34,7 +34,7 @@ class EmailNOCSemakUlasanTeknikal extends Mailable
     {
 
         return $this->subject('i-NOC Notifikasi : Semakan Ulasan Teknikal')
-            ->view('email.email_noc')
+            ->view('email.emailSemakUlasanTeknikal')
             ->with('data', $this->dataMail);
     }
 }

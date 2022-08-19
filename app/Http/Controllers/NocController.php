@@ -16,6 +16,8 @@ use App\Mail\EmailNOCMohonUlasanBajet;
 use App\Mail\EmailNOCMohonUlasanTeknikal;
 use App\Mail\EmailNOCSemakUlasanBajet;
 use App\Mail\EmailNOCSemakUlasanTeknikal;
+use App\Mail\EmailNOCHantarUlasanBajet;
+use App\Mail\EmailNOCMohonModulNoc;
 
 class NocController extends Controller
 {
@@ -728,9 +730,9 @@ class NocController extends Controller
                 't_kategori.kod',
                 't_kategori.nama_kat',
                 't_noc.tarikh_mohon_ulasan',
-                't_noc.tarikh_mohon_ulasan_tek',
+                't_noc.tarikh_semak_bajet',
+                't_noc.tarikh_dokumen_tambahan_bajet',
                 'status1.nama_status as status_noc1',
-                'status2.nama_status as status_noc2',
             )
             ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
             ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
@@ -801,8 +803,9 @@ class NocController extends Controller
                 't_bahagian.nama_bhgn',
                 't_kategori.kod',
                 't_kategori.nama_kat',
-                't_noc.tarikh_mohon_ulasan',
                 't_noc.tarikh_mohon_ulasan_tek',
+                't_noc.tarikh_semak_tek',
+                't_noc.tarikh_dokumen_tambahan_tek',
                 'status1.nama_status as status_noc1',
                 'status2.nama_status as status_noc2',
             )
@@ -830,7 +833,7 @@ class NocController extends Controller
 
         // }
         if ($request->inputStatusSemak == "dokumen-tambahan") {
-            Mail::to($senderBhgn)->send(new EmailNOCSemakUlasanBajet($dataMail));
+            Mail::to($senderBhgn)->send(new EmailNOCSemakUlasanTeknikal($dataMail));
         }
 
         return redirect()->route('noc.detail', $id)->with('success', 'Permohonan Ulasan telah disemak');
@@ -905,8 +908,7 @@ class NocController extends Controller
                 't_bahagian.nama_bhgn',
                 't_kategori.kod',
                 't_kategori.nama_kat',
-                't_noc.tarikh_mohon_ulasan',
-                't_noc.tarikh_mohon_ulasan_tek',
+                't_noc.tarikh_hantar_ulasan',
                 'status1.nama_status as status_noc1',
                 'status2.nama_status as status_noc2',
             )
@@ -1092,6 +1094,42 @@ class NocController extends Controller
             'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
             'css_class' => "bg-primary",
         ]);
+
+        $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
+            ->select(
+                't_noc.tajuk_permohonan',
+                't_bahagian.nama_bhgn',
+                't_kategori.kod',
+                't_kategori.nama_kat',
+                't_noc.tarikh_mohon_modul',
+                'status1.nama_status as status_noc1',
+                'status2.nama_status as status_noc2',
+            )
+            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+            ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
+            ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
+            ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+            ->first();
+
+        // $senderBhgn = DB::table('users')
+        //     ->select('email')
+        //     ->where('peranan', '=', '2')
+        //     ->where('bahagian', '=', $semakan->bahagian)
+        //     ->get();
+
+        $senderBajet = DB::table('users')
+            ->select('email')
+            ->where('peranan', '=', '3')
+            ->get();
+
+        // $senderTeknikal = DB::table('users')
+        //     ->select('email')
+        //     ->where('peranan', '=', '4')
+        //     ->get();
+
+        // }
+
+        Mail::to($senderBajet)->send(new EmailNOCMohonModulNoc($dataMail));
 
         return redirect()->route('noc.detail', $id)->with('success', 'Modul NOC MyProjek telah dipohon');
     }

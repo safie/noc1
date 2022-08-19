@@ -7,14 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>i-NOC Mesej</title>
     <style>
-        p {
-            font-family: arial, sans-serif;
+        .tajuk {
+            font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
             text-align: center;
+            font-size: 1rem;
+			font-weight: 400;
         }
 
         table {
-            font-family: arial, sans-serif;
+            font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
             border: 1px solid #dddddd;
+            font-size: 1rem;
+			font-weight: 400;
             width: 100%;
         }
 
@@ -34,21 +38,24 @@
             background-color: #dddddd;
         }
 
-        .head {
+        .center {
             text-align: center;
             color: #F8F8FF;
             background-color: #000000;
         }
 
-        .urusan {
-            color: #F8F8FF;
-            background-color: #EAE7E6;
+        p {
+            font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+            text-align: left;
+            font-size: 1rem;
+			font-weight: 400;
         }
     </style>
 </head>
 
 <body>
-    <p><strong>Sistem i-NOC</strong></p>
+    <p class="tajuk"><strong>Sistem i-NOC</strong></p>
+    <p>Tuan/Puan,</p>
     <table>
         <tr>
             <th colspan="2" class="head">Notifikasi</th>
@@ -66,24 +73,18 @@
             <td>{{ $data->nama_bhgn }}</td>
         </tr>
         <tr>
-            <td colspan="2" class="">
-                Urusan:<br>
-                <ol>
-                    @if ($data->status_noc1 = 'noc_18')
-                        <li>{{ \Carbon\Carbon::parse($data->tarikh_semak_bajet)->format('d-m-Y') }} |
-                            {{ $data->status_noc1 }}</li>
-                    @endif
-                    @if ($data->tarikh_semak_tek != null)
-                        <li>{{ \Carbon\Carbon::parse($data->tarikh_semak_tek)->format('d-m-Y') }} |
-                            {{ $data->status_noc2 }}</li>
-                    @endif
-
-                </ol>
-
+            <th>Urusan</th>
+            <td>
+                @if ($data->tarikh_hantar_ulasan != null)
+                    {{ \Carbon\Carbon::parse($data->tarikh_hantar_ulasan)->format('d-m-Y') }} | Ulasan Bajet telah dihantar
+                @endif
             </td>
         </tr>
 
     </table>
+    <p>Sekian, terima kasih.</p>
+	<p>"BERKHIDMAT UNTUK NEGARA"</p>
+	<p><small><i>Nota: E-mel ini dijana secara automatik oleh komputer dan tidak memerlukan tanda tangan.</i></small></p>
 
 </body>
 
