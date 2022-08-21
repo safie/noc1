@@ -86,7 +86,7 @@
 
 		</table>
 
-        <p>Untuk mengakses masuk sistem, sila layari laman web http://i-noc.epu.gov.my</p>
+        <p>Untuk mengakses masuk sistem, sila layari laman web <a href="http://10.25.224.25/" target="_blank">i-NOC</a></p>
 	</main>
 
 	<p>Sekian, terima kasih.</p>
