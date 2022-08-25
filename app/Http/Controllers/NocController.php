@@ -18,6 +18,7 @@ use App\Mail\EmailNOCSemakUlasanBajet;
 use App\Mail\EmailNOCSemakUlasanTeknikal;
 use App\Mail\EmailNOCHantarUlasanBajet;
 use App\Mail\EmailNOCMohonModulNoc;
+use Exception;
 
 class NocController extends Controller
 {
@@ -566,10 +567,18 @@ class NocController extends Controller
             Mail::to($senderBajet)->send(new EmailNOCMohonUlasanBajet($dataMail));
         } else if ($flow->flow == "flow3") {
             if ($semakan->tarikh_dokumen_tambahan_bajet != NULL and $semakan->status_noc2 == 2) {
-                Mail::to($senderBajet)->send(new EmailNOCMohonUlasanBajet($dataMail));
+                try {
+                    Mail::to($senderBajet)->send(new EmailNOCMohonUlasanBajet($dataMail));
+                } catch (Exception $e) {
+                    dd($e);
+                }
             } else {
-                Mail::to($senderTeknikal)->send(new EmailNOCMohonUlasanTeknikal($dataMail));
-                Mail::to($senderBajet)->send(new EmailNOCMohonUlasanBajet($dataMail));
+                try {
+                    Mail::to($senderTeknikal)->send(new EmailNOCMohonUlasanTeknikal($dataMail));
+                    Mail::to($senderBajet)->send(new EmailNOCMohonUlasanBajet($dataMail));
+                } catch (Exception $e) {
+                    dd($e);
+                }
             }
         }
 
