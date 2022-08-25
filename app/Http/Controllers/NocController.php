@@ -422,7 +422,7 @@ class NocController extends Controller
         //     ->where('t_noc.id', '=', $id)
         //     ->first();
 
-        // // if ($flow->flow == 'flow1') {
+        // // if ($flow->noc_flow == 'flow1') {
         // //     $dataFlow = "noc_11";
         // // } else {
         // //     $dataFlow = "noc_2";
@@ -490,7 +490,10 @@ class NocController extends Controller
         ]);
 
         $semakan = Noc::find($id);
-        if ($flow->flow == "flow2") {
+        $flow    = Noc::find($id);
+
+
+        if ($flow->noc_flow == "flow2") {
             $semakan->tarikh_mohon_ulasan = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
             $semakan->status_noc = "noc_3";
             $semakan->save();
@@ -501,7 +504,7 @@ class NocController extends Controller
                 'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
                 'css_class' => "bg-warning",
             ]);
-        } else if ($flow->flow == "flow3") {
+        } else if ($flow->noc_flow == "flow3") {
             if ($semakan->tarikh_dokumen_tambahan_bajet != NULL and $semakan->status_noc2 == 2) {
                 $semakan->tarikh_mohon_ulasan = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
                 $semakan->status_noc = "noc_3";
@@ -563,9 +566,14 @@ class NocController extends Controller
             ->where('peranan', '=', '4')
             ->get();
 
-        if ($flow->flow == "flow2") {
-            Mail::to($senderBajet)->send(new EmailNOCMohonUlasanBajet($dataMail));
-        } else if ($flow->flow == "flow3") {
+        if ($flow->noc_flow == "flow2") {
+			try {
+				Mail::to($senderBajet)->send(new EmailNOCMohonUlasanBajet($dataMail));
+			} catch (Exception $e) {
+				dd($e);
+            }
+
+        } else if ($flow->noc_flow == "flow3") {
             if ($semakan->tarikh_dokumen_tambahan_bajet != NULL and $semakan->status_noc2 == 2) {
                 try {
                     Mail::to($senderBajet)->send(new EmailNOCMohonUlasanBajet($dataMail));
