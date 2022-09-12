@@ -10,9 +10,9 @@
             <img src="{{ asset('pic/jata_negara_small.png') }}" id="mask" alt="i-NOC" style="width:50%; height:50%">
             <br>
             <div class="d-flex justify-content-center display-1 h1 text-white"><strong>i-NOC</strong></div>
-            <div class="d-flex justify-content-center h1 text-white">Sistem NOC (<i>Notice Of Change</i>)
+            <div class="d-flex justify-content-center h1 text-white">Sistem Pemantauan NOC (<i>Notice Of Change</i>)
             </div>
-            <div class="d-flex justify-content-center h6 text-white lead">Bahagian Bajet Pembangunan (BBP)</div>
+            <div class="d-flex justify-content-center h6 text-white lead"></div>
         </div>
 
         <div class="row mx-auto mt-5">
