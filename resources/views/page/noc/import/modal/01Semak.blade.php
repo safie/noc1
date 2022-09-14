@@ -25,7 +25,7 @@
             <select class="form-select" aria-label="Default select example" id="inputStatusSemak"
                 name=" inputStatusSemak">
                 <option selected disabled>Sila pilih:</option>
-                <option value="lulus">Lulus Semakan</option>
+                <option value="lulus">Dokumen Lengkap</option>
                 <option value="dokumen-tambahan">Perlu Maklumat Tambahan</option>
             </select>
         </div>
