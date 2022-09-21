@@ -47,7 +47,7 @@
                             <div class="card-body">
                                 <!-- Form Group (first name)-->
                                 <div class="mb-3">
-                                    <p>Tanda (*) adalah wajib di isi.</p>
+                                    <p><small> Tanda (*) adalah wajib di isi.</small></p>
                                     <label class="small mb-1">Klasifikasi *</label>
                                     <select class="form-select" aria-label="Default select example" id="inputKlasifikasi"
                                         name=" inputKlasifikasi">
