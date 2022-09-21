@@ -7,10 +7,10 @@
 @section('content')
     <section class="container d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <div class="d-flex flex-column align-items-center ">
-            <img src="{{ asset('pic/jata_negara_small.png') }}" id="mask" alt="i-NOC" style="width:50%; height:50%">
+            <img src="{{ asset('pic/jata_negara_small_2.png') }}" id="mask" alt="i-NOC" style="width:155px; height:125px">
             <br>
             <div class="d-flex justify-content-center display-1 h1 text-white"><strong>i-NOC</strong></div>
-            <div class="d-flex justify-content-center h1 text-white">Sistem Pemantauan NOC (<i>Notice Of Change</i>)
+            <div class="d-flex justify-content-center h1 text-white">Sistem Pemantauan NOC
             </div>
             <div class="d-flex justify-content-center h6 text-white lead"></div>
         </div>
