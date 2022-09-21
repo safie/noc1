@@ -47,7 +47,8 @@
                             <div class="card-body">
                                 <!-- Form Group (first name)-->
                                 <div class="mb-3">
-                                    <label class="small mb-1">Klasifikasi</label>
+                                    <p>Tanda (*) adalah wajib di isi.</p>
+                                    <label class="small mb-1">Klasifikasi *</label>
                                     <select class="form-select" aria-label="Default select example" id="inputKlasifikasi"
                                         name=" inputKlasifikasi">
                                         <option selected disabled>Sila pilih:</option>
@@ -57,9 +58,10 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                 </div>
                                 <div class="mb-3">
-                                    <label class="small mb-1" for="inputTajuk">Tajuk Permohonan</label>
+                                    <label class="small mb-1" for="inputTajuk">Tajuk Permohonan *</label>
                                     <input class="form-control" id="inputTajuk" name="inputTajuk" type="text"
                                         placeholder="Masukkan tajuk permohonan..." />
                                 </div>
@@ -74,7 +76,7 @@
                                         placeholder="Masukkan nombor rujukan surat..." />
                                 </div>
                                 <div class="mb-3">
-                                    <label class="small mb-1" for="inputFirstName">Tarikh Permohonan</label>
+                                    <label class="small mb-1" for="inputFirstName">Tarikh Permohonan *</label>
                                     <div class="input-group input-group-joined">
                                         <span class="input-group-text">
                                             <i data-feather="calendar"></i>
@@ -84,7 +86,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label class="small mb-1" for="inputFirstName">Tarikh Surat Permohonan</label>
+                                    <label class="small mb-1" for="inputFirstName">Tarikh Surat Permohonan *</label>
                                     <div class="input-group input-group-joined">
                                         <span class="input-group-text">
                                             <i data-feather="calendar"></i>
@@ -108,7 +110,7 @@
                                     </select>
                                 </div> --}}
                                 <div class="mb-3">
-                                    <label class="small mb-1">Kementerian/Jabatan</label>
+                                    <label class="small mb-1">Kementerian/Jabatan *</label>
                                     <select class="form-select" aria-label="Default select example" id="inputJabatan"
                                         name="inputJabatan">
                                         <option selected disabled>Sila pilih:</option>
