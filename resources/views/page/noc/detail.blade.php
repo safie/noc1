@@ -87,14 +87,23 @@
                                 <div class="col">
                                     <div class="mb-3">
                                         <label class="small mb-1" for="datePermohonan">Tarikh Permohonan</label>
-                                        <h5>{{ \Carbon\Carbon::parse($noc->tarikh_permohonan)->format('d-m-Y') }}</h5>
+                                        @if ($noc->tarikh_permohonan != null)
+                                            <h5>{{ \Carbon\Carbon::parse($noc->tarikh_permohonan)->format('d-m-Y') }}</h5>
+                                        @else
+                                            <h5>Tiada data</h5>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
                                         <label class="small mb-1" for="dateSurat">Tarikh Surat Permohonan</label>
-                                        <h5>{{ \Carbon\Carbon::parse($noc->tarikh_surat_kementerian)->format('d-m-Y') }}
-                                        </h5>
+                                        @if ($noc->tarikh_permohonan != null)
+                                            <h5>{{ \Carbon\Carbon::parse($noc->tarikh_surat_kementerian)->format('d-m-Y') }}
+                                            </h5>
+                                        @else
+                                            <h5>Tiada data</h5>
+                                        @endif
+
                                     </div>
 
                                 </div>
