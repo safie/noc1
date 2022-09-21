@@ -110,18 +110,24 @@
                             </div>
                             <hr>
                             <div class="row">
-                                <table style="text-align: left">
-                                    <tr>
-                                        <td style="width: 7rem">Status NOC :</td>
-                                        <td><span class="badge bg-success">{{ $noc->nama_status1 }}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 7rem"></td>
-                                        <td><span @if ($noc->tarikh_sedia_memo_kelulusan != null) hidden @endif
-                                                class="badge bg-success">{{ $noc->nama_status2 }}</span></td>
-                                    </tr>
-                                </table>
-
+                                <div class="mb-3">
+                                    <table style="text-align: left">
+                                        <tr>
+                                            <td style="width: 7rem">Status NOC :</td>
+                                            <td><span class="badge bg-success">{{ $noc->nama_status1 }}</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 7rem"></td>
+                                            <td><span @if ($noc->tarikh_sedia_memo_kelulusan != null) hidden @endif
+                                                    class="badge bg-success">{{ $noc->nama_status2 }}</span></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="text-end">
+                                <a class="btn btn-danger" href="#" role="button">
+                                    Batal NOC</a>
                             </div>
                         </div>
                     </div>

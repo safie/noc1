@@ -7,9 +7,10 @@
     <div class="card-body">
         <div class="mb-4">
             <table class="table table-sm table-striped table-hover mx-0 my-0 small">
-                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_submit != null)
+                @if ($noc->status_noc == 'noc_1' or $noc->tarikh_permohonan != null)
                     <tr>
-                        <td class="text-center">{{ \Carbon\Carbon::parse($noc->tarikh_submit)->format('d.m.Y') }}</td>
+                        <td class="text-center">{{ \Carbon\Carbon::parse($noc->tarikh_permohonan)->format('d.m.Y') }}
+                        </td>
                         <td class="bg-primary text-white align-middle" style="--bs-bg-opacity: .90;">NOC Submit</td>
                     </tr>
                 @endif

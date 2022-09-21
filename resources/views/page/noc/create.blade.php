@@ -71,12 +71,12 @@
                                         placeholder="Masukkan kod MyProjek.." />
                                 </div>
                                 <div class="mb-3">
-                                    <label class="small mb-1" for="inputTajuk">No. Rujukan Surat *</label>
+                                    <label class="small mb-1" for="inputTajuk">No. Rujukan Surat</label>
                                     <input class="form-control" id="inputRujukan" name="inputRujukan" type="text"
                                         placeholder="Masukkan nombor rujukan surat..." />
                                 </div>
                                 <div class="mb-3">
-                                    <label class="small mb-1" for="inputFirstName">Tarikh Permohonan</label>
+                                    <label class="small mb-1" for="inputFirstName">Tarikh Permohonan *</label>
                                     <div class="input-group input-group-joined">
                                         <span class="input-group-text">
                                             <i data-feather="calendar"></i>
