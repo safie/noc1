@@ -61,7 +61,7 @@
                                     {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                 </div>
                                 <div class="mb-3">
-                                    <label class="small mb-1" for="inputTajuk">Tajuk Permohonan *</label>
+                                    <label class="small mb-1" for="inputTajuk">Tajuk Projek *</label>
                                     <input class="form-control" id="inputTajuk" name="inputTajuk" type="text"
                                         placeholder="Masukkan tajuk permohonan..." />
                                 </div>
