@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+//use
 use Illuminate\Http\Request;
 use App\Models\Noc;
 use App\Models\Bahagian;
@@ -1203,5 +1204,10 @@ class NocController extends Controller
         // Mail::to('safie.misri@epu.gov.my')->send(new EmailNOC($mailData));
 
         dd("Email berjaya!");
+    }
+
+    public function padamNoc(Request $request, $id)
+    {
+
     }
 }
