@@ -10,7 +10,6 @@ use App\Models\Kementerian;
 use App\Models\NocLog;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EmailNOCMohonUlasanBajet;
 use App\Mail\EmailNOCMohonUlasanTeknikal;
@@ -18,7 +17,9 @@ use App\Mail\EmailNOCSemakUlasanBajet;
 use App\Mail\EmailNOCSemakUlasanTeknikal;
 use App\Mail\EmailNOCHantarUlasanBajet;
 use App\Mail\EmailNOCMohonModulNoc;
+use Carbon\Carbon;
 use Exception;
+
 
 class NocController extends Controller
 {
@@ -155,14 +156,28 @@ class NocController extends Controller
         $tahun = Carbon::now()->year;
         $bulan = Carbon::now()->month;
 
+        //check data isi atau tidak
+        if ($request_data['tarikhMohonNOC'] != NULL) {
+            $tarikhMohonNoc = Carbon::createFromFormat('d/m/Y', $request_data['tarikhMohonNOC'])->format('Y-m-d');
+        } else {
+            $tarikhMohonNoc = null;
+        }
+
+        if ($request_data['tarikhSuratMohon'] != NULL) {
+            $tarikhSuratMohon = Carbon::createFromFormat('d/m/Y', $request_data['tarikhSuratMohon'])->format('Y-m-d');
+        } else {
+            $tarikhSuratMohon = null;
+        }
+
+
         // dd($flow);
 
         Noc::create([
             'tajuk_permohonan'      => $request_data['inputTajuk'],
             'kod_myprojek'    => $request_data['inputKodMyprojek'],
             'no_rujukan'    => $request_data['inputRujukan'],
-            'tarikh_permohonan'  => Carbon::createFromFormat('d/m/Y', $request_data['tarikhMohonNOC'])->format('Y-m-d'),
-            'tarikh_surat_kementerian'  => Carbon::createFromFormat('d/m/Y', $request_data['tarikhSuratMohon'])->format('Y-m-d'),
+            'tarikh_permohonan'  => $tarikhMohonNoc,
+            'tarikh_surat_kementerian'  => $tarikhSuratMohon,
             // 'bahagian'    => $request_data['inputBahagian'],
             'bahagian'    => Auth::user()->bahagian,
             'klasifikasi'    => $request_data['inputKlasifikasi'],
@@ -567,12 +582,11 @@ class NocController extends Controller
             ->get();
 
         if ($flow->noc_flow == "flow2") {
-			try {
-				Mail::to($senderBajet)->send(new EmailNOCMohonUlasanBajet($dataMail));
-			} catch (Exception $e) {
-				dd($e);
+            try {
+                Mail::to($senderBajet)->send(new EmailNOCMohonUlasanBajet($dataMail));
+            } catch (Exception $e) {
+                dd($e);
             }
-
         } else if ($flow->noc_flow == "flow3") {
             if ($semakan->tarikh_dokumen_tambahan_bajet != NULL and $semakan->status_noc2 == 2) {
                 try {

@@ -46,8 +46,21 @@
                             </div>
                             <div class="card-body">
                                 <!-- Form Group (first name)-->
+                                <p><small> Tanda (*) adalah wajib di isi.</small></p>
                                 <div class="mb-3">
-                                    <p><small> Tanda (*) adalah wajib di isi.</small></p>
+                                    <label class="small mb-1">Kementerian/Jabatan *</label>
+                                    <select class="form-select" aria-label="Default select example" id="inputJabatan"
+                                        name="inputJabatan">
+                                        <option selected disabled>Sila pilih:</option>
+                                        @foreach ($kementerian as $data)
+                                            <option value="{{ $data->id }}">{{ $data->nama_jabatan }}
+                                                ({{ $data->sgktn_jabatan }})
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+
                                     <label class="small mb-1">Klasifikasi *</label>
                                     <select class="form-select" aria-label="Default select example" id="inputKlasifikasi"
                                         name=" inputKlasifikasi">
@@ -61,19 +74,14 @@
                                     {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                 </div>
                                 <div class="mb-3">
-                                    <label class="small mb-1" for="inputTajuk">Tajuk Permohonan *</label>
+                                    <label class="small mb-1" for="inputTajuk">Tajuk Projek *</label>
                                     <input class="form-control" id="inputTajuk" name="inputTajuk" type="text"
                                         placeholder="Masukkan tajuk permohonan..." />
                                 </div>
                                 <div class="mb-3">
-                                    <label class="small mb-1" for="inputTajuk">Kod MyProjek</label>
+                                    <label class="small mb-1" for="inputTajuk">Kod MyProjek *</label>
                                     <input class="form-control" id="inputKodMyprojek" name="inputKodMyprojek" type="text"
                                         placeholder="Masukkan kod MyProjek.." />
-                                </div>
-                                <div class="mb-3">
-                                    <label class="small mb-1" for="inputTajuk">No. Rujukan Surat</label>
-                                    <input class="form-control" id="inputRujukan" name="inputRujukan" type="text"
-                                        placeholder="Masukkan nombor rujukan surat..." />
                                 </div>
                                 <div class="mb-3">
                                     <label class="small mb-1" for="inputFirstName">Tarikh Permohonan *</label>
@@ -85,8 +93,13 @@
                                             placeholder="Pilih tarikh..." autocomplete="off" />
                                     </div>
                                 </div>
+                                 <div class="mb-3">
+                                    <label class="small mb-1" for="inputTajuk">No. Rujukan Surat</label>
+                                    <input class="form-control" id="inputRujukan" name="inputRujukan" type="text"
+                                        placeholder="Masukkan nombor rujukan surat..." />
+                                </div>
                                 <div class="mb-3">
-                                    <label class="small mb-1" for="inputFirstName">Tarikh Surat Permohonan *</label>
+                                    <label class="small mb-1" for="inputFirstName">Tarikh Surat Permohonan</label>
                                     <div class="input-group input-group-joined">
                                         <span class="input-group-text">
                                             <i data-feather="calendar"></i>
@@ -109,18 +122,7 @@
                                         @endforeach
                                     </select>
                                 </div> --}}
-                                <div class="mb-3">
-                                    <label class="small mb-1">Kementerian/Jabatan *</label>
-                                    <select class="form-select" aria-label="Default select example" id="inputJabatan"
-                                        name="inputJabatan">
-                                        <option selected disabled>Sila pilih:</option>
-                                        @foreach ($kementerian as $data)
-                                            <option value="{{ $data->id }}">{{ $data->nama_jabatan }}
-                                                ({{ $data->sgktn_jabatan }})
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+
                                 {{-- <div class="mb-3" hidden>
                                     <label class="small mb-1" for="statusNOC">noc_flow</label>
                                     <input class="form-control" id="noc_flow" name="noc_flow" type="text"

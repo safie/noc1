@@ -87,32 +87,47 @@
                                 <div class="col">
                                     <div class="mb-3">
                                         <label class="small mb-1" for="datePermohonan">Tarikh Permohonan</label>
-                                        <h5>{{ \Carbon\Carbon::parse($noc->tarikh_permohonan)->format('d-m-Y') }}</h5>
+                                        @if ($noc->tarikh_permohonan != null)
+                                            <h5>{{ \Carbon\Carbon::parse($noc->tarikh_permohonan)->format('d-m-Y') }}</h5>
+                                        @else
+                                            <h5>Tiada data</h5>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
                                         <label class="small mb-1" for="dateSurat">Tarikh Surat Permohonan</label>
-                                        <h5>{{ \Carbon\Carbon::parse($noc->tarikh_surat_kementerian)->format('d-m-Y') }}
-                                        </h5>
+                                        @if ($noc->tarikh_permohonan != null)
+                                            <h5>{{ \Carbon\Carbon::parse($noc->tarikh_surat_kementerian)->format('d-m-Y') }}
+                                            </h5>
+                                        @else
+                                            <h5>Tiada data</h5>
+                                        @endif
+
                                     </div>
 
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
-                                <table style="text-align: left">
-                                    <tr>
-                                        <td style="width: 7rem">Status NOC :</td>
-                                        <td><span class="badge bg-success">{{ $noc->nama_status1 }}</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="width: 7rem"></td>
-                                        <td><span @if ($noc->tarikh_sedia_memo_kelulusan != null) hidden @endif
-                                                class="badge bg-success">{{ $noc->nama_status2 }}</span></td>
-                                    </tr>
-                                </table>
-
+                                <div class="mb-3">
+                                    <table style="text-align: left">
+                                        <tr>
+                                            <td style="width: 7rem">Status NOC :</td>
+                                            <td><span class="badge bg-success">{{ $noc->nama_status1 }}</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 7rem"></td>
+                                            <td><span @if ($noc->tarikh_sedia_memo_kelulusan != null) hidden @endif
+                                                    class="badge bg-success">{{ $noc->nama_status2 }}</span></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="text-end">
+                                <a class="btn btn-danger" href="#" role="button">
+                                    Batal NOC</a>
                             </div>
                         </div>
                     </div>
