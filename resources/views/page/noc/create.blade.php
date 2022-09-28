@@ -46,8 +46,21 @@
                             </div>
                             <div class="card-body">
                                 <!-- Form Group (first name)-->
+                                <p><small> Tanda (*) adalah wajib di isi.</small></p>
                                 <div class="mb-3">
-                                    <p><small> Tanda (*) adalah wajib di isi.</small></p>
+                                    <label class="small mb-1">Kementerian/Jabatan *</label>
+                                    <select class="form-select" aria-label="Default select example" id="inputJabatan"
+                                        name="inputJabatan">
+                                        <option selected disabled>Sila pilih:</option>
+                                        @foreach ($kementerian as $data)
+                                            <option value="{{ $data->id }}">{{ $data->nama_jabatan }}
+                                                ({{ $data->sgktn_jabatan }})
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+
                                     <label class="small mb-1">Klasifikasi *</label>
                                     <select class="form-select" aria-label="Default select example" id="inputKlasifikasi"
                                         name=" inputKlasifikasi">
@@ -71,11 +84,6 @@
                                         placeholder="Masukkan kod MyProjek.." />
                                 </div>
                                 <div class="mb-3">
-                                    <label class="small mb-1" for="inputTajuk">No. Rujukan Surat</label>
-                                    <input class="form-control" id="inputRujukan" name="inputRujukan" type="text"
-                                        placeholder="Masukkan nombor rujukan surat..." />
-                                </div>
-                                <div class="mb-3">
                                     <label class="small mb-1" for="inputFirstName">Tarikh Permohonan *</label>
                                     <div class="input-group input-group-joined">
                                         <span class="input-group-text">
@@ -84,6 +92,11 @@
                                         <input class="form-control ps-0" id="tarikhMohonNOC" name="tarikhMohonNOC"
                                             placeholder="Pilih tarikh..." autocomplete="off" />
                                     </div>
+                                </div>
+                                 <div class="mb-3">
+                                    <label class="small mb-1" for="inputTajuk">No. Rujukan Surat</label>
+                                    <input class="form-control" id="inputRujukan" name="inputRujukan" type="text"
+                                        placeholder="Masukkan nombor rujukan surat..." />
                                 </div>
                                 <div class="mb-3">
                                     <label class="small mb-1" for="inputFirstName">Tarikh Surat Permohonan</label>
@@ -109,18 +122,7 @@
                                         @endforeach
                                     </select>
                                 </div> --}}
-                                <div class="mb-3">
-                                    <label class="small mb-1">Kementerian/Jabatan *</label>
-                                    <select class="form-select" aria-label="Default select example" id="inputJabatan"
-                                        name="inputJabatan">
-                                        <option selected disabled>Sila pilih:</option>
-                                        @foreach ($kementerian as $data)
-                                            <option value="{{ $data->id }}">{{ $data->nama_jabatan }}
-                                                ({{ $data->sgktn_jabatan }})
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+
                                 {{-- <div class="mb-3" hidden>
                                     <label class="small mb-1" for="statusNOC">noc_flow</label>
                                     <input class="form-control" id="noc_flow" name="noc_flow" type="text"
