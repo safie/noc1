@@ -108,6 +108,30 @@
 
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="small mb-1" for="datePermohonan">Tarikh Surat Kelulusan</label>
+                                        @if ($noc->tarikh_hantar_surat_lulus != null)
+                                            <h5>{{ \Carbon\Carbon::parse($noc->tarikh_hantar_surat_lulus)->format('d-m-Y') }}
+                                            </h5>
+                                        @else
+                                            <h5>Tiada data</h5>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="small mb-1" for="datePermohonan">No. Rujukan Surat Kelulusan</label>
+                                        @if ($noc->no_rujukan_surat_kelulusan != null)
+                                            <h5>{{ $noc->no_rujukan_surat_kelulusan }}
+                                            </h5>
+                                        @else
+                                            <h5>Tiada data</h5>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
                             <hr>
                             <div class="row">
                                 <div class="mb-3">

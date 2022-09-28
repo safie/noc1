@@ -28,8 +28,7 @@
                 @if ($noc->status_noc == 'noc_2' or $noc->tarikh_semak != null)
                     <tr>
                         <td class="text-center">{{ \Carbon\Carbon::parse($noc->tarikh_semak)->format('d-m-Y') }}</td>
-                        <td class="bg-primary text-white align-middle" style="--bs-bg-opacity: .90;">Semakan Bahagian
-                            (LULUS)</td>
+                        <td class="bg-primary text-white align-middle" style="--bs-bg-opacity: .90;">Semakan Bahagian (Dokumen Lengkap)</td>
                     </tr>
                 @endif
 

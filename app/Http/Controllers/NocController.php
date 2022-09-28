@@ -472,7 +472,7 @@ class NocController extends Controller
             NocLog::create([
                 'noc_id' => $semakan->id,
                 'status_noc'    => $dataFlow,
-                'keterangan' => "Semakan Bahagian (LULUS)",
+                'keterangan' => "Semakan Bahagian (Dokumen Lengkap)",
                 'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
                 'css_class' => "bg-primary",
             ]);
@@ -1089,12 +1089,15 @@ class NocController extends Controller
     {
         $request->validate([
             'tarikh' => 'required',
+            'no_rujukan' => 'required'
         ]);
 
         $semakan = Noc::find($id);
         $semakan->tarikh_hantar_surat_lulus = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
         $semakan->status_noc = "noc_15";
+        $semakan->no_rujukan_surat_kelulusan = $request->no_rujukan;
         $semakan->save();
+
         NocLog::create([
             'noc_id' => $semakan->id,
             'status_noc'    => "noc_15",
@@ -1167,6 +1170,11 @@ class NocController extends Controller
 
     public function carianNoc(Request $request, $id)
     {
+    }
+
+    public function batalNoc(Request $request, $id)
+    {
+        
     }
 
     public function sendNocMessage()

@@ -16,6 +16,12 @@
                     autocomplete="off" />
             </div>
         </div>
+        <div class="mb-3">
+            <label for="inputRujukanSurat" class="small mb-1">No. Rujukan Surat</label>
+            <input class="form-control" id="no_rujukan" name="no_rujukan" type="text" autocomplete="off"
+                placeholder="Masukkan No. Rujukan..." />
+
+        </div>
         <div class="modal-footer">
             <div class="d-flex gap-2 spinner-hide">
                 <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Tutup</button>
