@@ -12,7 +12,7 @@
                 <!-- Dashboard info widget 1-->
                 <div class="card bg-primary border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white">Jumlah Keseluruhan NOC</h6>
+                        <h6 class="text-white" style="height: 4rem">Jumlah Keseluruhan NOC</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $noc }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
@@ -28,7 +28,7 @@
                 <!-- Dashboard info widget 2-->
                 <div class="card bg-success border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white">Semakan Dokumen oleh Bahagian</h6>
+                        <h6 class="text-white" style="height: 4rem">Semakan Dokumen oleh Bahagian</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $nocSemak }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
@@ -44,7 +44,7 @@
                 <!-- Dashboard info widget 1-->
                 <div class="card bg-warning border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white">Penyediaan Ulasan Bajet/Teknikal</h6>
+                        <h6 class="text-white" style="height: 4rem">Penyediaan Ulasan Bajet/Teknikal</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $nocSediaUlasan }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
@@ -60,7 +60,7 @@
                 <!-- Dashboard info widget 2-->
                 <div class="card bg-danger border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white">Maklumat Tambahan</h6>
+                        <h6 class="text-white" style="height: 4rem">Maklumat Tambahan</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $nocTambahan }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
@@ -76,7 +76,7 @@
                 <!-- Dashboard info widget 1-->
                 <div class="card bg-black border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white">Penyediaan Memo & Surat</h6>
+                        <h6 class="text-white" style="height: 4rem">Penyediaan Memo & Surat</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $nocMemo }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
@@ -92,7 +92,7 @@
                 <!-- Dashboard info widget 2-->
                 <div class="card bg-info border-0">
                     <div class="card-body text-center">
-                        <h6 class="text-white">Modul NOC (Selesai)</h6>
+                        <h6 class="text-white" style="height: 4rem">Modul NOC (Selesai)</h6>
                         <div class=" mb-2">
                             <span class="display-4 text-white">{{ $nocModul }}</span>
                             {{-- <span class="text-white-50">per year</span> --}}
@@ -109,24 +109,23 @@
         <div class="row">
             <div class="col-lg-4 mb-4">
                 <!-- Report summary card example-->
-                <div class="card mb-4">
+                <div class="card mb-2">
                     <div class="card-header">Top 5 NOC mengikut klasifikasi</div>
-                    <div class="card-body">
-                        <table class="table table-sm table-striped table-hover mx-0 my-0">
+                    <div class="card-body px-2 py-2 align-middle">
+                        <table class="table table-sm table-striped table-hover mx-0 my-0 rounded rounded-3 overflow-hidden">
                             @if ($nocKlasifikasi->count() > 0)
                                 @foreach ($nocKlasifikasi as $data)
                                     <tr style="height: 50px">
-                                        <td class="align-middle" style="height: 100%">
-                                            <span class="badge bg-dark">{{ $data->kod }}</span>
+                                        <td class="align-middle px-2 py-2 text-center text-white bg-black" style="height: 100%">
+                                            {{ $data->kod }}
                                         </td>
-                                        <td style="width: 20rem; height: 100%" class="text-wrap small align-middle">
+                                        <td style="width: 20rem; height: 100%" class="text-wrap small align-middle px-2 py-2">
                                             {{ $data->nama_kat }}
                                         </td>
                                         <td style="width: 5rem;--bs-bg-opacity: .75;height: 100%"
-                                            class="align-middle bg-primary text-center text-white">
+                                            class="align-middle bg-primary text-center text-white px-2 py-2">
                                             <strong>{{ $data->jumlah }}</strong>
                                         </td>
-
                                     </tr>
                                 @endforeach
                             @else
@@ -137,10 +136,10 @@
 
                         </table>
                     </div>
-                    <div class="card-footer position-relative border-top-0">
+                    <div class="card-footer">
                         <!-- Button trigger modal -->
                         <a class="stretched-link" data-bs-toggle="modal" data-bs-target="#senaraiKlasifikasiNoc" href="#">
-                            <div class="text-xs d-flex align-items-center justify-content-between">
+                            <div class="text-sm d-flex align-items-center justify-content-between">
                                 Senarai NOC
                                 <i class="fas fa-long-arrow-alt-right"></i>
                             </div>
@@ -151,16 +150,16 @@
             <div class="col-lg-4 mb-4">
                 <div class="card mb-4">
                     <div class="card-header text-warning">Top 5 NOC mengikut status</div>
-                    <div class="card-body">
-                        <table class="table table-sm table-striped table-hover mx-0 my-0">
+                    <div class="card-body px-2 py-2 align-middle">
+                        <table class="table table-sm table-striped table-hover mx-0 my-0 rounded rounded-3 overflow-hidden">
                             @if ($nocStatus->count() > 0)
                                 @foreach ($nocStatus as $data)
                                     <tr style="height: 50px">
-                                        <td style="width: 20rem" class="text-wrap small align-middle">
+                                        <td style="width: 20rem" class="text-wrap small align-middle px-3 py-2">
                                             {{ $data->nama_status }}
                                         </td>
                                         <td style="width: 5rem;--bs-bg-opacity: .75;"
-                                            class="align-middle bg-warning text-center text-white">
+                                            class="align-middle bg-warning text-center text-white px-3 py-3">
                                             <strong>{{ $data->jumlah }}</strong>
                                         </td>
 
@@ -177,7 +176,7 @@
                     <div class="card-footer position-relative border-top-0">
                         <!-- Button trigger modal -->
                         <a class="stretched-link" data-bs-toggle="modal" data-bs-target="#senaraiStatusNoc" href="#">
-                            <div class="text-xs d-flex align-items-center justify-content-between">
+                            <div class="text-sm d-flex align-items-center justify-content-between">
                                 Senarai NOC
                                 <i class="fas fa-long-arrow-alt-right"></i>
                             </div>
@@ -188,16 +187,16 @@
             <div class="col-lg-4 mb-4">
                 <div class="card mb-4">
                     <div class="card-header text-success">Top 5 NOC mengikut Kementerian</div>
-                    <div class="card-body">
-                        <table class="table table-sm table-striped table-hover mx-0 my-0">
+                    <div class="card-body px-2 py-2 align-middle">
+                        <table class="table table-sm table-striped table-hover mx-0 my-0 rounded rounded-3 overflow-hidden">
                             @if ($nocJabatan->count() > 0)
                                 @foreach ($nocJabatan as $data)
                                     <tr style="height: 50px">
-                                        <td style="width: 40rem" class="text-wrap small align-middle">
+                                        <td style="width: 40rem" class="text-wrap small align-middle px-3 py-2">
                                             {{ $data->nama_jabatan }}
                                         </td>
                                         <td style="width: 5rem;--bs-bg-opacity: .75;"
-                                            class="align-middle bg-success text-center text-white">
+                                            class="align-middle bg-success text-center text-white px-3 py-3">
                                             <strong>{{ $data->jumlah }}</strong>
                                         </td>
                                     </tr>
@@ -213,7 +212,7 @@
                     <div class="card-footer position-relative border-top-0">
                         <!-- Button trigger modal -->
                         <a class="stretched-link" data-bs-toggle="modal" data-bs-target="#senaraiKementerian" href="#">
-                            <div class="text-xs d-flex align-items-center justify-content-between">
+                            <div class="text-sm d-flex align-items-center justify-content-between">
                                 Senarai NOC
                                 <i class="fas fa-long-arrow-alt-right"></i>
                             </div>

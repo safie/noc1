@@ -1,7 +1,27 @@
 @extends('layouts.appDash')
 
 @section('css')
+    <style>
+        .size-18 {
+            width: 16px;
+            height: 16px;
+        }
 
+        .size-28 {
+            width: 24px;
+            height: 24px;
+        }
+
+        .size-38 {
+            width: 38px;
+            height: 38px;
+        }
+
+        .size-48 {
+            width: 48px;
+            height: 48px;
+        }
+    </style>
 @endsection
 
 @section('icon', 'briefcase')
@@ -18,7 +38,7 @@
     <div class="container-fluid px-4">
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button class="btn-close" data-bs-dismiss="alert" type="button" aria-label="Close"></button>
                 <p>{{ $message }}</p>
             </div>
         @endif
@@ -73,9 +93,8 @@
                                     <td>
                                         <div class="d-flex justify-content-center">
                                             @if (Auth::user()->peranan == 1 or Auth::user()->peranan == 3)
-                                                <a class="btn btn-datatable btn-icon btn-transparent-dark mx-1"
-                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
-                                                    href="{{ route('noc.edit', $data->id) }}">
+                                                <a data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
+                                                    href="{{ route('noc.edit', $data->id) }}" >
                                                     <i data-feather="edit"></i>
                                                 </a>
 
@@ -94,13 +113,13 @@
                                                     @method('DELETE')
                                                     @csrf
                                                     <button
-                                                        class="btn btn-datatable btn-icon btn-transparent-dark mx-1 remove-data"
+                                                        class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1 remove-data"
                                                         data-id="{{ $data->id }}">
-                                                        <i data-feather="trash-2"></i>
+                                                        <i class="size-28" data-feather="trash-2"></i>
                                                     </button>
                                                 </form>
                                             @endif
-                                            <a class="btn btn-datatable btn-icon btn-transparent-dark mx-1"
+                                            <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
                                                 href="{{ route('noc.detail', $data->id) }}">
                                                 <i data-feather="monitor">Info</i>
                                             </a>
@@ -133,7 +152,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script>
-        // feather.replace()
+        feather.replace()
 
         // $('.delete-confirm').on('click', function(event) {
         //     event.preventDefault();
