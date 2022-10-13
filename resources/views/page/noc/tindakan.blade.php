@@ -73,7 +73,7 @@
                                         <div class="d-flex justify-content-center">
 
                                             @if ($data->status_noc == 'noc_1')
-                                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                                                <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark me-2"
                                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
                                                     href="{{ route('noc.edit', $data->id) }}">
                                                     <i data-feather="edit"></i></a>
@@ -81,20 +81,20 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"
-                                                        class="btn btn-datatable btn-icon btn-transparent-dark show_confirm"><i
+                                                        class="btn btn-datatable btn-lg btn-icon btn-transparent-dark show_confirm"><i
                                                             data-feather="trash-2"></i></button>
                                                 </form>
 
-                                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                                                <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark me-2"
                                                     href="{{ route('noc.detail', $data->id) }}"><i
                                                         data-feather="arrow-right-circle"></i></a>
                                             @else
-                                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                                                <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark me-2"
                                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
                                                     href="{{ route('noc.edit', $data->id) }}">
                                                     <i data-feather="edit"></i></a>
 
-                                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
+                                                <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark me-2"
                                                     href="{{ route('noc.detail', $data->id) }}"><i
                                                         data-feather="arrow-right-circle"></i></a>
                                             @endif
