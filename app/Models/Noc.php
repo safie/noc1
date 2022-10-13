@@ -45,7 +45,8 @@ class Noc extends Model
         'tarikh_kelulusan_pt',
         'tarikh_sedia_surat',
         'tarikh_hantar_surat_lulus',
-        'tarikh_mohon_modul'
+        'tarikh_mohon_modul',
+        'no_rujukan_surat_kelulusan'
     ];
     public $timestamps  = true;
 

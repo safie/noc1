@@ -19,12 +19,12 @@
             <div class="col-sm-6 col-xl-2 mb-4">
                 <div class="card bg-dark text-white h-100">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center text-center">
                             <div class="me-3">
-                                <div class="text-white-v small">Jumlah Keseluruhan NOC</div>
+                                <div class="text-white-80" style="height: 5rem">Jumlah Keseluruhan NOC</div>
                                 <div class="display-6 fw-bold">{{ count_all_noc() }}</div>
                             </div>
-                            <i class="feather-xl text-white-50" data-feather="award"></i>
+                            {{-- <i class="feather-xl text-white-50" data-feather="award"></i> --}}
                         </div>
                     </div>
                 </div>
@@ -32,12 +32,12 @@
             <div class="col-sm-6 col-xl-2 mb-4">
                 <div class="card bg-success text-white h-100">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center text-center">
                             <div class="me-3">
-                                <div class="text-white-80 small">Semakan Dokumen</div>
+                                <div class="text-white-80" style="height: 5rem">Semakan Dokumen</div>
                                 <div class="display-6 fw-bold">{{ count_all_semakan() }}</div>
                             </div>
-                            <i class="feather-xl text-white-50" data-feather="check-circle"></i>
+                            {{-- <i class="feather-xl text-white-50" data-feather="check-circle"></i> --}}
                         </div>
                     </div>
                 </div>
@@ -45,12 +45,12 @@
             <div class="col-sm-6 col-xl-2 mb-4">
                 <div class="card bg-warning text-white h-100">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center text-center">
                             <div class="me-3">
-                                <div class="text-white-80 small">Penyediaan Ulasan Bajet/Teknikal</div>
+                                <div class="text-white-80" style="height: 5rem">Penyediaan Ulasan Bajet/Teknikal</div>
                                 <div class="display-6 fw-bold">{{ count_all_ulasan() }}</div>
                             </div>
-                            <i class="feather-xl text-white-50" data-feather="clipboard"></i>
+                            {{-- <i class="feather-xl text-white-50" data-feather="clipboard"></i> --}}
                         </div>
                     </div>
                 </div>
@@ -58,12 +58,12 @@
             <div class="col-sm-6 col-xl-2 mb-4">
                 <div class="card bg-danger text-white h-100">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center text-center">
                             <div class="me-3">
-                                <div class="text-white-80 small">Maklumat Tambahan</div>
+                                <div class="text-white-80" style="height: 5rem">Maklumat Tambahan</div>
                                 <div class="display-6 fw-bold">{{ count_all_tambahan() }}</div>
                             </div>
-                            <i class="feather-xl text-white-50" data-feather="alert-triangle"></i>
+                            {{-- <i class="feather-xl text-white-50" data-feather="alert-triangle"></i> --}}
                         </div>
                     </div>
                 </div>
@@ -71,12 +71,12 @@
             <div class="col-sm-6 col-xl-2 mb-4">
                 <div class="card bg-secondary text-white h-100">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center text-center">
                             <div class="me-3">
-                                <div class="text-white-80 small">Penyediaan Memo/Surat</div>
+                                <div class="text-white-80" style="height: 5rem">Penyediaan Memo/Surat</div>
                                 <div class="display-6 fw-bold">{{ count_all_memo() }}</div>
                             </div>
-                            <i class="feather-xl text-white-50" data-feather="message-square"></i>
+                            {{-- <i class="feather-xl text-white-50" data-feather="message-square"></i> --}}
                         </div>
                     </div>
                 </div>
@@ -84,12 +84,12 @@
             <div class="col-sm-6 col-xl-2 mb-4">
                 <div class="card bg-info text-white h-100">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center text-center">
                             <div class="me-3">
-                                <div class="text-white-80 small">Modul NOC (Selesai)</div>
+                                <div class="text-white-80" style="height: 5rem">Modul NOC (Selesai)</div>
                                 <div class="display-6 fw-bold">{{ count_all_selesai() }}</div>
                             </div>
-                            <i class="feather-xl text-white-50" data-feather="coffee"></i>
+                            {{-- <i class="feather-xl text-white-50" data-feather="coffee"></i> --}}
                         </div>
                     </div>
                 </div>
