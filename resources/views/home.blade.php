@@ -119,7 +119,7 @@
                                         <td class="align-middle px-2 py-2 text-center text-white bg-black" style="height: 100%">
                                             {{ $data->kod }}
                                         </td>
-                                        <td style="width: 20rem; height: 100%" class="text-wrap small align-middle px-2 py-2">
+                                        <td style="width: 20rem" class="text-wrap small align-middle px-2 py-2">
                                             {{ $data->nama_kat }}
                                         </td>
                                         <td style="width: 5rem;--bs-bg-opacity: .75;height: 100%"
@@ -136,7 +136,7 @@
 
                         </table>
                     </div>
-                    <div class="card-footer">
+                    <div class="card-footer position-relative border-top-0">
                         <!-- Button trigger modal -->
                         <a class="stretched-link" data-bs-toggle="modal" data-bs-target="#senaraiKlasifikasiNoc" href="#">
                             <div class="text-sm d-flex align-items-center justify-content-between">

@@ -74,6 +74,7 @@ class NocController extends Controller
                     't_kategori.kod',
                 )
                 ->where('bahagian', '=', Auth::user()->bahagian)
+                ->where('status_noc','!=','noc_20')
                 ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
                 ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
                 ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
@@ -1173,9 +1174,14 @@ class NocController extends Controller
     {
     }
 
-    public function batalNoc(Request $request, $id)
+    public function batalNoc($id)
     {
-        
+        $noc = Noc::find($id);
+        $noc->status_noc  = "noc_20";
+        $noc->save();
+
+        return redirect()->route('noc.index')->with('success', 'NOC telah dibatalkan!');
+
     }
 
     public function sendNocMessage()
@@ -1214,8 +1220,4 @@ class NocController extends Controller
         dd("Email berjaya!");
     }
 
-    public function padamNoc(Request $request, $id)
-    {
-
-    }
 }

@@ -42,10 +42,11 @@ Route::resource('/setting/peringkat', PeringkatController::class);
 Route::resource('/setting/kategori', KategoriController::class);
 Route::resource('/setting/status', StatusController::class);
 
-Route::resource('/noc', NocController::class)->except('show');
+
 Route::get('/noc/tindakan', [\App\Http\Controllers\NocController::class, 'tindakan'])->name('noc.tindakan');
 Route::get('/noc/detail/{id}', [\App\Http\Controllers\NocController::class, 'detail'])->name('noc.detail');
-Route::get('/noc/delete/{id}', [\App\Http\Controllers\NocController::class, 'destroy'])->name('noc.delete');
+Route::get('/noc/batal/{id}', [\App\Http\Controllers\NocController::class, 'batalNoc'])->name('noc.batal');
+
 
 //proses-noc-1
 Route::put('/noc/semak/{id}', [\App\Http\Controllers\NocController::class, 'updateSemak'])->name('noc.updateSemak');
@@ -77,5 +78,6 @@ Route::put('/noc/sedia-surat/{id}', [\App\Http\Controllers\NocController::class,
 Route::put('/noc/hantar-surat/{id}', [\App\Http\Controllers\NocController::class, 'updateHantarSurat'])->name('noc.updateHantarSurat');
 //proses-noc-11
 Route::put('/noc/mohon-modul/{id}', [\App\Http\Controllers\NocController::class, 'updateMohonModul'])->name('noc.updateMohonModul');
+Route::resource('/noc', NocController::class)->except('show');
 
 Route::get('send-mail', [NocController::class, 'sendNocMessage']);

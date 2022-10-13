@@ -1,8 +1,8 @@
 @extends('layouts.appDash')
 
 @section('css')
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+        rel="stylesheet">
 @endsection
 
 @section('icon', 'briefcase')
@@ -22,7 +22,7 @@
                 <div class="col-lg-12">
                     <div class="alert alert-danger alert-dismissible fade show" role="alert" aria-label="Close">
                         <strong>Maaf, ada ralat data!</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" a></button>
+                        <button class="btn-close" data-bs-dismiss="alert" type="button" a></button>
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -142,16 +142,20 @@
                                         </tr>
                                         <tr>
                                             <td style="width: 7rem"></td>
-                                            <td><span @if ($noc->tarikh_sedia_memo_kelulusan != null) hidden @endif
-                                                    class="badge bg-success">{{ $noc->nama_status2 }}</span></td>
+                                            <td><span class="badge bg-success"
+                                                    @if ($noc->tarikh_sedia_memo_kelulusan != null) hidden @endif>{{ $noc->nama_status2 }}</span>
+                                            </td>
                                         </tr>
                                     </table>
                                 </div>
                             </div>
                             <hr>
                             <div class="text-end">
-                                <a class="btn btn-danger" href="#" role="button">
-                                    Batal NOC</a>
+                                <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalPadam"
+                                    type="button">
+                                    Batal NOC
+                                </button>
+
                             </div>
                         </div>
                     </div>
@@ -167,6 +171,7 @@
 
             </div>
             @include('page.noc.import.modal')
+            @include('page.noc.import.modalPadam')
         </div>
     </div>
 

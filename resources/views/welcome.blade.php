@@ -7,7 +7,7 @@
 @section('content')
     <section class="container d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <div class="d-flex flex-column align-items-center ">
-            <img src="{{ asset('pic/jata_negara_small_2.png') }}" id="mask" alt="i-NOC" style="width:155px; height:125px">
+            <img src="{{ asset('pic/jata_negara_small_2.png') }}" id="mask" alt="i-NOC" style="width:180px; height:155px">
             <br>
             <div class="d-flex justify-content-center display-1 h1 text-white"><strong>i-NOC</strong></div>
             <div class="d-flex justify-content-center h1 text-white">Sistem Pemantauan NOC
@@ -116,7 +116,7 @@
         }
 
         #mask {
-            filter: drop-shadow(0 0 0.5rem rgb(243, 243, 240));
+            filter: drop-shadow(0 0 0.5rem rgb(0, 0, 0));
         }
     </style>
 @endsection
