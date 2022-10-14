@@ -62,7 +62,7 @@
                                     <td>{{ $data->nama_jabatan }}</td>
                                     <td>{{ $data->sgktn_bhgn }}</td>
                                     <td class="text-center">
-                                        <h4><span class="badge bg-secondary text-wrap">{{ $data->nama_status1 }}</span>
+                                        <h4><span class="badge bg-secondary opacity-75 text-wrap">{{ $data->nama_status1 }}</span>
                                         </h4>
 
                                         <h4><span @if ($data->tarikh_sedia_memo_kelulusan != null) hidden @endif
