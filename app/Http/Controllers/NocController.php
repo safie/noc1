@@ -712,7 +712,7 @@ class NocController extends Controller
             NocLog::create([
                 'noc_id' => $semakan->id,
                 'status_noc'    => "noc_5",
-                'keterangan' => "Semakan BBP (LULUS)",
+                'keterangan' => "Semakan BBP (Dokumen Lengkap)",
                 'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
                 'css_class' => "bg-warning",
             ]);
@@ -786,7 +786,7 @@ class NocController extends Controller
             NocLog::create([
                 'noc_id' => $semakan->id,
                 'status_noc'    => "noc_6",
-                'keterangan' => "Semakan BPN (LULUS)",
+                'keterangan' => "Semakan BPN (Dokumen Lengkap)",
                 'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
                 'css_class' => "bg-info",
             ]);
