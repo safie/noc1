@@ -60,10 +60,9 @@
                                     </select>
                                 </div>
                                 <div class="mb-3">
-
                                     <label class="small mb-1">Klasifikasi *</label>
                                     <select class="form-select" aria-label="Default select example" id="inputKlasifikasi"
-                                        name=" inputKlasifikasi">
+                                        name=" inputKlasifikasi" onchange="pilihKlasifikasi(this.value)">
                                         <option selected disabled>Sila pilih:</option>
                                         @foreach ($kategori as $data)
                                             <option value="{{ $data->id }}">{{ $data->kod }} -
@@ -73,15 +72,27 @@
                                     </select>
                                     {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
                                 </div>
+                                <div class="row" id="kosProjek" style="display:none">
+                                    {{-- <div class="col-md-6 mb-3">
+                                        <label class="small mb-1" for="inputTajuk">Kos Sebelum *</label>
+                                        <input class="form-control" id="inputTajuk" name="inputTajuk" type="number"
+                                            placeholder="Kos projek sebelum" autocomplete="off" />
+                                    </div> --}}
+                                    <div class="col-md-6 mb-3">
+                                        <label class="small mb-1" for="inputTajuk">Perubahan Kos *</label>
+                                        <input class="form-control" id="inputTajuk" name="inputTajuk" type="number"
+                                            placeholder="Kos projek" autocomplete="off" />
+                                    </div>
+                                </div>
                                 <div class="mb-3">
                                     <label class="small mb-1" for="inputTajuk">Tajuk Projek *</label>
                                     <input class="form-control" id="inputTajuk" name="inputTajuk" type="text"
-                                        placeholder="Masukkan tajuk permohonan..." />
+                                        placeholder="Masukkan tajuk permohonan..." autocomplete="off" />
                                 </div>
                                 <div class="mb-3">
                                     <label class="small mb-1" for="inputTajuk">Kod MyProjek *</label>
                                     <input class="form-control" id="inputKodMyprojek" name="inputKodMyprojek" type="text"
-                                        placeholder="Masukkan kod MyProjek.." />
+                                        placeholder="Masukkan kod MyProjek.." autocomplete="off" />
                                 </div>
                                 <div class="mb-3">
                                     <label class="small mb-1" for="inputFirstName">Tarikh Permohonan *</label>
@@ -93,7 +104,7 @@
                                             placeholder="Pilih tarikh..." autocomplete="off" />
                                     </div>
                                 </div>
-                                 <div class="mb-3">
+                                <div class="mb-3">
                                     <label class="small mb-1" for="inputTajuk">No. Rujukan Surat</label>
                                     <input class="form-control" id="inputRujukan" name="inputRujukan" type="text"
                                         placeholder="Masukkan nombor rujukan surat..." />
@@ -183,9 +194,20 @@
                     .addClass("disabled");
                 $('.spinner-hide').show();
             });
-        })
+        });
+
+        //Fungsi untuk dropdown kategori D7.1, D7.2, D8.1 muncul field kos
+        $(function() {
+            $('#inputKlasifikasi').on('change', function() {
+                if (this.value == 11 || this.value == 12 || this.value == 15) {
+                    $("#kosProjek").show();
+
+                } else {
+                    // alert("Died");
+                    $("#kosProjek").hide();
+                }
+            });
+        });
     </script>
 
-    {{-- <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js" crossorigin="anonymous"></script>
-    // <script src="{{ asset('sb-admin-pro/dist/js/litepicker.js') }}"></> --}}
 @endsection

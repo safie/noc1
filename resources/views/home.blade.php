@@ -156,7 +156,7 @@
                                 @foreach ($nocStatus as $data)
                                     <tr style="height: 50px">
                                         <td style="width: 20rem" class="text-wrap small align-middle px-3 py-2">
-                                            {{ $data->nama_status }}
+                                            {!! $data->nama_status !!}
                                         </td>
                                         <td style="width: 5rem;--bs-bg-opacity: .75;"
                                             class="align-middle bg-warning text-center text-white px-3 py-3">

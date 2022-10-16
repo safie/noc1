@@ -29,6 +29,7 @@
                         <tr>
                             <th class="text-center">No.</th>
                             <th>Tajuk Permohonan</th>
+                            <th>Kategori</th>
                             <th>Kementerian</th>
                             <th>Bahagian</th>
                             <th class="text-center">Status</th>
@@ -50,24 +51,19 @@
                             @foreach ($noc as $data)
                                 <tr>
                                     <td class="text-center">{{ $loop->index + 1 }}</td>
-                                    <td style="width:40em">
+                                    <td style="width:20em">
                                         <div class="text-uppercase">
-                                            <strong>({{ $data->kod }}) {{ $data->nama_kat }}</strong><br>
                                             {{ $data->tajuk_permohonan }}
                                         </div>
-
-                                        <strong> Tarikh submit:
-                                            {{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</strong>
+                                        <small class="text-muted"> Tarikh submit:
+                                            {{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</small>
                                     </td>
+                                    <td>({{ $data->kod }}) {{ $data->nama_kat }}</td>
                                     <td>{{ $data->nama_jabatan }}</td>
-                                    <td>{{ $data->sgktn_bhgn }}</td>
+                                    <td class="text-center align-middle">{{ $data->sgktn_bhgn }}</td>
                                     <td class="text-center">
-                                        <h4><span class="badge bg-secondary opacity-75 text-wrap">{{ $data->nama_status1 }}</span>
-                                        </h4>
-
-                                        <h4><span @if ($data->tarikh_sedia_memo_kelulusan != null) hidden @endif
-                                                class="badge bg-secondary text-wrap">{{ $data->nama_status2 }}</span>
-                                        </h4>
+                                        <h4><span class="badge bg-secondary opacity-75 text-wrap">{!! $data->nama_status1 !!}</span></h4>
+                                        <h4 @if ($data->tarikh_sedia_memo_kelulusan != null) hidden @endif><span class="badge bg-secondary opacity-75 text-wrap">{!! $data->nama_status2 !!}</span></h4>
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-center">
@@ -76,14 +72,14 @@
                                                 <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark me-2"
                                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
                                                     href="{{ route('noc.edit', $data->id) }}">
-                                                    <i data-feather="edit"></i></a>
+                                                    {{-- <i data-feather="edit"></i></a>
                                                 <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"
                                                         class="btn btn-datatable btn-lg btn-icon btn-transparent-dark show_confirm"><i
                                                             data-feather="trash-2"></i></button>
-                                                </form>
+                                                </form> --}}
 
                                                 <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark me-2"
                                                     href="{{ route('noc.detail', $data->id) }}"><i
@@ -95,8 +91,7 @@
                                                     <i data-feather="edit"></i></a>
 
                                                 <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark me-2"
-                                                    href="{{ route('noc.detail', $data->id) }}"><i
-                                                        data-feather="arrow-right-circle"></i></a>
+                                                    href="{{ route('noc.detail', $data->id) }}"><i data-feather="monitor">Info</i></a>
                                             @endif
                                         </div>
                                     </td>
@@ -114,6 +109,7 @@
             </div>
         </div>
     </div>
+
 
 @endsection
 

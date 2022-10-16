@@ -6,12 +6,12 @@
 @section('icon', 'plus-square')
 @section('tajuk', 'Info Pengguna')
 @section('button')
-@if (Auth::user()->peranan == 1)
-    <a class="btn btn-sm btn-light text-primary" href="{{ route('pengguna.index') }}">
-        <i class="me-1" data-feather="arrow-left"></i>
-        Kembali Senarai
-    </a>
-@endif
+    @if (Auth::user()->peranan == 1)
+        <a class="btn btn-sm btn-light text-primary" href="{{ route('pengguna.index') }}">
+            <i class="me-1" data-feather="arrow-left"></i>
+            Kembali Senarai
+        </a>
+    @endif
 
 @endsection
 
@@ -19,7 +19,7 @@
     @include('layouts.template.header_compact')
     <div class="container-fluid px-4 mt-4">
         <div class="row gx-4">
-            <div class="col-lg-8">
+            <div class="@if (Auth::user()->peranan == 1) col-lg-8 @else col-lg-12 @endif">
                 <div class="card mb-4">
                     <div class="card card-header-actions">
                         <div class="card-header">
@@ -44,8 +44,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4">
-                @if (Auth::user()->peranan == 1)
+            @if (Auth::user()->peranan == 1)
+                <div class="col-lg-4">
+
                     <div class="card card-header-actions">
                         <div class="card-header">
                             Tindakan
@@ -71,8 +72,9 @@
 
                         </div>
                     </div>
-                @endif
-            </div>
+
+                </div>
+            @endif
         </div>
 
     </div>

@@ -54,7 +54,7 @@
                         @foreach ($nocStatusAll as $data)
                             <tr style="height: 50px">
                                 <td class="text-wrap align-middle px-3 py-3" style="width: 20rem">
-                                    {{ $data->nama_status }}
+                                    {!! $data->nama_status !!}
                                 </td>
                                 <td class="align-middle bg-warning text-center text-white px-3 py-3"
                                     style="width: 5rem;--bs-bg-opacity: .75;">

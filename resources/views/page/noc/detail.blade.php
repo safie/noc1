@@ -55,7 +55,7 @@
                             <div class="row">
                                 <div>
                                     <label class="me-2">Bahagian : </label>
-                                    <label class="px-1 bg-secondary opacity-75 text-white rounded">
+                                    <label class="px-2 py-2 bg-secondary opacity-75 text-white rounded">
                                         {{ $noc->nama_bhgn }} ({{ $noc->sgktn_bhgn }})
                                     </label>
                                 </div>
@@ -64,7 +64,7 @@
                             <div class="row">
                                 <div class="mb-3">
                                     <label class="me-2">Klasifikasi : </label>
-                                    <label class="px-1 bg-primary opacity-75 text-white rounded">{{ $noc->kod }} -
+                                    <label class="px-2 py-2 bg-primary opacity-75 text-white rounded">{{ $noc->kod }} -
                                         {{ $noc->nama_kat }}
                                     </label>
                                 </div>
@@ -138,12 +138,12 @@
                                     <table style="text-align: left">
                                         <tr>
                                             <td style="width: 7rem">Status NOC :</td>
-                                            <td><span class="badge bg-success opacity-75">{{ $noc->nama_status1 }}</span></td>
+                                            <td><span class="badge bg-success opacity-75">{!! $noc->nama_status1 !!}</span></td>
                                         </tr>
                                         <tr>
                                             <td style="width: 7rem"></td>
                                             <td><span class="badge bg-success"
-                                                    @if ($noc->tarikh_sedia_memo_kelulusan != null) hidden @endif>{{ $noc->nama_status2 }}</span>
+                                                    @if ($noc->tarikh_sedia_memo_kelulusan != null) hidden @endif>{!! $noc->nama_status2 !!}</span>
                                             </td>
                                         </tr>
                                     </table>

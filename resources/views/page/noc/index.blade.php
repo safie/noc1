@@ -35,9 +35,9 @@
 
 @section('content')
     @include('layouts.template.header_compact')
-    <div class="container-fluid px-4">
+    <div class="container-fluid px-2">
         @if ($message = Session::get('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show px-2 py-2" role="alert">
                 <button class="btn-close" data-bs-dismiss="alert" type="button" aria-label="Close"></button>
                 <p>{{ $message }}</p>
             </div>
@@ -82,12 +82,12 @@
                                     </td>
 
                                     <td>{{ $data->nama_jabatan }}</td>
-                                    <td>{{ $data->sgktn_bhgn }}</td>
+                                    <td class="text-center align-middle">{{ $data->sgktn_bhgn }}</td>
                                     <td class="text-center">
-                                        <h5><span class="badge bg-secondary text-wrap">{{ $data->nama_status1 }}</span>
+                                        <h5><span class="badge bg-secondary text-wrap">{!! $data->nama_status1 !!}</span>
                                         </h5>
                                         <h5 @if ($data->tarikh_sedia_memo_kelulusan != null) hidden @endif>
-                                            <span class="badge bg-secondary text-wrap">{{ $data->nama_status2 }}</span>
+                                            <span class="badge bg-secondary text-wrap">{!! $data->nama_status2 !!}</span>
                                         </h5>
                                     </td>
                                     <td>
