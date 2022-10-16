@@ -80,6 +80,10 @@
                         Hantar Surat Kelulusan
                     </button>
                 </div>
+            @else
+                <div class="d-grid">
+                    <h5>Dalam proses</h5>
+                </div>
             @endif
 
         {{-- NOC Pengguna BBP --}}
@@ -105,6 +109,10 @@
                         Hantar Ulasan
                     </button>
                 </div>
+            @else
+                <div class="d-grid">
+                    <h5>Dalam proses</h5>
+                </div>
             @endif
 
         {{-- NOC Pengguna BPN --}}
@@ -129,6 +137,10 @@
                         data-bs-target="#modalLulus">
                         Hantar Ulasan
                     </button>
+                </div>
+            @else
+                <div class="d-grid">
+                    <h5>Dalam proses</h5>
                 </div>
             @endif
 

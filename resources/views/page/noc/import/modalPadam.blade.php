@@ -3,7 +3,6 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <form method="GET" action="{{ route('noc.batal', $noc->id) }}" id="delete-form">
             @csrf
-            {{-- @method('DELETE') --}}
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Pembatalan NOC</h5>

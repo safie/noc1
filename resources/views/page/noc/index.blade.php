@@ -109,7 +109,7 @@
                                                     <i data-feather="trash-2"></i>
                                                 </button> --}}
 
-                                                <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
+                                                {{-- <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
                                                     @method('DELETE')
                                                     @csrf
                                                     <button
@@ -117,7 +117,7 @@
                                                         data-id="{{ $data->id }}">
                                                         <i class="size-28" data-feather="trash-2"></i>
                                                     </button>
-                                                </form>
+                                                </form> --}}
                                             @endif
                                             <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
                                                 href="{{ route('noc.detail', $data->id) }}">
