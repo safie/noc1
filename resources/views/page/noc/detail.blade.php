@@ -150,6 +150,7 @@
                                 </div>
                             </div>
                             <hr>
+                            @if ($noc->status_noc != 'noc_20')
                             <div class="text-end">
                                 <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalPadam"
                                     type="button">
@@ -157,6 +158,7 @@
                                 </button>
 
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>

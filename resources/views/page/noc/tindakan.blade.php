@@ -26,12 +26,12 @@
             <div class="card-body">
                 <table id="datatablesSimple">
                     <thead>
-                        <tr>
+                        <tr >
                             <th class="text-center">No.</th>
-                            <th>Tajuk Permohonan</th>
-                            <th>Kategori</th>
-                            <th>Kementerian</th>
-                            <th>Bahagian</th>
+                            <th class="text-center">Tajuk Permohonan</th>
+                            <th class="text-center">Kategori</th>
+                            <th class="text-center">Kementerian</th>
+                            <th class="text-center">Bahagian</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Tindakan</th>
                         </tr>
@@ -39,9 +39,9 @@
                     <tfoot>
                         <tr>
                             <th class="text-center">No.</th>
-                            <th>Tajuk Permohonan</th>
-                            <th>Kementerian</th>
-                            <th>Bahagian</th>
+                            <th class="text-center">Tajuk Permohonan</th>
+                            <th class="text-center">Kementerian</th>
+                            <th class="text-center">Bahagian</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Tindakan</th>
                         </tr>
@@ -58,10 +58,10 @@
                                         <small class="text-muted"> Tarikh submit:
                                             {{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</small>
                                     </td>
-                                    <td>({{ $data->kod }}) {{ $data->nama_kat }}</td>
-                                    <td>{{ $data->nama_jabatan }}</td>
+                                    <td class="text-center align-middle"><h5><span class="badge bg-primary"><strong>{{ $data->kod }}</strong></span></h5> {{ $data->nama_kat }}</td>
+                                    <td class="align-middle">{{ $data->nama_jabatan }}</td>
                                     <td class="text-center align-middle">{{ $data->sgktn_bhgn }}</td>
-                                    <td class="text-center">
+                                    <td class="text-center align-middle">
                                         <h4><span class="badge bg-secondary opacity-75 text-wrap">{!! $data->nama_status1 !!}</span></h4>
                                         <h4 @if ($data->tarikh_sedia_memo_kelulusan != null) hidden @endif><span class="badge bg-secondary opacity-75 text-wrap">{!! $data->nama_status2 !!}</span></h4>
                                     </td>

@@ -73,17 +73,17 @@
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td style="width:40em">
                                         <div class="text-uppercase">
-                                            <strong>({{ $data->kod }}) {{ $data->nama_kat }}</strong><br>
+                                            <span class="badge bg-primary"><strong>{{ $data->kod }}</strong></span> {{ $data->nama_kat }}<br>
                                             {{ $data->tajuk_permohonan }}
                                         </div>
 
-                                        <strong> Tarikh submit:
-                                            {{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</strong>
+                                        <small class="text-muted"> Tarikh submit:
+                                            {{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</small>
                                     </td>
 
-                                    <td>{{ $data->nama_jabatan }}</td>
+                                    <td class="align-middle">{{ $data->nama_jabatan }}</td>
                                     <td class="text-center align-middle">{{ $data->sgktn_bhgn }}</td>
-                                    <td class="text-center">
+                                    <td class="text-center align-middle">
                                         <h5><span class="badge bg-secondary text-wrap">{!! $data->nama_status1 !!}</span>
                                         </h5>
                                         <h5 @if ($data->tarikh_sedia_memo_kelulusan != null) hidden @endif>

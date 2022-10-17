@@ -436,7 +436,7 @@ class NocController extends Controller
             NocLog::create([
                 'noc_id' => $semakan->id,
                 'status_noc'    => $dataFlow,
-                'keterangan' => "Semakan Bahagian (Dokumen Lengkap)",
+                'keterangan' => "Dokumen Lengkap (Semakan Bahagian)",
                 'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
                 'css_class' => "bg-primary",
             ]);
@@ -1141,6 +1141,14 @@ class NocController extends Controller
         $noc = Noc::find($id);
         $noc->status_noc  = "noc_20";
         $noc->save();
+        $currentTime = Carbon::now()->toDateTimeString();;
+        NocLog::create([
+            'noc_id' => $noc->id,
+            'status_noc'    => "noc_20",
+            'keterangan' => "Batal NOC",
+            'tarikh'    => Carbon::createFromFormat('d/m/Y', $currentTime)->format('Y-m-d'),
+            'css_class' => "bg-info",
+        ]);
 
         return redirect()->route('noc.index')->with('success', 'NOC telah dibatalkan!');
 
