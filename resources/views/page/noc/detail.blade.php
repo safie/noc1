@@ -138,11 +138,11 @@
                                     <table style="text-align: left">
                                         <tr>
                                             <td style="width: 7rem">Status NOC :</td>
-                                            <td><span class="badge bg-success opacity-75">{!! $noc->nama_status1 !!}</span></td>
+                                            <td><span class="badge bg-info text-dark">{!! $noc->nama_status1 !!}</span></td>
                                         </tr>
                                         <tr>
                                             <td style="width: 7rem"></td>
-                                            <td><span class="badge bg-success"
+                                            <td><span class="badge bg-info text-dark"
                                                     @if ($noc->tarikh_sedia_memo_kelulusan != null) hidden @endif>{!! $noc->nama_status2 !!}</span>
                                             </td>
                                         </tr>

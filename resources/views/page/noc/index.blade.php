@@ -47,21 +47,21 @@
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>Tajuk Permohonan</th>
-                            <th>Kementerian</th>
-                            <th>Bahagian</th>
+                            <th class="text-center">No.</th>
+                            <th class="text-center">Tajuk Permohonan</th>
+                            <th class="text-center">Kementerian</th>
+                            <th class="text-center">Bahagian</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Tindakan</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>No.</th>
-                            <th>Tajuk Permohonan</th>
+                            <th class="text-center">No.</th>
+                            <th class="text-center">Tajuk Permohonan</th>
 
-                            <th>Kementerian</th>
-                            <th>Bahagian</th>
+                            <th class="text-center">Kementerian</th>
+                            <th class="text-center">Bahagian</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Tindakan</th>
                         </tr>
@@ -70,11 +70,11 @@
                         @if ($noc->count() > 0)
                             @foreach ($noc as $data)
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td class="text-center align-middle">{{ $loop->index + 1 }}</td>
                                     <td style="width:40em">
                                         <div class="text-uppercase">
-                                            <span class="badge bg-primary"><strong>{{ $data->kod }}</strong></span> {{ $data->nama_kat }}<br>
-                                            {{ $data->tajuk_permohonan }}
+                                            <span class="badge bg-primary"><small>{{ $data->kod }}</small></span> {{ $data->nama_kat }}<br>
+                                            <h5>{{ $data->tajuk_permohonan }}</h5>
                                         </div>
 
                                         <small class="text-muted"> Tarikh submit:

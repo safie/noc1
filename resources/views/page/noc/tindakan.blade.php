@@ -50,10 +50,10 @@
                         @if ($noc->count() > 0)
                             @foreach ($noc as $data)
                                 <tr>
-                                    <td class="text-center">{{ $loop->index + 1 }}</td>
+                                    <td class="text-center align-middle">{{ $loop->index + 1 }}</td>
                                     <td style="width:20em">
                                         <div class="text-uppercase">
-                                            {{ $data->tajuk_permohonan }}
+                                            <h5>{{ $data->tajuk_permohonan }}</h5>
                                         </div>
                                         <small class="text-muted"> Tarikh submit:
                                             {{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</small>

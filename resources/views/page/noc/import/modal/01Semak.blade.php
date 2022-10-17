@@ -26,7 +26,7 @@
                 name=" inputStatusSemak">
                 <option selected disabled>Sila pilih:</option>
                 <option value="lulus">Dokumen Lengkap</option>
-                <option value="dokumen-tambahan">Perlu Maklumat Tambahan</option>
+                <option value="dokumen-tambahan">Maklumat Tambahan</option>
             </select>
         </div>
     </div>
