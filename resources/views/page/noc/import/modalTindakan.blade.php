@@ -9,6 +9,12 @@
                     @if ($noc->status_noc == 'noc_1' OR $noc->status_noc == 'noc_17')
                         @include('page.noc.import.modal.01Semak')
                     @endif
+                    @if ($noc->status_noc == 'noc_2')
+                        @include('page.noc.import.modal.10HantarSurat')
+                    @endif
+                    @if ($noc->status_noc == 'noc_15')
+                        @include('page.noc.import.modal.11MohonModul')
+                    @endif
 
                 @elseif ($noc->noc_flow == 'flow2')
                     @if ($noc->status_noc == 'noc_1' OR $noc->status_noc == 'noc_17')
