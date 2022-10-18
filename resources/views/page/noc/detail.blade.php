@@ -44,31 +44,26 @@
                         <div class="card-body">
                             <!-- Form Group (first name)-->
                             <div class="row">
-                                <div>
-                                    <label class="small mb-1" for="inputTajuk">{{ $noc->nama_jabatan }}
+                                <div class="py-0">
+                                    <label class="small" for="inputTajuk">{{ $noc->nama_jabatan }}
                                         ({{ $noc->sgktn_jabatan }})</label>
-                                    <h3 style="text-transform:uppercase;">{{ $noc->tajuk_permohonan }}</h3>
-                                    <label for="noc_id">ID: {{ $noc->noc_id }}{{ $noc->id }}</label>
+                                    <h3 class="my-0" style="text-transform:uppercase;">{{ $noc->tajuk_permohonan }}</h3>
+                                    <label class="small" for="noc_id">ID: {{ $noc->noc_id }}{{ $noc->id }}</label>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div>
-                                    <label class="me-2">Bahagian : </label>
-                                    <label class="px-2 py-2 bg-secondary opacity-75 text-white rounded">
-                                        {{ $noc->nama_bhgn }} ({{ $noc->sgktn_bhgn }})
-                                    </label>
+                                    <label class="small me-2"> {{ $noc->nama_bhgn }} ({{ $noc->sgktn_bhgn }})</label>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="mb-3">
-                                    <label class="me-2">Klasifikasi : </label>
-                                    <label class="px-2 py-2 bg-primary opacity-75 text-white rounded">{{ $noc->kod }} -
-                                        {{ $noc->nama_kat }}
-                                    </label>
+                                 <div>
+                                    <label class="small me-2"> {{ $noc->kod }} - {{ $noc->nama_kat }}</label>
                                 </div>
                             </div>
+                            <hr>
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
@@ -172,7 +167,7 @@
                 @include('page.noc.import.tindakanModal_status')
 
             </div>
-            @include('page.noc.import.modal')
+            @include('page.noc.import.modalTindakan')
             @include('page.noc.import.modalPadam')
         </div>
     </div>

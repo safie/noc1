@@ -3,7 +3,7 @@
         @csrf
         @method('PUT')
         <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Proses: Semakan Permohonan Ulasan Bajet</h5>
+            <h5 class="modal-title" id="staticBackdropLabel">Semakan Permohonan Ulasan Bajet</h5>
             <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -22,7 +22,7 @@
                 <select class="form-select" aria-label="Default select example" id="inputStatusSemak"
                     name=" inputStatusSemak">
                     <option selected disabled>Sila pilih:</option>
-                    <option value="lulus-mohon">Lulus Permohonan</option>
+                    <option value="lulus-mohon">Dokumen Lengkap</option>
                     <option value="dokumen-tambahan">Perlu Dokumen Tambahan</option>
                 </select>
             </div>

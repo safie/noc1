@@ -25,7 +25,8 @@
                 <div class="d-grid">
                     @if ($noc->status_noc == 'noc_18')
                         <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal"
-                            data-bs-target="#modalUlasanBajet" type="button">
+                            {{-- data-bs-target="#modalUlasanBajet" --}}
+                            data-bs-target="#modalLulus" type="button">
                             Mohon Ulasan Bajet
                         </button>
                     @endif
@@ -36,7 +37,7 @@
                         </button>
                     @endif
                 </div>
-            @elseif ($noc->status_noc == 'noc_9' or $noc->status_noc == 'noc_10')
+            {{-- @elseif ($noc->status_noc == 'noc_9' or $noc->status_noc == 'noc_10')
                 <div class="d-grid">
                     <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalLulus"
                         type="button">
@@ -63,8 +64,8 @@
                             type="button">
                             Sedia Surat Kelulusan
                         </button>
-                    </div>
-            @elseif ($noc->status_noc == 'noc_14')
+                    </div> --}}
+            @elseif ($noc->status_noc == 'noc_9')
                 <div class="d-grid">
                     <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalLulus"
                         type="button">
@@ -75,7 +76,7 @@
                 <div class="d-grid">
                     <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalLulus"
                         type="button">
-                        Hantar Surat Kelulusan
+                        Mohon Modul NOC
                     </button>
                 </div>
             @elseif ($noc->status_noc == 'noc_16')
@@ -88,7 +89,7 @@
                 </div>
             @else
                 <div class="d-grid">
-                    <h5>Dalam proses</h5>
+                    <h5>Dalam proses tindakan</h5>
                 </div>
             @endif
 
@@ -101,14 +102,14 @@
                         Semak Permohonan
                     </button>
                 </div>
-            @elseif ($noc->status_noc == 'noc_5')
+            {{-- @elseif ($noc->status_noc == 'noc_5')
                 <div class="d-grid">
                     <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalLulus"
                         type="button">
                         Sedia Ulasan
                     </button>
-                </div>
-            @elseif ($noc->status_noc == 'noc_7')
+                </div> --}}
+            @elseif ($noc->status_noc == 'noc_5')
                 <div class="d-grid">
                     <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalLulus"
                         type="button">

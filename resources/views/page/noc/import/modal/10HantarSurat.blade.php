@@ -2,12 +2,12 @@
     @csrf
     @method('PUT')
     <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Proses: Penghantaran Surat Kelulusan Kepada Kementerian</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Penghantaran Surat Kelulusan</h5>
         <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
         <div class="mb-3">
-            <label class="small mb-1" for="inputFirstName">Tarikh Penghantaran Surat Kelulusan</label>
+            <label class="small mb-1" for="inputFirstName">Tarikh Penghantaran Surat</label>
             <div class="input-group input-group-joined">
                 <span class="input-group-text">
                     <i data-feather="calendar"></i>

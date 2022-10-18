@@ -1,9 +1,9 @@
 @if (Auth::user()->peranan == 2)
-    <form method="POST" action="{{ route('noc.updateMohonUlasan', $noc->id) }}">
+    <form method="POST" action="{{ route('noc.updateMohonUlasanBajet', $noc->id) }}">
         @csrf
         @method('PUT')
         <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Proses: Mohon Ulasan test Bajet</h5>
+            <h5 class="modal-title" id="staticBackdropLabel">Permohonan Ulasan Bajet</h5>
             <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
