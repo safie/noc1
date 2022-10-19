@@ -116,14 +116,14 @@
                             @if ($nocKlasifikasi->count() > 0)
                                 @foreach ($nocKlasifikasi as $data)
                                     <tr style="height: 50px">
-                                        <td class="align-middle px-2 py-2 text-center text-white bg-black" style="height: 100%">
+                                        <td class="align-middle px-3 py-2 text-center text-white bg-black">
                                             {{ $data->kod }}
                                         </td>
-                                        <td style="width: 20rem" class="text-wrap small align-middle px-2 py-2">
+                                        <td style="width: 20rem" class="text-wrap small align-middle px-3 py-2">
                                             {{ $data->nama_kat }}
                                         </td>
                                         <td style="width: 5rem;--bs-bg-opacity: .75;height: 100%"
-                                            class="align-middle bg-primary text-center text-white px-2 py-2">
+                                            class="align-middle bg-primary text-center text-white px-3 py-2">
                                             <strong>{{ $data->jumlah }}</strong>
                                         </td>
                                     </tr>
