@@ -86,7 +86,7 @@
                                     <td class="text-center align-middle">
                                         <h5><span class="badge bg-secondary text-wrap">{!! $data->nama_status1 !!}</span>
                                         </h5>
-                                        <h5 @if ($data->tarikh_sedia_memo_kelulusan != null) hidden @endif>
+                                        <h5 @if ($data->tarikh_hantar_ulasan != null) hidden @endif>
                                             <span class="badge bg-secondary text-wrap">{!! $data->nama_status2 !!}</span>
                                         </h5>
                                     </td>

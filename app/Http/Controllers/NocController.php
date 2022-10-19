@@ -172,6 +172,7 @@ class NocController extends Controller
             'klasifikasi'    => $request_data['inputKlasifikasi'],
             'kementerian'    => $request_data['inputJabatan'],
             'tarikh_submit'    => Carbon::now()->format('Y-m-d'),
+            'kos_projek'    => $request_data['inputKos'],
             'status_noc'    => "noc_1",
             'noc_id'    => "NOC/" . $tahun . "/" . $bulan . "/" . $request_data['inputKlasifikasi'] . "/",
             'noc_flow' => $flow,

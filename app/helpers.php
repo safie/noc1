@@ -104,6 +104,7 @@ if (!function_exists('count_all_noc')) {
     {
         $noc = DB::table('t_noc')
             ->select('t_noc.*')
+            ->whereNot('status_noc','=','noc_20')
             ->get();
         $countAllNoc = $noc->count();
 

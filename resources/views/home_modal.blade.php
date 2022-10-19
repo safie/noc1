@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Jumlah NOC Mengikut Klasifikasi</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Jumlah NOC Mengikut Keseluruhan Klasifikasi</h5>
                 <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
             </div>
             <div class="modal-body small">
@@ -45,7 +45,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Jumlah NOC Mengikut Status</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Jumlah NOC Mengikut Keseluruhan Status</h5>
                 <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
             </div>
             <div class="modal-body small">
@@ -83,7 +83,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Jumlah NOC Mengikut Kementerian</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Jumlah NOC Mengikut Keseluruhan Kementerian</h5>
                 <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
             </div>
             <div class="modal-body small">

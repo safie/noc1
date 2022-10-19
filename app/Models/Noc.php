@@ -25,6 +25,7 @@ class Noc extends Model
         'noc_flow',
         'pengurusan_tertinggi',
         'tarikh_submit',
+        'kos_projek',
         'status_semak',
         'status_semak_tek',
         'status_semak_bajet',

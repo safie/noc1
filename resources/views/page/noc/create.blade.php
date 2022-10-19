@@ -80,7 +80,7 @@
                                     </div> --}}
                                     <div class="col-md-6 mb-3">
                                         <label class="small mb-1" for="inputTajuk">Perubahan Kos *</label>
-                                        <input class="form-control" id="inputTajuk" name="inputTajuk" type="number"
+                                        <input class="form-control" id="inputKos" name="inputKos" type="number"
                                             placeholder="Kos projek" autocomplete="off" />
                                     </div>
                                 </div>

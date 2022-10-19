@@ -51,7 +51,7 @@
                             @foreach ($noc as $data)
                                 <tr>
                                     <td class="text-center align-middle">{{ $loop->index + 1 }}</td>
-                                    <td style="width:20em">
+                                    <td style="width:40em">
                                         <div class="text-uppercase">
                                             <h5>{{ $data->tajuk_permohonan }}</h5>
                                         </div>
@@ -63,11 +63,11 @@
                                     <td class="text-center align-middle">{{ $data->sgktn_bhgn }}</td>
                                     <td class="text-center align-middle">
                                         <h4><span class="badge bg-secondary opacity-75 text-wrap">{!! $data->nama_status1 !!}</span></h4>
-                                        <h4 @if ($data->tarikh_sedia_memo_kelulusan != null) hidden @endif><span class="badge bg-secondary opacity-75 text-wrap">{!! $data->nama_status2 !!}</span></h4>
+                                        <h4 @if ($data->tarikh_hantar_ulasan != null) hidden @endif><span class="badge bg-secondary opacity-75 text-wrap">{!! $data->nama_status2 !!}</span></h4>
                                     </td>
-                                    <td>
+                                    <td class="text-center align-middle">
                                         <div class="d-flex justify-content-center">
-                                                <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark me-2"
+                                                <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
                                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
                                                     href="{{ route('noc.edit', $data->id) }}">
                                                      <i data-feather="edit"></i></a>
@@ -79,7 +79,7 @@
                                                             data-feather="trash-2"></i></button>
                                                 </form> --}}
 
-                                                <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark me-2"
+                                                <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
                                                     href="{{ route('noc.detail', $data->id) }}"><i data-feather="monitor">Info</i></a>
                                         </div>
                                     </td>
