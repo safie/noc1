@@ -63,7 +63,7 @@
                                     <td class="text-center align-middle">{{ $data->sgktn_bhgn }}</td>
                                     <td class="text-center align-middle">
                                         <h4><span class="badge bg-secondary opacity-75 text-wrap">{!! $data->nama_status1 !!}</span></h4>
-                                        <h4 @if ($data->tarikh_hantar_ulasan != null) hidden @endif><span class="badge bg-secondary opacity-75 text-wrap">{!! $data->nama_status2 !!}</span></h4>
+                                        <h4 @if ($data->tarikh_hantar_surat_lulus != null) hidden @endif><span class="badge bg-secondary opacity-75 text-wrap">{!! $data->nama_status2 !!}</span></h4>
                                     </td>
                                     <td class="text-center align-middle">
                                         <div class="d-flex justify-content-center">

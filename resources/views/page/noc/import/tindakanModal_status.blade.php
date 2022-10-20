@@ -79,7 +79,7 @@
                             Semak NOC
                         </button>
                     </div>
-                @elseif ($noc->status_noc == 'noc_2')
+                @elseif ($noc->status_noc == 'noc_2' or $noc->status_noc == 'noc_18' or $noc->status_noc2 == 'noc_19')
                     <div class="d-grid">
                         <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalLulus"
                             type="button">

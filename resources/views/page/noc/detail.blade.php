@@ -138,7 +138,7 @@
                                         <tr>
                                             <td style="width: 7rem"></td>
                                             <td><span class="badge bg-info text-dark"
-                                                    @if ($noc->tarikh_hantar_ulasan != null) hidden @endif>{!! $noc->nama_status2 !!}</span>
+                                                    @if ($noc->tarikh_hantar_surat_lulus != null) hidden @endif>{!! $noc->nama_status2 !!}</span>
                                             </td>
                                         </tr>
                                     </table>

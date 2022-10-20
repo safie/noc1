@@ -86,12 +86,12 @@
                                     <td class="text-center align-middle">
                                         <h5><span class="badge bg-secondary text-wrap">{!! $data->nama_status1 !!}</span>
                                         </h5>
-                                        <h5 @if ($data->tarikh_hantar_ulasan != null) hidden @endif>
+                                        <h5 @if ($data->tarikh_hantar_surat_lulus != null) hidden @endif>
                                             <span class="badge bg-secondary text-wrap">{!! $data->nama_status2 !!}</span>
                                         </h5>
                                     </td>
-                                    <td>
-                                        <div class="d-flex justify-content-center">
+                                    <td class="text-center align-middle">
+                                        <div class="d-flex justify-content-center ">
                                             @if (Auth::user()->peranan == 1 or Auth::user()->peranan == 3)
                                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
                                                     href="{{ route('noc.edit', $data->id) }}" >

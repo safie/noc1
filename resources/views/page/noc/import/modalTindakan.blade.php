@@ -34,7 +34,7 @@
                     @if ($noc->status_noc == 'noc_1' OR $noc->status_noc == 'noc_17')
                         @include('page.noc.import.modal.01Semak')
                     @endif
-                    @if ($noc->status_noc == 'noc_2' OR $noc->status_noc == 'noc_19')
+                    @if ($noc->status_noc == 'noc_2' OR $noc->status_noc == 'noc_18' OR $noc->status_noc2 == 'noc_19')
                         @include('page.noc.import.modal.02MohonUlasan')
                     @endif
                     @if ($noc->status_noc == 'noc_9')
