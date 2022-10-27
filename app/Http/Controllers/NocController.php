@@ -20,6 +20,7 @@ use App\Mail\EmailNOCHantarUlasanBajet;
 use App\Mail\EmailNOCMohonModulNoc;
 use Carbon\Carbon;
 use Exception;
+use PDF;
 
 
 class NocController extends Controller
@@ -1245,6 +1246,11 @@ class NocController extends Controller
         // Mail::to('safie.misri@epu.gov.my')->send(new EmailNOC($mailData));
 
         dd("Email berjaya!");
+    }
+
+    public function printPdfDetail($id)
+    {
+
     }
 
 }

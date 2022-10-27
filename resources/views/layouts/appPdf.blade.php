@@ -12,7 +12,7 @@
     <link href="{{ asset('sb-admin-pro/dist/css/styles.css') }}" rel="stylesheet" />
     <link href="{{ asset('litepicker/dist/css/litepicker.css') }}" rel="stylesheet" />
     {{-- <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" /> --}}
-    <link rel="icon" type="image/x-icon" href="{{ asset('/pic/favicon.ico') }}" />
+    <link type="image/x-icon" href="{{ asset('/pic/favicon.ico') }}" rel="icon" />
     @yield('css')
     <script data-search-pseudo-elements defer src="{{ asset('fontawesome/js/all.min.js') }}"></script>
     {{-- <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
@@ -23,21 +23,13 @@
     <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
 </head>
 
-<body class="nav-fixed">
-    @include('layouts.template.navbar')
-    <div id="layoutSidenav">
-        <div id="layoutSidenav_nav">
-            @include('layouts.template.sidenav')
-        </div>
-        <div id="layoutSidenav_content">
-            <main>
-                @yield('header')
-                <!-- Main page content-->
-                @yield('content')
-            </main>
-            @include('layouts.template.footer')
-        </div>
-    </div>
+<body>
+    <!-- Main page content-->
+    <main>
+        @yield('content')
+    </main>
+
+
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script> --}}
     <script src="{{ asset('bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js') }}"></script>

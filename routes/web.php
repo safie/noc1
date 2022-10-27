@@ -42,7 +42,7 @@ Route::resource('/setting/peringkat', PeringkatController::class);
 Route::resource('/setting/kategori', KategoriController::class);
 Route::resource('/setting/status', StatusController::class);
 
-
+Route::get('/noc/pdf/{id}', [\App\Http\Controllers\NocController::class, 'printPdfNoc'])->name('noc.pdfDetail');
 Route::get('/noc/tindakan', [\App\Http\Controllers\NocController::class, 'tindakan'])->name('noc.tindakan');
 Route::get('/noc/detail/{id}', [\App\Http\Controllers\NocController::class, 'detail'])->name('noc.detail');
 Route::get('/noc/batal/{id}', [\App\Http\Controllers\NocController::class, 'batalNoc'])->name('noc.batal');

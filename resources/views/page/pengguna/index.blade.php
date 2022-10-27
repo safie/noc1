@@ -1,7 +1,6 @@
 @extends('layouts.appDash')
 
 @section('css')
-
 @endsection
 
 @section('icon', 'briefcase')
