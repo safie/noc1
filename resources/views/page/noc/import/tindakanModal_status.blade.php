@@ -79,7 +79,7 @@
                             Semak NOC
                         </button>
                     </div>
-                @elseif ($noc->status_noc == 'noc_2' or $noc->status_noc == 'noc_18' or $noc->status_noc2 == 'noc_19')
+                @elseif ($noc->status_noc == 'noc_2')
                     <div class="d-grid">
                         <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalLulus"
                             type="button">
@@ -100,15 +100,41 @@
                             Mohon Modul NOC
                         </button>
                     </div>
+                @elseif (($noc->status_noc == 'noc_3') OR ($noc->status_noc == 'noc_4'))
+                    <div class="d-grid">
+                        <h5>Sedang Diproses</h5>
+                    </div>
+
                 @elseif ($noc->status_noc == 'noc_16')
                     <div class="d-grid">
                         <h5>Selesai</h5>
                     </div>
-                @else
+                @endif
+
+                @if ($noc->status_noc == 'noc_18')
                     <div class="d-grid">
-                        Sedang Diproses
+                        <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalBajet"
+                            type="button">
+                            Mohon Ulasan Bajet
+                        </button>
                     </div>
                 @endif
+
+                @if ($noc->status_noc2 == 'noc_19')
+                    <div class="d-grid">
+                        <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalTeknikal"
+                            type="button">
+                            Mohon Ulasan Teknikal
+                        </button>
+                    </div>
+                @endif
+
+                {{-- @if (($noc->status_noc == 'noc_3') OR ($noc->status_noc == 'noc_5') OR ($noc->status_noc2 == 'noc_4') OR ($noc->status_noc2 == 'noc_6') OR ($noc->status_noc2 == 'noc_6'))
+                <div class="d-grid">
+                    Sedang Diproses
+                </div>
+                @endif --}}
+
             @endif
         @elseif (Auth::user()->peranan == 3)
             @if ($noc->noc_flow == 'flow2')
@@ -161,7 +187,7 @@
                             Semak Permohonan NOC
                         </button>
                     </div>
-                 @elseif ($noc->status_noc2 == 'noc_6')
+                @elseif ($noc->status_noc2 == 'noc_6')
                     <div class="d-grid">
                         <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalLulus"
                             type="button">

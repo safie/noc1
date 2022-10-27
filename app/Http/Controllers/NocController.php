@@ -442,125 +442,6 @@ class NocController extends Controller
         return redirect()->route('noc.detail', $id)->with('success', 'NOC telah disemak');
     }
 
-    // //proses: noc_2 (update)
-    // public function updateMohonUlasan(Request $request, $id)
-    // {
-    //     $flow = DB::table('t_noc')
-    //         ->select('t_kategori.flow')
-    //         ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
-    //         ->where('t_noc.id', '=', $id)
-    //         ->first();
-
-    //     $request->validate([
-    //         'tarikh' => 'required',
-    //     ]);
-
-    //     $semakan = Noc::find($id);
-    //     $flow    = Noc::find($id);
-
-
-    //     if ($flow->noc_flow == "flow2") {
-    //         $semakan->tarikh_mohon_ulasan = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-    //         $semakan->status_noc = "noc_3";
-    //         $semakan->save();
-    //         NocLog::create([
-    //             'noc_id' => $semakan->id,
-    //             'status_noc'    => "noc_3",
-    //             'keterangan' => "Permohonan Ulasan Bajet",
-    //             'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
-    //             'css_class' => "bg-warning",
-    //         ]);
-    //     } else if ($flow->noc_flow == "flow3") {
-    //         if ($semakan->tarikh_dokumen_tambahan_bajet != NULL and $semakan->status_noc2 == 2) {
-    //             $semakan->tarikh_mohon_ulasan = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-    //             $semakan->status_noc = "noc_3";
-    //             $semakan->save();
-    //             NocLog::create([
-    //                 'noc_id' => $semakan->id,
-    //                 'status_noc'    => "noc_3",
-    //                 'keterangan' => "Permohonan Ulasan Bajet",
-    //                 'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
-    //                 'css_class' => "bg-warning",
-    //             ]);
-    //         } else {
-    //             $semakan->tarikh_mohon_ulasan = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-    //             $semakan->tarikh_mohon_ulasan_tek  = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-    //             $semakan->status_noc = "noc_3";
-    //             $semakan->status_noc2 = "noc_4";
-    //             $semakan->save();
-    //             NocLog::create([
-    //                 'noc_id' => $semakan->id,
-    //                 'status_noc'    => "noc_3",
-    //                 'keterangan' => "Permohonan Ulasan Bajet",
-    //                 'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
-    //                 'css_class' => "bg-warning",
-    //             ]);
-    //             NocLog::create([
-    //                 'noc_id' => $semakan->id,
-    //                 'status_noc'    => "noc_4",
-    //                 'keterangan' => "Permohonan Ulasan Teknikal",
-    //                 'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
-    //                 'css_class' => "bg-info",
-    //             ]);
-    //         }
-    //     }
-
-    //     $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
-    //         ->select(
-    //             't_noc.tajuk_permohonan',
-    //             't_bahagian.nama_bhgn',
-    //             't_kategori.kod',
-    //             't_kategori.nama_kat',
-    //             't_noc.tarikh_mohon_ulasan',
-    //             't_noc.tarikh_mohon_ulasan_tek',
-    //             'status1.nama_status as status_noc1',
-    //             'status2.nama_status as status_noc2',
-    //         )
-    //         ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
-    //         ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
-    //         ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
-    //         ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
-    //         ->first();
-
-    //     $senderBajet = DB::table('users')
-    //         ->select('email')
-    //         ->where('peranan', '=', '3')
-    //         ->get();
-
-    //     $senderTeknikal = DB::table('users')
-    //         ->select('email')
-    //         ->where('peranan', '=', '4')
-    //         ->get();
-
-    //     if ($flow->noc_flow == "flow2") {
-    //         try {
-    //             Mail::to($senderBajet)->send(new EmailNOCMohonUlasanBajet($dataMail));
-    //         } catch (Exception $e) {
-    //             dd($e);
-    //         }
-    //     } else if ($flow->noc_flow == "flow3") {
-    //         if ($semakan->tarikh_dokumen_tambahan_bajet != NULL and $semakan->status_noc2 == 2) {
-    //             try {
-    //                 Mail::to($senderBajet)->send(new EmailNOCMohonUlasanBajet($dataMail));
-    //             } catch (Exception $e) {
-    //                 dd($e);
-    //             }
-    //         } else {
-    //             try {
-    //                 Mail::to($senderTeknikal)->send(new EmailNOCMohonUlasanTeknikal($dataMail));
-    //                 Mail::to($senderBajet)->send(new EmailNOCMohonUlasanBajet($dataMail));
-    //             } catch (Exception $e) {
-    //                 dd($e);
-    //             }
-    //         }
-    //     }
-
-    //     // dd($senderTeknikal);
-
-    //     return redirect()->route('noc.detail', $id)->with('success', 'Ulasan telah dipohon');
-    // }
-
-    // public function updateMohonUlasanBajet(Request $request, $id)
     public function updateMohonUlasan(Request $request, $id)
     {
         $flow = Noc::where('id', $id)->select('noc_flow')->first();
@@ -686,61 +567,117 @@ class NocController extends Controller
 
     }
 
-    // public function updateMohonUlasanTeknikal(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'tarikh' => 'required',
-    //     ]);
+    public function updateMohonUlasanBajet(Request $request, $id)
+    {
+        $request->validate([
+            'tarikh' => 'required',
+        ]);
 
-    //     // dd($flow);
+        // dd($flow);
 
-    //     $semakan = Noc::find($id);
+        $semakan = Noc::find($id);
 
-    //     // if ($semakan->tarikh_dokumen_tambahan_tek != NULL and $semakan->status_noc2 == 2) {
-    //     $semakan->tarikh_mohon_ulasan_tek  = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-    //     $semakan->status_noc2 = "noc_4";
-    //     $semakan->save();
-    //     NocLog::create([
-    //         'noc_id' => $semakan->id,
-    //         'status_noc'    => "noc_4",
-    //         'keterangan' => "Permohonan Ulasan Teknikal",
-    //         'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
-    //         'css_class' => "bg-info",
-    //     ]);
-    //     // }
+        // if ($semakan->tarikh_dokumen_tambahan_tek != NULL and $semakan->status_noc2 == 2) {
+        $semakan->tarikh_mohon_ulasan  = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc = "noc_3";
+        $semakan->save();
+        NocLog::create([
+            'noc_id' => $semakan->id,
+            'status_noc'    => "noc_3",
+            'keterangan' => "Permohonan Ulasan Bajet",
+            'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+            'css_class' => "bg-info",
+        ]);
+        // }
 
-    //     $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
-    //         ->select(
-    //             't_noc.tajuk_permohonan',
-    //             't_bahagian.nama_bhgn',
-    //             't_kategori.kod',
-    //             't_kategori.nama_kat',
-    //             't_noc.tarikh_mohon_ulasan',
-    //             't_noc.tarikh_mohon_ulasan_tek',
-    //             'status1.nama_status as status_noc1',
-    //             'status2.nama_status as status_noc2',
-    //         )
-    //         ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
-    //         ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
-    //         ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
-    //         ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
-    //         ->first();
+        $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
+            ->select(
+                't_noc.tajuk_permohonan',
+                't_bahagian.nama_bhgn',
+                't_kategori.kod',
+                't_kategori.nama_kat',
+                't_noc.tarikh_mohon_ulasan',
+                't_noc.tarikh_mohon_ulasan_tek',
+                'status1.nama_status as status_noc1',
+                'status2.nama_status as status_noc2',
+            )
+            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+            ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
+            ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
+            ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+            ->first();
 
-    //     // $senderBajet = DB::table('users')
-    //     //     ->select('email')
-    //     //     ->where('peranan', '=', '3')
-    //     //     ->get();
+        // $senderBajet = DB::table('users')
+        //     ->select('email')
+        //     ->where('peranan', '=', '3')
+        //     ->get();
 
-    //     $senderTeknikal = DB::table('users')
-    //         ->select('email')
-    //         ->where('peranan', '=', '4')
-    //         ->get();
-    //     // }
+        $senderBajet = DB::table('users')
+            ->select('email')
+            ->where('peranan', '=', '3')
+            ->get();
+        // }
 
-    //     Mail::to($senderTeknikal)->send(new EmailNOCMohonUlasanTeknikal($dataMail));
+        Mail::to($senderBajet)->send(new EmailNOCMohonUlasanBajet($dataMail));
 
-    //     return redirect()->route('noc.detail', $id)->with('success', 'Ulasan telah dipohon');
-    // }
+        return redirect()->route('noc.detail', $id)->with('success', 'Ulasan telah dipohon');
+    }
+
+    public function updateMohonUlasanTeknikal(Request $request, $id)
+    {
+        $request->validate([
+            'tarikh' => 'required',
+        ]);
+
+        // dd($flow);
+
+        $semakan = Noc::find($id);
+
+        // if ($semakan->tarikh_dokumen_tambahan_tek != NULL and $semakan->status_noc2 == 2) {
+        $semakan->tarikh_mohon_ulasan_tek  = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc2 = "noc_4";
+        $semakan->save();
+        NocLog::create([
+            'noc_id' => $semakan->id,
+            'status_noc'    => "noc_4",
+            'keterangan' => "Permohonan Ulasan Teknikal",
+            'tarikh'    => Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d'),
+            'css_class' => "bg-info",
+        ]);
+        // }
+
+        $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
+            ->select(
+                't_noc.tajuk_permohonan',
+                't_bahagian.nama_bhgn',
+                't_kategori.kod',
+                't_kategori.nama_kat',
+                't_noc.tarikh_mohon_ulasan',
+                't_noc.tarikh_mohon_ulasan_tek',
+                'status1.nama_status as status_noc1',
+                'status2.nama_status as status_noc2',
+            )
+            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+            ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
+            ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
+            ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+            ->first();
+
+        // $senderBajet = DB::table('users')
+        //     ->select('email')
+        //     ->where('peranan', '=', '3')
+        //     ->get();
+
+        $senderTeknikal = DB::table('users')
+            ->select('email')
+            ->where('peranan', '=', '4')
+            ->get();
+        // }
+
+        Mail::to($senderTeknikal)->send(new EmailNOCMohonUlasanTeknikal($dataMail));
+
+        return redirect()->route('noc.detail', $id)->with('success', 'Ulasan telah dipohon');
+    }
 
     //proses: noc_3 (update)
     public function updateSemakUlasanBajet(Request $request, $id)
