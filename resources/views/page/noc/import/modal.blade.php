@@ -43,7 +43,7 @@
                 @include('page.noc.import.modal.09SediaSurat')
             @endif --}}
 
-            @if (Auth::user()->peranan == 2 and $noc->status_noc == 'noc_14')
+            @if (Auth::user()->peranan == 2 and ($noc->status_noc == 'noc_10'))
                 @include('page.noc.import.modal.10HantarSurat')
             @endif
 

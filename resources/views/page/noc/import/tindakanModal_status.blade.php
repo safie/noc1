@@ -86,7 +86,7 @@
                             Mohon Ulasan
                         </button>
                     </div>
-                @elseif ($noc->status_noc == 'noc_9')
+                    @elseif (($noc->status_noc == 'noc_9') AND ($noc->status_noc2 == 'noc_10'))
                     <div class="d-grid">
                         <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalLulus"
                             type="button">
@@ -100,7 +100,7 @@
                             Mohon Modul NOC
                         </button>
                     </div>
-                @elseif (($noc->status_noc == 'noc_3') OR ($noc->status_noc == 'noc_4'))
+                @elseif (($noc->status_noc == 'noc_3') OR ($noc->status_noc2 == 'noc_4'))
                     <div class="d-grid">
                         <h5>Sedang Diproses</h5>
                     </div>

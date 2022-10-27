@@ -39,43 +39,42 @@
                         @include('page.noc.import.modal.02MohonUlasanBajet')
                     @endif
                     @if ($noc->status_noc2 == 'noc_19')
-                        @include('page.noc.import.modal.02MohonUlasanTeknikal') --}}
+                        @include('page.noc.import.modal.02MohonUlasanTeknikal')
+                    @endif --}}
+                    @if ($noc->status_noc == 'noc_9')
+                        @include('page.noc.import.modal.10HantarSurat')
+                    @endif
+                    @if ($noc->status_noc == 'noc_15')
+                        @include('page.noc.import.modal.11MohonModul')
+                    @endif
                 @endif
-                @if ($noc->status_noc == 'noc_9')
-                    @include('page.noc.import.modal.10HantarSurat')
+            @elseif (Auth::user()->peranan == 3)
+                @if ($noc->noc_flow == 'flow2')
+                    @if ($noc->status_noc == 'noc_3')
+                        @include('page.noc.import.modal.03SemakUlasan')
+                    @endif
+                    @if ($noc->status_noc == 'noc_5')
+                        @include('page.noc.import.modal.05HantarUlasan')
+                    @endif
+                @elseif ($noc->noc_flow == 'flow3')
+                    @if ($noc->status_noc == 'noc_3')
+                        @include('page.noc.import.modal.03SemakUlasan')
+                    @endif
+                    @if ($noc->status_noc == 'noc_5')
+                        @include('page.noc.import.modal.05HantarUlasan')
+                    @endif
                 @endif
-                @if ($noc->status_noc == 'noc_15')
-                    @include('page.noc.import.modal.11MohonModul')
-                @endif
+            @elseif (Auth::user()->peranan == 4)
+                @if ($noc->noc_flow == 'flow3')
+                    @if ($noc->status_noc2 == 'noc_4')
+                        @include('page.noc.import.modal.03SemakUlasan')
+                    @endif
+                    @if ($noc->status_noc2 == 'noc_6')
+                        @include('page.noc.import.modal.05HantarUlasan')
+                    @endif
 
-
-        @elseif (Auth::user()->peranan == 3)
-            @if ($noc->noc_flow == 'flow2')
-                @if ($noc->status_noc == 'noc_3')
-                    @include('page.noc.import.modal.03SemakUlasan')
                 @endif
-                @if ($noc->status_noc == 'noc_5')
-                    @include('page.noc.import.modal.05HantarUlasan')
-                @endif
-            @elseif ($noc->noc_flow == 'flow3')
-                @if ($noc->status_noc == 'noc_3')
-                    @include('page.noc.import.modal.03SemakUlasan')
-                @endif
-                @if ($noc->status_noc == 'noc_5')
-                    @include('page.noc.import.modal.05HantarUlasan')
-                @endif
-            @endif
-        @elseif (Auth::user()->peranan == 4)
-            @if ($noc->noc_flow == 'flow3')
-                @if ($noc->status_noc2 == 'noc_4')
-                    @include('page.noc.import.modal.03SemakUlasan')
-                @endif
-                @if ($noc->status_noc2 == 'noc_6')
-                    @include('page.noc.import.modal.05HantarUlasan')
-                @endif
-
-            @endif
-        @else
+            @else
             @endif
 
         </div>
@@ -109,7 +108,6 @@
             @if (Auth::user()->peranan == 2)
 
                 @if ($noc->noc_flow == 'flow3')
-
 
                     @if ($noc->status_noc2 == 'noc_19')
                         @include('page.noc.import.modal.02MohonUlasanTeknikal')
