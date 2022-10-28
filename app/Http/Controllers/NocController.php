@@ -19,9 +19,8 @@ use App\Mail\EmailNOCSemakUlasanTeknikal;
 use App\Mail\EmailNOCHantarUlasanBajet;
 use App\Mail\EmailNOCMohonModulNoc;
 use Carbon\Carbon;
-use Exception;
-use PDF;
-
+use Barryvdh\DomPDF\Facade\PDF;
+use Illuminate\Support\Facades\App;
 
 class NocController extends Controller
 {
@@ -391,6 +390,52 @@ class NocController extends Controller
         return view('page.noc.detail')
             ->with($data1)
             ->with($data2);
+    }
+
+    public function createPDF($id)
+    {
+        $noc = DB::table('t_noc')
+            ->select(
+                't_noc.*',
+                't_kementerian.nama_jabatan',
+                't_kementerian.sgktn_jabatan',
+                'status1.nama_status as nama_status1',
+                'status2.nama_status as nama_status2',
+                't_kategori.kod',
+                't_kategori.nama_kat',
+                't_kategori.flow',
+                't_bahagian.nama_bhgn',
+                't_bahagian.sgktn_bhgn'
+            )
+            ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+            ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
+            ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+            ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
+            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+            ->where('t_noc.id', '=', $id)
+            ->first();
+
+        $noc_log = DB::table('t_status_noc_log')
+            ->select(
+                'noc_id',
+                'tarikh',
+                'keterangan',
+                'css_class'
+            )
+            ->where('t_status_noc_log.noc_id', $id)
+            ->orderBy('tarikh', 'asc')
+            ->get();
+
+        // $data1['noc'] = $noc;
+        // $data2['noc_log'] = $noc_status_log;
+
+        view()->share('noc',compact('noc','noc_log'));
+
+        $pdf = PDF::loadView('page.pdf.noc_pdf', compact('noc','noc_log'));
+        // $pdf = App::make('dompdf.wrapper');
+
+        return $pdf->download('noc_detail.pdf');
+
     }
 
     //proses: noc_1
@@ -1185,9 +1230,6 @@ class NocController extends Controller
         dd("Email berjaya!");
     }
 
-    public function printPdfDetail($id)
-    {
 
-    }
 
 }

@@ -1,6 +1,11 @@
 @extends('layouts.appPdf')
 
 @section('css')
+<style>
+    .page-break {
+        page-break-after: always;
+    }
+    </style>
 @endsection
 
 @section('content')
@@ -117,30 +122,17 @@
                         </div>
                     </div>
                     <hr>
-                    @if ($noc->status_noc != 'noc_20')
-                    <div class="text-end">
-                        <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalPadam"
-                            type="button">
-                            Batal NOC
-                        </button>
 
-                    </div>
-                    @endif
                 </div>
             </div>
         </div>
     </div>
+    <div class="page-break"></div>
     <div class="col-lg-4">
         {{-- @include('page.noc.import.status_noc') --}}
         @include('page.noc.import.status_noc_log')
     </div>
-    <div class="col-lg-3">
 
-        @include('page.noc.import.tindakanModal_status')
-
-    </div>
-    @include('page.noc.import.modalTindakan')
-    @include('page.noc.import.modalPadam')
 </div>
 @endsection
 
