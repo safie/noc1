@@ -41,7 +41,7 @@
                     @if ($noc->status_noc2 == 'noc_19')
                         @include('page.noc.import.modal.02MohonUlasanTeknikal')
                     @endif --}}
-                    @if ($noc->status_noc == 'noc_9')
+                    @if ($noc->status_noc == 'noc_9' AND $noc->status_noc2 != 'noc_19' )
                         @include('page.noc.import.modal.10HantarSurat')
                     @endif
                     @if ($noc->status_noc == 'noc_15')
@@ -74,47 +74,39 @@
                     @endif
 
                 @endif
-            @else
+
             @endif
 
         </div>
     </div>
 </div>
 
-<div class="modal hide fade" id="modalBajet" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
-    aria-labelledby="exampleModalLabel" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-
-            @if (Auth::user()->peranan == 2)
-
-                @if ($noc->noc_flow == 'flow3')
-
-                    @if ($noc->status_noc == 'noc_18')
+@if (Auth::user()->peranan == 2)
+    @if ($noc->noc_flow == 'flow3')
+        @if ($noc->status_noc == 'noc_18')
+            <div class="modal hide fade" id="modalBajet" data-bs-backdrop="static" data-bs-keyboard="false"
+                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
                         @include('page.noc.import.modal.02MohonUlasanBajet')
-                    @endif
+                    </div>
+                </div>
+            </div>
+        @endif
+    @endif
+@endif
 
-                @endif
-            @endif
-        </div>
-    </div>
-</div>
-
-<div class="modal hide fade" id="modalTeknikal" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
-    aria-labelledby="exampleModalLabel" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-
-            @if (Auth::user()->peranan == 2)
-
-                @if ($noc->noc_flow == 'flow3')
-
-                    @if ($noc->status_noc2 == 'noc_19')
+@if (Auth::user()->peranan == 2)
+    @if ($noc->noc_flow == 'flow3')
+        @if ($noc->status_noc2 == 'noc_19')
+            <div class="modal hide fade" id="modalTeknikal" data-bs-backdrop="static" data-bs-keyboard="false"
+                role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
                         @include('page.noc.import.modal.02MohonUlasanTeknikal')
-                    @endif
-
-                @endif
-            @endif
-        </div>
-    </div>
-</div>
+                    </div>
+                </div>
+            </div>
+        @endif
+    @endif
+@endif
