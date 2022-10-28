@@ -58,7 +58,7 @@
                                         <small class="text-muted"> Tarikh submit:
                                             {{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</small>
                                     </td>
-                                    <td class="text-center align-middle"><h5><span class="badge bg-primary"><strong>{{ $data->kod }}</strong></span></h5> {{ $data->nama_kat }}</td>
+                                    <td class="text-center align-middle" style="width:10em"><h5><span class="badge bg-primary"><strong>{{ $data->kod }}</strong></span></h5> {{ $data->nama_kat }}</td>
                                     <td class="align-middle">{{ $data->nama_jabatan }}</td>
                                     <td class="text-center align-middle">{{ $data->sgktn_bhgn }}</td>
                                     <td class="text-center align-middle">

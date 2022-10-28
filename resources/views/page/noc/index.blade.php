@@ -59,7 +59,6 @@
                         <tr>
                             <th class="text-center">No.</th>
                             <th class="text-center">Tajuk Permohonan</th>
-
                             <th class="text-center">Kementerian</th>
                             <th class="text-center">Bahagian</th>
                             <th class="text-center">Status</th>
@@ -81,9 +80,9 @@
                                             {{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</small>
                                     </td>
 
-                                    <td class="align-middle">{{ $data->nama_jabatan }}</td>
-                                    <td class="text-center align-middle">{{ $data->sgktn_bhgn }}</td>
-                                    <td class="text-center align-middle">
+                                    <td class="align-middle" style="width:20em">{{ $data->nama_jabatan }}</td>
+                                    <td class="text-center align-middle" style="width:10em">{{ $data->sgktn_bhgn }}</td>
+                                    <td class="text-center align-middle" style="width:10em">
                                         <h5><span class="badge bg-secondary text-wrap">{!! $data->nama_status1 !!}</span>
                                         </h5>
                                         <h5 @if ($data->tarikh_hantar_surat_lulus != null) hidden @endif>
