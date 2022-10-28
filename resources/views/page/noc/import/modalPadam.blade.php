@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalPadam" data-bs-backdrop="static" tabindex="-1" role="dialog"
+<div class="modal hide fade" id="modalPadam" data-bs-backdrop="static" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <form method="GET" action="{{ route('noc.batal', $noc->id) }}" id="delete-form">

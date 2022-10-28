@@ -1136,7 +1136,7 @@ class NocController extends Controller
         $noc = Noc::find($id);
         $noc->status_noc  = "noc_20";
         $noc->save();
-        $currentTime = Carbon::now()->toDateTimeString();;
+        $currentTime = Carbon::now()->toDateTimeString();
         NocLog::create([
             'noc_id' => $noc->id,
             'status_noc'    => "noc_20",

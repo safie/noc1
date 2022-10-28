@@ -168,8 +168,9 @@
 
             </div>
             @include('page.noc.import.modalTindakan')
-            @include('page.noc.import.modalPadam')
+
         </div>
+        @include('page.noc.import.modalPadam')
     </div>
 
 @endsection
