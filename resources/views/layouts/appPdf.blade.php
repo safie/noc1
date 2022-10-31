@@ -9,6 +9,10 @@
     <meta name="author" content="" />
     <title>i-NOC</title>
     {{-- <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
+    <link href="{{ asset('sb-admin-pro/dist/css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('litepicker/dist/css/litepicker.css') }}" rel="stylesheet" />
+    {{-- <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" /> --}}
+    <link rel="icon" type="image/x-icon" href="{{ asset('/pic/favicon.ico') }}" />
     @yield('css')
 </head>
 

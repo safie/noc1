@@ -19,8 +19,8 @@ use App\Mail\EmailNOCSemakUlasanTeknikal;
 use App\Mail\EmailNOCHantarUlasanBajet;
 use App\Mail\EmailNOCMohonModulNoc;
 use Carbon\Carbon;
-use Barryvdh\DomPDF\Facade\PDF;
-use Illuminate\Support\Facades\App;
+use PDF;
+
 
 class NocController extends Controller
 {
@@ -74,7 +74,7 @@ class NocController extends Controller
                     't_kategori.kod',
                 )
                 ->where('bahagian', '=', Auth::user()->bahagian)
-                ->where('status_noc','!=','noc_20')
+                ->where('status_noc', '!=', 'noc_20')
                 ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
                 ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
                 ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
@@ -158,9 +158,7 @@ class NocController extends Controller
             $tarikhSuratMohon = null;
         }
 
-
         // dd($flow);
-
         Noc::create([
             'tajuk_permohonan'      => $request_data['inputTajuk'],
             'kod_myprojek'    => $request_data['inputKodMyprojek'],
@@ -429,14 +427,17 @@ class NocController extends Controller
         // $data1['noc'] = $noc;
         // $data2['noc_log'] = $noc_status_log;
 
-        view()->share('noc',compact('noc','noc_log'));
+        // view()->share('noc', compact('noc', 'noc_log'));
 
-        $pdf = PDF::loadView('page.pdf.noc_pdf', compact('noc','noc_log'));
-        // $pdf = App::make('dompdf.wrapper');
+        // $pdf = PDF::loadView('page.pdf.noc_pdf', compact('noc', 'noc_log'));
+        // // $pdf = App::make('dompdf.wrapper');
 
-        return $pdf->download('noc_detail.pdf');
+        // return $pdf->download('noc_detail.pdf');
 
+        $pdf = PDF::loadView('page.pdf.nocPDF', compact('noc', 'noc_log'));
+        return $pdf->stream('document.pdf');
     }
+
 
     //proses: noc_1
     public function updateSemak(Request $request, $id)
@@ -491,7 +492,7 @@ class NocController extends Controller
     {
         $flow = Noc::where('id', $id)->select('noc_flow')->first();
 
-        if($flow->noc_flow == 'flow2') {
+        if ($flow->noc_flow == 'flow2') {
             $request->validate([
                 'tarikh' => 'required',
             ]);
@@ -513,26 +514,26 @@ class NocController extends Controller
             ]);
 
             $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
-            ->select(
-                't_noc.tajuk_permohonan',
-                't_bahagian.nama_bhgn',
-                't_kategori.kod',
-                't_kategori.nama_kat',
-                't_noc.tarikh_mohon_ulasan',
-                't_noc.tarikh_mohon_ulasan_tek',
-                'status1.nama_status as status_noc1',
-                'status2.nama_status as status_noc2',
-            )
-            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
-            ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
-            ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
-            ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
-            ->first();
+                ->select(
+                    't_noc.tajuk_permohonan',
+                    't_bahagian.nama_bhgn',
+                    't_kategori.kod',
+                    't_kategori.nama_kat',
+                    't_noc.tarikh_mohon_ulasan',
+                    't_noc.tarikh_mohon_ulasan_tek',
+                    'status1.nama_status as status_noc1',
+                    'status2.nama_status as status_noc2',
+                )
+                ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+                ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
+                ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
+                ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+                ->first();
 
             $senderBajet = DB::table('users')
-            ->select('email')
-            ->where('peranan', '=', '3')
-            ->get();
+                ->select('email')
+                ->where('peranan', '=', '3')
+                ->get();
 
             // $senderTeknikal = DB::table('users')
             //     ->select('email')
@@ -541,8 +542,6 @@ class NocController extends Controller
             // }
 
             Mail::to($senderBajet)->send(new EmailNOCMohonUlasanBajet($dataMail));
-
-
         } else if ($flow->noc_flow == 'flow3') {
             $request->validate([
                 'tarikh' => 'required',
@@ -574,26 +573,26 @@ class NocController extends Controller
             ]);
 
             $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
-            ->select(
-                't_noc.tajuk_permohonan',
-                't_bahagian.nama_bhgn',
-                't_kategori.kod',
-                't_kategori.nama_kat',
-                't_noc.tarikh_mohon_ulasan',
-                't_noc.tarikh_mohon_ulasan_tek',
-                'status1.nama_status as status_noc1',
-                'status2.nama_status as status_noc2',
-            )
-            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
-            ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
-            ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
-            ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
-            ->first();
+                ->select(
+                    't_noc.tajuk_permohonan',
+                    't_bahagian.nama_bhgn',
+                    't_kategori.kod',
+                    't_kategori.nama_kat',
+                    't_noc.tarikh_mohon_ulasan',
+                    't_noc.tarikh_mohon_ulasan_tek',
+                    'status1.nama_status as status_noc1',
+                    'status2.nama_status as status_noc2',
+                )
+                ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+                ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
+                ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
+                ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+                ->first();
 
             $senderBajet = DB::table('users')
-            ->select('email')
-            ->where('peranan', '=', '3')
-            ->get();
+                ->select('email')
+                ->where('peranan', '=', '3')
+                ->get();
 
             $senderTeknikal = DB::table('users')
                 ->select('email')
@@ -602,14 +601,11 @@ class NocController extends Controller
 
             Mail::to($senderBajet)->send(new EmailNOCMohonUlasanBajet($dataMail));
             Mail::to($senderTeknikal)->send(new EmailNOCMohonUlasanTeknikal($dataMail));
-
         }
 
         // dd($flow);
 
         return redirect()->route('noc.detail', $id)->with('success', 'Ulasan telah dipohon');
-
-
     }
 
     public function updateMohonUlasanBajet(Request $request, $id)
@@ -1191,7 +1187,6 @@ class NocController extends Controller
         ]);
 
         return redirect()->route('noc.index')->with('success', 'NOC telah dibatalkan!');
-
     }
 
     public function sendNocMessage()
@@ -1229,7 +1224,4 @@ class NocController extends Controller
 
         dd("Email berjaya!");
     }
-
-
-
 }
