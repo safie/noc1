@@ -438,6 +438,44 @@ class NocController extends Controller
         return $pdf->stream('document.pdf');
     }
 
+    public function previewDetail($id)
+    {
+        $noc = DB::table('t_noc')
+            ->select(
+                't_noc.*',
+                't_kementerian.nama_jabatan',
+                't_kementerian.sgktn_jabatan',
+                'status1.nama_status as nama_status1',
+                'status2.nama_status as nama_status2',
+                't_kategori.kod',
+                't_kategori.nama_kat',
+                't_kategori.flow',
+                't_bahagian.nama_bhgn',
+                't_bahagian.sgktn_bhgn'
+            )
+            ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+            ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
+            ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+            ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
+            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+            ->where('t_noc.id', '=', $id)
+            ->first();
+
+        $noc_log = DB::table('t_status_noc_log')
+            ->select(
+                'noc_id',
+                'tarikh',
+                'keterangan',
+                'css_class'
+            )
+            ->where('t_status_noc_log.noc_id', $id)
+            ->orderBy('tarikh', 'asc')
+            ->get();
+
+        return view('page.pdf.nocPreview', compact('noc', 'noc_log'));
+
+    }
+
 
     //proses: noc_1
     public function updateSemak(Request $request, $id)

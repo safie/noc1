@@ -3,12 +3,30 @@
 @section('css')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
         rel="stylesheet">
+
+    <style>
+        @media print {
+            @page {
+                size: A4;
+                margin: 0mm;
+            }
+
+            html,
+            body {
+                width: 1024px;
+            }
+
+            body {
+                margin: 0 auto;
+            }
+        }
+    </style>
 @endsection
 
 @section('icon', 'briefcase')
 @section('tajuk', 'Maklumat NOC')
 @section('button')
-    <a class="btn btn-sm btn-light text-primary" href="{{ route('noc.index') }}">
+    <a class="btn btn-sm btn-light text-primary d-print-none" href="{{ route('noc.index') }}">
         <i class="me-1" data-feather="arrow-left"></i>
         Kembali senarai NOC
     </a>
@@ -59,7 +77,7 @@
                             </div>
                             <hr>
                             <div class="row">
-                                 <div>
+                                <div>
                                     <label class="small me-2"> {{ $noc->kod }} - {{ $noc->nama_kat }}</label>
                                 </div>
                             </div>
@@ -146,13 +164,13 @@
                             </div>
                             <hr>
                             @if ($noc->status_noc != 'noc_20')
-                            <div class="text-end">
-                                <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalPadam"
-                                    type="button">
-                                    Batal NOC
-                                </button>
+                                <div class="text-end d-print-none">
+                                    <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal"
+                                        data-bs-target="#modalPadam" type="button">
+                                        Batal NOC
+                                    </button>
 
-                            </div>
+                                </div>
                             @endif
                         </div>
                     </div>
@@ -162,7 +180,7 @@
                 {{-- @include('page.noc.import.status_noc') --}}
                 @include('page.noc.import.status_noc_log')
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-3 d-print-none">
 
                 @include('page.noc.import.tindakanModal_status')
 

@@ -1,4 +1,4 @@
-<nav class="sidenav shadow-right sidenav-light">
+<nav class="sidenav shadow-right sidenav-light d-print-none">
     <div class="sidenav-menu">
         <div class="nav accordion" id="accordionSidenav">
             <!-- Sidenav Menu Heading (Account)-->

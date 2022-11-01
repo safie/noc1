@@ -43,6 +43,7 @@ Route::resource('/setting/kategori', KategoriController::class);
 Route::resource('/setting/status', StatusController::class);
 
 Route::get('/noc/pdf/{id}', [\App\Http\Controllers\NocController::class, 'createPDF'])->name('noc.createPDF');
+Route::get('/noc/preview/{id}', [\App\Http\Controllers\NocController::class, 'previewDetail'])->name('noc.previewDetail');
 Route::get('/noc/tindakan', [\App\Http\Controllers\NocController::class, 'tindakan'])->name('noc.tindakan');
 Route::get('/noc/detail/{id}', [\App\Http\Controllers\NocController::class, 'detail'])->name('noc.detail');
 Route::get('/noc/batal/{id}', [\App\Http\Controllers\NocController::class, 'batalNoc'])->name('noc.batal');

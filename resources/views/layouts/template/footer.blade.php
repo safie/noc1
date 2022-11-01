@@ -1,4 +1,4 @@
-<footer class="footer-admin mt-auto footer-light">
+<footer class="footer-admin mt-auto footer-light d-print-none">
     <div class="container-xl px-4">
         <div class="row">
             <div class="col-md-6 small">Hakcipta &copy; www.epu.gov.my 2022</div>

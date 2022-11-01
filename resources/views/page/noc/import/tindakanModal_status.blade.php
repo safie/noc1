@@ -202,8 +202,8 @@
                 @endif
             @endif
         @else
-            {{-- <h5>Selesai</h5> --}}
-            <a class="btn btn-primary" href="{{ route('noc.createPDF', $noc->id) }}">Export PDF</a>
+            <h5>Selesai</h5>
+            {{-- <a class="btn btn-primary" href="{{ route('noc.previewDetail', $noc->id) }}">Preview</a> --}}
         @endif
 
     </div>
