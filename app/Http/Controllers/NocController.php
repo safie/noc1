@@ -123,7 +123,7 @@ class NocController extends Controller
         $request->validate([
             'inputTajuk' => 'required',
             'inputKodMyprojek' => 'required',
-            'inputRujukan' => 'required',
+            // 'inputRujukan' => 'required',
             // 'tarikhMohonNOC' => 'required',
             // 'tarikhSuratMohon' => 'required',
             'inputKlasifikasi' => 'required',
