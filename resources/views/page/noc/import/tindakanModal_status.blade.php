@@ -107,8 +107,8 @@
 
                 @elseif ($noc->status_noc == 'noc_16')
                     <div class="d-grid">
-                        {{-- <h5>Selesai</h5><br> --}}
-                        <a class="btn btn-primary" href="{{ route('noc.createPDF', $noc->id) }}">Export PDF</a>
+                        <h5>Selesai</h5><br>
+                        {{-- <a class="btn btn-primary" href="{{ route('noc.createPDF', $noc->id) }}">Export PDF</a> --}}
                     </div>
                 @endif
 
