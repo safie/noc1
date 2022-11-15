@@ -16,6 +16,4 @@ class Peringkat extends Model
 
     ];
     public $timestamps      = true;
-
-
 }
