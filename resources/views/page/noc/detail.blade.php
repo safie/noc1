@@ -233,16 +233,14 @@
                                 </div>
                             </div>
                             <hr>
-                            @if (Auth::user()->peranan == 2)
-                                @if ($noc->status_noc != 'noc_20' or $noc->status_noc != 'noc_16')
-                                    <div class="text-end d-print-none">
-                                        <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal"
-                                            data-bs-target="#modalPadam" type="button">
-                                            Batal NOC
-                                        </button>
+                            @if (Auth::user()->peranan == 2 and $noc->status_noc != 'noc_16')
+                                <div class="text-end d-print-none">
+                                    <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal"
+                                        data-bs-target="#modalPadam" type="button">
+                                        Batal NOC
+                                    </button>
 
-                                    </div>
-                                @endif
+                                </div>
                             @endif
                         </div>
                     </div>

@@ -473,7 +473,6 @@ class NocController extends Controller
             ->get();
 
         return view('page.pdf.nocPreview', compact('noc', 'noc_log'));
-
     }
 
 
@@ -1212,17 +1211,25 @@ class NocController extends Controller
 
     public function batalNoc($id)
     {
+        $currentTime = Carbon::today();
+
         $noc = Noc::find($id);
         $noc->status_noc  = "noc_20";
+
+        // $date = Carbon::createFromFormat('Y-m-d', today())->toDateTimeString();
+
+        dd($currentTime);
+
         $noc->save();
-        $currentTime = Carbon::now()->toDateTimeString();
+
         NocLog::create([
             'noc_id' => $noc->id,
             'status_noc'    => "noc_20",
             'keterangan' => "Batal NOC",
-            'tarikh'    => Carbon::createFromFormat('d/m/Y', $currentTime)->format('Y-m-d'),
+            'tarikh'    => Carbon::createFromFormat('Y-m-d', $currentTime)->toDateTimeString(),
             'css_class' => "bg-info",
         ]);
+
 
         return redirect()->route('noc.index')->with('success', 'NOC telah dibatalkan!');
     }
