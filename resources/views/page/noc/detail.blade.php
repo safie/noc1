@@ -158,8 +158,36 @@
                             </div>
                             <hr>
                             <div class="row">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <label class="small fw-bold">Tarikh Memo:</label>
+                                        <label class="small">
+                                            @if ($noc->tarikh_hantar_memo_kelulusan != null)
+                                                {{ \Carbon\Carbon::parse($noc->tarikh_hantar_memo_kelulusan)->format('d-m-Y') }}
+                                            @else
+                                                Tiada data
+                                            @endif
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <label class="small fw-bold">No. Rujukan Memo
+                                            Kelulusan:</label>
+                                        {{-- <label class="small">
+                                            @if ($noc->no_rujukan_memo_kelulusan != null)
+                                                {{ $noc->no_rujukan_memo_kelulusan }}
+                                            @else
+                                                Tiada data
+                                            @endif
+                                        </label> --}}
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
                                 <div class="small">
-                                    <label class="fw-bold">Keputusan: </label><label class="text-uppercase"> berjaya</label>
+                                    <label class="fw-bold">Keputusan: </label>
+                                    <label class="text-uppercase">NOC berjaya</label>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <div>
@@ -168,7 +196,7 @@
                                             @if ($noc->tarikh_hantar_surat_lulus != null)
                                                 {{ \Carbon\Carbon::parse($noc->tarikh_hantar_surat_lulus)->format('d-m-Y') }}
                                             @else
-                                                <h5>Tiada data</h5>
+                                                Tiada data
                                             @endif
                                         </label>
                                     </div>
@@ -180,15 +208,16 @@
                                             @if ($noc->no_rujukan_surat_kelulusan != null)
                                                 {{ $noc->no_rujukan_surat_kelulusan }}
                                             @else
-                                                <h5>Tiada data</h5>
+                                                Tiada data
                                             @endif
                                         </label>
                                     </div>
                                 </div>
                             </div>
+
                             <hr>
                             <div class="row">
-                                <div class="mb-3">
+                                <div class="mb-3 small">
                                     <table style="text-align: left">
                                         <tr>
                                             <td style="width: 7rem">Status NOC :</td>
@@ -205,7 +234,7 @@
                             </div>
                             <hr>
                             @if (Auth::user()->peranan == 2)
-                                @if ($noc->status_noc != 'noc_20')
+                                @if ($noc->status_noc != 'noc_20' or $noc->status_noc != 'noc_16')
                                     <div class="text-end d-print-none">
                                         <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal"
                                             data-bs-target="#modalPadam" type="button">
