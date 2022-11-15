@@ -32,8 +32,8 @@
                     Senarai NOC
                 </a>
                 <!-- Sidenav Accordion (Data)-->
-                <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
-                    data-bs-target="#collapseData" aria-expanded="false" aria-controls="collapseData">
+                <a class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseData"
+                    href="javascript:void(0);" aria-expanded="false" aria-controls="collapseData">
                     <div class="nav-link-icon"><i data-feather="database"></i></div>
                     Tetapan
                     <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -60,18 +60,18 @@
                     Dashboard
                 </a>
                 <!-- Sidenav Accordion (Tindakan)-->
-                <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse"
-                    data-bs-target="#collapseTindakan" aria-expanded="true" aria-controls="collapseTindakan">
+                <a class="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTindakan"
+                    href="javascript:void(0);" aria-expanded="true" aria-controls="collapseTindakan">
                     <div class="nav-link-icon"><i data-feather="edit"></i></div>
-                    Tindakan <span @if (count_tindakan() == 0) hidden @endif
-                        class="mx-2 p-2 badge rounded-pill bg-danger">{{ count_tindakan() }}</span>
+                    Tindakan <span class="mx-2 p-2 badge rounded-pill bg-danger"
+                        @if (count_tindakan() == 0) hidden @endif>{{ count_tindakan() }}</span>
                     <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapseTindakan" data-bs-parent="#accordionSidenav">
                     <nav class="sidenav-menu-nested nav">
                         <a class="nav-link" href="{{ route('noc.tindakan') }}">NOC untuk tindakan <span
-                                @if (count_tindakan() == 0) hidden @endif
-                                class="mx-2 p-2 badge rounded-pill bg-danger">{{ count_tindakan() }}</span></a>
+                                class="mx-2 p-2 badge rounded-pill bg-danger"
+                                @if (count_tindakan() == 0) hidden @endif>{{ count_tindakan() }}</span></a>
                     </nav>
                     <nav class="sidenav-menu-nested nav">
                         <a class="nav-link" href="{{ route('noc.create') }}">Permohonan baru</a>
@@ -95,8 +95,8 @@
                 <!-- Sidenav Link (Tindakan)-->
                 <a class="nav-link" href="{{ route('noc.tindakan') }}">
                     <div class="nav-link-icon"><i data-feather="edit"></i></div>
-                    Tindakan <span @if (count_tindakan() == 0) hidden @endif
-                        class="mx-2 p-2 badge rounded-pill bg-danger">{{ count_tindakan() }}</span>
+                    Tindakan <span class="mx-2 p-2 badge rounded-pill bg-danger"
+                        @if (count_tindakan() == 0) hidden @endif>{{ count_tindakan() }}</span>
                 </a>
                 <!-- Sidenav Link (Senarai NOC)-->
                 <a class="nav-link" href="{{ route('noc.index') }}">
@@ -116,8 +116,8 @@
                 <!-- Sidenav Link (Tindakan)-->
                 <a class="nav-link" href="{{ route('noc.tindakan') }}">
                     <div class="nav-link-icon"><i data-feather="edit"></i></div>
-                    Tindakan <span @if (count_tindakan() == 0) hidden @endif
-                        class="mx-2 p-2 badge rounded-pill bg-danger">{{ count_tindakan() }}</span>
+                    Tindakan <span class="mx-2 p-2 badge rounded-pill bg-danger"
+                        @if (count_tindakan() == 0) hidden @endif>{{ count_tindakan() }}</span>
                 </a>
                 <!-- Sidenav Link (Senarai NOC)-->
                 <a class="nav-link" href="{{ route('noc.index') }}">
@@ -126,32 +126,13 @@
                 </a>
             @endif
 
-
         </div>
     </div>
     <!-- Sidenav Footer-->
     <div class="sidenav-footer">
-        <div class="sidenav-footer-content">
-            <div class="sidenav-footer-subtitle">
-                <label>Peranan:</label>
-                <label class="px-1 bg-secondary text-white rounded">
-                    @if (Auth::user()->peranan == 1)
-                        admin
-                    @elseif (Auth::user()->peranan == 2)
-                        bahagian
-                    @elseif (Auth::user()->peranan == 3)
-                        bajet
-                    @else
-                        nilai
-                    @endif
-                </label>
-            </div>
-            <div class="sidenav-footer-title">
-                <div class="sidenav-footer-subtitle text-dark">
-                    <strong>{{ Auth::user()->name }}</strong>
-                    @include('layouts.template.bhgn')
-                </div>
-            </div>
+        <div class="sidenav-footer-content text-center">
+            <b>{{ Auth::user()->getBahagian->nama_bhgn }}</b>
+            {{-- @include('layouts.template.bhgn') --}}
         </div>
     </div>
 </nav>

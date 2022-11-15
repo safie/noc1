@@ -1,9 +1,9 @@
 <div class="card card-header-actions">
-    <div class="card-header">
+    {{-- <div class="card-header">
         Tindakan
         <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
             title="Tindakan NOC yang diperlukan"></i>
-    </div>
+    </div> --}}
     <div class="card-body text-center">
         @if (Auth::user()->peranan == 2)
             @if ($noc->noc_flow == 'flow1')

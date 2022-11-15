@@ -1,9 +1,9 @@
 <div class="card card-header-actions mb-2">
-    <div class="card-header">
+    {{-- <div class="card-header">
         Status NOC
         <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
             title="Sejarah Status NOC"></i>
-    </div>
+    </div> --}}
     <div class="card-body mx-2 my-2 px-1 py-1">
         <div class="mb-4">
             <table class="table table-sm table-striped table-bordered table-hover mx-0 my-0 rounded rounded-3 overflow-hidden small">

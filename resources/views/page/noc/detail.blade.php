@@ -51,14 +51,14 @@
             </div>
         @endif
         <div class="row gx-4">
-            <div class="col-lg-5">
+            <div class="col-lg-8">
                 <div class="card mb-4">
                     <div class="card card-header-actions">
-                        <div class="card-header">
+                        {{-- <div class="card-header">
                             Maklumat NOC
                             <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
                                 title="Maklumat NOC"></i>
-                        </div>
+                        </div> --}}
                         <div class="card-body">
                             <!-- Form Group (first name)-->
                             <div class="row">
@@ -163,27 +163,33 @@
                                 </div>
                             </div>
                             <hr>
-                            @if ($noc->status_noc != 'noc_20')
-                                <div class="text-end d-print-none">
-                                    <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal"
-                                        data-bs-target="#modalPadam" type="button">
-                                        Batal NOC
-                                    </button>
+                            @if (Auth::user()->peranan == 2)
+                                @if ($noc->status_noc != 'noc_20')
+                                    <div class="text-end d-print-none">
+                                        <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal"
+                                            data-bs-target="#modalPadam" type="button">
+                                            Batal NOC
+                                        </button>
 
-                                </div>
+                                    </div>
+                                @endif
                             @endif
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
-                {{-- @include('page.noc.import.status_noc') --}}
-                @include('page.noc.import.status_noc_log')
-            </div>
-            <div class="col-lg-3 d-print-none">
+                <div class="row">
+                    <div class="col-lg-12 mb-2">
+                        @include('page.noc.import.tindakanModal_status')
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        @include('page.noc.import.status_noc_log')
+                    </div>
 
-                @include('page.noc.import.tindakanModal_status')
-
+                </div>
             </div>
             @include('page.noc.import.modalTindakan')
 
