@@ -3,7 +3,6 @@
 @section('css')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
         rel="stylesheet">
-
     <style>
         @media print {
             @page {
@@ -62,86 +61,128 @@
                         <div class="card-body">
                             <!-- Form Group (first name)-->
                             <div class="row">
-                                <div class="py-0">
+                                <div class="d-flex justify-content-between">
                                     <label class="small" for="inputTajuk">{{ $noc->nama_jabatan }}
                                         ({{ $noc->sgktn_jabatan }})</label>
-                                    <h3 class="my-0" style="text-transform:uppercase;">{{ $noc->tajuk_permohonan }}</h3>
-                                    <label class="small" for="noc_id">ID: {{ $noc->noc_id }}{{ $noc->id }}</label>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div>
-                                    <label class="small me-2"> {{ $noc->nama_bhgn }} ({{ $noc->sgktn_bhgn }})</label>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div>
-                                    <label class="small me-2"> {{ $noc->kod }} - {{ $noc->nama_kat }}</label>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label class="small mb-1" for="kodMyProjek">Kod MyProjek</label>
-                                        <h5>{{ $noc->kod_myprojek }}</h5>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label class="small mb-1" for="noRujukan">No. Rujukan Surat</label>
-                                        <h5>{{ $noc->no_rujukan }}</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label class="small mb-1" for="datePermohonan">Tarikh Permohonan</label>
+                                    <label class="small">
                                         @if ($noc->tarikh_permohonan != null)
-                                            <h5>{{ \Carbon\Carbon::parse($noc->tarikh_permohonan)->format('d-m-Y') }}</h5>
+                                            Tarikh Permohonan:
+                                            {{ \Carbon\Carbon::parse($noc->tarikh_permohonan)->format('d-m-Y') }}
                                         @else
                                             <h5>Tiada data</h5>
                                         @endif
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label class="small mb-1" for="dateSurat">Tarikh Surat Permohonan</label>
-                                        @if ($noc->tarikh_permohonan != null)
-                                            <h5>{{ \Carbon\Carbon::parse($noc->tarikh_surat_kementerian)->format('d-m-Y') }}
-                                            </h5>
-                                        @else
-                                            <h5>Tiada data</h5>
-                                        @endif
-
-                                    </div>
-
+                                    </label>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label class="small mb-1" for="datePermohonan">Tarikh Surat Kelulusan</label>
-                                        @if ($noc->tarikh_hantar_surat_lulus != null)
-                                            <h5>{{ \Carbon\Carbon::parse($noc->tarikh_hantar_surat_lulus)->format('d-m-Y') }}
-                                            </h5>
-                                        @else
-                                            <h5>Tiada data</h5>
-                                        @endif
+                                <div class="py-0">
+                                    <h3 class="my-0"
+                                        style="text-transform:uppercase;text-align: justify;text-justify: inter-word;">
+                                        {{ $noc->tajuk_permohonan }}</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="d-flex justify-content-between">
+                                    <label class="small" for="noc_id">NOC ID:
+                                        {{ $noc->noc_id }}{{ $noc->id }}</label>
+                                    <label class="small" for="noc_id">Projek ID: {{ $noc->kod_myprojek }}</label>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="d-flex justify-content-between">
+                                    <label class="small me-2 fw-bold"> {{ $noc->nama_bhgn }}
+                                        ({{ $noc->sgktn_bhgn }})</label>
+
+                                    <div>
+                                        <label class="small me-2 fw-bold"> Klasifikasi:</label>
+                                        <label> {{ $noc->kod }} - {{ $noc->nama_kat }}</label>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label class="small mb-1" for="datePermohonan">No. Rujukan Surat Kelulusan</label>
-                                        @if ($noc->no_rujukan_surat_kelulusan != null)
-                                            <h5>{{ $noc->no_rujukan_surat_kelulusan }}
-                                            </h5>
-                                        @else
-                                            <h5>Tiada data</h5>
-                                        @endif
+                            </div>
+
+                            <hr>
+                            <div class="row">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <label class="small fw-bold" for="kodMyProjek">Tarikh Surat Agensi:</label>
+                                        <label class="small">
+                                            @if ($noc->tarikh_permohonan != null)
+                                                {{ \Carbon\Carbon::parse($noc->tarikh_surat_kementerian)->format('d-m-Y') }}
+                                            @else
+                                                <h5>Tiada data</h5>
+                                            @endif
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="small fw-bold" for="noRujukan">No. Rujukan Surat Agensi:</label>
+                                        <label class="small">{{ $noc->no_rujukan }}</label>
+                                    </div>
+
+                                </div>
+                                <div class="small">
+                                    <label class="fw-bold">Dokumen lampiran:</label><label>senarai lampiran</label>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="small">
+                                <label class="fw-bold"> Ulasan BBP (Bajet):</label>
+                                <p style="text-align: justify;text-justify: inter-word;">Lorem ipsum
+                                    dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                    nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                    dolor
+                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                    Excepteur
+                                    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                                    est
+                                    laborum.</p>
+                            </div>
+                            <hr>
+                            <div class="small">
+                                <label class="fw-bold"> Ulasan BPN (Teknikal):</label>
+                                <p style="text-align: justify;text-justify: inter-word;">Lorem ipsum
+                                    dolor sit amet, consectetur adipiscing elit, sed do
+                                    eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                    nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                    dolor
+                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                    Excepteur
+                                    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+                                    est
+                                    laborum.</p>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="small">
+                                    <label class="fw-bold">Keputusan: </label><label class="text-uppercase"> berjaya</label>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <label class="small fw-bold">Tarikh Kelulusan:</label>
+                                        <label class="small">
+                                            @if ($noc->tarikh_hantar_surat_lulus != null)
+                                                {{ \Carbon\Carbon::parse($noc->tarikh_hantar_surat_lulus)->format('d-m-Y') }}
+                                            @else
+                                                <h5>Tiada data</h5>
+                                            @endif
+                                        </label>
+                                    </div>
+
+                                    <div>
+                                        <label class="small fw-bold">No. Rujukan Surat
+                                            Kelulusan:</label>
+                                        <label class="small">
+                                            @if ($noc->no_rujukan_surat_kelulusan != null)
+                                                {{ $noc->no_rujukan_surat_kelulusan }}
+                                            @else
+                                                <h5>Tiada data</h5>
+                                            @endif
+                                        </label>
                                     </div>
                                 </div>
                             </div>
