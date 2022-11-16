@@ -23,13 +23,14 @@
         @endif
         <div class="card">
             <div class="card-body">
-                <table class="table table-bordered mb-5">
+                <table class="table table-bordered mb-2">
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama Projek</th>
                             <th>Kod Projek</th>
                             <th>Kementerian</th>
+                            <th>Nama Projek</th>
+
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -46,10 +47,11 @@
                         @if ($projek->count() > 0)
                             @foreach ($projek as $data)
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $data->nama_projek }}</td>
+                                    <td>{{ $data->id }}</td>
                                     <td>{{ $data->kod_projek }}</td>
                                     <td>{{ $data->getKementerian->nama_jabatan }}</td>
+                                    <td>{{ $data->nama_projek }}</td>
+
                                     <td>
                                         <form action="{{ route('projek.destroy', $data->id) }}" method="POST">
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
@@ -67,7 +69,6 @@
                                 <td colspan="4">Tiada maklumat!</td>
                             </tr>
                         @endif
-
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-center">
