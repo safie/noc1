@@ -10,6 +10,7 @@ use App\Http\Controllers\PeringkatController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\NocController;
+use App\Http\Controllers\ProjekController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::resource('/setting/kementerian', KementerianController::class);
 Route::resource('/setting/peringkat', PeringkatController::class);
 Route::resource('/setting/kategori', KategoriController::class);
 Route::resource('/setting/status', StatusController::class);
+Route::resource('/setting/projek', ProjekController::class);
 
 Route::get('/noc/pdf/{id}', [\App\Http\Controllers\NocController::class, 'createPDF'])->name('noc.createPDF');
 Route::get('/noc/preview/{id}', [\App\Http\Controllers\NocController::class, 'previewDetail'])->name('noc.previewDetail');

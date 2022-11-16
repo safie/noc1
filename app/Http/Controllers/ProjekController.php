@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Projek;
 
 class ProjekController extends Controller
 {
@@ -13,7 +14,8 @@ class ProjekController extends Controller
      */
     public function index()
     {
-        //
+        $projek = Projek::paginate(10);
+        return view('page.projek.index', compact('projek'));
     }
 
     /**

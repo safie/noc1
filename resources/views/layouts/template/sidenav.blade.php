@@ -47,6 +47,7 @@
                         <a class="nav-link" href="{{ route('kategori.index') }}">Kategori</a>
                         <a class="nav-link" href="{{ route('peranan.index') }}">Peranan</a>
                         <a class="nav-link" href="{{ route('status.index') }}">Status NOC</a>
+                        <a class="nav-link" href="{{ route('projek.index') }}">Projek</a>
                     </nav>
                 </div>
             @endif

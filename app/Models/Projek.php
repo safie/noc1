@@ -21,4 +21,9 @@ class Projek extends Model
         'siling_dipinda_2022',
     ];
     public $timestamps      = true;
+
+    public function getKementerian()
+    {
+        return $this->belongsTo(Kementerian::class, 'id_kementerian', 'id');
+    }
 }
