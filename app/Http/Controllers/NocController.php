@@ -9,6 +9,7 @@ use App\Models\Bahagian;
 use App\Models\Kategori;
 use App\Models\Kementerian;
 use App\Models\NocLog;
+use App\Models\Projek;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -59,7 +60,7 @@ class NocController extends Controller
                 ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
                 ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
                 ->orderBy('t_noc.tarikh_submit', 'DESC')
-                ->get();
+                ->paginate(10);
         } else {
             $noc = DB::table('t_noc')
                 ->select(
@@ -81,13 +82,13 @@ class NocController extends Controller
                 ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
                 ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
                 ->orderBy('t_noc.tarikh_submit', 'DESC')
-                ->get();
+                ->paginate(10);
 
             // $noc = DB::table('t_noc')->where('bahagian', '=', Auth::user()->bahagian)->get();
 
         }
 
-        $countNocTindakan = $noc->count();
+        $countNocTindakan = NOC::all()->count();
 
         $data1['noc'] = $noc;
         $data2['countTindakan'] = $countNocTindakan;
@@ -104,16 +105,20 @@ class NocController extends Controller
         $kategori = Kategori::get(['id', 'nama_kat', 'kod']);
         $kementerian = Kementerian::get(['id', 'nama_jabatan', 'sgktn_jabatan']);
         $bahagian = Bahagian::get(['id', 'nama_bhgn', 'sgktn_bhgn']);
+        $senaraiProjek = Projek::paginate(5);
+
         $data1['bahagian'] = $bahagian;
         $data2['kementerian'] = $kementerian;
-        $data3['tajuk_page'] = 'Permohonan NOC baharu';
+        $data3['tajuk_page'] = 'Permohonan NOC';
         $data4['kategori'] = $kategori;
+        $data5['projek'] = $senaraiProjek;
         // dd($view_data);
         return view('page.noc.create')
             ->with($data1)
             ->with($data2)
             ->with($data3)
-            ->with($data4);
+            ->with($data4)
+            ->with($data5);
     }
 
     public function store(Request $request)
@@ -270,7 +275,7 @@ class NocController extends Controller
                 ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
                 ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
                 ->orderBy('t_noc.tarikh_submit', 'DESC')
-                ->get();
+                ->paginate(10);
         } else if (Auth::user()->peranan == 3) {
             $noc = DB::table('t_noc')
                 ->select(
@@ -291,7 +296,7 @@ class NocController extends Controller
                 ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
                 ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
                 ->orderBy('t_noc.tarikh_submit', 'DESC')
-                ->get();
+                ->paginate(10);
         } else if (Auth::user()->peranan == 4) {
             $noc = DB::table('t_noc')
                 ->select(
@@ -312,7 +317,7 @@ class NocController extends Controller
                 ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
                 ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
                 ->orderBy('t_noc.tarikh_submit', 'DESC')
-                ->get();
+                ->paginate(10);
         } else {
             $noc = DB::table('t_noc')
                 ->select(
@@ -332,11 +337,11 @@ class NocController extends Controller
                 ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
                 ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
                 ->orderBy('t_noc.tarikh_submit', 'DESC')
-                ->get();
+                ->paginate(10);
         }
 
         // $noc = DB::table('t_noc')->where('bahagian', '=', Auth::user()->bahagian)->get();
-        $countNocTindakan = $noc->count();
+        $countNocTindakan = NOC::all()->count();
         $data1['noc'] = $noc;
         $data2['countNocTindakan'] = $countNocTindakan;
 
@@ -1268,5 +1273,27 @@ class NocController extends Controller
         // Mail::to('safie.misri@epu.gov.my')->send(new EmailNOC($mailData));
 
         dd("Email berjaya!");
+    }
+
+    public function cariProjek(Request $request)
+    {
+        $tajuk_page = 'Permohonan NOC';
+        $kategori = Kategori::get(['id', 'nama_kat', 'kod']);
+
+        $request->validate([
+            'input' => 'required',
+            'pilih' => 'required',
+        ]);
+
+        $kod = $request->get('pilih');
+        $input = $request->get('input');
+
+        if ($kod == 'kod') {
+            $projek = Projek::where('kod_projek', 'LIKE', '%' . $input . '%')->paginate(5);
+        } else {
+            $projek = Projek::where('nama_projek', 'LIKE', '%' . $input . '%')->paginate(5);
+        }
+
+        return view('page.noc.create', compact('projek', 'tajuk_page', 'kategori'));
     }
 }

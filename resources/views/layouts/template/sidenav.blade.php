@@ -75,7 +75,7 @@
                                 @if (count_tindakan() == 0) hidden @endif>{{ count_tindakan() }}</span></a>
                     </nav>
                     <nav class="sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route('noc.create') }}">Permohonan baru</a>
+                        <a class="nav-link" href="{{ route('noc.create') }}">Permohonan NOC</a>
                     </nav>
                 </div>
                 <!-- Sidenav Link (Senarai NOC)-->

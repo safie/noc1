@@ -23,13 +23,13 @@
         @endif
         <div class="card">
             <div class="card-body">
-                <table class="table table-bordered mb-2">
+                <table class="table table-bordered mb-2 small">
                     <thead>
                         <tr class="text-center align-middle">
                             <th>No.</th>
-                            <th>Kod Projek<br>Kementerian</th>
+                            <th>Kod Projek / Kementerian</th>
                             <th style="width:50%">Nama Projek</th>
-                            <th style="width:20%">Kos/Siling</th>
+                            <th style="width:20%">Kos / Siling</th>
                             <th>Tindakan</th>
                         </tr>
                     </thead>
@@ -46,7 +46,7 @@
                         @if ($projek->count() > 0)
                             @foreach ($projek as $index => $data)
                                 <tr>
-                                    <td>{{ $index + $projek->firstItem() }}</td>
+                                    <td>{{ $index + $projek->firstItem() }}.</td>
                                     <td>{{ $data->kod_projek }} <br><b>{{ $data->getKementerian->nama_jabatan }}</b></td>
                                     <td>
                                         <p>{{ $data->nama_projek }}</p>
@@ -96,8 +96,8 @@
 @endsection
 
 @section('js')
-    {{-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> --}}
-    {{-- <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <script src="{{ asset('sb-admin-pro/dist/js/datatables/datatables-simple-demo.js') }}"></script> --}}
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="{{ asset('sb-admin-pro/dist/js/datatables/datatables-simple-demo.js') }}"></script>
 
 @endsection
