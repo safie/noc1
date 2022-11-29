@@ -23,15 +23,14 @@
         @endif
         <div class="card">
             <div class="card-body">
-                <table class="table table-bordered mb-2">
+                <table class="table table-bordered mb-2 small">
                     <thead>
                         <tr>
                             <th>No.</th>
                             <th>Kod Projek</th>
                             <th>Kementerian</th>
                             <th>Nama Projek</th>
-
-                            <th>Actions</th>
+                            <th>Tindakan</th>
                         </tr>
                     </thead>
                     {{-- <tfoot>
