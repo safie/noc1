@@ -176,15 +176,22 @@
 
                                 <div class="row mb-3" id="kosProjek" style="display:none">
                                     <div class="d-flex justify-content-between">
-                                        <div class="flex-fill mx-1">
+                                        <div class="flex-fill mx-1" class="input-group mb-3">
                                             <label class="small mb-1" for="inputTajuk">Kos Sebelum *</label>
-                                            <input class="form-control" id="inputTajuk" name="inputTajuk" type="number"
-                                                placeholder="Kos projek sebelum" autocomplete="off" />
+                                            <div class="input-group">
+                                                <span class="input-group-text">RM</span>
+                                                <input class="form-control" id="inputTajuk" name="inputTajuk"
+                                                    type="number" placeholder="Kos projek sebelum" autocomplete="off" />
+                                            </div>
                                         </div>
                                         <div class="flex-fill mx-1">
                                             <label class="small mb-1" for="inputTajuk">Perubahan Kos *</label>
-                                            <input class="form-control" id="inputKos" name="inputKos" type="number"
-                                                placeholder="Kos projek" autocomplete="off" />
+                                            <div class="input-group">
+                                                <span class="input-group-text">RM</span>
+                                                <input class="form-control" id="inputKos" name="inputKos"
+                                                    type="number" step="1000" placeholder="Kos projek"
+                                                    autocomplete="off" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -225,6 +232,7 @@
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/autoNumeric/autoNumeric.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#tarikhMohonNOC').datepicker({
