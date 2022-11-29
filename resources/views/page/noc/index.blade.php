@@ -44,7 +44,7 @@
         @endif
         <div class="card">
             <div class="card-body">
-                <table id="datatablesSimple">
+                <table class="table table-bordered mb-2 small">
                     <thead>
                         <tr>
                             <th class="text-center">No.</th>
@@ -55,7 +55,7 @@
                             <th class="text-center">Tindakan</th>
                         </tr>
                     </thead>
-                    <tfoot>
+                    {{-- <tfoot>
                         <tr>
                             <th class="text-center">No.</th>
                             <th class="text-center">Tajuk Permohonan</th>
@@ -64,7 +64,7 @@
                             <th class="text-center">Status</th>
                             <th class="text-center">Tindakan</th>
                         </tr>
-                    </tfoot>
+                    </tfoot> --}}
                     <tbody>
                         @if ($noc->count() > 0)
                             @foreach ($noc as $data)
@@ -72,7 +72,8 @@
                                     <td class="text-center align-middle">{{ $loop->index + 1 }}</td>
                                     <td style="width:40em">
                                         <div class="text-uppercase">
-                                            <span class="badge bg-primary"><small>{{ $data->kod }}</small></span> {{ $data->nama_kat }}<br>
+                                            <span class="badge bg-primary"><small>{{ $data->kod }}</small></span>
+                                            {{ $data->nama_kat }}<br>
                                             <h5>{{ $data->tajuk_permohonan }}</h5>
                                         </div>
 
@@ -92,8 +93,9 @@
                                     <td class="text-center align-middle">
                                         <div class="d-flex justify-content-center ">
                                             @if (Auth::user()->peranan == 1 or Auth::user()->peranan == 3)
-                                                <a data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
-                                                    href="{{ route('noc.edit', $data->id) }}" >
+                                                <a data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                                                    class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
+                                                    href="{{ route('noc.edit', $data->id) }}">
                                                     <i data-feather="edit"></i>
                                                 </a>
 
@@ -134,7 +136,7 @@
 
                     </tbody>
                 </table>
-                {{-- {!! $peranan->links() !!} --}}
+                {!! $noc->links() !!}
             </div>
         </div>
         {{-- <div>

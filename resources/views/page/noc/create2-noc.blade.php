@@ -81,50 +81,42 @@
                                     </div>
                                 </form>
 
-                                <div class="row justify-content-center">
-                                    <div class="card card-body mb-3">
-                                        <div class="form-check">
-                                            <table class="table">
-                                                <thead>
+                                <div class="row justify-content-center small">
+                                    <table class="table table-bordered mb-2 rounded">
+                                        <thead>
+                                            <tr class="text-center align-middle">
+                                                <th>No.</th>
+                                                <th>Kod Projek / Kementerian</th>
+                                                <th style="width:50%">Nama Projek</th>
+                                                <th>Tindakan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if ($projek->count() > 0)
+                                                @foreach ($projek as $index => $data)
                                                     <tr>
-                                                        <th scope="col">#</th>
-                                                        <th scope="col">Kod Projek</th>
-                                                        <th scope="col">Nama Projek</th>
+                                                        <td>{{ $index + $projek->firstItem() }}.</td>
+                                                        <td>{{ $data->kod_projek }}
+                                                            <br><b>{{ $data->getKementerian->nama_jabatan }}</b>
+                                                        </td>
+                                                        <td>
+                                                            <p>{{ $data->nama_projek }}</p>
+                                                        </td>
+
+                                                        <td class="text-center">
+                                                            <button class="btn btn-primary">pilih</button>
+                                                        </td>
                                                     </tr>
-                                                <tbody>
-                                                    @if ($projek->count() > 0)
-                                                        @foreach ($projek as $index => $data)
-                                                            <tr>
-
-                                                                <td class="">
-                                                                    <input class="form-check-input" type="radio"
-                                                                        name="checkProjek" id="checkProjek"
-                                                                        value="{{ $data->kod_projek }}">
-                                                                </td>
-                                                                <td class="form-check-label">
-
-                                                                    {{ $data->kod_projek }}
-
-                                                                </td>
-                                                                <td class="form-check-label">
-
-                                                                    {{ $data->nama_projek }}
-
-                                                                </td>
-
-                                                            </tr>
-                                                        @endforeach
-                                                    @else
-                                                        <tr>
-                                                            <td colspan="4">Tiada maklumat!</td>
-                                                        </tr>
-                                                    @endif
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="d-flex justify-content-center">
-                                            {!! $projek->links() !!}
-                                        </div>
+                                                @endforeach
+                                            @else
+                                                <tr>
+                                                    <td colspan="4">Tiada maklumat!</td>
+                                                </tr>
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                    <div class="d-flex justify-content-center">
+                                        {!! $projek->links() !!}
                                     </div>
                                 </div>
                                 <hr class="my-4" />

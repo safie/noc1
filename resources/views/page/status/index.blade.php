@@ -25,7 +25,7 @@
             <div class="card-body">
                 <table id="datatablesSimple">
                     <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>No.</th>
                             <th>ID Status</th>
                             <th>Nama Status</th>
@@ -33,7 +33,7 @@
                         </tr>
                     </thead>
                     <tfoot>
-                        <tr>
+                        <tr class="text-center">
                             <th>No.</th>
                             <th>ID Status</th>
                             <th>Nama Status</th>
@@ -46,12 +46,11 @@
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>{{ $data->id_status }}</td>
-                                    <td>{{ $data->nama_status }}</td>
-                                    <td>
+                                    <td>{!! $data->nama_status !!}</td>
+                                    <td class="text-center">
                                         <form action="{{ route('status.destroy', $data->id) }}" method="POST">
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                                href="{{ route('status.edit', $data->id) }}"><i
-                                                    data-feather="edit"></i></a>
+                                                href="{{ route('status.edit', $data->id) }}"><i data-feather="edit"></i></a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"

@@ -80,6 +80,18 @@
                 @endif
             </td>
         </tr>
+        <tr>
+            <th>Link</th>
+            <td>
+                https://www.google.com/
+            </td>
+        </tr>
+        <tr>
+            <th>Ulasan</th>
+            <td>
+                Dokumen lengkap tapi perlu dirujuk semula.
+            </td>
+        </tr>
 
     </table>
     <p>Sekian, terima kasih.</p>

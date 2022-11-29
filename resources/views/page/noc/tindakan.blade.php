@@ -24,9 +24,9 @@
         @endif
         <div class="card">
             <div class="card-body">
-                <table id="datatablesSimple">
+                <table class="table table-bordered mb-2 small">
                     <thead>
-                        <tr >
+                        <tr>
                             <th class="text-center">No.</th>
                             <th class="text-center">Tajuk Permohonan</th>
                             <th class="text-center">Kategori</th>
@@ -36,7 +36,7 @@
                             <th class="text-center">Tindakan</th>
                         </tr>
                     </thead>
-                    <tfoot>
+                    {{-- <tfoot>
                         <tr>
                             <th class="text-center">No.</th>
                             <th class="text-center">Tajuk Permohonan</th>
@@ -45,7 +45,7 @@
                             <th class="text-center">Status</th>
                             <th class="text-center">Tindakan</th>
                         </tr>
-                    </tfoot>
+                    </tfoot> --}}
                     <tbody>
                         @if ($noc->count() > 0)
                             @foreach ($noc as $data)
@@ -58,20 +58,27 @@
                                         <small class="text-muted"> Tarikh submit:
                                             {{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</small>
                                     </td>
-                                    <td class="text-center align-middle" style="width:10em"><h5><span class="badge bg-primary"><strong>{{ $data->kod }}</strong></span></h5> {{ $data->nama_kat }}</td>
+                                    <td class="text-center align-middle" style="width:10em">
+                                        <h5><span class="badge bg-primary"><strong>{{ $data->kod }}</strong></span></h5>
+                                        {{ $data->nama_kat }}
+                                    </td>
                                     <td class="align-middle">{{ $data->nama_jabatan }}</td>
                                     <td class="text-center align-middle">{{ $data->sgktn_bhgn }}</td>
                                     <td class="text-center align-middle">
-                                        <h4><span class="badge bg-secondary opacity-75 text-wrap">{!! $data->nama_status1 !!}</span></h4>
-                                        <h4 @if ($data->tarikh_hantar_surat_lulus != null) hidden @endif><span class="badge bg-secondary opacity-75 text-wrap">{!! $data->nama_status2 !!}</span></h4>
+                                        <h4><span
+                                                class="badge bg-secondary opacity-75 text-wrap">{!! $data->nama_status1 !!}</span>
+                                        </h4>
+                                        <h4 @if ($data->tarikh_hantar_surat_lulus != null) hidden @endif><span
+                                                class="badge bg-secondary opacity-75 text-wrap">{!! $data->nama_status2 !!}</span>
+                                        </h4>
                                     </td>
                                     <td class="text-center align-middle">
                                         <div class="d-flex justify-content-center">
-                                                <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
-                                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
-                                                    href="{{ route('noc.edit', $data->id) }}">
-                                                     <i data-feather="edit"></i></a>
-                                                {{-- <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
+                                            <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
+                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
+                                                href="{{ route('noc.edit', $data->id) }}">
+                                                <i data-feather="edit"></i></a>
+                                            {{-- <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit"
@@ -79,8 +86,9 @@
                                                             data-feather="trash-2"></i></button>
                                                 </form> --}}
 
-                                                <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
-                                                    href="{{ route('noc.detail', $data->id) }}"><i data-feather="monitor">Info</i></a>
+                                            <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
+                                                href="{{ route('noc.detail', $data->id) }}"><i
+                                                    data-feather="monitor">Info</i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -93,7 +101,7 @@
 
                     </tbody>
                 </table>
-                {{-- {!! $peranan->links() !!} --}}
+                {!! $noc->links() !!}
             </div>
         </div>
     </div>

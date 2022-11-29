@@ -23,13 +23,13 @@
         @endif
         <div class="card">
             <div class="card-body">
-                <table class="table table-bordered mb-2 small">
+                <table class="table table-bordered mb-2 small small">
                     <thead>
-                        <tr>
+                        <tr class="text-center align-middle">
                             <th>No.</th>
-                            <th>Kod Projek</th>
-                            <th>Kementerian</th>
-                            <th>Nama Projek</th>
+                            <th>Kod Projek / Kementerian</th>
+                            <th style="width:50%">Nama Projek</th>
+                            <th style="width:20%">Kos / Siling</th>
                             <th>Tindakan</th>
                         </tr>
                     </thead>
@@ -44,17 +44,32 @@
                     </tfoot> --}}
                     <tbody>
                         @if ($projek->count() > 0)
-                            @foreach ($projek as $data)
+                            @foreach ($projek as $index => $data)
                                 <tr>
-                                    <td>{{ $data->id }}</td>
-                                    <td>{{ $data->kod_projek }}</td>
-                                    <td>{{ $data->getKementerian->nama_jabatan }}</td>
-                                    <td>{{ $data->nama_projek }}</td>
-
+                                    <td>{{ $index + $projek->firstItem() }}.</td>
+                                    <td>{{ $data->kod_projek }} <br><b>{{ $data->getKementerian->nama_jabatan }}</b></td>
                                     <td>
+                                        <p>{{ $data->nama_projek }}</p>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            <li>Kos keseluruhan:<br> <b>RM
+                                                    {{ number_format($data->kos_keseluruhan, 2) }}</b></li>
+                                            <li>Kos DE Asal:<br> <b>RM {{ number_format($data->kos_de_asal, 2) }}</b></li>
+                                            <li>Kos DE Dipinda:<br> <b>RM {{ number_format($data->kos_de_dipinda, 2) }}</b>
+                                            </li>
+                                            <li>Siling Asal 2022:<br> <b>RM
+                                                    {{ number_format($data->siling_asal_2022, 2) }}</b></;>
+                                            <li>Siling Dipinda 2022:<br> <b>RM
+                                                    {{ number_format($data->siling_dipinda_2022, 2) }}</b>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="text-center">
                                         <form action="{{ route('projek.destroy', $data->id) }}" method="POST">
                                             <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                                href="{{ route('projek.edit', $data->id) }}"><i data-feather="edit"></i></a>
+                                                href="{{ route('projek.edit', $data->id) }}"><i
+                                                    data-feather="edit"></i></a>
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-datatable btn-icon btn-transparent-dark"
@@ -81,7 +96,8 @@
 @endsection
 
 @section('js')
-    {{-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> --}}
-    {{-- <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-    <script src="{{ asset('sb-admin-pro/dist/js/datatables/datatables-simple-demo.js') }}"></script> --}}
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="{{ asset('sb-admin-pro/dist/js/datatables/datatables-simple-demo.js') }}"></script>
+
 @endsection
