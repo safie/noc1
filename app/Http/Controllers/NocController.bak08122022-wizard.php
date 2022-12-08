@@ -103,19 +103,19 @@ class NocController extends Controller
     public function create()
     {
         $kategori = Kategori::get(['id', 'nama_kat', 'kod']);
-        $kementerian = Kementerian::get(['id', 'nama_jabatan', 'sgktn_jabatan']);
-        $bahagian = Bahagian::get(['id', 'nama_bhgn', 'sgktn_bhgn']);
-        $senaraiProjek = Projek::paginate(10);
+        // $kementerian = Kementerian::get(['id', 'nama_jabatan', 'sgktn_jabatan']);
+        // $bahagian = Bahagian::get(['id', 'nama_bhgn', 'sgktn_bhgn']);
+        $senaraiProjek = Projek::paginate(5);
 
-        $data1['bahagian'] = $bahagian;
-        $data2['kementerian'] = $kementerian;
+        // $data1['bahagian'] = $bahagian;
+        // $data2['kementerian'] = $kementerian;
         $data3['tajuk_page'] = 'Permohonan NOC';
         $data4['kategori'] = $kategori;
         $data5['projek'] = $senaraiProjek;
         // dd($view_data);
-        return view('page.noc.createPilihProjek')
-            ->with($data1)
-            ->with($data2)
+        return view('page.noc.create')
+            // ->with($data1)
+            // ->with($data2)
             ->with($data3)
             ->with($data4)
             ->with($data5);
@@ -165,15 +165,15 @@ class NocController extends Controller
 
         // dd($flow);
         Noc::create([
-            'tajuk_permohonan'      => $request_data['inputTajuk'],
-            'kod_myprojek'    => $request_data['inputKodMyprojek'],
+            // 'tajuk_permohonan'      => $request_data['inputTajuk'],
+            'kod_myprojek'    => $request_data['checkProjek'],
             'no_rujukan'    => $request_data['inputRujukan'],
             'tarikh_permohonan'  => $tarikhMohonNoc,
-            'tarikh_surat_kementerian'  => $tarikhSuratMohon,
-            'bahagian'    => $request_data['inputBahagian'],
+            // 'tarikh_surat_kementerian'  => $tarikhSuratMohon,
+            // 'bahagian'    => $request_data['inputBahagian'],
             'bahagian'    => Auth::user()->bahagian,
             'klasifikasi'    => $request_data['inputKlasifikasi'],
-            'kementerian'    => $request_data['inputJabatan'],
+            // 'kementerian'    => $request_data['inputJabatan'],
             'tarikh_submit'    => Carbon::now()->format('Y-m-d'),
             'kos_projek'    => $request_data['inputKos'],
             'status_noc'    => "noc_1",
@@ -1289,17 +1289,11 @@ class NocController extends Controller
         $input = $request->input('input');
 
         if ($kod == 'kod') {
-            $projek = Projek::where('kod_projek', 'LIKE', '%' . $input . '%')->paginate(10);
+            $projek = Projek::where('kod_projek', 'LIKE', '%' . $input . '%')->paginate(5);
         } else {
-            $projek = Projek::where('nama_projek', 'LIKE', '%' . $input . '%')->paginate(10);
+            $projek = Projek::where('nama_projek', 'LIKE', '%' . $input . '%')->paginate(5);
         }
 
-        return view('page.noc.createPilihProjek', compact('projek', 'tajuk_page', 'kategori'));
-    }
-
-    public function mohonNocProjek($id) {
-        $projek = Projek::where('id',$id)->get();
-
-        return view('page.noc.createMohonNoc', compact('projek'));
+        return view('page.noc.create', compact('projek', 'tajuk_page', 'kategori'));
     }
 }

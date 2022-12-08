@@ -2,8 +2,8 @@
 
 @section('css')
     {{-- <link href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css" rel="stylesheet" /> --}}
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
+        rel="stylesheet" />
 @endsection
 
 @section('icon', 'plus-square')
@@ -19,7 +19,6 @@
     @include('layouts.template.header_compact')
     <div class="container-fluid px-4 mt-4">
 
-
         <div class="row">
             <div class="card px-0">
                 <div class="card-header border-bottom">
@@ -27,7 +26,7 @@
                     <div class="nav nav-pills nav-justified flex-column flex-xl-row nav-wizard" id="cardTab"
                         role="tablist">
                         <!-- Wizard navigation item 1-->
-                        <a class="nav-item nav-link active" id="wizard1-tab" href="#wizard1" data-bs-toggle="tab"
+                        <a class="nav-item nav-link active" id="wizard1-tab" data-bs-toggle="tab" href="#wizard1"
                             role="tab" aria-controls="wizard1" aria-selected="true">
                             <div class="wizard-step-icon">1</div>
                             <div class="wizard-step-text">
@@ -36,7 +35,7 @@
                             </div>
                         </a>
                         <!-- Wizard navigation item 4-->
-                        <a class="nav-item nav-link" id="wizard2-tab" href="#wizard2" data-bs-toggle="tab" role="tab"
+                        <a class="nav-item nav-link" id="wizard2-tab" data-bs-toggle="tab" href="#wizard2" role="tab"
                             aria-controls="wizard2" aria-selected="true">
                             <div class="wizard-step-icon">2</div>
                             <div class="wizard-step-text">
@@ -63,17 +62,17 @@
                                     </div>
                                 @endif
                                 <form class="d-flex justify-content-center" action="{{ route('noc.cariProjek') }}"
-                                    method="POST">
+                                    method="GET">
                                     @csrf
                                     <div class="input-group mb-3">
-                                        <select class="form-select w-25 rounded-start" aria-label="Default select example"
-                                            name="pilih" id="pilih">
-                                            <option selected value="kod">Kod Projek</option>
+                                        <select class="form-select w-25 rounded-start" id="pilih" name="pilih"
+                                            aria-label="Default select example">
+                                            <option value="kod" selected>Kod Projek</option>
                                             <option value="nama">Nama Projek</option>
                                         </select>
                                         <div class="input-group w-75 rounded-end ">
-                                            <input class="form-control rounded-0" type="text" name="input"
-                                                id="input" placeholder="Carian Projek..." aria-label="Search"
+                                            <input class="form-control rounded-0" id="input" name="input"
+                                                type="text" aria-label="Search" placeholder="Carian Projek..."
                                                 autofocus />
                                             <button class="input-group-text" type="submit"><i
                                                     data-feather="search"></i></button>
@@ -81,49 +80,57 @@
                                     </div>
                                 </form>
 
-                                <div class="row justify-content-center small">
-                                    <table class="table table-bordered mb-2 rounded">
-                                        <thead>
-                                            <tr class="text-center align-middle">
-                                                <th>No.</th>
-                                                <th>Kod Projek / Kementerian</th>
-                                                <th style="width:50%">Nama Projek</th>
-                                                <th>Tindakan</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @if ($projek->count() > 0)
-                                                @foreach ($projek as $index => $data)
+                                <div class="row justify-content-center">
+                                    <div class="card card-body mb-3">
+                                        <div class="form-check">
+                                            <table class="table">
+                                                <thead>
                                                     <tr>
-                                                        <td>{{ $index + $projek->firstItem() }}.</td>
-                                                        <td>{{ $data->kod_projek }}
-                                                            <br><b>{{ $data->getKementerian->nama_jabatan }}</b>
-                                                        </td>
-                                                        <td>
-                                                            <p>{{ $data->nama_projek }}</p>
-                                                        </td>
-
-                                                        <td class="text-center">
-                                                            <button class="btn btn-primary">pilih</button>
-                                                        </td>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Kod Projek</th>
+                                                        <th scope="col">Nama Projek</th>
                                                     </tr>
-                                                @endforeach
-                                            @else
-                                                <tr>
-                                                    <td colspan="4">Tiada maklumat!</td>
-                                                </tr>
-                                            @endif
-                                        </tbody>
-                                    </table>
-                                    <div class="d-flex justify-content-center">
-                                        {!! $projek->links() !!}
+                                                <tbody>
+                                                    @if ($projek->count() > 0)
+                                                        @foreach ($projek as $index => $data)
+                                                            <tr>
+
+                                                                <td class="form-check-label">
+                                                                    <input class="form-check-input" id="checkProjek"
+                                                                        name="checkProjek" type="radio"
+                                                                        value="{{ $data->kod_projek }}">
+                                                                </td>
+                                                                <td class="form-check-label">
+
+                                                                    {{ $data->kod_projek }}
+
+                                                                </td>
+                                                                <td class="form-check-label">
+
+                                                                    {{ $data->nama_projek }}
+
+                                                                </td>
+
+                                                            </tr>
+                                                        @endforeach
+                                                    @else
+                                                        <tr>
+                                                            <td colspan="4">Tiada maklumat!</td>
+                                                        </tr>
+                                                    @endif
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            {!! $projek->links() !!}
+                                        </div>
                                     </div>
                                 </div>
-                                <hr class="my-4" />
-                                <div class="d-flex justify-content-end">
-                                    {{-- <button class="btn btn-light" type="button">Previous</button> --}}
-                                    {{-- <button class="btn btn-primary" type="button">Next</button> --}}
-                                </div>
+                                {{-- <hr class="my-4" />
+                                    <div class="d-flex justify-content-end">
+                                        <button class="btn btn-light" type="button">Previous</button>
+                                        <button class="btn btn-primary" type="button">Next</button>
+                                    </div> --}}
                             </div>
                         </div>
                         <!-- Wizard tab pane item 2-->
@@ -132,15 +139,15 @@
                                 <h3 class="text-primary">Langkah 2</h3>
                                 <p class="mb-4">Isi maklumat NOC yang hendak dipohon</p>
                             </div>
+
                             <form method="POST" action="{{ route('noc.store') }}">
                                 @csrf
-
                                 @if ($errors->any())
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                                 <strong>Maaf, ada ralat data!</strong>
-                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                <button class="btn-close" data-bs-dismiss="alert" type="button"
                                                     aria-label="Close"></button>
                                                 <ul>
                                                     @foreach ($errors->all() as $error)
@@ -154,8 +161,8 @@
 
                                 <div class="mb-3">
                                     <label class="small mb-1">Klasifikasi *</label>
-                                    <select class="form-select" aria-label="Default select example" id="inputKlasifikasi"
-                                        name=" inputKlasifikasi" onchange="pilihKlasifikasi(this.value)">
+                                    <select class="form-select" id="inputKlasifikasi" name=" inputKlasifikasi"
+                                        aria-label="Default select example" onchange="pilihKlasifikasi(this.value)">
                                         <option selected disabled>Sila pilih:</option>
                                         @foreach ($kategori as $data)
                                             <option value="{{ $data->id }}">{{ $data->kod }} -
@@ -217,6 +224,7 @@
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/autoNumeric/autoNumeric.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#tarikhMohonNOC').datepicker({

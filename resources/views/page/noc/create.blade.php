@@ -19,177 +19,85 @@
     @include('layouts.template.header_compact')
     <div class="container-fluid px-4 mt-4">
 
-        <div class="row">
-            <div class="card px-0">
-                <div class="card-header border-bottom">
-                    <!-- Wizard navigation-->
-                    <div class="nav nav-pills nav-justified flex-column flex-xl-row nav-wizard" id="cardTab"
-                        role="tablist">
-                        <!-- Wizard navigation item 1-->
-                        <a class="nav-item nav-link active" id="wizard1-tab" data-bs-toggle="tab" href="#wizard1"
-                            role="tab" aria-controls="wizard1" aria-selected="true">
-                            <div class="wizard-step-icon">1</div>
-                            <div class="wizard-step-text">
-                                <div class="wizard-step-text-name">Maklumat Projek</div>
-                                <div class="wizard-step-text-details">Sila pilih nama projek atau kod projek</div>
-                            </div>
-                        </a>
-                        <!-- Wizard navigation item 4-->
-                        <a class="nav-item nav-link" id="wizard2-tab" data-bs-toggle="tab" href="#wizard2" role="tab"
-                            aria-controls="wizard2" aria-selected="true">
-                            <div class="wizard-step-icon">2</div>
-                            <div class="wizard-step-text">
-                                <div class="wizard-step-text-name">Maklumat NOC</div>
-                                <div class="wizard-step-text-details">Isi maklumat berkaitan NOC</div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="tab-content" id="cardTabContent">
-                        <!-- Wizard tab pane item 1-->
-                        <div class="tab-pane fade show active" id="wizard1" role="tabpanel" aria-labelledby="wizard1-tab">
-                            <div class="row justify-content-center small">
-                                <h3 class="text-primary">Langkah 1</h3>
-                                <p class="card-title mb-4">Cari projek menggunakan kod projek atau nama projek</p>
-                                @if ($errors->any())
-                                    <div class="alert alert-warning" role="alert">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                                <form class="d-flex justify-content-center" action="{{ route('noc.cariProjek') }}"
-                                    method="GET">
-                                    @csrf
-                                    <div class="input-group mb-3">
-                                        <select class="form-select w-25 rounded-start" id="pilih" name="pilih"
-                                            aria-label="Default select example">
-                                            <option value="kod" selected>Kod Projek</option>
-                                            <option value="nama">Nama Projek</option>
-                                        </select>
-                                        <div class="input-group w-75 rounded-end ">
-                                            <input class="form-control rounded-0" id="input" name="input"
-                                                type="text" aria-label="Search" placeholder="Carian Projek..."
-                                                autofocus />
-                                            <button class="input-group-text" type="submit"><i
-                                                    data-feather="search"></i></button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <form method="POST" action="{{ route('noc.store') }}">
-                                    <div class="row justify-content-center">
-                                        <div class="card card-body mb-3">
-                                            <div class="form-check">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">#</th>
-                                                            <th scope="col">Kod Projek</th>
-                                                            <th scope="col">Nama Projek</th>
-                                                        </tr>
-                                                    <tbody>
-                                                        @if ($projek->count() > 0)
-                                                            @foreach ($projek as $index => $data)
-                                                                <tr>
-
-                                                                    <td class="form-check-label">
-                                                                        <input class="form-check-input" id="checkProjek"
-                                                                            name="checkProjek" type="radio"
-                                                                            value="{{ $data->kod_projek }}">
-                                                                    </td>
-                                                                    <td class="form-check-label">
-
-                                                                        {{ $data->kod_projek }}
-
-                                                                    </td>
-                                                                    <td class="form-check-label">
-
-                                                                        {{ $data->nama_projek }}
-
-                                                                    </td>
-
-                                                                </tr>
-                                                            @endforeach
-                                                        @else
-                                                            <tr>
-                                                                <td colspan="4">Tiada maklumat!</td>
-                                                            </tr>
-                                                        @endif
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="d-flex justify-content-center">
-                                                {!! $projek->links() !!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{-- <hr class="my-4" />
-                                    <div class="d-flex justify-content-end">
-                                        <button class="btn btn-light" type="button">Previous</button>
-                                        <button class="btn btn-primary" type="button">Next</button>
-                                    </div> --}}
+        <div class="row gx-4">
+            <form method="POST" action="{{ route('noc.store') }}">
+                @csrf
+                @if ($errors->any())
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Maaf, ada ralat data!</strong>
+                                <button class="btn-close" data-bs-dismiss="alert" type="button"
+                                    aria-label="Close"></button>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                         </div>
-                        <!-- Wizard tab pane item 2-->
-                        <div class="tab-pane fade" id="wizard2" role="tabpanel" aria-labelledby="wizard2-tab">
-                            <div class="row justify-content-center small">
-                                <h3 class="text-primary">Langkah 2</h3>
-                                <p class="mb-4">Isi maklumat NOC yang hendak dipohon</p>
+                    </div>
+                @endif
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card card-header-actions">
+                            <div class="card-header">
+                                Kemasukan data
+                                <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
+                                    title="input yang perlu diisi"></i>
                             </div>
+                            <div class="card-body">
 
-                            @csrf
-
-                            @if ($errors->any())
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            <strong>Maaf, ada ralat data!</strong>
-                                            <button class="btn-close" data-bs-dismiss="alert" type="button"
-                                                aria-label="Close"></button>
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    </div>
+                                <!-- Form Group (first name)-->
+                                <p><small> Tanda (*) adalah wajib di isi.</small></p>
+                                <div class="mb-3">
+                                    <label class="small mb-1">Kementerian/Jabatan *</label>
+                                    <select class="form-select" id="inputJabatan" name="inputJabatan"
+                                        aria-label="Default select example">
+                                        <option selected disabled>Sila pilih:</option>
+                                        @foreach ($kementerian as $data)
+                                            <option value="{{ $data->id }}">{{ $data->nama_jabatan }}
+                                                ({{ $data->sgktn_jabatan }})
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
-                            @endif
-
-                            <div class="mb-3">
-                                <label class="small mb-1">Klasifikasi *</label>
-                                <select class="form-select" id="inputKlasifikasi" name=" inputKlasifikasi"
-                                    aria-label="Default select example" onchange="pilihKlasifikasi(this.value)">
-                                    <option selected disabled>Sila pilih:</option>
-                                    @foreach ($kategori as $data)
-                                        <option value="{{ $data->id }}">{{ $data->kod }} -
-                                            {{ $data->nama_kat }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-                            </div>
-
-                            <div class="row mb-3" id="kosProjek" style="display:none">
-                                <div class="d-flex justify-content-between">
-                                    <div class="flex-fill mx-1">
+                                <div class="mb-3">
+                                    <label class="small mb-1">Klasifikasi *</label>
+                                    <select class="form-select" id="inputKlasifikasi" name=" inputKlasifikasi"
+                                        aria-label="Default select example" onchange="pilihKlasifikasi(this.value)">
+                                        <option selected disabled>Sila pilih:</option>
+                                        @foreach ($kategori as $data)
+                                            <option value="{{ $data->id }}">{{ $data->kod }} -
+                                                {{ $data->nama_kat }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+                                </div>
+                                <div class="row" id="kosProjek" style="display:none">
+                                    {{-- <div class="col-md-6 mb-3">
                                         <label class="small mb-1" for="inputTajuk">Kos Sebelum *</label>
                                         <input class="form-control" id="inputTajuk" name="inputTajuk" type="number"
                                             placeholder="Kos projek sebelum" autocomplete="off" />
-                                    </div>
-                                    <div class="flex-fill mx-1">
+                                    </div> --}}
+                                    <div class="col-md-6 mb-3">
                                         <label class="small mb-1" for="inputTajuk">Perubahan Kos *</label>
                                         <input class="form-control" id="inputKos" name="inputKos" type="number"
                                             placeholder="Kos projek" autocomplete="off" />
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="d-flex justify-content-between">
-                                <div class="flex-fill mx-1">
+                                <div class="mb-3">
+                                    <label class="small mb-1" for="inputTajuk">Tajuk Projek *</label>
+                                    <input class="form-control" id="inputTajuk" name="inputTajuk" type="text"
+                                        placeholder="Masukkan tajuk permohonan..." autocomplete="off" />
+                                </div>
+                                <div class="mb-3">
+                                    <label class="small mb-1" for="inputTajuk">Kod MyProjek *</label>
+                                    <input class="form-control" id="inputKodMyprojek" name="inputKodMyprojek" type="text"
+                                        placeholder="Masukkan kod MyProjek.." autocomplete="off" />
+                                </div>
+                                <div class="mb-3">
                                     <label class="small mb-1" for="inputFirstName">Tarikh Permohonan *</label>
                                     <div class="input-group input-group-joined">
                                         <span class="input-group-text">
@@ -199,24 +107,63 @@
                                             placeholder="Pilih tarikh..." autocomplete="off" />
                                     </div>
                                 </div>
-                                <div class="flex-fill mx-1">
+                                <div class="mb-3">
                                     <label class="small mb-1" for="inputTajuk">No. Rujukan Surat</label>
                                     <input class="form-control" id="inputRujukan" name="inputRujukan" type="text"
                                         placeholder="Masukkan nombor rujukan surat..." />
                                 </div>
-                            </div>
+                                <div class="mb-3">
+                                    <label class="small mb-1" for="inputFirstName">Tarikh Surat Permohonan</label>
+                                    <div class="input-group input-group-joined">
+                                        <span class="input-group-text">
+                                            <i data-feather="calendar"></i>
+                                        </span>
+                                        <input class="form-control ps-0" id="tarikhSuratMohon" name="tarikhSuratMohon"
+                                            placeholder="Pilih tarikh..." autocomplete="off" />
+                                    </div>
+                                </div>
 
-                            <hr class="my-4" />
-                            <div class="d-flex justify-content-end">
-                                {{-- <button class="btn btn-light" type="button">Previous</button> --}}
-                                <button class="btn btn-primary" type="button">Submit</button>
+                                {{-- <div class="mb-3">
+                                    <label class="small mb-1">Bahagian</label>
+                                    <select class="form-select" id="inputBahagian" name="inputBahagian"
+                                        aria-label="Default select example">
+                                        <option selected disabled>Sila pilih:</option>
+                                        @foreach ($bahagian as $data)
+                                            <option value="{{ $data->id }}">{{ $data->sgktn_bhgn }} -
+                                                {{ $data->nama_bhgn }}
+
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div> --}}
+
+                                <div class="mb-3" hidden>
+                                    <label class="small mb-1" for="statusNOC">noc_flow</label>
+                                    <input class="form-control" id="noc_flow" name="noc_flow" type="text"
+                                        value="" placeholder="NOC Flow" />
+                                </div>
                             </div>
-                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
+
+                <div class="col-lg-4">
+                    <div class="card card-header-actions">
+                        <div class="card-header">
+                            Tindakan
+                            <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
+                                title="Data akan disimpan"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid spinner-hide">
+                                <button class="fw-500 btn btn-black" type="submit">Simpan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
+
     </div>
 
 @endsection
@@ -224,7 +171,6 @@
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-    <script src="~/Scripts/autoNumeric/autoNumeric.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#tarikhMohonNOC').datepicker({
