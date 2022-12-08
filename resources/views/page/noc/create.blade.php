@@ -78,26 +78,24 @@
                                 <div class="row" id="kosProjek" style="display:none">
                                     {{-- <div class="col-md-6 mb-3">
                                         <label class="small mb-1" for="inputTajuk">Kos Sebelum *</label>
-                                        <input class="form-control" id="inputTajuk" name="inputTajuk" type="number"
-                                            placeholder="Kos projek sebelum" autocomplete="off" />
-                                    </div> --}}
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">RM</span>
+                                            </div>
+                                            <input class="form-control" id="inputTajuk" name="inputTajuk" type="text"
+                                                placeholder="Kos projek sebelum" autocomplete="off" />
+                                        </div> --}}
+                                    </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="small mb-1" for="inputTajuk">Perubahan Kos *</label>
                                         <input class="form-control" id="inputKos" name="inputKos" type="number"
                                             placeholder="Kos projek" autocomplete="off" />
                                     </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label class="small mb-1" for="inputTajuk">Tajuk Projek *</label>
-                                    <input class="form-control" id="inputTajuk" name="inputTajuk" type="text"
-                                        placeholder="Masukkan tajuk permohonan..." autocomplete="off" />
-                                </div>
-                                <div class="mb-3">
-                                    <label class="small mb-1" for="inputTajuk">Kod MyProjek *</label>
-                                    <input class="form-control" id="inputKodMyprojek" name="inputKodMyprojek" type="text"
-                                        placeholder="Masukkan kod MyProjek.." autocomplete="off" />
-                                </div>
-                                <div class="mb-3">
+                            </div>
+
+                            <div class="d-flex justify-content-between">
+                                <div class="flex-fill mx-1">
                                     <label class="small mb-1" for="inputFirstName">Tarikh Permohonan *</label>
                                     <div class="input-group input-group-joined">
                                         <span class="input-group-text">

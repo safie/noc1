@@ -66,7 +66,7 @@
 
                                     </td>
                                     <td>
-                                        <button class="btn btn-primary" type="button">Mohon NOC</button>
+                                        <a class="btn btn-primary" type="button" href="{{ route('noc.mohonNocProjek',$data->kod_projek)}}">Mohon NOC</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -1297,9 +1297,14 @@ class NocController extends Controller
         return view('page.noc.createPilihProjek', compact('projek', 'tajuk_page', 'kategori'));
     }
 
-    public function mohonNocProjek($id) {
-        $projek = Projek::where('id',$id)->get();
+    public function mohonNocProjek($kod_projek) {
+        $projek = Projek::where('kod_projek',$kod_projek)->first();
+        $kategori = Kategori::get(['id', 'nama_kat', 'kod']);
 
-        return view('page.noc.createMohonNoc', compact('projek'));
+        $tajuk_page = 'Permohonan NOC';
+
+        // dd($projek);
+
+        return view('page.noc.createMohonNoc', compact('projek','tajuk_page', 'kategori'));
     }
 }
