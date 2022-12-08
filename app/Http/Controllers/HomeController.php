@@ -125,7 +125,8 @@ class HomeController extends Controller
             //Senarai kementerian
             $nocJabatan = DB::table('t_noc')
                 ->selectRaw('t_kementerian.nama_jabatan, count(*) as jumlah')
-                ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+                ->leftJoin('t_projek_rp2_2022', 't_projek_rp2_2022.kod_projek', '=', 't_noc.kod_myprojek')
+                ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_projek_rp2_2022.id_kementerian')
                 ->where('bahagian', '=', Auth::user()->bahagian)
                 ->groupBy('t_kementerian.nama_jabatan')
                 ->orderBy('jumlah', 'DESC')
@@ -160,7 +161,8 @@ class HomeController extends Controller
             //Senarai kementerian
             $nocJabatanAll = DB::table('t_noc')
                 ->selectRaw('t_kementerian.nama_jabatan, count(*) as jumlah')
-                ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+                ->leftJoin('t_projek_rp2_2022', 't_projek_rp2_2022.kod_projek', '=', 't_noc.kod_myprojek')
+                ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_projek_rp2_2022.id_kementerian')
                 ->where('bahagian', '=', Auth::user()->bahagian)
                 ->groupBy('t_kementerian.nama_jabatan')
                 ->orderBy('jumlah', 'DESC')
@@ -287,7 +289,7 @@ class HomeController extends Controller
             $data12['nocJabatanAll'] = $nocJabatanAll;
         }
 
-
+        // dd($data9);
 
         return view('home')
             ->with($data1)

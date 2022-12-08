@@ -29,50 +29,36 @@
                         <tr>
                             <th class="text-center">No.</th>
                             <th class="text-center">Tajuk Permohonan</th>
-                            <th class="text-center">Kategori</th>
-                            <th class="text-center">Kementerian</th>
                             <th class="text-center">Bahagian</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Tindakan</th>
                         </tr>
                     </thead>
-                    {{-- <tfoot>
-                        <tr>
-                            <th class="text-center">No.</th>
-                            <th class="text-center">Tajuk Permohonan</th>
-                            <th class="text-center">Kementerian</th>
-                            <th class="text-center">Bahagian</th>
-                            <th class="text-center">Status</th>
-                            <th class="text-center">Tindakan</th>
-                        </tr>
-                    </tfoot> --}}
                     <tbody>
                         @if ($noc->count() > 0)
                             @foreach ($noc as $data)
                                 <tr>
-                                    <td class="text-center align-middle">{{ $loop->index + 1 }}</td>
+                                    <td class="text-center align-middle" style="width:5em">{{ $loop->index + 1 }}</td>
                                     <td style="width:40em">
                                         <div class="text-uppercase">
-                                            <h5>{{ $data->tajuk_permohonan }}</h5>
+                                            <p class="badge bg-primary">{{ $data->getKategori->kod }} -
+                                                {{ $data->getKategori->nama_kat }}</p>
+                                            <p><b>{{ $data->getProjek->getKementerian->nama_jabatan }}</b><br>{!! $data->getProjek->nama_projek !!}
+                                            </p>
                                         </div>
-                                        <small class="text-muted"> Tarikh submit:
-                                            {{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</small>
+                                        <p class="text-muted"> Tarikh submit:
+                                            {{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</p>
                                     </td>
                                     <td class="text-center align-middle" style="width:10em">
-                                        <h5><span class="badge bg-primary"><strong>{{ $data->kod }}</strong></span></h5>
-                                        {{ $data->nama_kat }}
+                                        {{ $data->getBahagian->nama_bhgn }} ({{ $data->getBahagian->sgktn_bhgn }})</td>
+                                    <td class="text-center align-middle" style="width:10em">
+                                        <h5><span class="badge bg-secondary text-wrap">{!! $data->getStatus1->nama_status !!}</span>
+                                        </h5>
+                                        <h5 @if ($data->tarikh_hantar_surat_lulus != null) hidden @endif>
+                                            <span class="badge bg-secondary text-wrap">{!! $data->getStatus2->nama_status ?? '' !!}</span>
+                                        </h5>
                                     </td>
-                                    <td class="align-middle">{{ $data->nama_jabatan }}</td>
-                                    <td class="text-center align-middle">{{ $data->sgktn_bhgn }}</td>
-                                    <td class="text-center align-middle">
-                                        <h4><span
-                                                class="badge bg-secondary opacity-75 text-wrap">{!! $data->nama_status1 !!}</span>
-                                        </h4>
-                                        <h4 @if ($data->tarikh_hantar_surat_lulus != null) hidden @endif><span
-                                                class="badge bg-secondary opacity-75 text-wrap">{!! $data->nama_status2 !!}</span>
-                                        </h4>
-                                    </td>
-                                    <td class="text-center align-middle">
+                                    <td class="text-center align-middle" style="width:5em">
                                         <div class="d-flex justify-content-center">
                                             <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
                                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"

@@ -62,8 +62,8 @@
                             <!-- Form Group (first name)-->
                             <div class="row">
                                 <div class="d-flex justify-content-between">
-                                    <label class="small" for="inputTajuk">{{ $noc->nama_jabatan }}
-                                        ({{ $noc->sgktn_jabatan }})</label>
+                                    <label class="small" for="inputTajuk">{{ $noc->getBahagian->nama_bhgn }}
+                                        ({{ $noc->getBahagian->sgktn_bhgn }})</label>
                                     <label class="small">
                                         @if ($noc->tarikh_permohonan != null)
                                             Tarikh Permohonan:
@@ -74,29 +74,30 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="row mb-2 mt-2">
                                 <div class="py-0">
                                     <h3 class="my-0"
                                         style="text-transform:uppercase;text-align: justify;text-justify: inter-word;">
-                                        {{ $noc->tajuk_permohonan }}</h3>
+                                        {{ $noc->getProjek->nama_projek }}</h3>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="d-flex justify-content-between">
                                     <label class="small" for="noc_id">NOC ID:
                                         {{ $noc->noc_id }}{{ $noc->id }}</label>
-                                    <label class="small" for="noc_id">Projek ID: {{ $noc->kod_myprojek }}</label>
+                                    <label class="small" for="noc_id">Kod Projek: {{ $noc->kod_myprojek }}</label>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="d-flex justify-content-between">
-                                    <label class="small me-2 fw-bold"> {{ $noc->nama_bhgn }}
-                                        ({{ $noc->sgktn_bhgn }})</label>
+                                    <label class="small me-2 fw-bold"> {{ $noc->getBahagian->nama_bhgn }}
+                                        ({{ $noc->getBahagian->sgktn_bhgn }})</label>
 
                                     <div>
                                         <label class="small me-2 fw-bold"> Klasifikasi:</label>
-                                        <label> {{ $noc->kod }} - {{ $noc->nama_kat }}</label>
+                                        <label class="small me-2 fw-bold"> {{ $noc->getKategori->kod }} -
+                                            {{ $noc->getKategori->nama_kat }}</label>
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +106,7 @@
                             <div class="row">
                                 <div class="d-flex justify-content-between">
                                     <div>
-                                        <label class="small fw-bold" for="kodMyProjek">Tarikh Surat Agensi:</label>
+                                        <label class="small fw-bold" for="kodMyProjek">Tarikh Surat:</label>
                                         <label class="small">
                                             @if ($noc->tarikh_permohonan != null)
                                                 {{ \Carbon\Carbon::parse($noc->tarikh_surat_kementerian)->format('d-m-Y') }}
@@ -115,71 +116,42 @@
                                         </label>
                                     </div>
                                     <div>
-                                        <label class="small fw-bold" for="noRujukan">No. Rujukan Surat Agensi:</label>
+                                        <label class="small fw-bold" for="noRujukan">Rujukan Surat:</label>
                                         <label class="small">{{ $noc->no_rujukan }}</label>
                                     </div>
 
                                 </div>
                                 <div class="small">
-                                    <label class="fw-bold">Dokumen lampiran:</label><label>senarai lampiran</label>
+                                    <label class="fw-bold">Dokumen lampiran:</label>
+                                    {{ $noc->url_dokumen ?? 'Tiada maklumat' }}
+
                                 </div>
                             </div>
                             <hr>
                             <div class="small">
                                 <label class="fw-bold"> Ulasan BBP (Bajet):</label>
-                                <p style="text-align: justify;text-justify: inter-word;">Lorem ipsum
-                                    dolor sit amet, consectetur adipiscing elit, sed do
-                                    eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                    nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                    dolor
-                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                    Excepteur
-                                    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                                    est
-                                    laborum.</p>
+                                <p style="text-align: justify;text-justify: inter-word;">
+                                    {{ $noc->ulasan_bajet ?? 'Tiada maklumat' }}
+                                </p>
                             </div>
                             <hr>
                             <div class="small">
                                 <label class="fw-bold"> Ulasan BPN (Teknikal):</label>
-                                <p style="text-align: justify;text-justify: inter-word;">Lorem ipsum
-                                    dolor sit amet, consectetur adipiscing elit, sed do
-                                    eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                    nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                    dolor
-                                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                    Excepteur
-                                    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                                    est
-                                    laborum.</p>
+                                <p style="text-align: justify;text-justify: inter-word;">
+                                    {{ $noc->ulasan_teknikal ?? 'Tiada maklumat' }}</p>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="d-flex justify-content-between">
                                     <div>
                                         <label class="small fw-bold">Tarikh Memo:</label>
-                                        <label class="small">
-                                            @if ($noc->tarikh_hantar_memo_kelulusan != null)
-                                                {{ \Carbon\Carbon::parse($noc->tarikh_hantar_memo_kelulusan)->format('d-m-Y') }}
-                                            @else
-                                                Tiada data
-                                            @endif
-                                        </label>
+                                        <label
+                                            class="small">{{ \Carbon\Carbon::parse($noc->tarikh_hantar_memo_kelulusan)->format('d-m-Y') ?? 'Tiada maklumat' }}</label>
                                     </div>
-
                                     <div>
-                                        <label class="small fw-bold">No. Rujukan Memo
-                                            Kelulusan:</label>
-                                        {{-- <label class="small">
-                                            @if ($noc->no_rujukan_memo_kelulusan != null)
-                                                {{ $noc->no_rujukan_memo_kelulusan }}
-                                            @else
-                                                Tiada data
-                                            @endif
-                                        </label> --}}
+                                        <label class="small fw-bold">No. Rujukan Memo Kelulusan:</label>
+                                        <label
+                                            class="small">{{ $noc->no_rujukan_surat_kelulusan ?? 'Tiada maklumat' }}</label>
                                     </div>
                                 </div>
                             </div>

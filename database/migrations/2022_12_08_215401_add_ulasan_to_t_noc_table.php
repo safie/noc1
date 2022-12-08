@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('t_noc', function (Blueprint $table) {
-            $table->string('url_dokumen')->nullable()->after('kos_perubahan');
+            $table->string('ulasan_bajet')->nullable()->after('tarikh_sedia_ulasan_tek');
+            $table->string('ulasan_teknikal')->nullable()->after('ulasan_bajet');
         });
     }
 
@@ -26,7 +27,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('t_noc', function (Blueprint $table) {
-            $table->dropColumn('url_dokumen');
+            $table->dropColumn('ulasan_bajet');
+            $table->dropColumn('ulasan_teknikal');
         });
     }
 };

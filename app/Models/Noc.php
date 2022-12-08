@@ -41,6 +41,8 @@ class Noc extends Model
         'tarikh_dokumen_tambahan_tek',
         'tarikh_mohon_ulasan',
         'tarikh_mohon_ulasan_tek',
+        'ulasan_bajet',
+        'ulasan_teknikal',
         'tarikh_sedia_ulasan',
         'tarikh_sedia_ulasan_tek',
         'tarikh_hantar_ulasan',
@@ -58,6 +60,26 @@ class Noc extends Model
 
     public function getProjek()
     {
-        return $this->belongsTo(Projek::class, 'kod_myprojek','kod_projek');
+        return $this->belongsTo(Projek::class, 'kod_myprojek', 'kod_projek');
+    }
+
+    public function getKategori()
+    {
+        return $this->belongsTo(Kategori::class, 'klasifikasi', 'id');
+    }
+
+    public function getBahagian()
+    {
+        return $this->belongsTo(Bahagian::class, 'bahagian', 'id');
+    }
+
+    public function getStatus1()
+    {
+        return $this->belongsTo(Status::class, 'status_noc', 'id_status');
+    }
+
+    public function getStatus2()
+    {
+        return $this->belongsTo(Status::class, 'status_noc2', 'id_status');
     }
 }

@@ -49,76 +49,44 @@
                         <tr>
                             <th class="text-center">No.</th>
                             <th class="text-center">Tajuk Permohonan</th>
-                            <th class="text-center">Kementerian</th>
                             <th class="text-center">Bahagian</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Tindakan</th>
                         </tr>
                     </thead>
-                    {{-- <tfoot>
-                        <tr>
-                            <th class="text-center">No.</th>
-                            <th class="text-center">Tajuk Permohonan</th>
-                            <th class="text-center">Kementerian</th>
-                            <th class="text-center">Bahagian</th>
-                            <th class="text-center">Status</th>
-                            <th class="text-center">Tindakan</th>
-                        </tr>
-                    </tfoot> --}}
                     <tbody>
                         @if ($noc->count() > 0)
                             @foreach ($noc as $data)
                                 <tr>
-                                    <td class="text-center align-middle">{{ $loop->index + 1 }}</td>
+                                    <td class="text-center align-middle" style="width:5em">{{ $loop->index + 1 }}</td>
                                     <td style="width:40em">
                                         <div class="text-uppercase">
-                                            <span class="badge bg-primary"><small>{{ $data->kod }}</small></span>
-                                            {{ $data->nama_kat }}<br>
-                                            <h5>{{ $data->nama_projek }}</h5>
+                                            <p class="badge bg-primary">{{ $data->getKategori->kod }} -
+                                                {{ $data->getKategori->nama_kat }}</p>
+                                            <p><b>{{ $data->getProjek->getKementerian->nama_jabatan }}</b><br>{!! $data->getProjek->nama_projek !!}
+                                            </p>
                                         </div>
-
-                                        <small class="text-muted"> Tarikh submit:
-                                            {{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</small>
+                                        <p class="text-muted"> Tarikh submit:
+                                            {{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</p>
                                     </td>
-
-                                    <td class="align-middle" style="width:20em">{{ $data->id_kementerian }}</td>
-                                    <td class="text-center align-middle" style="width:10em">{{ $data->sgktn_bhgn }}</td>
                                     <td class="text-center align-middle" style="width:10em">
-                                        <h5><span class="badge bg-secondary text-wrap">{!! $data->nama_status1 !!}</span>
+                                        {{ $data->getBahagian->nama_bhgn }} ({{ $data->getBahagian->sgktn_bhgn }})</td>
+                                    <td class="text-center align-middle" style="width:10em">
+                                        <h5><span class="badge bg-secondary text-wrap">{!! $data->getStatus1->nama_status !!}</span>
                                         </h5>
                                         <h5 @if ($data->tarikh_hantar_surat_lulus != null) hidden @endif>
-                                            <span class="badge bg-secondary text-wrap">{!! $data->nama_status2 !!}</span>
+                                            <span class="badge bg-secondary text-wrap">{!! $data->getStatus2->nama_status ?? '' !!}</span>
                                         </h5>
                                     </td>
-                                    <td class="text-center align-middle">
-                                        <div class="d-flex justify-content-center ">
+                                    <td class="text-center align-middle" style="width:5em">
+                                        <div class="d-flex
+                                        justify-content-center ">
                                             @if (Auth::user()->peranan == 1 or Auth::user()->peranan == 3)
                                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
                                                     class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
                                                     href="{{ route('noc.edit', $data->id) }}">
                                                     <i data-feather="edit"></i>
                                                 </a>
-
-                                                {{-- <a href="/noc/delete/{{ $data->id }}" id="delete-confirm"
-                                                    class="btn btn-datatable btn-icon btn-transparent-dark mx-1 delete-confirm">
-                                                    <i data-feather="trash-2"></i>
-                                                </a> --}}
-
-                                                {{-- <button
-                                                    class="btn btn-datatable btn-icon btn-transparent-dark mx-1 remove-data"
-                                                    data-id="{{ $data->id }}" type="button" data-bs-toggle="modal" data-bs-target="#modalDelete">
-                                                    <i data-feather="trash-2"></i>
-                                                </button> --}}
-
-                                                {{-- <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button
-                                                        class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1 remove-data"
-                                                        data-id="{{ $data->id }}">
-                                                        <i class="size-28" data-feather="trash-2"></i>
-                                                    </button>
-                                                </form> --}}
                                             @endif
                                             <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
                                                 href="{{ route('noc.detail', $data->id) }}">

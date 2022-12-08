@@ -42,56 +42,12 @@ class NocController extends Controller
         $peranan = Auth::user()->peranan;
 
         if (($peranan == 1) or ($peranan == 3) or ($peranan == 4)) {
-            $noc = DB::table('t_noc')
-                ->select(
-                    't_noc.*',
-                    't_kementerian.nama_jabatan',
-                    't_kementerian.sgktn_jabatan',
-                    't_bahagian.nama_bhgn',
-                    't_bahagian.sgktn_bhgn',
-                    'status1.nama_status as nama_status1',
-                    'status2.nama_status as nama_status2',
-                    't_kategori.nama_kat',
-                    't_kategori.kod',
-                    't_projek_rp2_2022.nama_projek',
-                    't_projek_rp2_2022.id_kementerian'
-                )
-                ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
-                ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
-                ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
-                ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
-                ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
-                ->leftJoin('t_projek_rp2_2022','t_projek_rp2_2022.kod_projek','=','t_noc.kod_myprojek')
-                ->orderBy('t_noc.tarikh_submit', 'DESC')
-                ->paginate(10);
+            $noc = Noc::orderBy('tarikh_submit', 'DESC')->paginate(10);
         } else {
-            $noc = DB::table('t_noc')
-                ->select(
-                    't_noc.*',
-                    't_kementerian.nama_jabatan',
-                    't_kementerian.sgktn_jabatan',
-                    't_bahagian.nama_bhgn',
-                    't_bahagian.sgktn_bhgn',
-                    'status1.nama_status as nama_status1',
-                    'status2.nama_status as nama_status2',
-                    't_kategori.nama_kat',
-                    't_kategori.kod',
-                    't_projek_rp2_2022.nama_projek',
-                    't_projek_rp2_2022.id_kementerian'
-                )
-                ->where('bahagian', '=', Auth::user()->bahagian)
+            $noc = Noc::where('bahagian', '=', Auth::user()->bahagian)
                 ->where('status_noc', '!=', 'noc_20')
-                ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
-                ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
-                ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
-                ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
-                ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
-                ->leftJoin('t_projek_rp2_2022','t_projek_rp2_2022.kod_projek','=','t_noc.kod_myprojek')
-                ->orderBy('t_noc.tarikh_submit', 'DESC')
+                ->orderBy('tarikh_submit', 'DESC')
                 ->paginate(10);
-
-            // $noc = DB::table('t_noc')->where('bahagian', '=', Auth::user()->bahagian)->get();
-
         }
 
         $countNocTindakan = NOC::all()->count();
@@ -257,95 +213,48 @@ class NocController extends Controller
     public function tindakan()
     {
         if (Auth::user()->peranan == 2) {
-            $noc = DB::table('t_noc')
-                ->select(
-                    't_noc.*',
-                    't_kementerian.nama_jabatan',
-                    't_kementerian.sgktn_jabatan',
-                    't_bahagian.nama_bhgn',
-                    't_bahagian.sgktn_bhgn',
-                    'status1.nama_status as nama_status1',
-                    'status2.nama_status as nama_status2',
-                    't_kategori.nama_kat',
-                    't_kategori.kod',
-                )
-                ->where('bahagian', '=', Auth::user()->bahagian)
+            $noc = Noc::where('bahagian', '=', Auth::user()->bahagian)
                 ->where(function ($query) {
                     $query->whereIn('status_noc', ['noc_1', 'noc_17', 'noc_2', 'noc_18', 'noc_19', 'noc_9', 'noc_10', 'noc_11', 'noc_12', 'noc_13', 'noc_14', 'noc_15'])
                         ->orWhere('status_noc2', 'noc_19');
                 })
-                ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
-                ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
-                ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
-                ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
-                ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
-                ->orderBy('t_noc.tarikh_submit', 'DESC')
+                ->orderBy('tarikh_submit', 'DESC')
                 ->paginate(10);
         } else if (Auth::user()->peranan == 3) {
-            $noc = DB::table('t_noc')
-                ->select(
-                    't_noc.*',
-                    't_kementerian.nama_jabatan',
-                    't_kementerian.sgktn_jabatan',
-                    't_bahagian.nama_bhgn',
-                    't_bahagian.sgktn_bhgn',
-                    'status1.nama_status as nama_status1',
-                    'status2.nama_status as nama_status2',
-                    't_kategori.nama_kat',
-                    't_kategori.kod',
-                )
-                ->whereIn('status_noc', ['noc_3', 'noc_5', 'noc_7'])
-                ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
-                ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
-                ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
-                ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
-                ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
-                ->orderBy('t_noc.tarikh_submit', 'DESC')
+            $noc = Noc::whereIn('status_noc', ['noc_3', 'noc_5', 'noc_7'])
+                ->orderBy('tarikh_submit', 'DESC')
                 ->paginate(10);
+
+            // $noc = DB::table('t_noc')
+            //     ->select(
+            //         't_noc.*',
+            //         't_kementerian.nama_jabatan',
+            //         't_kementerian.sgktn_jabatan',
+            //         't_bahagian.nama_bhgn',
+            //         't_bahagian.sgktn_bhgn',
+            //         'status1.nama_status as nama_status1',
+            //         'status2.nama_status as nama_status2',
+            //         't_kategori.nama_kat',
+            //         't_kategori.kod',
+            //     )
+            //     ->whereIn('status_noc', ['noc_3', 'noc_5', 'noc_7'])
+            //     ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
+            //     ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+            //     ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
+            //     ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+            //     ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
+            //     ->orderBy('t_noc.tarikh_submit', 'DESC')
+            //     ->paginate(10);
+
         } else if (Auth::user()->peranan == 4) {
-            $noc = DB::table('t_noc')
-                ->select(
-                    't_noc.*',
-                    't_kementerian.nama_jabatan',
-                    't_kementerian.sgktn_jabatan',
-                    't_bahagian.nama_bhgn',
-                    't_bahagian.sgktn_bhgn',
-                    'status1.nama_status as nama_status1',
-                    'status2.nama_status as nama_status2',
-                    't_kategori.nama_kat',
-                    't_kategori.kod',
-                )
-                ->whereIn('status_noc2', ['noc_4', 'noc_6', 'noc_8'])
-                ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
-                ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
-                ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
-                ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
-                ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
-                ->orderBy('t_noc.tarikh_submit', 'DESC')
+            $noc = Noc::whereIn('status_noc2', ['noc_4', 'noc_6', 'noc_8'])
+                ->orderBy('tarikh_submit', 'DESC')
                 ->paginate(10);
         } else {
-            $noc = DB::table('t_noc')
-                ->select(
-                    't_noc.*',
-                    't_kementerian.nama_jabatan',
-                    't_kementerian.sgktn_jabatan',
-                    't_bahagian.nama_bhgn',
-                    't_bahagian.sgktn_bhgn',
-                    'status1.nama_status as nama_status1',
-                    'status2.nama_status as nama_status2',
-                    't_kategori.nama_kat',
-                    't_kategori.kod',
-                )
-                ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
-                ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
-                ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
-                ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
-                ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
-                ->orderBy('t_noc.tarikh_submit', 'DESC')
+            $noc = Noc::orderBy('tarikh_submit', 'DESC')
                 ->paginate(10);
         }
 
-        // $noc = DB::table('t_noc')->where('bahagian', '=', Auth::user()->bahagian)->get();
         $countNocTindakan = NOC::all()->count();
         $data1['noc'] = $noc;
         $data2['countNocTindakan'] = $countNocTindakan;
@@ -359,27 +268,7 @@ class NocController extends Controller
 
     public function detail($id)
     {
-
-        $noc = DB::table('t_noc')
-            ->select(
-                't_noc.*',
-                't_kementerian.nama_jabatan',
-                't_kementerian.sgktn_jabatan',
-                'status1.nama_status as nama_status1',
-                'status2.nama_status as nama_status2',
-                't_kategori.kod',
-                't_kategori.nama_kat',
-                't_kategori.flow',
-                't_bahagian.nama_bhgn',
-                't_bahagian.sgktn_bhgn'
-            )
-            ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
-            ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
-            ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
-            ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
-            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
-            ->where('t_noc.id', '=', $id)
-            ->first();
+        $noc = Noc::where('t_noc.id', '=', $id)->first();
 
         $noc_status_log = DB::table('t_status_noc_log')
             ->select(
@@ -1302,22 +1191,24 @@ class NocController extends Controller
         return view('page.noc.createPilihProjek', compact('projek', 'tajuk_page', 'kategori'));
     }
 
-    public function mohonNocProjek($kod_projek) {
-        $projek = Projek::where('kod_projek',$kod_projek)->first();
+    public function mohonNocProjek($kod_projek)
+    {
+        $projek = Projek::where('kod_projek', $kod_projek)->first();
         $kategori = Kategori::get(['id', 'nama_kat', 'kod']);
 
         $tajuk_page = 'Permohonan NOC';
 
         // dd($projek);
 
-        return view('page.noc.createMohonNoc', compact('projek','tajuk_page', 'kategori'));
+        return view('page.noc.createMohonNoc', compact('projek', 'tajuk_page', 'kategori'));
     }
 
-    public function storeMohonNoc(Request $request){
+    public function storeMohonNoc(Request $request)
+    {
 
 
-         //check data
-         $request->validate([
+        //check data
+        $request->validate([
             'inputKlasifikasi' => 'required'
 
         ]);
@@ -1356,7 +1247,7 @@ class NocController extends Controller
             'status_noc'    => "noc_1",
             'noc_id'    => "NOC-" . $tahun . "-" . $bulan . "-" . $request_data['inputKlasifikasi'] . "/",
             'noc_flow' => $flow,
-            'url_lampiran' => $request_data['urlDokumen']
+            'url_dokumen' => $request_data['urlDokumen']
         ]);
 
 
