@@ -16,25 +16,29 @@ class Noc extends Model
         'tarikh_permohonan',
         'tarikh_surat_kementerian',
         'no_rujukan',
-        'status_noc',
-        'status_noc2',
         'kod_myprojek',
         'kementerian',
         'bahagian',
         'klasifikasi',
+        'no_rujukan_surat_kelulusan',
         'noc_flow',
-        'pengurusan_tertinggi',
+        'status_noc',
+        'status_noc2',
         'tarikh_submit',
         'kos_projek',
+        'kos_sebelum',
+        'kos_perubahan',
+        'url_dokumen',
         'status_semak',
         'status_semak_tek',
         'status_semak_bajet',
+        'pengurusan_tertinggi',
         'tarikh_semak',
-        'tarikh_semak_tek',
         'tarikh_semak_bajet',
+        'tarikh_semak_tek',
         'tarikh_dokumen_tambahan',
-        'tarikh_dokumen_tambahan_tek',
         'tarikh_dokumen_tambahan_bajet',
+        'tarikh_dokumen_tambahan_tek',
         'tarikh_mohon_ulasan',
         'tarikh_mohon_ulasan_tek',
         'tarikh_sedia_ulasan',
@@ -47,32 +51,13 @@ class Noc extends Model
         'tarikh_sedia_surat',
         'tarikh_hantar_surat_lulus',
         'tarikh_mohon_modul',
-        'no_rujukan_surat_kelulusan'
+
     ];
     public $timestamps  = true;
 
-    public function getBahagian()
-    {
-        return $this->hasMany(Bahagian::class,'id','bahagian');
-    }
 
-    public function getKementerian()
+    public function getProjek()
     {
-        return $this->hasMany(Kementerian::class,'id','kementerian');
-    }
-
-    public function getStatus()
-    {
-        return $this->hasMany(Status::class,'id_status','status_noc');
-    }
-
-    public function getStatus2()
-    {
-        return $this->hasMany(Status::class,'id_status','status_noc2');
-    }
-
-    public function getKategori()
-    {
-        return $this->hasMany(Kategori::class,'id','klasifikasi');
+        return $this->belongsTo(Projek::class, 'kod_myprojek','kod_projek');
     }
 }

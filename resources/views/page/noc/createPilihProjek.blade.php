@@ -62,7 +62,7 @@
                                     </td>
                                     <td>
                                         <p class="mx-0 my-0 fw-bold">{{ $data->getKementerian->nama_jabatan }}</p>
-                                        {{ $data->nama_projek }}
+                                        <b>{!! $data->nama_projek !!}</b>
 
                                     </td>
                                     <td>

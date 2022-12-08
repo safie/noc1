@@ -74,14 +74,14 @@
                                         <div class="text-uppercase">
                                             <span class="badge bg-primary"><small>{{ $data->kod }}</small></span>
                                             {{ $data->nama_kat }}<br>
-                                            <h5>{{ $data->tajuk_permohonan }}</h5>
+                                            <h5>{{ $data->nama_projek }}</h5>
                                         </div>
 
                                         <small class="text-muted"> Tarikh submit:
                                             {{ \Carbon\Carbon::parse($data->tarikh_permohonan)->format('j F, Y') }}</small>
                                     </td>
 
-                                    <td class="align-middle" style="width:20em">{{ $data->nama_jabatan }}</td>
+                                    <td class="align-middle" style="width:20em">{{ $data->id_kementerian }}</td>
                                     <td class="text-center align-middle" style="width:10em">{{ $data->sgktn_bhgn }}</td>
                                     <td class="text-center align-middle" style="width:10em">
                                         <h5><span class="badge bg-secondary text-wrap">{!! $data->nama_status1 !!}</span>

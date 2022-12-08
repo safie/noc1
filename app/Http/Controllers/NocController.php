@@ -53,12 +53,15 @@ class NocController extends Controller
                     'status2.nama_status as nama_status2',
                     't_kategori.nama_kat',
                     't_kategori.kod',
+                    't_projek_rp2_2022.nama_projek',
+                    't_projek_rp2_2022.id_kementerian'
                 )
                 ->leftJoin('t_kementerian', 't_kementerian.id', '=', 't_noc.kementerian')
                 ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
                 ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
                 ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
                 ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
+                ->leftJoin('t_projek_rp2_2022','t_projek_rp2_2022.kod_projek','=','t_noc.kod_myprojek')
                 ->orderBy('t_noc.tarikh_submit', 'DESC')
                 ->paginate(10);
         } else {
@@ -73,6 +76,8 @@ class NocController extends Controller
                     'status2.nama_status as nama_status2',
                     't_kategori.nama_kat',
                     't_kategori.kod',
+                    't_projek_rp2_2022.nama_projek',
+                    't_projek_rp2_2022.id_kementerian'
                 )
                 ->where('bahagian', '=', Auth::user()->bahagian)
                 ->where('status_noc', '!=', 'noc_20')
@@ -81,6 +86,7 @@ class NocController extends Controller
                 ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
                 ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
                 ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
+                ->leftJoin('t_projek_rp2_2022','t_projek_rp2_2022.kod_projek','=','t_noc.kod_myprojek')
                 ->orderBy('t_noc.tarikh_submit', 'DESC')
                 ->paginate(10);
 
@@ -133,7 +139,6 @@ class NocController extends Controller
             'inputKlasifikasi' => 'required',
             // 'inputBahagian' => 'required',
             // 'inputJabatan' => 'required',
-            'checkProjek' => 'required'
         ]);
 
         $queryFlow = DB::table('t_kategori')
@@ -1306,5 +1311,55 @@ class NocController extends Controller
         // dd($projek);
 
         return view('page.noc.createMohonNoc', compact('projek','tajuk_page', 'kategori'));
+    }
+
+    public function storeMohonNoc(Request $request){
+
+
+         //check data
+         $request->validate([
+            'inputKlasifikasi' => 'required'
+
+        ]);
+
+        $queryFlow = DB::table('t_kategori')
+            ->select('t_kategori.flow')
+            ->where('t_kategori.id', '=', $request['inputKlasifikasi'])
+            ->first();
+
+        $flow = $queryFlow->flow;
+
+        // dd($flow);
+
+        $request_data = $request->all();
+
+        $tahun = Carbon::now()->year;
+        $bulan = Carbon::now()->month;
+
+        //check data isi atau tidak
+        if ($request_data['tarikhMohonNOC'] != NULL) {
+            $tarikhMohonNoc = Carbon::createFromFormat('d/m/Y', $request_data['tarikhMohonNOC'])->format('Y-m-d');
+        } else {
+            $tarikhMohonNoc = null;
+        }
+
+        // dd($flow);
+        Noc::create([
+            'kod_myprojek'    => $request_data['kod_projek'],
+            'no_rujukan'    => $request_data['inputRujukan'],
+            'tarikh_permohonan'  => $tarikhMohonNoc,
+            'bahagian'    => Auth::user()->bahagian,
+            'klasifikasi'    => $request_data['inputKlasifikasi'],
+            'tarikh_submit'    => Carbon::now()->format('Y-m-d'),
+            'kos_sebelum'    => $request_data['inputKosSebelum'],
+            'kos_perubahan'    => $request_data['inputKosPerubahan'],
+            'status_noc'    => "noc_1",
+            'noc_id'    => "NOC-" . $tahun . "-" . $bulan . "-" . $request_data['inputKlasifikasi'] . "/",
+            'noc_flow' => $flow,
+            'url_lampiran' => $request_data['urlDokumen']
+        ]);
+
+
+        return redirect()->route('noc.tindakan')->with('success', 'Permohonan berjaya disimpan.');
     }
 }

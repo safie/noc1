@@ -50,6 +50,7 @@ Route::get('/noc/tindakan', [\App\Http\Controllers\NocController::class, 'tindak
 Route::get('/noc/detail/{id}', [\App\Http\Controllers\NocController::class, 'detail'])->name('noc.detail');
 Route::get('/noc/batal/{id}', [\App\Http\Controllers\NocController::class, 'batalNoc'])->name('noc.batal');
 
+Route::post('/noc/projek/mohon-noc/', [\App\Http\Controllers\NocController::class, 'storeMohonNoc'])->name('noc.simpanNocBaharu');
 Route::get('/noc/projek/mohon-noc/{kod_projek}', [\App\Http\Controllers\NocController::class, 'mohonNocProjek'])->name('noc.mohonNocProjek');
 Route::get('/noc/projek/carian', [\App\Http\Controllers\NocController::class, 'cariProjek'])->name('noc.cariProjek');
 
