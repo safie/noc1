@@ -50,6 +50,7 @@ class Noc extends Model
         'tarikh_sedia_memo_kelulusan',
         'tarikh_hantar_memo_kelulusan',
         'tarikh_kelulusan_pt',
+        'keputusan',
         'tarikh_sedia_surat',
         'tarikh_hantar_surat_lulus',
         'tarikh_mohon_modul',

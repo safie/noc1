@@ -42,11 +42,11 @@ class NocController extends Controller
         $peranan = Auth::user()->peranan;
 
         if (($peranan == 1) or ($peranan == 3) or ($peranan == 4)) {
-            $noc = Noc::orderBy('tarikh_submit', 'DESC')->paginate(10);
+            $noc = Noc::orderBy('tarikh_permohonan', 'DESC')->paginate(10);
         } else {
             $noc = Noc::where('bahagian', '=', Auth::user()->bahagian)
                 ->where('status_noc', '!=', 'noc_20')
-                ->orderBy('tarikh_submit', 'DESC')
+                ->orderBy('tarikh_permohonan', 'DESC')
                 ->paginate(10);
         }
 
@@ -218,11 +218,11 @@ class NocController extends Controller
                     $query->whereIn('status_noc', ['noc_1', 'noc_17', 'noc_2', 'noc_18', 'noc_19', 'noc_9', 'noc_10', 'noc_11', 'noc_12', 'noc_13', 'noc_14', 'noc_15'])
                         ->orWhere('status_noc2', 'noc_19');
                 })
-                ->orderBy('tarikh_submit', 'DESC')
+                ->orderBy('tarikh_permohonan', 'DESC')
                 ->paginate(10);
         } else if (Auth::user()->peranan == 3) {
             $noc = Noc::whereIn('status_noc', ['noc_3', 'noc_5', 'noc_7'])
-                ->orderBy('tarikh_submit', 'DESC')
+                ->orderBy('tarikh_permohonan', 'DESC')
                 ->paginate(10);
 
             // $noc = DB::table('t_noc')

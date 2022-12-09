@@ -89,6 +89,7 @@
                                                 </a>
                                             @endif
                                             <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Info"
                                                 href="{{ route('noc.detail', $data->id) }}">
                                                 <i data-feather="monitor">Info</i>
                                             </a>

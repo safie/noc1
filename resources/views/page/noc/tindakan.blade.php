@@ -18,7 +18,7 @@
     <div class="container-fluid px-4">
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button class="btn-close" data-bs-dismiss="alert" type="button" aria-label="Close"></button>
                 <p>{{ $message }}</p>
             </div>
         @endif
@@ -61,8 +61,8 @@
                                     <td class="text-center align-middle" style="width:5em">
                                         <div class="d-flex justify-content-center">
                                             <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
-                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"
-                                                href="{{ route('noc.edit', $data->id) }}">
+                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                href="{{ route('noc.edit', $data->id) }}" title="Edit">
                                                 <i data-feather="edit"></i></a>
                                             {{-- <form action="{{ route('noc.destroy', $data->id) }}" method="POST">
                                                     @csrf
@@ -73,7 +73,8 @@
                                                 </form> --}}
 
                                             <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
-                                                href="{{ route('noc.detail', $data->id) }}"><i
+                                                data-bs-toggle="tooltip" data-bs-placement="top"
+                                                href="{{ route('noc.detail', $data->id) }}" title="Info"><i
                                                     data-feather="monitor">Info</i></a>
                                         </div>
                                     </td>
@@ -91,7 +92,6 @@
             </div>
         </div>
     </div>
-
 
 @endsection
 
