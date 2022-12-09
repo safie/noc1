@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <strong>Maaf, ada ralat data!</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <button class="btn-close" data-bs-dismiss="alert" type="button" aria-label="Close"></button>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -27,21 +27,12 @@
                     </div>
                     <div class="card-body">
                         <!-- Form Group (first name)-->
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputTajuk">Tajuk Permohonan</label>
-                            <input class="form-control" id="inputTajuk" name="inputTajuk" type="text"
-                                value="{{ $noc->tajuk_permohonan }}" placeholder="Masukkan tajuk permohonan..." />
+                        <div class="mb-5">
+                            <label class="small mb-1 fw-bolder"
+                                for="inputTajuk">{{ $noc->getProjek->nama_projek }}</label>
+                            <label class="small mb-1" for="inputTajuk">{{ $noc->kod_myprojek }}</label>
                         </div>
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputTajuk">Kod MyProjek</label>
-                            <input class="form-control" id="inputKodMyprojek" name="inputKodMyprojek" type="text"
-                                value="{{ $noc->kod_myprojek }}" placeholder="Masukkan kod MyProjek.." />
-                        </div>
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputTajuk">No. Rujukan Surat</label>
-                            <input class="form-control" id="inputRujukan" name="inputRujukan" type="text"
-                                value="{{ $noc->no_rujukan }}" placeholder="Masukkan nombor rujukan surat..." />
-                        </div>
+
                         <div class="mb-3">
                             <label class="small mb-1" for="inputFirstName">Tarikh Permohonan</label>
                             <div class="input-group input-group-joined">
@@ -54,8 +45,15 @@
 
                             </div>
                         </div>
+
                         <div class="mb-3">
-                            <label class="small mb-1" for="inputFirstName">Tarikh Surat Permohonan</label>
+                            <label class="small mb-1" for="inputTajuk">No. Rujukan Surat</label>
+                            <input class="form-control" id="inputRujukan" name="inputRujukan" type="text"
+                                value="{{ $noc->no_rujukan }}" placeholder="Masukkan nombor rujukan surat..." />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputFirstName">Tarikh Surat</label>
                             <div class="input-group input-group-joined">
                                 <span class="input-group-text">
                                     <i data-feather="calendar"></i>
@@ -66,50 +64,20 @@
 
                             </div>
                         </div>
+
                         <div class="mb-3">
                             <label class="small mb-1">Klasifikasi</label>
-                            <select class="form-select" aria-label="Default select example" id="inputKlasifikasi"
-                                name=" inputKlasifikasi">
-                                <option selected disabled>Sila pilih:</option>
+                            <select class="form-select" id="inputKlasifikasi" name="inputKlasifikasi"
+                                aria-label="Default select example">
+                                <option value="{{ $noc->klasifikasi}}" @if(old('inputKlasifikasi') == '{{ $noc->klasifikasi}}')selected @endif>{{ $noc->getKategori->kod }} - {{ $noc->getKategori->nama_kat }}</option>
+
                                 @foreach ($kategori as $data)
-                                    <option value="{{ $data->kod }}"
-                                        {{ $data->kod == $noc->klasifikasi ? 'selected' : '' }}> {{ $data->kod }} -
-                                        {{ $data->nama_kat }} </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        {{-- <div class="mb-3">
-                            <label class="small mb-1">Bahagian</label>
-                            <select class="form-select" aria-label="Default select example" id="inputBahagian"
-                                name="inputBahagian">
-                                <option selected disabled>Sila pilih:</option>
-                                @foreach ($bahagian as $data)
-                                    <option value="{{ $data->id }}"
-                                        {{ $data->id == $noc->bahagian ? 'selected' : '' }}>
-                                        {{ $data->sgktn_bhgn }} - {{ $data->nama_bhgn }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div> --}}
-                        <div class="mb-3">
-                            <label class="small mb-1">Kementerian/Jabatan</label>
-                            <select class="form-select" aria-label="Default select example" id="inputJabatan"
-                                name="inputJabatan">
-                                <option selected disabled>Sila pilih:</option>
-                                @foreach ($kementerian as $data)
-                                    <option value="{{ $data->id }}"
-                                        {{ $data->id == $noc->kementerian ? 'selected' : '' }}>
-                                        {{ $data->nama_jabatan }}
-                                        ({{ $data->sgktn_jabatan }})
+                                    <option value="{{ $data->id }}">{{ $data->kod }} -
+                                        {{ $data->nama_kat }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
-                        {{-- <div class="mb-3" hidden>
-                                    <label class="small mb-1" for="statusNOC">Status NOC</label>
-                                    <input class="form-control" id="statusNOC" name="statusNOC" type="text"
-                                        placeholder="Status NOC" value="noc_1" />
-                                </div> --}}
                     </div>
                 </div>
             </div>
@@ -122,7 +90,7 @@
                         title="Data akan disimpan"></i>
                 </div>
                 <div class="card-body">
-                    <div class="d-grid"><button type="submit" class="fw-500 btn btn-primary">Simpan</button>
+                    <div class="d-grid"><button class="fw-500 btn btn-primary" type="submit">Simpan</button>
                     </div>
                 </div>
             </div>

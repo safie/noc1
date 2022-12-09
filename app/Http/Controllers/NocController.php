@@ -153,18 +153,12 @@ class NocController extends Controller
     public function edit(Noc $noc)
     {
         $kategori = Kategori::get(['id', 'nama_kat', 'kod']);
-        $kementerian = Kementerian::get(['id', 'nama_jabatan', 'sgktn_jabatan']);
-        $bahagian = Bahagian::get(['id', 'nama_bhgn', 'sgktn_bhgn']);
-        $data1['bahagian'] = $bahagian;
-        $data2['kementerian'] = $kementerian;
         $data3['kategori'] = $kategori;
         $form = 'noc_edit';
         $tajuk = 'Edit NOC';
 
         // dd($data3);
         return view('page.noc.edit', compact('noc', 'form', 'tajuk'))
-            ->with($data1)
-            ->with($data2)
             ->with($data3);
     }
 
