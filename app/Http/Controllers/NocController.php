@@ -1019,6 +1019,8 @@ class NocController extends Controller
     {
         $request->validate([
             'tarikh' => 'required',
+            'keputusan' => 'required',
+            'pengurusan_tinggi' => 'required',
             // 'no_rujukan' => 'required'
         ]);
 
@@ -1026,6 +1028,8 @@ class NocController extends Controller
         $semakan->tarikh_hantar_surat_lulus = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
         $semakan->status_noc = "noc_15";
         $semakan->no_rujukan_surat_kelulusan = $request->no_rujukan;
+        $semakan->keputusan = $request->keputusan;
+        $semakan->pengurusan_tinggi = $request->pengurusan_tinggi;
         $semakan->save();
 
         NocLog::create([

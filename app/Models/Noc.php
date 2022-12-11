@@ -32,7 +32,7 @@ class Noc extends Model
         'status_semak',
         'status_semak_tek',
         'status_semak_bajet',
-        'pengurusan_tertinggi',
+        'pengurusan_tinggi',
         'tarikh_semak',
         'tarikh_semak_bajet',
         'tarikh_semak_tek',
@@ -82,5 +82,15 @@ class Noc extends Model
     public function getStatus2()
     {
         return $this->belongsTo(Status::class, 'status_noc2', 'id_status');
+    }
+
+    public function getKeputusan()
+    {
+        return $this->belongsTo(Keputusan::class, 'keputusan', 'id');
+    }
+
+    public function getPengurusanTinggi()
+    {
+        return $this->belongsTo(PengurusanTinggi::class, 'pengurusan_tinggi', 'id');
     }
 }

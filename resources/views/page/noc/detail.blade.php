@@ -32,6 +32,7 @@
 @endsection
 
 @section('content')
+
     @include('layouts.template.header_compact')
     <div class="container-fluid px-4 mt-4">
         @if ($errors->any())
@@ -117,12 +118,12 @@
                                     {{ $noc->ulasan_teknikal ?? 'Tiada maklumat' }}</p>
                             </div>
                             <hr>
-                            <div class="row">
+                            {{-- <div class="row">
                                 <div class="d-flex justify-content-between">
-                                    <div>
+                                     <div>
                                         <label class="small fw-bolder">Tarikh Memo:</label>
                                         <label
-                                            class="small">{{ \Carbon\Carbon::parse($noc->tarikh_hantar_memo_kelulusan)->format('d-m-Y') ?? 'Tiada maklumat' }}</label>
+                                            class="small">{{ \Carbon\Carbon::parse($noc->tarikh_hantar_memo_lulus)->format('d-m-Y') ?? 'Tiada maklumat' }}</label>
                                     </div>
                                     <div>
                                         <label class="small fw-bolder">No. Rujukan Memo:</label>
@@ -130,13 +131,13 @@
                                             class="small">{{ $noc->no_rujukan_memo_kelulusan ?? 'Tiada maklumat' }}</label>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row">
                                 <div class="d-flex justify-content-between">
                                     <div>
                                         <label class="small fw-bolder">Tarikh Surat:</label>
                                         <label
-                                            class="small">{{ \Carbon\Carbon::parse($noc->tarikh_hantar_surat_lulus)->format('d-m-Y') ?? 'Tiada maklumat' }}
+                                            class="small">{{ \Carbon\carbon::parse($noc->tarikh_hantar_surat_lulus)->format('d-m-Y') ?? 'Tiada maklumat' }}
                                         </label>
                                     </div>
 
@@ -145,6 +146,15 @@
                                         <label
                                             class="small">{{ $noc->no_rujukan_surat_kelulusan ?? 'Tiada maklumat' }}</label>
                                     </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="small">
+                                    <label class="fw-bolder">Keputusan: </label>
+                                    <label class="text-uppercase">{{ $noc->getKeputusan->keputusan ?? 'Tiada maklumat' }}
+                                        oleh
+                                        {{ $noc->getPengurusanTinggi->nama_pt ?? 'Tiada maklumat' }}</label>
                                 </div>
                             </div>
                             <hr>
@@ -161,8 +171,7 @@
                                         </tr>
                                     </table>
                                     <div>
-                                        <label class="fw-bolder">Keputusan: </label>
-                                        <label class="text-uppercase">{{ $noc->keputusan ?? 'Tiada maklumat' }}</label>
+
                                     </div>
                                 </div>
                             </div>
@@ -202,6 +211,7 @@
 @endsection
 
 @section('js')
+
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
