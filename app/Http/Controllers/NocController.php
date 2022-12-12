@@ -209,13 +209,18 @@ class NocController extends Controller
         if (Auth::user()->peranan == 2) {
             $noc = Noc::where('bahagian', '=', Auth::user()->bahagian)
                 ->where(function ($query) {
-                    $query->whereIn('status_noc', ['noc_1', 'noc_17', 'noc_2', 'noc_18', 'noc_19', 'noc_9', 'noc_10', 'noc_11', 'noc_12', 'noc_13', 'noc_14', 'noc_15'])
+                    $query->whereIn('status_noc', ['noc_1', 'noc_17', 'noc_2', 'noc_18', 'noc_19', 'noc_9', 'noc_10', 'noc_11', 'noc_12', 'noc_13', 'noc_14'])
                         ->orWhere('status_noc2', 'noc_19');
+                })
+                ->orwhere(function ($query) {
+                    $query->where('status_noc', 'noc_15')
+                        ->Where('keputusan', '!=', 2);
                 })
                 ->orderBy('tarikh_permohonan', 'DESC')
                 ->paginate(10);
         } else if (Auth::user()->peranan == 3) {
             $noc = Noc::whereIn('status_noc', ['noc_3', 'noc_5', 'noc_7'])
+                // ->where('keputusan', '!=', 2)
                 ->orderBy('tarikh_permohonan', 'DESC')
                 ->paginate(10);
 
@@ -242,10 +247,12 @@ class NocController extends Controller
 
         } else if (Auth::user()->peranan == 4) {
             $noc = Noc::whereIn('status_noc2', ['noc_4', 'noc_6', 'noc_8'])
+                // ->where('keputusan', '!=', 2)
                 ->orderBy('tarikh_submit', 'DESC')
                 ->paginate(10);
         } else {
             $noc = Noc::orderBy('tarikh_submit', 'DESC')
+                // ->where('keputusan', '!=', 2)
                 ->paginate(10);
         }
 
