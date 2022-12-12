@@ -62,14 +62,20 @@
                     <div id="kosProjek" style="display:none">
                         <div class="d-flex justify-content-between mb-3 px-1">
                             <div class="flex-fill mx-1">
-                                <label class="small mb-1" for="inputTajuk">Kos Sebelum (RM)</label>
+                                <label class=" small mb-1" for="inputKosSebelum">Kos Sebelum (RM)</label>
+                                <input class="form-control inputKosSebelumDisplay" id="inputKosSebelumDisplay"
+                                    name="inputKosSebelumDisplay" type="text" placeholder="Kos projek sebelum"
+                                    autocomplete="off" />
                                 <input class="form-control" id="inputKosSebelum" name="inputKosSebelum" type="number"
-                                    placeholder="Kos projek sebelum" autocomplete="off" />
+                                    placeholder="Kos projek sebelum" autocomplete="off" hidden />
                             </div>
                             <div class="flex-fill mx-1">
                                 <label class="small mb-1" for="inputKosPerubahan">Perubahan Kos (RM)</label>
+                                <input class="form-control inputKosPerubahanDisplay" id="inputKosSebelumDisplay"
+                                    name="inputKosPerubahanDisplay" type="text" placeholder="Kos perubahan projek"
+                                    autocomplete="off" />
                                 <input class="form-control" id="inputKosPerubahan" name="inputKosPerubahan" type="number"
-                                    placeholder="Kos perubahan projek" autocomplete="off" />
+                                    placeholder="Kos perubahan projek" autocomplete="off" hidden />
                             </div>
                         </div>
                     </div>
@@ -98,13 +104,14 @@
                             <input class="form-control" id="urlDokumen" name="urlDokumen" type="text"
                                 placeholder="Masukkan alamat URL" />
                         </div>
-                        <div id="emailHelp" class="form-text">URL lampiran dokumen disimpan didalam storan cloud google</div>
+                        <div id="emailHelp" class="form-text">URL lampiran dokumen disimpan didalam storan cloud google
+                        </div>
                     </div>
 
                     <div class="mb-3" hidden>
                         <label class="small mb-1" for="statusNOC">noc_flow</label>
-                        <input class="form-control" id="noc_flow" name="noc_flow" type="text"
-                            value="" placeholder="NOC Flow" />
+                        <input class="form-control" id="noc_flow" name="noc_flow" type="text" value=""
+                            placeholder="NOC Flow" />
                     </div>
 
                     <div class="mb-3" hidden>
@@ -129,6 +136,21 @@
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('js/easy-number-separator.js') }}"></script>
+    <script>
+        easyNumberSeparator({
+            selector: '.inputKosSebelumDisplay',
+            separator: ',',
+            decimalSeparator: '.',
+            resultInput: '#inputKosSebelum',
+        })
+        easyNumberSeparator({
+            selector: '.inputKosPerubahanDisplay',
+            separator: ',',
+            decimalSeparator: '.',
+            resultInput: '#inputKosPerubahan',
+        })
+    </script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#tarikhMohonNOC').datepicker({

@@ -85,43 +85,43 @@
                                             <input class="form-control" id="inputTajuk" name="inputTajuk" type="text"
                                                 placeholder="Kos projek sebelum" autocomplete="off" />
                                         </div> --}}
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label class="small mb-1" for="inputTajuk">Perubahan Kos *</label>
-                                        <input class="form-control" id="inputKos" name="inputKos" type="number"
-                                            placeholder="Kos projek" autocomplete="off" />
-                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="small mb-1" for="inputTajuk">Perubahan Kos *</label>
+                                    <input class="form-control" id="inputKos" name="inputKos" type="number"
+                                        placeholder="Kos projek" autocomplete="off" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <div class="flex-fill mx-1">
+                                <label class="small mb-1" for="inputFirstName">Tarikh Permohonan *</label>
+                                <div class="input-group input-group-joined">
+                                    <span class="input-group-text">
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                    <input class="form-control ps-0" id="tarikhMohonNOC" name="tarikhMohonNOC"
+                                        placeholder="Pilih tarikh..." autocomplete="off" />
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputTajuk">No. Rujukan Surat</label>
+                                <input class="form-control" id="inputRujukan" name="inputRujukan" type="text"
+                                    placeholder="Masukkan nombor rujukan surat..." />
+                            </div>
+                            <div class="mb-3">
+                                <label class="small mb-1" for="inputFirstName">Tarikh Surat Permohonan</label>
+                                <div class="input-group input-group-joined">
+                                    <span class="input-group-text">
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                    <input class="form-control ps-0" id="tarikhSuratMohon" name="tarikhSuratMohon"
+                                        placeholder="Pilih tarikh..." autocomplete="off" />
                                 </div>
                             </div>
 
-                            <div class="d-flex justify-content-between">
-                                <div class="flex-fill mx-1">
-                                    <label class="small mb-1" for="inputFirstName">Tarikh Permohonan *</label>
-                                    <div class="input-group input-group-joined">
-                                        <span class="input-group-text">
-                                            <i data-feather="calendar"></i>
-                                        </span>
-                                        <input class="form-control ps-0" id="tarikhMohonNOC" name="tarikhMohonNOC"
-                                            placeholder="Pilih tarikh..." autocomplete="off" />
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="small mb-1" for="inputTajuk">No. Rujukan Surat</label>
-                                    <input class="form-control" id="inputRujukan" name="inputRujukan" type="text"
-                                        placeholder="Masukkan nombor rujukan surat..." />
-                                </div>
-                                <div class="mb-3">
-                                    <label class="small mb-1" for="inputFirstName">Tarikh Surat Permohonan</label>
-                                    <div class="input-group input-group-joined">
-                                        <span class="input-group-text">
-                                            <i data-feather="calendar"></i>
-                                        </span>
-                                        <input class="form-control ps-0" id="tarikhSuratMohon" name="tarikhSuratMohon"
-                                            placeholder="Pilih tarikh..." autocomplete="off" />
-                                    </div>
-                                </div>
-
-                                {{-- <div class="mb-3">
+                            {{-- <div class="mb-3">
                                     <label class="small mb-1">Bahagian</label>
                                     <select class="form-select" id="inputBahagian" name="inputBahagian"
                                         aria-label="Default select example">
@@ -135,32 +135,32 @@
                                     </select>
                                 </div> --}}
 
-                                <div class="mb-3" hidden>
-                                    <label class="small mb-1" for="statusNOC">noc_flow</label>
-                                    <input class="form-control" id="noc_flow" name="noc_flow" type="text"
-                                        value="" placeholder="NOC Flow" />
-                                </div>
+                            <div class="mb-3" hidden>
+                                <label class="small mb-1" for="statusNOC">noc_flow</label>
+                                <input class="form-control" id="noc_flow" name="noc_flow" type="text" value=""
+                                    placeholder="NOC Flow" />
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-4">
-                    <div class="card card-header-actions">
-                        <div class="card-header">
-                            Tindakan
-                            <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
-                                title="Data akan disimpan"></i>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-grid spinner-hide">
-                                <button class="fw-500 btn btn-black" type="submit">Simpan</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
         </div>
+
+        <div class="col-lg-4">
+            <div class="card card-header-actions">
+                <div class="card-header">
+                    Tindakan
+                    <i class="text-muted" data-feather="info" data-bs-toggle="tooltip" data-bs-placement="left"
+                        title="Data akan disimpan"></i>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid spinner-hide">
+                        <button class="fw-500 btn btn-black" type="submit">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
 
     </div>
 
@@ -169,6 +169,17 @@
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('js/easy-number-separator.js') }}"></script>
+
+    <script>
+        easyNumberSeparator({
+            selector: '.number-separator',
+            separator: ',',
+            decimalSeparator: '.',
+            resultInput: '#result_input',
+        })
+    </script>
+    
     <script type="text/javascript">
         $(document).ready(function() {
             $('#tarikhMohonNOC').datepicker({
