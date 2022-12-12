@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\NocController;
+use App\Models\Noc;
 
 
 class HomeController extends Controller
@@ -169,6 +170,19 @@ class HomeController extends Controller
                 ->get();
 
             $data12['nocJabatanAll'] = $nocJabatanAll;
+
+            //Jumlah Kos Sebelum
+            $nocKosSebelum = DB::table('t_noc')
+                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->sum('kos_sebelum');
+
+            $data13['nocKosSebelum'] = $nocKosSebelum;
+
+            $nocKosPerubahan = DB::table('t_noc')
+                ->where('bahagian', '=', Auth::user()->bahagian)
+                ->sum('kos_perubahan');
+
+            $data14['nocKosPerubahan'] = $nocKosPerubahan;
         } else {
             //bilangan noc keseluruhan
             $noc = DB::table('t_noc')
@@ -289,9 +303,20 @@ class HomeController extends Controller
                 ->get();
 
             $data12['nocJabatanAll'] = $nocJabatanAll;
+
+            //Jumlah Kos Sebelum
+            $nocKosSebelum = DB::table('t_noc')
+                ->sum('kos_sebelum');
+
+            $data13['nocKosSebelum'] = $nocKosSebelum;
+
+            $nocKosPerubahan = DB::table('t_noc')
+                ->sum('kos_perubahan');
+
+            $data14['nocKosPerubahan'] = $nocKosPerubahan;
         }
 
-        // dd($data9);
+        // dd($data13);
 
         return view('home')
             ->with($data1)
@@ -305,6 +330,8 @@ class HomeController extends Controller
             ->with($data9)
             ->with($data10)
             ->with($data11)
-            ->with($data12);
+            ->with($data12)
+            ->with($data13)
+            ->with($data14);
     }
 }

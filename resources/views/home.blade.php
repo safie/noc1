@@ -107,12 +107,49 @@
 
         </div>
         <div class="row">
+            <div class="col-xl-6 mb-2">
+                <!-- Dashboard info widget 1-->
+                <div class="card bg-secondary border-0">
+                    <div class="card-body text-center">
+                        <h6 class="text-white" style="height: 4rem">Jumlah Kos Sebelum</h6>
+                        <div class=" mb-2">
+                            <span class="display-5 text-white">RM
+                                {{ number_format($nocKosSebelum, 2, '.', ',') ?? 'Tiada maklumat' }}</span>
+                            {{-- <span class="text-white-50">per year</span> --}}
+                        </div>
+                        {{-- <div class="progress bg-white-25 rounded-pill" style="height: 0.5rem">
+                            <div class="progress-bar bg-white w-75 rounded-pill" role="progressbar" aria-valuenow="75"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 mb-2">
+                <!-- Dashboard info widget 1-->
+                <div class="card bg-orange border-0">
+                    <div class="card-body text-center">
+                        <h6 class="text-white" style="height: 4rem">Jumlah Kos Perubahan</h6>
+                        <div class=" mb-2">
+                            <span class="display-5 text-white">RM
+                                {{ number_format($nocKosPerubahan, 2, '.', ',') ?? 'Tiada maklumat' }}</span>
+                            {{-- <span class="text-white-50">per year</span> --}}
+                        </div>
+                        {{-- <div class="progress bg-white-25 rounded-pill" style="height: 0.5rem">
+                            <div class="progress-bar bg-white w-75 rounded-pill" role="progressbar" aria-valuenow="75"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div> --}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-lg-4 mb-4">
                 <!-- Report summary card example-->
                 <div class="card mb-2">
                     <div class="card-header"><b>Top 5 NOC mengikut klasifikasi</b></div>
                     <div class="card-body px-2 py-2 align-middle">
-                        <table class="table bg-light table-sm table-striped table-hover mx-0 my-0 rounded rounded-3 overflow-hidden">
+                        <table
+                            class="table bg-light table-sm table-striped table-hover mx-0 my-0 rounded rounded-3 overflow-hidden">
                             @if ($nocKlasifikasi->count() > 0)
                                 @foreach ($nocKlasifikasi as $data)
                                     <tr style="height: 50px">
@@ -138,7 +175,8 @@
                     </div>
                     <div class="card-footer position-relative border-top-0 bg-white">
                         <!-- Button trigger modal -->
-                        <a class="stretched-link" data-bs-toggle="modal" data-bs-target="#senaraiKlasifikasiNoc" href="#">
+                        <a class="stretched-link" data-bs-toggle="modal" data-bs-target="#senaraiKlasifikasiNoc"
+                            href="#">
                             <div class="text-sm d-flex align-items-center justify-content-between">
                                 Senarai NOC
                                 <i class="fas fa-long-arrow-alt-right"></i>
@@ -151,7 +189,8 @@
                 <div class="card mb-4">
                     <div class="card-header text-warning"><b>Top 5 NOC mengikut status</b></div>
                     <div class="card-body px-2 py-2 align-middle">
-                        <table class="table bg-light table-sm table-striped table-hover mx-0 my-0 rounded rounded-3 overflow-hidden">
+                        <table
+                            class="table bg-light table-sm table-striped table-hover mx-0 my-0 rounded rounded-3 overflow-hidden">
                             @if ($nocStatus->count() > 0)
                                 @foreach ($nocStatus as $data)
                                     <tr style="height: 50px">
@@ -188,7 +227,8 @@
                 <div class="card mb-4">
                     <div class="card-header text-success"><b>5 NOC mengikut Kementerian</b></div>
                     <div class="card-body px-2 py-2 align-middle">
-                        <table class="table bg-light table-sm table-striped table-hover mx-0 my-0 rounded rounded-3 overflow-hidden">
+                        <table
+                            class="table bg-light table-sm table-striped table-hover mx-0 my-0 rounded rounded-3 overflow-hidden">
                             @if ($nocJabatan->count() > 0)
                                 @foreach ($nocJabatan as $data)
                                     <tr style="height: 50px">
@@ -211,7 +251,8 @@
                     </div>
                     <div class="card-footer position-relative border-top-0 bg-white">
                         <!-- Button trigger modal -->
-                        <a class="stretched-link" data-bs-toggle="modal" data-bs-target="#senaraiKementerian" href="#">
+                        <a class="stretched-link" data-bs-toggle="modal" data-bs-target="#senaraiKementerian"
+                            href="#">
                             <div class="text-sm d-flex align-items-center justify-content-between">
                                 Senarai NOC
                                 <i class="fas fa-long-arrow-alt-right"></i>
