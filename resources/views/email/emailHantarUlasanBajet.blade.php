@@ -11,14 +11,14 @@
             font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
             text-align: center;
             font-size: 1rem;
-			font-weight: 400;
+            font-weight: 400;
         }
 
         table {
             font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
             border: 1px solid #dddddd;
             font-size: 1rem;
-			font-weight: 400;
+            font-weight: 400;
             width: 100%;
         }
 
@@ -48,7 +48,7 @@
             font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
             text-align: left;
             font-size: 1rem;
-			font-weight: 400;
+            font-weight: 400;
         }
     </style>
 </head>
@@ -66,7 +66,7 @@
         </tr>
         <tr>
             <th>Tajuk</th>
-            <td>{{ $data->tajuk_permohonan }}</td>
+            <td>{{ $data->nama_projek }}</td>
         </tr>
         <tr>
             <th>Bahagian</th>
@@ -76,7 +76,8 @@
             <th>Urusan</th>
             <td>
                 @if ($data->tarikh_hantar_ulasan != null)
-                    {{ \Carbon\Carbon::parse($data->tarikh_hantar_ulasan)->format('d-m-Y') }} | Ulasan Bajet telah dihantar
+                    {{ \Carbon\Carbon::parse($data->tarikh_hantar_ulasan)->format('d-m-Y') }} | Ulasan Bajet telah
+                    dihantar
                 @endif
             </td>
         </tr>
@@ -89,14 +90,15 @@
         <tr>
             <th>Ulasan</th>
             <td>
-                Dokumen lengkap tapi perlu dirujuk semula.
+                 {{ $data->ulasan_bajet ?? 'Tiada maklumat'}}
             </td>
         </tr>
 
     </table>
     <p>Sekian, terima kasih.</p>
-	<p>"BERKHIDMAT UNTUK NEGARA"</p>
-	<p><small><i>Nota: E-mel ini dijana secara automatik oleh komputer dan tidak memerlukan tanda tangan.</i></small></p>
+    <p>"BERKHIDMAT UNTUK NEGARA"</p>
+    <p><small><i>Nota: E-mel ini dijana secara automatik oleh komputer dan tidak memerlukan tanda tangan.</i></small>
+    </p>
 
 </body>
 

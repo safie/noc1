@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('t_noc', function (Blueprint $table) {
-            $table->string('ulasan_bajet')->nullable()->after('tarikh_sedia_ulasan_tek');
-            $table->string('ulasan_teknikal')->nullable()->after('ulasan_bajet');
+            $table->text('ulasan_bajet')->nullable()->after('tarikh_sedia_ulasan_tek');
+            $table->text('ulasan_teknikal')->nullable()->after('ulasan_bajet');
         });
     }
 

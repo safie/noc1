@@ -66,7 +66,7 @@
         </tr>
         <tr>
             <th>Tajuk</th>
-            <td>{{ $data->tajuk_permohonan }}</td>
+            <td>{{ $data->nama_projek }}</td>
         </tr>
         <tr>
             <th>Bahagian</th>

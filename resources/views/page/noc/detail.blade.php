@@ -96,6 +96,13 @@
                                     <label class="small" for="noRujukan"><b>Rujukan Surat:</b>
                                         {{ $noc->no_rujukan }}</label>
                                 </div>
+                                <div class="d-flex justify-content-between">
+                                    <label class="small"><b>Kos Sebelum: RM</b>
+                                        {{ number_format($noc->kos_sebelum, 2, '.', ',') ?? 'Tiada maklumat' }}</label>
+                                    <label class="small"><b>Kos Perubahan: RM</b>
+                                        {{ number_format($noc->kos_perubahan, 2, '.', ',') ?? 'Tiada maklumat' }}
+                                    </label>
+                                </div>
                             </div>
                             <hr>
                             <div class="row">
@@ -176,7 +183,10 @@
                                 </div>
                             </div>
                             <hr>
-                            @if (Auth::user()->peranan == 2 and $noc->status_noc != 'noc_16')
+                            @if (Auth::user()->peranan == 2 and
+                                $noc->status_noc != 'noc_15' and
+                                $noc->status_noc != 'noc_16' and
+                                $noc->keputusan != 2)
                                 <div class="text-end d-print-none">
                                     <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal"
                                         data-bs-target="#modalPadam" type="button">

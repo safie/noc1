@@ -20,11 +20,8 @@
             <div class="mb-3">
                 <label class="small mb-1" for="inputFirstName">Ulasan</label>
                 <div class="input-group input-group-joined">
-                    <span class="input-group-text">
-                        <i data-feather="calendar"></i>
-                    </span>
-                    <textarea class="form-control ps-0" id="ulasanBajet" name="ulasanBajet" placeholder="Nyatakan ulasan..."
-                        autocomplete="off" />
+                    <textarea class="form-control" id="ulasanBajet" name="ulasanBajet" placeholder="Nyatakan ulasan..."
+                        autocomplete="off"></textarea>
                 </div>
             </div>
             <div class="modal-footer">
@@ -55,14 +52,12 @@
                         autocomplete="off" />
                 </div>
             </div>
-             <div class="mb-3">
+            <div class="mb-3">
                 <label class="small mb-1" for="inputFirstName">Ulasan</label>
                 <div class="input-group input-group-joined">
-                    <span class="input-group-text">
-                        <i data-feather="calendar"></i>
-                    </span>
+
                     <textarea class="form-control ps-0" id="ulasanTeknikal" name="ulasanTeknikal" placeholder="Nyatakan ulasan..."
-                        autocomplete="off" />
+                        autocomplete="off"></textarea>
                 </div>
             </div>
             <div class="modal-footer">

@@ -61,8 +61,11 @@
                                     <td class="text-center align-middle" style="width:5em">{{ $loop->index + 1 }}</td>
                                     <td style="width:40em">
                                         <div class="text-uppercase">
-                                            <p class="badge bg-primary">{{ $data->getKategori->kod }} -
-                                                {{ $data->getKategori->nama_kat }}</p>
+                                            <p class="bg-white">
+                                                <mark class="px-2 py-1 bg-warning">{{ $data->getKategori->kod }}</mark>
+                                                <mark
+                                                    class="px-2 py-1 bg-primary text-white">{{ $data->getKategori->nama_kat }}</mark>
+                                            </p>
                                             <p><b>{{ $data->getProjek->getKementerian->nama_jabatan }}</b><br>{!! $data->getProjek->nama_projek !!}
                                             </p>
                                         </div>
@@ -89,7 +92,7 @@
                                                 </a>
                                             @endif
                                             <a class="btn btn-datatable btn-lg btn-icon btn-transparent-dark mx-1"
-                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Info"
+                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Info"
                                                 href="{{ route('noc.detail', $data->id) }}">
                                                 <i data-feather="monitor">Info</i>
                                             </a>

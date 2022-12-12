@@ -445,7 +445,7 @@ class NocController extends Controller
 
             $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
                 ->select(
-                    't_noc.tajuk_permohonan',
+                    't_projek_rp2_2022.nama_projek',
                     't_bahagian.nama_bhgn',
                     't_kategori.kod',
                     't_kategori.nama_kat',
@@ -458,6 +458,7 @@ class NocController extends Controller
                 ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
                 ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
                 ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+                ->leftJoin('t_projek_rp2_2022', 't_projek_rp2_2022.id', '=', 't_noc.kod_myprojek')
                 ->first();
 
             $senderBajet = DB::table('users')
@@ -504,7 +505,7 @@ class NocController extends Controller
 
             $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
                 ->select(
-                    't_noc.tajuk_permohonan',
+                    't_projek_rp2_2022.nama_projek',
                     't_bahagian.nama_bhgn',
                     't_kategori.kod',
                     't_kategori.nama_kat',
@@ -517,6 +518,7 @@ class NocController extends Controller
                 ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
                 ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
                 ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+                ->leftJoin('t_projek_rp2_2022', 't_projek_rp2_2022.id', '=', 't_noc.kod_myprojek')
                 ->first();
 
             $senderBajet = DB::table('users')
@@ -563,7 +565,7 @@ class NocController extends Controller
 
         $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
             ->select(
-                't_noc.tajuk_permohonan',
+                't_projek_rp2_2022.nama_projek',
                 't_bahagian.nama_bhgn',
                 't_kategori.kod',
                 't_kategori.nama_kat',
@@ -576,6 +578,7 @@ class NocController extends Controller
             ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
             ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
             ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+            ->leftJoin('t_projek_rp2_2022', 't_projek_rp2_2022.id', '=', 't_noc.kod_myprojek')
             ->first();
 
         // $senderBajet = DB::table('users')
@@ -619,7 +622,7 @@ class NocController extends Controller
 
         $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
             ->select(
-                't_noc.tajuk_permohonan',
+                't_projek_rp2_2022.nama_projek',
                 't_bahagian.nama_bhgn',
                 't_kategori.kod',
                 't_kategori.nama_kat',
@@ -632,6 +635,7 @@ class NocController extends Controller
             ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
             ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
             ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+            ->leftJoin('t_projek_rp2_2022', 't_projek_rp2_2022.id', '=', 't_noc.kod_myprojek')
             ->first();
 
         // $senderBajet = DB::table('users')
@@ -686,7 +690,7 @@ class NocController extends Controller
 
         $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
             ->select(
-                't_noc.tajuk_permohonan',
+                't_projek_rp2_2022.nama_projek',
                 't_bahagian.nama_bhgn',
                 't_kategori.kod',
                 't_kategori.nama_kat',
@@ -699,6 +703,7 @@ class NocController extends Controller
             ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
             ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
             ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+            ->leftJoin('t_projek_rp2_2022', 't_projek_rp2_2022.id', '=', 't_noc.kod_myprojek')
             ->first();
 
         $senderBhgn = DB::table('users')
@@ -760,7 +765,7 @@ class NocController extends Controller
 
         $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
             ->select(
-                't_noc.tajuk_permohonan',
+                't_projek_rp2_2022.nama_projek',
                 't_bahagian.nama_bhgn',
                 't_kategori.kod',
                 't_kategori.nama_kat',
@@ -774,6 +779,7 @@ class NocController extends Controller
             ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
             ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
             ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+            ->leftJoin('t_projek_rp2_2022', 't_projek_rp2_2022.id', '=', 't_noc.kod_myprojek')
             ->first();
 
         $senderBhgn = DB::table('users')
@@ -849,11 +855,13 @@ class NocController extends Controller
     {
         $request->validate([
             'tarikh' => 'required',
+            'ulasanBajet' => 'required'
         ]);
 
-        $semakan                         = Noc::find($id);
-        $semakan->tarikh_hantar_ulasan    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-        $semakan->status_noc            = "noc_9";
+        $semakan                            = Noc::find($id);
+        $semakan->tarikh_hantar_ulasan      = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc                = "noc_9";
+        $semakan->ulasan_bajet              = $request->ulasanBajet;
         $semakan->save();
         NocLog::create([
             'noc_id' => $semakan->id,
@@ -865,7 +873,7 @@ class NocController extends Controller
 
         $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
             ->select(
-                't_noc.tajuk_permohonan',
+                't_projek_rp2_2022.nama_projek',
                 't_bahagian.nama_bhgn',
                 't_kategori.kod',
                 't_kategori.nama_kat',
@@ -877,6 +885,7 @@ class NocController extends Controller
             ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
             ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
             ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+            ->leftJoin('t_projek_rp2_2022', 't_projek_rp2_2022.id', '=', 't_noc.kod_myprojek')
             ->first();
 
         $senderBhgn = DB::table('users')
@@ -908,11 +917,13 @@ class NocController extends Controller
     {
         $request->validate([
             'tarikh' => 'required',
+            'ulasanTeknikal' => 'required'
         ]);
 
-        $semakan                         = Noc::find($id);
-        $semakan->tarikh_hantar_ulasan_tek    = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
-        $semakan->status_noc2            = "noc_10";
+        $semakan                                = Noc::find($id);
+        $semakan->tarikh_hantar_ulasan_tek      = Carbon::createFromFormat('d/m/Y', $request->tarikh)->format('Y-m-d');
+        $semakan->status_noc2                   = "noc_10";
+        $semakan->ulasan_teknikal               = $request->ulasanTeknikal;
         $semakan->save();
         NocLog::create([
             'noc_id' => $semakan->id,
@@ -1065,7 +1076,7 @@ class NocController extends Controller
 
         $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
             ->select(
-                't_noc.tajuk_permohonan',
+                't_projek_rp2_2022.nama_projek',
                 't_bahagian.nama_bhgn',
                 't_kategori.kod',
                 't_kategori.nama_kat',
@@ -1077,6 +1088,7 @@ class NocController extends Controller
             ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
             ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
             ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+            ->leftJoin('t_projek_rp2_2022', 't_projek_rp2_2022.id', '=', 't_noc.kod_myprojek')
             ->first();
 
         // $senderBhgn = DB::table('users')

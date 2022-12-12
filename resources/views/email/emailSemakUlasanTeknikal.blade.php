@@ -11,14 +11,14 @@
             font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
             text-align: center;
             font-size: 1rem;
-			font-weight: 400;
+            font-weight: 400;
         }
 
         table {
             font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
             border: 1px solid #dddddd;
             font-size: 1rem;
-			font-weight: 400;
+            font-weight: 400;
             width: 100%;
         }
 
@@ -48,7 +48,7 @@
             font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
             text-align: left;
             font-size: 1rem;
-			font-weight: 400;
+            font-weight: 400;
         }
     </style>
 </head>
@@ -66,7 +66,7 @@
         </tr>
         <tr>
             <th>Tajuk</th>
-            <td>{{ $data->tajuk_permohonan }}</td>
+            <td>{{ $data->nama_projek }}</td>
         </tr>
         <tr>
             <th>Bahagian</th>
@@ -75,15 +75,17 @@
         <tr>
             <th>Urusan</th>
             <td>
-                @if($data->tarikh_dokumen_tambahan_tek != NULL)
-                {{ \Carbon\Carbon::parse($data->tarikh_dokumen_tambahan_tek)->format('d-m-Y') }} | NOC perlu dokumen tambahan
+                @if ($data->tarikh_dokumen_tambahan_tek != null)
+                    {{ \Carbon\Carbon::parse($data->tarikh_dokumen_tambahan_tek)->format('d-m-Y') }} | NOC perlu dokumen
+                    tambahan
                 @endif
             </td>
         </tr>
     </table>
     <p>Sekian, terima kasih.</p>
-	<p>"BERKHIDMAT UNTUK NEGARA"</p>
-	<p><small><i>Nota: E-mel ini dijana secara automatik oleh komputer dan tidak memerlukan tanda tangan.</i></small></p>
+    <p>"BERKHIDMAT UNTUK NEGARA"</p>
+    <p><small><i>Nota: E-mel ini dijana secara automatik oleh komputer dan tidak memerlukan tanda tangan.</i></small>
+    </p>
 </body>
 
 </html>

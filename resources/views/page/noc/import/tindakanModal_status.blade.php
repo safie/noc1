@@ -22,7 +22,7 @@
                                 Hantar Surat
                             </button>
                         </div>
-                    @elseif ($noc->status_noc == 'noc_15')
+                    @elseif ($noc->status_noc == 'noc_15' and $noc->keputusan == 1)
                         <div class="d-grid">
                             <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalLulus"
                                 type="button">
@@ -56,14 +56,14 @@
                                 Hantar Surat
                             </button>
                         </div>
-                    @elseif ($noc->status_noc == 'noc_15')
+                    @elseif ($noc->status_noc == 'noc_15' and $noc->keputusan == 1)
                         <div class="d-grid">
                             <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalLulus"
                                 type="button">
                                 Mohon Modul NOC
                             </button>
                         </div>
-                    @elseif ($noc->status_noc == 'noc_16')
+                    @elseif ($noc->status_noc == 'noc_16' or $noc->keputusan == 2)
                         <div class="">
                             <h5>Selesai</h5>
                         </div>
@@ -146,15 +146,17 @@
                                 Semak Permohonan NOC
                             </button>
                         </div>
-                    @elseif ($noc->status_noc == 'noc_5')
+                    @endif
+                    @if ($noc->status_noc == 'noc_5')
                         <div class="d-grid">
                             <button class="fw-500 btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#modalLulus"
                                 type="button">
                                 Hantar Ulasan Bajet
                             </button>
                         </div>
-                    @else
-                        <div class="">
+                    @endif
+                    @if ($noc->status_noc == 'noc_15' or $noc->status_noc == 'noc_9')
+                        <div>
                             <h5>Sedang Diproses</h5>
                         </div>
                     @endif
@@ -178,6 +180,10 @@
                             <h5>Sedang Diproses</h5>
                         </div>
                     @endif
+                @else
+                    <div class="">
+                        <h5>Sedang Diproses</h5>
+                    </div>
                 @endif
             @elseif (Auth::user()->peranan == 4)
                 @if ($noc->noc_flow == 'flow3')
