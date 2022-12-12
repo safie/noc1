@@ -208,7 +208,16 @@
                     @endif
                 @endif
             @else
-                <h5>Selesai</h5>
+                @if ($noc->status_noc != 'noc_16')
+                    <div class="">
+                        <h5>Sedang Diproses</h5>
+                    </div>
+                @else
+                    <div class="">
+                        <h5>Selesai</h5>
+                    </div>
+                @endif
+
                 {{-- <a class="btn btn-primary" href="{{ route('noc.previewDetail', $noc->id) }}">Preview</a> --}}
             @endif
         </div>

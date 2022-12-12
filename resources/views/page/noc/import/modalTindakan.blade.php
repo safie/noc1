@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div class="modal hide fade" id="modalLulus" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered @if ($noc->status_noc == 'noc_5') modal-xl @endif" role="document">
+    <div class="modal-dialog modal-dialog-centered @if ($noc->status_noc == 'noc_5' or $noc->status_noc2 == 'noc_6') modal-xl @endif" role="document">
         <div class="modal-content">
 
             @if (Auth::user()->peranan == 2)

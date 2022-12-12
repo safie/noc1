@@ -66,7 +66,8 @@
 
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary" type="button" href="{{ route('noc.mohonNocProjek',$data->kod_projek)}}">Mohon NOC</a>
+                                        <a class="btn btn-primary" type="button"
+                                            href="{{ route('noc.mohonNocProjek', $data->kod_projek) }}">Mohon NOC</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -79,7 +80,11 @@
                 </table>
 
                 <div class="d-flex justify-content-center">
-                    {!! $projek->links() !!}
+                    {{-- {!! $projek->links() !!} --}}
+                    {{ $projek->appends([
+                            'pilih' => request()->get('pilih'),
+                            'input' => request()->get('input'),
+                        ])->links() }}
                 </div>
             </div>
         </div>

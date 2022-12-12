@@ -36,12 +36,13 @@
                     </thead>
                     <tbody>
                         @if ($noc->count() > 0)
-                            @foreach ($noc as $data)
+                            @foreach ($noc as $index => $data)
                                 <tr>
-                                    <td class="text-center align-middle" style="width:5em">{{ $loop->index + 1 }}</td>
+                                    <td class="text-center align-middle" style="width:5em">{{ $index + $noc->firstItem() }}
+                                    </td>
                                     <td style="width:40em">
                                         <div class="text-uppercase">
-                                           <p class="bg-white">
+                                            <p class="bg-white">
                                                 <mark class="px-2 py-1 bg-warning">{{ $data->getKategori->kod }}</mark>
                                                 <mark
                                                     class="px-2 py-1 bg-primary text-white">{{ $data->getKategori->nama_kat }}</mark>
