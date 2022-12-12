@@ -11,14 +11,14 @@
             font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
             text-align: center;
             font-size: 1rem;
-			font-weight: 400;
+            font-weight: 400;
         }
 
         table {
             font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
             border: 1px solid #dddddd;
             font-size: 1rem;
-			font-weight: 400;
+            font-weight: 400;
             width: 100%;
         }
 
@@ -48,7 +48,7 @@
             font-family: Metropolis, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
             text-align: left;
             font-size: 1rem;
-			font-weight: 400;
+            font-weight: 400;
         }
     </style>
 </head>
@@ -82,9 +82,10 @@
             </td>
         </tr>
     </table>
-	<p>Sekian, terima kasih.</p>
-	<p>"BERKHIDMAT UNTUK NEGARA"</p>
-	<p><small><i>Nota: E-mel ini dijana secara automatik oleh komputer dan tidak memerlukan tanda tangan.</i></small></p>
+    <p>Sekian, terima kasih.</p>
+    <p>"BERKHIDMAT UNTUK NEGARA"</p>
+    <p><small><i>Nota: E-mel ini dijana secara automatik oleh komputer dan tidak memerlukan tanda tangan.</i></small>
+    </p>
 </body>
 
 </html>
