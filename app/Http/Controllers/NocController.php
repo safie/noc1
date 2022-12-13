@@ -1148,9 +1148,9 @@ class NocController extends Controller
         $noc = Noc::find($id);
         $noc->status_noc  = "noc_20";
 
-        // $date = Carbon::createFromFormat('Y-m-d', today())->toDateTimeString();
+        // $date = $currentTime->format('Y-m-d');
 
-        dd($currentTime);
+        // dd($date);
 
         $noc->save();
 
@@ -1158,7 +1158,7 @@ class NocController extends Controller
             'noc_id' => $noc->id,
             'status_noc'    => "noc_20",
             'keterangan' => "Batal NOC",
-            'tarikh'    => Carbon::createFromFormat('Y-m-d', $currentTime)->toDateTimeString(),
+            'tarikh'    => $currentTime->format('Y-m-d'),
             'css_class' => "bg-info",
         ]);
 
