@@ -7,12 +7,13 @@
 @section('content')
     <section class="container d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <div class="d-flex flex-column align-items-center ">
-            <img src="{{ asset('pic/jata_negara_small_2.png') }}" id="mask" alt="i-NOC" style="width:180px; height:155px">
-            <br>
-            <div class="d-flex justify-content-center display-1 h1 text-white"><strong>i-NOC</strong></div>
-            <div class="d-flex justify-content-center h1 text-white">Sistem Pemantauan NOC
+            <img id="mask" src="{{ asset('pic/jata_negara_only.png') }}" alt="i-NOC" style="width:180px; height:155px">
+            <div class="h5 text-white">Unit Perancang Ekonomi
             </div>
-            <div class="d-flex justify-content-center h6 text-white lead"></div>
+            <br>
+            <div class="display-1 text-white mb-0"><strong>iNOC</strong></div>
+            <div class="h4 text-white mt-0"><mark class="mx-2 my-2">Sistem Pemantauan NOC</mark></div>
+
         </div>
 
         <div class="row mx-auto mt-5">
@@ -98,7 +99,7 @@
 
         <div class="d-flex align-items-center justify-content-center mt-5">
             <p class="lead">
-                <a href="/login" class="btn btn-lg btn-secondary fw-bold border-white bg-primary">Log Masuk</a>
+                <a class="btn btn-lg btn-secondary fw-bold border-white bg-primary" href="/login">Log Masuk</a>
             </p>
         </div>
 
