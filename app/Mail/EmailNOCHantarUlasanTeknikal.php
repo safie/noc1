@@ -33,7 +33,7 @@ class EmailNOCHantarUlasanTeknikal extends Mailable
     public function build()
     {
 
-        return $this->subject('i-NOC Notifikasi : Penghantaran Ulasan Bajet')
+        return $this->subject('i-NOC Notifikasi : Penghantaran Ulasan Teknikal')
             ->view('email.emailHantarUlasanTeknikal')
             ->with('data', $this->dataMail);
     }

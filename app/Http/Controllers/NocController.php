@@ -18,6 +18,7 @@ use App\Mail\EmailNOCMohonUlasanTeknikal;
 use App\Mail\EmailNOCSemakUlasanBajet;
 use App\Mail\EmailNOCSemakUlasanTeknikal;
 use App\Mail\EmailNOCHantarUlasanBajet;
+use App\Mail\EmailNOCHantarUlasanTeknikal;
 use App\Mail\EmailNOCMohonModulNoc;
 use Carbon\Carbon;
 // use PDF;
@@ -954,32 +955,32 @@ class NocController extends Controller
             'css_class' => "bg-info",
         ]);
 
-        // $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
-        //     ->select(
-        //         't_projek_rp2_2022.nama_projek',
-        //         't_bahagian.nama_bhgn',
-        //         't_kategori.kod',
-        //         't_kategori.nama_kat',
-        //         't_noc.tarikh_hantar_ulasan',
-        //         't_noc.ulasan_bajet',
-        //         't_noc.ulasan_teknikal',
-        //         'status1.nama_status as status_noc1',
-        //         'status2.nama_status as status_noc2',
-        //     )
-        //     ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
-        //     ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
-        //     ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
-        //     ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
-        //     ->leftJoin('t_projek_rp2_2022', 't_projek_rp2_2022.kod_projek', '=', 't_noc.kod_myprojek')
-        //     ->first();
+        $dataMail = DB::table('t_noc')->where('t_noc.id', '=', $id)
+            ->select(
+                't_projek_rp2_2022.nama_projek',
+                't_bahagian.nama_bhgn',
+                't_kategori.kod',
+                't_kategori.nama_kat',
+                't_noc.tarikh_hantar_ulasan',
+                't_noc.ulasan_bajet',
+                't_noc.ulasan_teknikal',
+                'status1.nama_status as status_noc1',
+                'status2.nama_status as status_noc2',
+            )
+            ->leftJoin('t_bahagian', 't_bahagian.id', '=', 't_noc.bahagian')
+            ->leftJoin('t_kategori', 't_kategori.id', '=', 't_noc.klasifikasi')
+            ->leftJoin('t_status as status1', 'status1.id_status', '=', 't_noc.status_noc')
+            ->leftJoin('t_status as status2', 'status2.id_status', '=', 't_noc.status_noc2')
+            ->leftJoin('t_projek_rp2_2022', 't_projek_rp2_2022.kod_projek', '=', 't_noc.kod_myprojek')
+            ->first();
 
-        // $senderBhgn = DB::table('users')
-        //     ->select('email')
-        //     ->where('peranan', '=', '2')
-        //     ->where('bahagian', '=', $semakan->bahagian)
-        //     ->get();
+        $senderBhgn = DB::table('users')
+            ->select('email')
+            ->where('peranan', '=', '2')
+            ->where('bahagian', '=', $semakan->bahagian)
+            ->get();
 
-        // Mail::to($senderBhgn)->send(new EmailNOCHantarUlasanTeknikal($dataMail));
+        Mail::to($senderBhgn)->send(new EmailNOCHantarUlasanTeknikal($dataMail));
 
         return redirect()->route('noc.detail', $id)->with('success', 'Ulasan telah dihantar');
     }
