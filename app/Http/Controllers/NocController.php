@@ -961,7 +961,7 @@ class NocController extends Controller
                 't_bahagian.nama_bhgn',
                 't_kategori.kod',
                 't_kategori.nama_kat',
-                't_noc.tarikh_hantar_ulasan',
+                't_noc.tarikh_hantar_ulasan_tek',
                 't_noc.ulasan_bajet',
                 't_noc.ulasan_teknikal',
                 'status1.nama_status as status_noc1',
