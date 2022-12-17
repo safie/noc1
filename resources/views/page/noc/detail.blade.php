@@ -174,7 +174,11 @@
                                         </tr>
                                         <tr>
                                             <td style="width: 7rem"></td>
-                                            <td><span class="badge bg-info text-dark">{!! $noc->getStatus2->nama_status ?? '' !!}</span></td>
+                                            <td>
+                                                @if ($noc->nama_status != 'noc_16')
+                                                    <span class="badge bg-info text-dark">{!! $noc->getStatus2->nama_status ?? '' !!}</span>
+                                                @endif
+                                            </td>
                                         </tr>
                                     </table>
                                     <div>
