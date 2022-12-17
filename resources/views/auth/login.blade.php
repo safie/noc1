@@ -4,10 +4,11 @@
     <div class="container-xl px-4">
         <div id="layoutAuthentication">
             <div class="row justify-content-center">
-                <div class="d-flex justify-content-center mt-10">
-                    <img src="{{ asset('pic/jata_negara_small.png') }}" id="mask" alt="iNOC"
-                        style="">
+                <div class="d-flex flex-column align-items-center mt-10">
+                    <img src="{{ asset('pic/jata_negara_only.png') }}" id="mask" alt="iNOC" style="">
+                    <div class="h5 fw-bold text-uppercase text-white">Unit Perancang Ekonomi</div>
                 </div>
+
                 <div class="col-md-8">
                     <div class="card mt-5 mb-5">
                         <div class="card-header text-center fs-1"><strong>Sistem i-NOC</strong></div>

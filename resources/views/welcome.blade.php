@@ -11,7 +11,7 @@
             <div class="h5 text-white">Unit Perancang Ekonomi
             </div>
             <br>
-            <div class="display-1 text-white mb-0"><strong>iNOC</strong></div>
+            <div class="display-1 text-white mb-0"><strong>i-NOC</strong></div>
             <div class="h4 text-white mt-0"><mark class="mx-2 my-2">Sistem Pemantauan NOC</mark></div>
 
         </div>
