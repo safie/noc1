@@ -88,7 +88,7 @@
                                     <i data-feather="calendar"></i>
                                 </span>
                                 <input class="form-control ps-0" id="tarikhMohonNOC" name="tarikhMohonNOC"
-                                    placeholder="Pilih tarikh..." autocomplete="off" />
+                                    placeholder="Pilih tarikh..." autocomplete="off" data-date-start-date="0d"/>
                             </div>
                         </div>
                         <div class="flex-fill mx-1">
