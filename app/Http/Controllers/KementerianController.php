@@ -20,7 +20,7 @@ class KementerianController extends Controller
 
     public function index()
     {
-        $kementerian = Kementerian::all();
+        $kementerian = Kementerian::paginate(10);
         $view_data['kementerian'] = $kementerian;
         return view('page.kementerian.index')->with($view_data);
     }

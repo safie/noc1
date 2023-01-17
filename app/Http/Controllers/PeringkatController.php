@@ -19,7 +19,7 @@ class PeringkatController extends Controller
 
     public function index()
     {
-        $peringkat = Peringkat::all();
+        $peringkat = Peringkat::paginate(10);
         $view_data['peringkat'] = $peringkat;
         return view('page.peringkat.index')->with($view_data);
     }

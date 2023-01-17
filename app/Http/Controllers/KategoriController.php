@@ -20,7 +20,7 @@ class KategoriController extends Controller
 
     public function index()
     {
-        $kategori = Kategori::all();
+        $kategori = Kategori::paginate(10);
         $view_data['kategori'] = $kategori;
         return view('page.kategori.index')->with($view_data);
     }

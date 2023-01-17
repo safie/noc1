@@ -23,7 +23,7 @@
         @endif
         <div class="card">
             <div class="card-body">
-                <table id="datatablesSimple">
+                <table class="table table-bordered mb-2 small">
                     <thead>
                         <tr class="text-center">
                             <th>No.</th>
@@ -32,19 +32,19 @@
                             <th>Tindakan</th>
                         </tr>
                     </thead>
-                    <tfoot>
+                    {{-- <tfoot>
                         <tr class="text-center">
                             <th>No.</th>
                             <th>ID Status</th>
                             <th>Nama Status</th>
                             <th>Tindakan</th>
                         </tr>
-                    </tfoot>
+                    </tfoot> --}}
                     <tbody>
                         @if ($status->count() > 0)
-                            @foreach ($status as $data)
+                            @foreach ($status as $index => $data)
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ $index + $status->firstItem() }}.</td>
                                     <td>{{ $data->id_status }}</td>
                                     <td>{!! $data->nama_status !!}</td>
                                     <td class="text-center">
@@ -53,9 +53,8 @@
                                                 href="{{ route('status.edit', $data->id) }}"><i data-feather="edit"></i></a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit"
-                                                class="btn btn-datatable btn-icon btn-transparent-dark"><i
-                                                    data-feather="trash-2"></i></button>
+                                            <button class="btn btn-datatable btn-icon btn-transparent-dark"
+                                                type="submit"><i data-feather="trash-2"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -68,7 +67,9 @@
 
                     </tbody>
                 </table>
-                {{-- {!! $peranan->links() !!} --}}
+                <div class="d-flex justify-content-center">
+                    {!! $status->links() !!}
+                </div>
             </div>
         </div>
     </div>

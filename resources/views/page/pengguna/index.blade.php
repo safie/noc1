@@ -22,7 +22,7 @@
         @endif
         <div class="card">
             <div class="card-body">
-                <table id="datatablesSimple">
+                <table class="table table-bordered mb-2 small">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -33,7 +33,7 @@
                             <th class="text-center">Tindakan</th>
                         </tr>
                     </thead>
-                    <tfoot>
+                    {{-- <tfoot>
                         <tr>
                             <th>No.</th>
                             <th>Nama</th>
@@ -42,7 +42,7 @@
                             <th>Bahagian</th>
                             <th class="text-center">Tindakan</th>
                         </tr>
-                    </tfoot>
+                    </tfoot> --}}
                     <tbody>
                         @if ($pengguna->count() > 0)
                             @foreach ($pengguna as $key => $data)
@@ -68,7 +68,9 @@
 
                     </tbody>
                 </table>
-                {{-- {!! $peranan->links() !!} --}}
+                <div class="d-flex justify-content-center">
+                    {!! $pengguna->links() !!}
+                </div>
             </div>
         </div>
     </div>

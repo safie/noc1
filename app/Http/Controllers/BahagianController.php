@@ -19,7 +19,7 @@ class BahagianController extends Controller
 
     public function index()
     {
-        $bahagian = Bahagian::all();
+        $bahagian = Bahagian::paginate(10);
         $view_data['bahagian'] = $bahagian;
         return view('page.bahagian.index')->with($view_data);
     }

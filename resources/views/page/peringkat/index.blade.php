@@ -23,7 +23,7 @@
         @endif
         <div class="card">
             <div class="card-body">
-                <table id="datatablesSimple">
+                <table class="table table-bordered mb-2 small">
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -32,19 +32,19 @@
                             <th>Tindakan</th>
                         </tr>
                     </thead>
-                    <tfoot>
+                    {{-- <tfoot>
                         <tr>
                             <th>No.</th>
                             <th>Nama Peringkat</th>
                             <th>Order</th>
                             <th>Tindakan</th>
                         </tr>
-                    </tfoot>
+                    </tfoot> --}}
                     <tbody>
                         @if ($peringkat->count() > 0)
-                            @foreach ($peringkat as $data)
+                            @foreach ($peringkat as $index => $data)
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
+                                    <td>{{ $index + $peringkat->firstItem() }}.</td>
                                     <td>{{ $data->nama_peringkat }}</td>
                                     <td>{{ $data->order }}</td>
                                     <td>
@@ -54,9 +54,8 @@
                                                     data-feather="edit"></i></a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit"
-                                                class="btn btn-datatable btn-icon btn-transparent-dark"><i
-                                                    data-feather="trash-2"></i></button>
+                                            <button class="btn btn-datatable btn-icon btn-transparent-dark"
+                                                type="submit"><i data-feather="trash-2"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -69,7 +68,9 @@
 
                     </tbody>
                 </table>
-                {{-- {!! $peranan->links() !!} --}}
+                <div class="d-flex justify-content-center">
+                    {!! $peringkat->links() !!}
+                </div>
             </div>
         </div>
     </div>

@@ -17,10 +17,10 @@ class PerananController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
-        $peranan = Peranan::all();
+        $peranan = Peranan::paginate(10);
         $view_data['peranan'] = $peranan;
         return view('page.peranan.index')->with($view_data);
     }

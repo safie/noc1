@@ -34,9 +34,9 @@ class UserController extends Controller
         // // $pengguna = User::all();
         // $data1['pengguna'] = $pengguna;
 
-        $pengguna = User::all();
+        $pengguna = User::paginate(10);
 
-        return view('page.pengguna.index')->with('pengguna',$pengguna);
+        return view('page.pengguna.index')->with('pengguna', $pengguna);
     }
 
     /**
@@ -90,7 +90,7 @@ class UserController extends Controller
         //     'password'  => Hash::make($request_data['inputKatalaluan']),
         // ]);
 
-        $dataStore = New User();
+        $dataStore = new User();
 
         $dataStore->name = $request->inputNama;
         $dataStore->email = $request->email;
@@ -103,7 +103,7 @@ class UserController extends Controller
 
         // dd($mailData);
 
-        Mail::to($dataStore->email)->send(New WelcomeUser($dataStore,$request->inputKatalaluan));
+        Mail::to($dataStore->email)->send(new WelcomeUser($dataStore, $request->inputKatalaluan));
 
         return redirect()->route('pengguna.index')->with('success', 'Pengguna berjaya disimpan.');
     }
@@ -127,7 +127,7 @@ class UserController extends Controller
 
         // dd($data1);
         return view('page.pengguna.show')
-        ->with($data1);
+            ->with($data1);
     }
 
     /**
@@ -192,7 +192,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         // dd($id);
-        DB::table('users')->where('users.id','=',$id)->delete();
+        DB::table('users')->where('users.id', '=', $id)->delete();
         // $user->delete();
         return redirect()->route('pengguna.index')->with('success', 'Pengguna berjaya dipadam');
     }
