@@ -1231,6 +1231,14 @@ class NocController extends Controller
         dd("Email berjaya!");
     }
 
+    public function mohonKlasifikasiNoc($request) //step-1: Pilih kategori
+    {
+        $tajuk_page = 'Permohonan NOC';
+
+        return view('page.noc.createMohonNoc', compact('projek', 'tajuk_page', 'kategori'));
+    }
+
+
     public function cariProjek(Request $request)
     {
         $tajuk_page = 'Permohonan NOC';
